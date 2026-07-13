@@ -57,22 +57,37 @@ export function Loader() {
     const items = Array.from(bars.querySelectorAll<HTMLElement>("i"));
     const n = items.length;
     const order = Math.floor(n * 0.62);
+    const mk = root.querySelector<HTMLElement>(".lk-mk");
+    const cap = root.querySelector<HTMLElement>(".lcap");
+
+    // span the bar row to the exact width of the KATA wordmark (first bar to
+    // the K, last bar to the final A). Re-run once fonts settle so the measured
+    // width is correct.
+    const matchWidth = () => {
+      if (!mk) return;
+      const w = mk.offsetWidth;
+      if (w > 40) {
+        bars.style.width = `${w}px`;
+        bars.style.justifyContent = "space-between";
+        bars.style.gap = "0px";
+      }
+    };
+    matchWidth();
+    document.fonts?.ready?.then(matchWidth).catch(() => {});
 
     // fragmented start (set pre-paint — no flash)
     items.forEach((c) => {
       const r = Math.random();
       c.className = r < 0.42 ? "frag" : r < 0.64 ? "free" : "";
     });
-    gsap.set([root.querySelector(".lk-mk"), root.querySelector(".lcap")], {
-      autoAlpha: 0,
-    });
+    gsap.set([mk, cap], { autoAlpha: 0 });
 
     const settleEnd = SETTLE_START + n * EACH + TRANS;
 
     const tl = gsap.timeline();
     // the mark
     tl.to(
-      root.querySelector(".lk-mk"),
+      mk,
       { autoAlpha: 1, y: 0, duration: MARK_IN, ease: "power2.out", startAt: { y: 12 } },
       0
     );
@@ -88,7 +103,7 @@ export function Loader() {
     });
     // caption resolves as order lands
     tl.to(
-      root.querySelector(".lcap"),
+      cap,
       { autoAlpha: 1, y: 0, duration: 0.6, ease: "power2.out", startAt: { y: 8 } },
       settleEnd - 0.9
     );
