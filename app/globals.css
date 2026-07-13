@@ -729,8 +729,9 @@ img {
   font-family: var(--sans);
   font-weight: 600;
   font-size: clamp(12px, 3.4vw, 15px);
-  letter-spacing: 0.24em;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
+  text-align: center;
   color: rgba(246, 242, 232, 0.5);
 }
 .loader .lcap b {

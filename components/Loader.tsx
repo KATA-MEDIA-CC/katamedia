@@ -60,20 +60,36 @@ export function Loader() {
     const mk = root.querySelector<HTMLElement>(".lk-mk");
     const cap = root.querySelector<HTMLElement>(".lcap");
 
-    // span the bar row to the exact width of the KATA wordmark (first bar to
-    // the K, last bar to the final A). Re-run once fonts settle so the measured
-    // width is correct.
+    // Align the bar row (and, when it fits, the slogan) to the exact width of
+    // the KATA wordmark — first bar on the K, last on the final A. A
+    // ResizeObserver re-runs it whenever the wordmark reflows (e.g. once the
+    // web font finishes loading), so the measured width is always correct.
     const matchWidth = () => {
       if (!mk) return;
       const w = mk.offsetWidth;
-      if (w > 40) {
-        bars.style.width = `${w}px`;
-        bars.style.justifyContent = "space-between";
-        bars.style.gap = "0px";
+      if (w <= 40) return;
+      bars.style.width = `${w}px`;
+      bars.style.justifyContent = "space-between";
+      bars.style.gap = "0px";
+      if (cap) {
+        // reset, measure the slogan's natural width, then span it to the mark
+        // width only when it fits (on small screens the long line is wider
+        // than the 4-letter mark, so it stays centred).
+        cap.style.width = "";
+        cap.style.textAlignLast = "";
+        if (w >= cap.scrollWidth) {
+          cap.style.width = `${w}px`;
+          cap.style.textAlignLast = "justify";
+        }
       }
     };
     matchWidth();
     document.fonts?.ready?.then(matchWidth).catch(() => {});
+    let ro: ResizeObserver | undefined;
+    if (mk && typeof ResizeObserver !== "undefined") {
+      ro = new ResizeObserver(() => matchWidth());
+      ro.observe(mk);
+    }
 
     // fragmented start (set pre-paint — no flash)
     items.forEach((c) => {
@@ -116,6 +132,7 @@ export function Loader() {
 
     return () => {
       tl.kill();
+      ro?.disconnect();
       unlockScroll();
     };
   }, []);
