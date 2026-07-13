@@ -221,6 +221,47 @@ img {
 .defrag.dk i.mark {
   background: var(--clay);
 }
+
+/* glass variant — frosted slats, softly rounded, colour only hinted via a
+   chromatic-aberration fringe (warm clay / cool cyan edges). Used on the loader. */
+.defrag.glass {
+  gap: 4px;
+}
+.defrag.glass i {
+  border-radius: 2px;
+  background: rgba(246, 242, 232, 0.06);
+  border: 0.5px solid rgba(246, 242, 232, 0.16);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.28),
+    0 2px 5px rgba(0, 0, 0, 0.28);
+  transition: transform 0.5s ease, background 0.5s ease, box-shadow 0.5s ease,
+    opacity 0.5s ease;
+}
+.defrag.glass.lg {
+  gap: 5px;
+}
+.defrag.glass.lg i {
+  width: 6px;
+  border-radius: 2.5px;
+}
+.defrag.glass i.free {
+  opacity: 0.32;
+  background: rgba(246, 242, 232, 0.03);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+.defrag.glass i.frag {
+  transform: translateY(-2px);
+  background: rgba(246, 242, 232, 0.1);
+  box-shadow: -1.5px 0 1.5px rgba(210, 82, 52, 0.5),
+    1.5px 0 1.5px rgba(72, 176, 236, 0.42),
+    inset 0 1px 0 rgba(255, 255, 255, 0.42);
+}
+.defrag.glass i.mark {
+  background: rgba(246, 242, 232, 0.12);
+  box-shadow: -1px 0 2px rgba(210, 82, 52, 0.66),
+    1px 0 2px rgba(72, 176, 236, 0.34),
+    inset 0 1px 0 rgba(255, 255, 255, 0.5);
+}
+
 .defragcap {
   font-family: var(--sans);
   font-weight: 600;
@@ -459,49 +500,81 @@ img {
 /* ═══════════════════════════════════════════════════════════════════════
    NAV
    ═══════════════════════════════════════════════════════════════════════ */
+/* frosted-glass floating menu, inset from the edges */
 .nav {
   position: fixed;
-  top: 0;
+  top: clamp(10px, 1.4vw, 18px);
   left: 0;
   right: 0;
   z-index: 100;
-  transition: background 0.45s ease, box-shadow 0.45s ease,
-    border-color 0.45s ease;
-  border-bottom: 1px solid transparent;
+  padding: 0 clamp(12px, 2.4vw, 26px);
+  pointer-events: none;
 }
 .nav-in {
+  pointer-events: auto;
   max-width: var(--maxw);
   margin: 0 auto;
-  padding: 14px var(--gut);
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 18px;
+  gap: 20px;
+  padding: 10px clamp(14px, 1.6vw, 20px) 10px clamp(16px, 1.8vw, 22px);
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.07);
+  backdrop-filter: blur(20px) saturate(1.4);
+  -webkit-backdrop-filter: blur(20px) saturate(1.4);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 20px 48px -32px rgba(0, 0, 0, 0.55),
+    inset 0 1px 0 rgba(255, 255, 255, 0.34);
+  transition: background 0.5s ease, border-color 0.5s ease, box-shadow 0.5s ease;
+}
+/* horizontal lockup (mark · rule · line) fills the top-left */
+.nav-lockup {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  min-width: 0;
 }
 .nav-mk {
   font-family: var(--display);
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.14em;
-  font-size: 19px;
+  font-size: 18px;
   line-height: 1;
   color: var(--paper);
-  transition: color 0.45s ease;
+  transition: color 0.5s ease;
+}
+.nav-rule {
+  width: 1px;
+  height: 15px;
+  background: var(--clay);
+  flex: none;
+}
+.nav-tag {
+  font-family: var(--sans);
+  font-weight: 600;
+  font-size: 8px;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  line-height: 1.35;
+  color: var(--clay);
+  max-width: 13ch;
 }
 .nav-links {
   display: flex;
-  gap: clamp(14px, 2vw, 30px);
+  gap: clamp(14px, 1.8vw, 28px);
   list-style: none;
   margin: 0;
   padding: 0;
   font-family: var(--sans);
   font-weight: 600;
   font-size: 11px;
-  letter-spacing: 0.14em;
+  letter-spacing: 0.13em;
   text-transform: uppercase;
 }
 .nav-links a {
-  color: rgba(246, 242, 232, 0.82);
+  color: rgba(246, 242, 232, 0.8);
   position: relative;
   padding-bottom: 3px;
   transition: color 0.3s ease;
@@ -526,33 +599,24 @@ img {
 .nav-links a.active::after {
   transform: scaleX(1);
 }
-/* scrolled / solid state (paper bar, ink text) */
-.nav.solid {
-  background: rgba(246, 242, 232, 0.86);
-  backdrop-filter: blur(14px) saturate(1.2);
-  -webkit-backdrop-filter: blur(14px) saturate(1.2);
-  border-bottom-color: var(--hair);
-  box-shadow: 0 8px 30px -24px rgba(26, 24, 19, 0.5);
+/* scrolled → paper-frosted glass, ink text */
+.nav.solid .nav-in {
+  background: rgba(246, 242, 232, 0.72);
+  border-color: rgba(26, 24, 19, 0.1);
+  box-shadow: 0 16px 40px -30px rgba(26, 24, 19, 0.42),
+    inset 0 1px 0 rgba(255, 255, 255, 0.6);
 }
 .nav.solid .nav-mk {
   color: var(--ink);
+}
+.nav.solid .nav-tag {
+  color: var(--clay-d);
 }
 .nav.solid .nav-links a {
   color: var(--ink-60);
 }
 .nav.solid .nav-links a:hover,
 .nav.solid .nav-links a.active {
-  color: var(--ink);
-}
-/* light pages that have no ink hero start solid-on-paper */
-.nav.onlight .nav-mk {
-  color: var(--ink);
-}
-.nav.onlight .nav-links a {
-  color: var(--ink-60);
-}
-.nav.onlight .nav-links a:hover,
-.nav.onlight .nav-links a.active {
   color: var(--ink);
 }
 
@@ -566,7 +630,7 @@ img {
   border: 0;
   cursor: pointer;
   padding: 0;
-  margin-right: -9px; /* optical: hold the bars against the gutter edge */
+  margin-right: -6px; /* optical: sit the bars near the glass edge */
   z-index: 101;
 }
 .burger span {
@@ -588,8 +652,7 @@ img {
 .burger span:nth-child(3) {
   bottom: 15px;
 }
-.nav.solid .burger span,
-.nav.onlight .burger span {
+.nav.solid .burger span {
   background: var(--ink);
 }
 .burger.open span {
@@ -876,6 +939,29 @@ img {
   color: rgba(246, 242, 232, 0.7);
 }
 
+/* minimal closing CTA */
+.cta-band {
+  text-align: center;
+}
+.cta-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(22px, 3vw, 34px);
+}
+.cta-line {
+  font-family: var(--serif);
+  font-weight: 300;
+  font-size: clamp(28px, 5vw, 62px);
+  line-height: 1.06;
+  letter-spacing: -0.02em;
+  max-width: 18ch;
+}
+.cta-line em {
+  font-style: italic;
+  color: var(--clay);
+}
+
 /* ═══════════════════════════════════════════════════════════════════════
    PILLARS
    ═══════════════════════════════════════════════════════════════════════ */
@@ -965,6 +1051,14 @@ img {
   background: var(--clay);
   flex: none;
   transform: translateY(4px);
+}
+/* compact variant — icon · number · title · one line (no item list) */
+.pillars.min .pillar {
+  min-height: clamp(200px, 20vw, 250px);
+  gap: 18px;
+}
+.pillars.min .pillar h3 {
+  margin-top: auto;
 }
 
 /* ═══════════════════════════════════════════════════════════════════════
@@ -1298,6 +1392,10 @@ img {
   .nav-links {
     display: none;
   }
+  .nav-rule,
+  .nav-tag {
+    display: none;
+  }
   .burger {
     display: block;
   }
@@ -1319,13 +1417,13 @@ img {
   }
 }
 
-/* loader defrag bar: thinner cells on phones so 48 cells never overflow */
+/* loader defrag bar: narrower glass slats on phones so it never overflows */
 @media (max-width: 479px) {
-  .loader .defrag.lg {
-    gap: 2px;
+  .loader .defrag.glass.lg {
+    gap: 4px;
   }
-  .loader .defrag.lg i {
-    width: 3px;
+  .loader .defrag.glass.lg i {
+    width: 5px;
   }
 }
 

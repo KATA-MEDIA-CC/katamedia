@@ -5,7 +5,7 @@ import { gsap, useIsoLayoutEffect, prefersReducedMotion } from "@/lib/gsap";
 import { lockScroll, unlockScroll } from "@/lib/scrollLock";
 import { site } from "@/lib/site";
 
-const CELLS = 48;
+const CELLS = 30;
 const KEY = "kata:loaded";
 
 // The defrag load screen. Ink overlay, the mark, the bars fragment then settle
@@ -92,7 +92,7 @@ export function Loader() {
     <div ref={rootRef} className="loader" role="status" aria-label="Loading">
       <div className="loader-inner">
         <span className="lk-mk">{site.wordmark}</span>
-        <span ref={barsRef} className="defrag lg dk" aria-hidden="true">
+        <span ref={barsRef} className="defrag lg glass" aria-hidden="true">
           {Array.from({ length: CELLS }).map((_, i) => (
             <i key={i} />
           ))}

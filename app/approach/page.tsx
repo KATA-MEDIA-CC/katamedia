@@ -3,7 +3,7 @@ import Link from "next/link";
 import { Hero } from "@/components/Hero";
 import { FeatureHead } from "@/components/FeatureHead";
 import { Reveal } from "@/components/Reveal";
-import { dimensions, engagements, site, pageMetadata } from "@/lib/site";
+import { dimensions, site, pageMetadata } from "@/lib/site";
 
 export const metadata: Metadata = pageMetadata({
   title: "Approach",
@@ -71,42 +71,6 @@ export default function ApproachPage() {
           <div className="caption">
             <span>Diagnostic · Roadmap · Recommendation — yours to keep</span>
             <span className="r">RAG-scored across all six dimensions</span>
-          </div>
-        </div>
-      </section>
-
-      {/* Ways to engage */}
-      <section className="feature">
-        <div className="wrap">
-          <FeatureHead
-            no="02"
-            title={
-              <>
-                How we <em>engage</em>
-              </>
-            }
-            deck="Four ways to work with us — from embedded on a live production to standalone access to the Kata Platform."
-          />
-          <div className="g12">
-            <Reveal className="quad" stagger>
-              {engagements.map((e) => (
-                <div className="card" key={e.no}>
-                  <div
-                    style={{
-                      display: "flex",
-                      justifyContent: "space-between",
-                      alignItems: "baseline",
-                      gap: 16,
-                    }}
-                  >
-                    <span className="c-no">{e.no}</span>
-                    <span className="c-kick">{e.kicker}</span>
-                  </div>
-                  <h3>{e.title}</h3>
-                  <p className="c-spacer">{e.body}</p>
-                </div>
-              ))}
-            </Reveal>
           </div>
         </div>
       </section>

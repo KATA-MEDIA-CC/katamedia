@@ -13,29 +13,6 @@ export const metadata: Metadata = pageMetadata({
   path: "/services",
 });
 
-const clients = [
-  {
-    kicker: "For brands",
-    title: "Brands",
-    items: [
-      "Direct advisory — working straight with production companies",
-      "Independent oversight on agency-managed productions",
-      "Insourcing brands building an internal function",
-      "Global brands defining a European production strategy",
-    ],
-  },
-  {
-    kicker: "For agencies",
-    title: "Agencies",
-    items: [
-      "Network agencies building production functions",
-      "Mid-sized agencies fixing under-performing departments",
-      "Small agencies creating a function from zero",
-      "Agencies building credentials to win production pools",
-    ],
-  },
-];
-
 export default function ServicesPage() {
   return (
     <>
@@ -75,7 +52,7 @@ export default function ServicesPage() {
                   <h3>{p.title}</h3>
                   <p className="p-lead">{p.lead}</p>
                   <ul>
-                    {p.items.map((it) => (
+                    {p.items.slice(0, 3).map((it) => (
                       <li key={it}>{it}</li>
                     ))}
                   </ul>
@@ -150,75 +127,21 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      {/* Who we work with */}
-      <section className="feature">
+      {/* Closing CTA */}
+      <section className="feature cta-band">
         <div className="wrap">
-          <FeatureHead
-            no="03"
-            title={
-              <>
-                Who we <em>work with</em>
-              </>
-            }
-            deck="Brands and agencies. We do not take production companies as advisory clients — our independence depends on it."
-          />
-          <div className="g12">
-            <Reveal className="quad" stagger>
-              {clients.map((c) => (
-                <div className="card" key={c.title}>
-                  <span className="c-kick">{c.kicker}</span>
-                  <h3>{c.title}</h3>
-                  <ul
-                    className="c-spacer"
-                    style={{
-                      listStyle: "none",
-                      margin: 0,
-                      padding: 0,
-                      display: "flex",
-                      flexDirection: "column",
-                      gap: 10,
-                    }}
-                  >
-                    {c.items.map((it) => (
-                      <li
-                        key={it}
-                        style={{
-                          fontFamily: "var(--serif)",
-                          fontSize: "clamp(13.5px,1.25vw,15.5px)",
-                          lineHeight: 1.5,
-                          color: "var(--ink-80)",
-                          display: "flex",
-                          gap: 12,
-                          alignItems: "baseline",
-                          borderTop: "1px solid var(--hair)",
-                          paddingTop: 10,
-                        }}
-                      >
-                        <span
-                          style={{
-                            width: 6,
-                            height: 6,
-                            background: "var(--clay)",
-                            flex: "none",
-                            transform: "translateY(4px)",
-                          }}
-                        />
-                        {it}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              ))}
-            </Reveal>
-          </div>
-          <div style={{ marginTop: "clamp(40px,5vw,64px)" }}>
-            <Reveal>
-              <Link href="/contact" className="btn solid">
-                <span className="dot" />
-                Start a conversation
-              </Link>
-            </Reveal>
-          </div>
+          <Reveal className="cta-inner">
+            <p className="st-kick" style={{ color: "var(--clay-d)" }}>
+              Brands &amp; agencies only
+            </p>
+            <p className="cta-line">
+              We work entirely on <em>your side.</em>
+            </p>
+            <Link href="/contact" className="btn solid">
+              <span className="dot" />
+              Start a conversation
+            </Link>
+          </Reveal>
         </div>
       </section>
     </>

@@ -23,12 +23,13 @@ export function Nav() {
     const evaluate = () => {
       raf = 0;
       const hero = document.querySelector(".hero");
-      const navH = navRef.current?.offsetHeight ?? 66;
+      const navEl = navRef.current;
+      const navBottom = navEl ? navEl.getBoundingClientRect().bottom : 66;
       if (!hero) {
         setSolid(true); // page without an ink hero → solid on paper
         return;
       }
-      setSolid(hero.getBoundingClientRect().bottom <= navH + 4);
+      setSolid(hero.getBoundingClientRect().bottom <= navBottom + 4);
     };
     const onScroll = () => {
       if (!raf) raf = requestAnimationFrame(evaluate);
@@ -105,8 +106,14 @@ export function Nav() {
     <>
       <header ref={navRef} className={`nav ${solid && !open ? "solid" : ""}`}>
         <div className="nav-in">
-          <Link href="/" className="nav-mk" aria-label={`${site.name} — home`}>
-            {site.wordmark}
+          <Link
+            href="/"
+            className="nav-lockup"
+            aria-label={`${site.name} — home`}
+          >
+            <span className="nav-mk">{site.wordmark}</span>
+            <span className="nav-rule" aria-hidden="true" />
+            <span className="nav-tag">{site.tagline}</span>
           </Link>
           <nav aria-label="Primary">
             <ul className="nav-links">
