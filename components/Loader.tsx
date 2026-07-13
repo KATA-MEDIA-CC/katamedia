@@ -5,21 +5,29 @@ import { gsap, useIsoLayoutEffect, prefersReducedMotion } from "@/lib/gsap";
 import { lockScroll, unlockScroll } from "@/lib/scrollLock";
 import { site } from "@/lib/site";
 
-const CELLS = 24;
+const CELLS = 36;
 const KEY = "kata:loaded";
 
-// The defrag load screen. Ink overlay, the mark, then the glass slats assemble
-// from disorder into an ordered row — "defragmenting → bringing order" — before
-// the screen wipes up. Shown once per session.
+// timing (seconds)
+const MARK_IN = 0.6;
+const SETTLE_START = 0.75;
+const EACH = 0.04; // stagger per cell — slow enough to read the defragmenting
+const TRANS = 0.6; // matches the CSS transition on .defrag.coat i
+
+// The defrag load screen. Solid glass-coated bars fragment into disorder, then
+// settle cell-by-cell into an ordered row while a sheen sweeps across, then the
+// screen wipes up. Shown once per session.
 export function Loader() {
   const [done, setDone] = useState(false);
   const rootRef = useRef<HTMLDivElement>(null);
   const barsRef = useRef<HTMLSpanElement>(null);
+  const sheenRef = useRef<HTMLSpanElement>(null);
 
   useIsoLayoutEffect(() => {
     const root = rootRef.current;
     const bars = barsRef.current;
-    if (!root || !bars) return;
+    const sheen = sheenRef.current;
+    if (!root || !bars || !sheen) return;
 
     let already = false;
     try {
@@ -35,7 +43,6 @@ export function Loader() {
     };
 
     if (already) {
-      // Skip instantly (pre-paint) — no flash on same-session reloads.
       gsap.set(root, { autoAlpha: 0 });
       setDone(true);
       return;
@@ -48,57 +55,57 @@ export function Loader() {
 
     lockScroll();
 
-    const items = gsap.utils.toArray<HTMLElement>(bars.querySelectorAll("i"));
-    const rnd = gsap.utils.random;
+    const items = Array.from(bars.querySelectorAll<HTMLElement>("i"));
+    const n = items.length;
+    const order = Math.floor(n * 0.62);
 
-    // fragmented start — scattered, dim, uneven (set pre-paint so no flash)
-    gsap.set(items, {
-      opacity: () => rnd(0.1, 0.4),
-      y: () => rnd(-18, 18),
-      scaleY: () => rnd(0.5, 1),
+    // fragmented start (set pre-paint — no flash)
+    items.forEach((c) => {
+      const r = Math.random();
+      c.className = r < 0.42 ? "frag" : r < 0.64 ? "free" : "";
     });
     gsap.set([root.querySelector(".lk-mk"), root.querySelector(".lcap")], {
       autoAlpha: 0,
     });
+    gsap.set(sheen, { autoAlpha: 0, x: -50 });
+
+    const settleSpan = n * EACH;
+    const settleEnd = SETTLE_START + settleSpan + TRANS;
+    const sheenAt = SETTLE_START + settleSpan * 0.35;
+    const barsW = bars.offsetWidth;
 
     const tl = gsap.timeline();
     // the mark
-    tl.to(root.querySelector(".lk-mk"), {
-      autoAlpha: 1,
-      y: 0,
-      duration: 0.6,
-      ease: "power2.out",
-      startAt: { y: 12 },
-    });
-    // slats settle into order — left to right, slow enough to read
     tl.to(
-      items,
-      {
-        opacity: 1,
-        y: 0,
-        scaleY: 1,
-        duration: 0.75,
-        ease: "power3.out",
-        stagger: { each: 0.05, from: "start" },
-      },
-      "-=0.15"
+      root.querySelector(".lk-mk"),
+      { autoAlpha: 1, y: 0, duration: MARK_IN, ease: "power2.out", startAt: { y: 12 } },
+      0
     );
-    // caption resolves as order lands
+    // settle each cell into order, left to right
+    items.forEach((c, i) => {
+      tl.call(
+        () => {
+          c.className = i < order ? (i % 8 === 5 ? "mark" : "") : "free";
+        },
+        undefined,
+        SETTLE_START + i * EACH
+      );
+    });
+    // sheen sweep as order lands
+    tl.set(sheen, { autoAlpha: 0.9, x: -50 }, sheenAt);
+    tl.to(sheen, { x: barsW + 50, duration: 0.9, ease: "sine.inOut" }, sheenAt);
+    tl.to(sheen, { autoAlpha: 0, duration: 0.35 }, sheenAt + 0.65);
+    // caption resolves
     tl.to(
       root.querySelector(".lcap"),
       { autoAlpha: 1, y: 0, duration: 0.6, ease: "power2.out", startAt: { y: 8 } },
-      "-=0.55"
+      settleEnd - 0.9
     );
-    // hold on the ordered state, then wipe up
+    // hold, then wipe up
     tl.to(
       root,
-      {
-        yPercent: -100,
-        duration: 0.9,
-        ease: "power4.inOut",
-        onComplete: finish,
-      },
-      "+=0.7"
+      { yPercent: -100, duration: 0.9, ease: "power4.inOut", onComplete: finish },
+      settleEnd + 0.55
     );
 
     return () => {
@@ -113,10 +120,13 @@ export function Loader() {
     <div ref={rootRef} className="loader" role="status" aria-label="Loading">
       <div className="loader-inner">
         <span className="lk-mk">{site.wordmark}</span>
-        <span ref={barsRef} className="defrag lg glass" aria-hidden="true">
-          {Array.from({ length: CELLS }).map((_, i) => (
-            <i key={i} />
-          ))}
+        <span className="loader-bars">
+          <span ref={barsRef} className="defrag lg dk coat" aria-hidden="true">
+            {Array.from({ length: CELLS }).map((_, i) => (
+              <i key={i} />
+            ))}
+          </span>
+          <span ref={sheenRef} className="loader-sheen" aria-hidden="true" />
         </span>
         <span className="lcap">
           Defragmenting — <b>bringing order</b>
