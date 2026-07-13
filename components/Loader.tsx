@@ -10,24 +10,23 @@ const KEY = "kata:loaded";
 
 // timing (seconds)
 const MARK_IN = 0.6;
-const SETTLE_START = 0.75;
-const EACH = 0.04; // stagger per cell — slow enough to read the defragmenting
-const TRANS = 0.6; // matches the CSS transition on .defrag.coat i
+const SETTLE_START = 1.0; // hold the fragmented state a beat first
+const EACH = 0.05; // stagger per cell — slow enough to read the defragmenting
+const TRANS = 0.5; // matches the CSS transition on .defrag i
+const HOLD = 3.0; // hold the finished ordered state before revealing the site
 
-// The defrag load screen. Solid glass-coated bars fragment into disorder, then
-// settle cell-by-cell into an ordered row while a sheen sweeps across, then the
-// screen wipes up. Shown once per session.
+// The defrag load screen. Solid bars fragment into disorder, then settle
+// cell-by-cell into an ordered row, hold, and the screen wipes up. Once per
+// session.
 export function Loader() {
   const [done, setDone] = useState(false);
   const rootRef = useRef<HTMLDivElement>(null);
   const barsRef = useRef<HTMLSpanElement>(null);
-  const sheenRef = useRef<HTMLSpanElement>(null);
 
   useIsoLayoutEffect(() => {
     const root = rootRef.current;
     const bars = barsRef.current;
-    const sheen = sheenRef.current;
-    if (!root || !bars || !sheen) return;
+    if (!root || !bars) return;
 
     let already = false;
     try {
@@ -67,12 +66,8 @@ export function Loader() {
     gsap.set([root.querySelector(".lk-mk"), root.querySelector(".lcap")], {
       autoAlpha: 0,
     });
-    gsap.set(sheen, { autoAlpha: 0, x: -50 });
 
-    const settleSpan = n * EACH;
-    const settleEnd = SETTLE_START + settleSpan + TRANS;
-    const sheenAt = SETTLE_START + settleSpan * 0.35;
-    const barsW = bars.offsetWidth;
+    const settleEnd = SETTLE_START + n * EACH + TRANS;
 
     const tl = gsap.timeline();
     // the mark
@@ -91,21 +86,17 @@ export function Loader() {
         SETTLE_START + i * EACH
       );
     });
-    // sheen sweep as order lands
-    tl.set(sheen, { autoAlpha: 0.9, x: -50 }, sheenAt);
-    tl.to(sheen, { x: barsW + 50, duration: 0.9, ease: "sine.inOut" }, sheenAt);
-    tl.to(sheen, { autoAlpha: 0, duration: 0.35 }, sheenAt + 0.65);
-    // caption resolves
+    // caption resolves as order lands
     tl.to(
       root.querySelector(".lcap"),
       { autoAlpha: 1, y: 0, duration: 0.6, ease: "power2.out", startAt: { y: 8 } },
       settleEnd - 0.9
     );
-    // hold, then wipe up
+    // hold the ordered state, then wipe up
     tl.to(
       root,
       { yPercent: -100, duration: 0.9, ease: "power4.inOut", onComplete: finish },
-      settleEnd + 0.55
+      settleEnd + HOLD
     );
 
     return () => {
@@ -120,16 +111,13 @@ export function Loader() {
     <div ref={rootRef} className="loader" role="status" aria-label="Loading">
       <div className="loader-inner">
         <span className="lk-mk">{site.wordmark}</span>
-        <span className="loader-bars">
-          <span ref={barsRef} className="defrag lg dk coat" aria-hidden="true">
-            {Array.from({ length: CELLS }).map((_, i) => (
-              <i key={i} />
-            ))}
-          </span>
-          <span ref={sheenRef} className="loader-sheen" aria-hidden="true" />
+        <span ref={barsRef} className="defrag lg dk" aria-hidden="true">
+          {Array.from({ length: CELLS }).map((_, i) => (
+            <i key={i} />
+          ))}
         </span>
         <span className="lcap">
-          Defragmenting — <b>bringing order</b>
+          From fragments — <b>order.</b>
         </span>
       </div>
     </div>
