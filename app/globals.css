@@ -222,44 +222,33 @@ img {
   background: var(--clay);
 }
 
-/* glass variant — frosted slats, softly rounded, colour only hinted via a
-   chromatic-aberration fringe (warm clay / cool cyan edges). Used on the loader. */
+/* glass variant — clean frosted slats, softly rounded, with only a whisper of
+   chromatic colour on the edges. The loader's GSAP timeline assembles them
+   from disorder into an ordered row (no per-cell state classes). */
 .defrag.glass {
-  gap: 4px;
+  gap: 5px;
 }
 .defrag.glass i {
   border-radius: 2px;
-  background: rgba(246, 242, 232, 0.06);
-  border: 0.5px solid rgba(246, 242, 232, 0.16);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.28),
-    0 2px 5px rgba(0, 0, 0, 0.28);
-  transition: transform 0.5s ease, background 0.5s ease, box-shadow 0.5s ease,
-    opacity 0.5s ease;
+  transform-origin: center bottom;
+  background: linear-gradient(
+    180deg,
+    rgba(246, 242, 232, 0.16),
+    rgba(246, 242, 232, 0.05)
+  );
+  border: 0.5px solid rgba(246, 242, 232, 0.22);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.14),
+    -0.5px 0 0.6px rgba(201, 86, 57, 0.16),
+    0.5px 0 0.6px rgba(96, 168, 214, 0.13);
+  will-change: transform, opacity;
 }
 .defrag.glass.lg {
-  gap: 5px;
+  gap: 6px;
 }
 .defrag.glass.lg i {
-  width: 6px;
-  border-radius: 2.5px;
-}
-.defrag.glass i.free {
-  opacity: 0.32;
-  background: rgba(246, 242, 232, 0.03);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
-}
-.defrag.glass i.frag {
-  transform: translateY(-2px);
-  background: rgba(246, 242, 232, 0.1);
-  box-shadow: -1.5px 0 1.5px rgba(210, 82, 52, 0.5),
-    1.5px 0 1.5px rgba(72, 176, 236, 0.42),
-    inset 0 1px 0 rgba(255, 255, 255, 0.42);
-}
-.defrag.glass i.mark {
-  background: rgba(246, 242, 232, 0.12);
-  box-shadow: -1px 0 2px rgba(210, 82, 52, 0.66),
-    1px 0 2px rgba(72, 176, 236, 0.34),
-    inset 0 1px 0 rgba(255, 255, 255, 0.5);
+  width: 7px;
+  border-radius: 3px;
 }
 
 .defragcap {

@@ -5,11 +5,12 @@ import { gsap, useIsoLayoutEffect, prefersReducedMotion } from "@/lib/gsap";
 import { lockScroll, unlockScroll } from "@/lib/scrollLock";
 import { site } from "@/lib/site";
 
-const CELLS = 30;
+const CELLS = 24;
 const KEY = "kata:loaded";
 
-// The defrag load screen. Ink overlay, the mark, the bars fragment then settle
-// into order, then the screen wipes up. Shown once per session.
+// The defrag load screen. Ink overlay, the mark, then the glass slats assemble
+// from disorder into an ordered row — "defragmenting → bringing order" — before
+// the screen wipes up. Shown once per session.
 export function Loader() {
   const [done, setDone] = useState(false);
   const rootRef = useRef<HTMLDivElement>(null);
@@ -40,8 +41,6 @@ export function Loader() {
       return;
     }
 
-    const items = Array.from(bars.querySelectorAll<HTMLElement>("i"));
-
     if (prefersReducedMotion()) {
       finish();
       return;
@@ -49,36 +48,58 @@ export function Loader() {
 
     lockScroll();
 
-    // fragment
-    items.forEach((c) => {
-      const r = Math.random();
-      c.className = r < 0.42 ? "frag" : r < 0.64 ? "free" : "";
+    const items = gsap.utils.toArray<HTMLElement>(bars.querySelectorAll("i"));
+    const rnd = gsap.utils.random;
+
+    // fragmented start — scattered, dim, uneven (set pre-paint so no flash)
+    gsap.set(items, {
+      opacity: () => rnd(0.1, 0.4),
+      y: () => rnd(-18, 18),
+      scaleY: () => rnd(0.5, 1),
+    });
+    gsap.set([root.querySelector(".lk-mk"), root.querySelector(".lcap")], {
+      autoAlpha: 0,
     });
 
     const tl = gsap.timeline();
-    tl.from(root.querySelector(".lk-mk"), {
-      autoAlpha: 0,
-      y: 10,
-      duration: 0.5,
+    // the mark
+    tl.to(root.querySelector(".lk-mk"), {
+      autoAlpha: 1,
+      y: 0,
+      duration: 0.6,
       ease: "power2.out",
+      startAt: { y: 12 },
     });
-    // settle into order (stagger)
-    const order = Math.floor(items.length * 0.62);
-    tl.add(() => {
-      items.forEach((c, i) => {
-        gsap.delayedCall(i * 0.028, () => {
-          c.className = i < order ? (i % 8 === 5 ? "mark" : "") : "free";
-        });
-      });
-    }, "+=0.15");
-    // hold, then wipe up
-    tl.to(root, {
-      yPercent: -100,
-      duration: 0.85,
-      ease: "power4.inOut",
-      onComplete: finish,
-      delay: 0.85,
-    });
+    // slats settle into order — left to right, slow enough to read
+    tl.to(
+      items,
+      {
+        opacity: 1,
+        y: 0,
+        scaleY: 1,
+        duration: 0.75,
+        ease: "power3.out",
+        stagger: { each: 0.05, from: "start" },
+      },
+      "-=0.15"
+    );
+    // caption resolves as order lands
+    tl.to(
+      root.querySelector(".lcap"),
+      { autoAlpha: 1, y: 0, duration: 0.6, ease: "power2.out", startAt: { y: 8 } },
+      "-=0.55"
+    );
+    // hold on the ordered state, then wipe up
+    tl.to(
+      root,
+      {
+        yPercent: -100,
+        duration: 0.9,
+        ease: "power4.inOut",
+        onComplete: finish,
+      },
+      "+=0.7"
+    );
 
     return () => {
       tl.kill();
