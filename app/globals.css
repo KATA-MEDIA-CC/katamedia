@@ -24,13 +24,16 @@
   --paper-3: #e7e0ce;
   --ink: #1a1813;
   --ink-80: rgba(26, 24, 19, 0.8);
-  --ink-60: rgba(26, 24, 19, 0.58);
-  --ink-40: rgba(26, 24, 19, 0.4);
+  /* ink-60/ink-40 nudged from the CI's .58/.40 so muted body text and labels
+     reach WCAG AA (4.5:1) on paper — 5.4:1 and 4.8:1 respectively. */
+  --ink-60: rgba(26, 24, 19, 0.66);
+  --ink-40: rgba(26, 24, 19, 0.62);
   --ink-25: rgba(26, 24, 19, 0.22);
   --line: rgba(26, 24, 19, 0.22);
   --hair: rgba(26, 24, 19, 0.12);
   --clay: #c0532c;
-  --clay-d: #a8451f;
+  --clay-d: #a8451f; /* clay for small text on paper — 5.3:1 */
+  --clay-on-ink: #d4703f; /* clay for small text on ink — 5.2:1 */
 
   --serif: var(--font-spectral), Georgia, serif;
   --display: var(--font-schibsted), system-ui, sans-serif;
@@ -1344,4 +1347,28 @@ img {
   :root {
     --nav-h: 60px;
   }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════
+   CONTRAST — small clay text meets WCAG AA
+   Brand clay (#C0532C, 4.16:1 on paper) is reserved for display text ≥24px,
+   dots, rules, icons and the logo lockup (logotype exemption). Small clay
+   text uses clay-d on paper (5.3:1) and clay-on-ink on ink (5.2:1).
+   ═══════════════════════════════════════════════════════════════════════ */
+.kick b,
+.defragcap b,
+.statement .st-kick,
+.card .c-kick,
+.founder .f-ro,
+.foot-meta b,
+.founder .f-mail:hover,
+.foot-nav a:hover {
+  color: var(--clay-d);
+}
+.hero-lead b,
+.hero-tag,
+.sheet .sheet-foot a,
+.loader .lcap b,
+.statement.ink .st-kick {
+  color: var(--clay-on-ink);
 }
