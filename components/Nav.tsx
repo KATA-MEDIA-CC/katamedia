@@ -21,14 +21,25 @@ export function Nav() {
   // Two independent states, because the glass is only 20% — too sheer to
   // normalise what's behind it:
   //   solid   → glass appears the moment you scroll
-  //   onLight → the bar has cleared the ink hero, so text flips to ink
-  // Tying text colour to the glass would put ink text on the dark hero.
+  //   onLight → an ink section is NOT behind the bar, so text flips to ink
+  //
+  // Text colour has to follow whatever is actually under the bar. "Past the
+  // hero" is not the same as "on a light background" — home drops straight
+  // from the hero into the ink conviction band, so that assumption turned the
+  // links dark-on-dark. Probe the bar's midline against every ink section.
   useEffect(() => {
+    const DARK = ".hero, .statement.ink";
     const onScroll = () => {
       setSolid(window.scrollY > 12);
-      const hero = document.querySelector(".hero");
-      const navBottom = navRef.current?.getBoundingClientRect().bottom ?? 66;
-      setOnLight(!hero || hero.getBoundingClientRect().bottom <= navBottom + 4);
+      const navEl = navRef.current;
+      if (!navEl) return;
+      const r = navEl.getBoundingClientRect();
+      const mid = r.top + r.height / 2;
+      const overDark = Array.from(document.querySelectorAll(DARK)).some((el) => {
+        const b = el.getBoundingClientRect();
+        return b.top <= mid && b.bottom >= mid;
+      });
+      setOnLight(!overDark);
     };
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
