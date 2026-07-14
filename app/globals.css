@@ -1285,11 +1285,6 @@ img {
 
 .f-txt {
   grid-row: 2;
-  /* The "Co-Founder ▪ Name" lockup has to size off the COLUMN, not the
-     viewport: it runs ~14.2x the font size, so at a 291px column even 20px
-     wraps and orphans the dot. Container query here rather than on .founder —
-     container-type's containment would break that element's subgrid. */
-  container-type: inline-size;
   /* clears the bottom ticks at their hover reach (10px) with air to spare */
   padding-top: 26px;
   /* .f-mail bottom-aligns with margin-top:auto, which needs a flex column.
@@ -1300,36 +1295,10 @@ img {
   align-items: flex-start;
   height: 100%;
 }
-/* CO-FOUNDER ▪ Name — one line, the clay square doing the separating */
-.founder .f-hd {
-  display: flex;
-  align-items: baseline;
-  gap: 9px;
-  flex-wrap: wrap;
-}
-/* Same face, same size, same colour as the name — weight is the only
-   difference. Deliberately NOT the .kick label treatment (10px uppercase, wide
-   tracking): this reads as one lockup, not a label above a name. */
-.founder .f-tag {
-  font-family: var(--display);
-  font-weight: 400;
-  font-size: clamp(15px, 6.6cqw, 25px);
-  letter-spacing: -0.01em;
-  color: var(--ink);
-  white-space: nowrap;
-}
-.founder .f-dot {
-  width: 7px;
-  height: 7px;
-  background: var(--clay);
-  flex: none;
-  /* sits on the shared baseline rather than floating in the leading */
-  transform: translateY(-1px);
-}
 .founder .f-nm {
   font-family: var(--display);
   font-weight: 600;
-  font-size: clamp(15px, 6.6cqw, 25px);
+  font-size: clamp(19px, 2vw, 25px);
   letter-spacing: -0.01em;
 }
 .founder .f-ro {
