@@ -96,39 +96,41 @@ export const cta = { label: "Book a call", href: "/contact" } as const;
 // aspect-ratio is ar / (e + DROP·k). Swap a photo without re-measuring and the
 // heads silently drift out of register.
 //
-// ⚠️ The numbers below were measured off the supplied JPEGs by eye and the
-// portraits are placeholders. Re-measure against the real files before this is
-// anything but a preview.
+// DROP (globals.css) is shared by all three — that is what puts every eyeline
+// the same distance off the rule. It is capped by the tightest photo: the frame
+// can never be taller than the source, or a bare --paper-3 gap opens under the
+// chin. Ceiling here is 1.049 (Jankel, whose frame already uses 97.1% of his
+// photo's height); we run 1.0. Re-check that ceiling if a portrait is replaced.
 export const founders = [
   {
     name: "Justin Stiebel",
     role: "Co-founder · Advisory",
     email: "justin@katamedia.cc",
     note: "Production controlling and advisory specialist with deep knowledge of the German and European market — its rates, its production companies, its directors.",
-    photo: "/team/_placeholder-wide.svg",
-    ar: 1.383,
-    k: 0.32,
-    e: 0.256,
+    photo: "/team/justin.png",
+    ar: 1.486, // 1058 × 712
+    k: 0.5997, // closest of the three — seated, leaning in
+    e: 0.316,
   },
   {
     name: "Cornelius Roenz",
     role: "Co-founder",
     email: "cornelius@katamedia.cc",
     note: "Production leader who has built and run production functions at agency and brand level across Europe — from the set to the boardroom.",
-    photo: "/team/_placeholder-medium.svg",
-    ar: 1.5,
-    k: 0.5625,
-    e: 0.358,
+    photo: "/team/cornelius.png",
+    ar: 1.3953, // 960 × 688
+    k: 0.3517, // the widest shot — his frame is the one that keeps the bridge
+    e: 0.2587,
   },
   {
     name: "Jankel Huppertz",
     role: "Co-founder",
     email: "jankel@katamedia.cc",
     note: "Production leader across agency production — how TVC, content and campaigns work, from idea to execution, and where value is made or lost.",
-    photo: "/team/_placeholder-close.svg",
-    ar: 1.5,
-    k: 0.56,
-    e: 0.336,
+    photo: "/team/jankel.png",
+    ar: 1.5607, // 1080 × 692
+    k: 0.5954, // sets the DROP ceiling — 97.1% of his photo height is used
+    e: 0.3757,
   },
 ] as const;
 

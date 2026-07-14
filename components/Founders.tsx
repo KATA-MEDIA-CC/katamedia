@@ -32,6 +32,12 @@ export function Founders() {
                 // each plate takes its share of the width directly — the heads
                 // stay matched and the right edge rags.
                 "--fw": (ratio[i] / widest).toFixed(4),
+                // Explicit column. .f-base spans 1/-1 with a definite row, so
+                // grid places it FIRST and it claims every explicit column —
+                // auto-placed founders then spill into implicit columns and
+                // never receive the fr ratios. Definite items may overlap, so
+                // naming the column puts them back and lets the rule cross them.
+                "--i": i + 1,
               } as CSSVars
             }
           >
