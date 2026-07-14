@@ -99,11 +99,12 @@ export default function ServicesPage() {
         <div className="wrap">
           <Reveal className="cta-inner">
             <p className="st-kick" style={{ color: "var(--clay-d)" }}>
-              Brands &amp; agencies only
+              Next step
             </p>
             <p className="cta-line">
-              We work entirely on <em>your side.</em>
+              Not sure where you would <em>start?</em>
             </p>
+            <p className="cta-body">That is what the call is for.</p>
             <Link href={cta.href} className="btn solid">
               <span className="dot" />
               {cta.label}
