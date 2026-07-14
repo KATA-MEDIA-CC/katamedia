@@ -45,16 +45,20 @@ export function Hero({
           { opacity: 0, scale: 1.04 },
           { opacity: 1, scale: 1, duration: 1.4, ease: "power2.out" }
         );
-        gsap.to(wm, {
-          yPercent: -12,
-          ease: "none",
-          scrollTrigger: {
-            trigger: el,
-            start: "top top",
-            end: "bottom top",
-            scrub: true,
-          },
-        });
+        // Parallax only where the mark is an absolute bleed. On phones it sits
+        // in the flow below the copy, and shifting it would drag it back over.
+        if (window.matchMedia("(min-width: 721px)").matches) {
+          gsap.to(wm, {
+            yPercent: -12,
+            ease: "none",
+            scrollTrigger: {
+              trigger: el,
+              start: "top top",
+              end: "bottom top",
+              scrub: true,
+            },
+          });
+        }
       }
     }, el);
     return () => ctx.revert();

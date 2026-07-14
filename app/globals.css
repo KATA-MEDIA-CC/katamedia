@@ -1934,25 +1934,31 @@ a.cframe:hover .cf-v {
   .csheet {
     grid-template-columns: 1fr;
   }
-  /* Page heroes hug their content instead of leaving a void above it. */
-  .hero {
-    min-height: auto;
-    padding-top: calc(var(--nav-h) + 48px);
-    padding-bottom: clamp(44px, 10vw, 68px);
-  }
-  /* Home stays full-bleed, but centred — bottom-aligning it left the top
-     half of the screen empty. */
+  /* Phones: no blank space at the top — every hero starts straight under the
+     menu and hugs its content, on every page. */
+  .hero,
   .hero--home {
-    min-height: 100svh;
-    align-items: center;
+    min-height: auto;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-start;
+    padding-top: calc(var(--nav-h) + 20px);
+    padding-bottom: clamp(26px, 6vw, 40px);
   }
-  /* The clamp floor (180px) made the mark ~540px wide on a 390px screen, and
-     bottom:-14% pushed it off the bottom — so only slivers showed. Size it to
-     the viewport and bring it back into frame. */
+  .hero .wrap {
+    order: 1;
+  }
+  /* The mark joins the flow (it's an absolute bleed on desktop) so it can sit
+     closely below the copy and never overlap it. Ordered last; bleeds off the
+     right edge, clipped by the hero's overflow. */
   .hero-wm {
+    order: 2;
+    position: static;
     font-size: 34vw;
-    right: -3%;
-    bottom: 3%;
+    line-height: 0.8;
+    margin-top: clamp(22px, 5vw, 34px);
+    padding-left: var(--gut);
+    white-space: nowrap;
   }
   .hero-foot {
     align-items: flex-start;
