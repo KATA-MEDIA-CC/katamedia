@@ -8,7 +8,7 @@ import { site, pageMetadata } from "@/lib/site";
 export const metadata: Metadata = pageMetadata({
   title: "Team",
   description:
-    "The people behind Kata. Three founding partners who have built, run and controlled productions, plus a network of specialists across finance, strategy, AI, creative, production, HR, venture, media and talent partnerships.",
+    "The people behind Kata. Three founding partners who have built, run and controlled productions, plus a network of specialists across finance, strategy, technology, AI, creative, production, HR, venture, media, talent partnerships, legal and sustainability.",
   path: "/team",
 });
 
