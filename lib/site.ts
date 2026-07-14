@@ -100,9 +100,9 @@ export const founders = [
     role: "Strategy, organisational design and advisory",
     email: "justin@katamedia.cc",
     notes: [
-      "Production controlling and advisory specialist with deep market knowledge across German and European TVC, content, and campaign production.",
-      "Has built and managed production budgets across formats, from small social campaigns to large scale international shoots. Knows what things cost, what gets padded, and where clients are being underserved.",
-      "Specialist in the German market. Its rates, its production companies, its directors, and its dynamics.",
+      "Production leader with extensive experience building and running production functions at agency and brand level across Europe.",
+      "Has operated at every level of high end commercial production, from the set to the boardroom. Knows what it takes to deliver creatively demanding, commercially complex campaigns, and what it takes to lead the organisations that produce them through growth, transition, and change.",
+      "Specialist in production strategy, organisational transformation, and sustainable structures for brands and agencies navigating a shifting market.",
     ],
     photo: "/team/justin.png",
     ar: 1.486, // 1058 × 712
@@ -114,9 +114,9 @@ export const founders = [
     role: "Strategy, production leadership and executive production",
     email: "cornelius@katamedia.cc",
     notes: [
-      "Production leader with extensive experience building and running production functions at agency and brand level across Europe.",
-      "Has operated at every level of high end commercial production, from the set to the boardroom. Knows what it takes to deliver creatively demanding, commercially complex campaigns, and what it takes to lead the organisations that produce them through growth, transition, and change.",
-      "Specialist in production strategy, organisational transformation, and sustainable structures for brands and agencies navigating a shifting market.",
+      "Production controlling and advisory specialist with deep market knowledge across German and European TVC, content, and campaign production.",
+      "Has built and managed production budgets across formats, from small social campaigns to large scale international shoots. Knows what things cost, what gets padded, and where clients are being underserved.",
+      "Specialist in the German market. Its rates, its production companies, its directors, and its dynamics.",
     ],
     photo: "/team/cornelius.png",
     ar: 1.3953, // 960 × 688

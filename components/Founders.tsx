@@ -92,7 +92,7 @@ export function Founders() {
           </figure>
           <div className="f-txt">
             <div className="f-hd">
-              <span className="f-tag">Co-founder</span>
+              <span className="f-tag">Co-Founder</span>
               <span className="f-dot" aria-hidden="true" />
               <span className="f-nm">{f.name}</span>
             </div>
