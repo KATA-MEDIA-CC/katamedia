@@ -93,7 +93,11 @@ export function Founders() {
           <div className="f-txt">
             <div className="f-nm">{f.name}</div>
             <div className="f-ro">{f.role}</div>
-            <p className="f-note">{f.note}</p>
+            {f.notes.map((n) => (
+              <p className="f-note" key={n.slice(0, 24)}>
+                {n}
+              </p>
+            ))}
             <a className="f-mail" href={`mailto:${f.email}`}>
               <span className="d" />
               {f.email}

@@ -78,35 +78,32 @@ export const nav: NavItem[] = [
 // The single call-to-action, surfaced in the nav on every page.
 export const cta = { label: "Book a call", href: "/contact" } as const;
 
-// The founders, and the three numbers that place their portrait.
+// The founders, and the three numbers that place each portrait.
 //
-// The photos were shot at three different distances, so three identical boxes
-// would show three different head sizes. Cropping can only ever crop *in*, so
-// matching the heads inside one fixed box means the closest shot sets the
-// ceiling and the wider ones lose their backgrounds. Instead the FRAME absorbs
-// the difference: a wide shot gets a wide frame and keeps its world, and every
-// head still lands the same size on the page.
+// The three photos were shot at three different distances, so dropping them
+// into three identical plates with object-fit:cover would render three
+// different head sizes. Instead each image is zoomed and offset until every
+// head is the same size on the page and every pair of eyes sits on one line.
 //
-// All three come from measuring the file itself — nothing here is taste:
+// All three numbers come from measuring the file — none of them is taste:
 //   ar = frame width / frame height
-//   k  = head height (crown→chin) / frame height   ← literally how close the camera was
+//   k  = head height (crown→chin) / frame height  ← literally how close the camera was
 //   e  = eye height from frame top / frame height
 //
-// Everything on screen derives from them: column width ∝ ar/k, and the frame's
-// aspect-ratio is ar / (e + DROP·k). Swap a photo without re-measuring and the
-// heads silently drift out of register.
-//
-// DROP (globals.css) is shared by all three — that is what puts every eyeline
-// the same distance off the rule. It is capped by the tightest photo: the frame
-// can never be taller than the source, or a bare --paper-3 gap opens under the
-// chin. Ceiling here is 1.049 (Jankel, whose frame already uses 97.1% of his
-// photo's height); we run 1.0. Re-check that ceiling if a portrait is replaced.
+// components/Founders.tsx turns them into --zoom / --ox / --oy, and solves the
+// one global zoom factor that lets a single eye-line satisfy all three at once.
+// Swap a portrait without re-measuring and the heads silently drift apart.
+// The plate treatment itself is the kata-imagery skill (.claude/skills).
 export const founders = [
   {
     name: "Justin Stiebel",
-    role: "Co-founder · Advisory",
+    role: "Strategy, production leadership and advisory",
     email: "justin@katamedia.cc",
-    note: "Production controlling and advisory specialist with deep knowledge of the German and European market — its rates, its production companies, its directors.",
+    notes: [
+      "Production controlling and advisory specialist with deep market knowledge across German and European TVC, content, and campaign production.",
+      "Has built and managed production budgets across formats, from small social campaigns to large scale international shoots. Knows what things cost, what gets padded, and where clients are being underserved.",
+      "Specialist in the German market. Its rates, its production companies, its directors, and its dynamics.",
+    ],
     photo: "/team/justin.png",
     ar: 1.486, // 1058 × 712
     k: 0.5997, // closest of the three — seated, leaning in
@@ -114,19 +111,27 @@ export const founders = [
   },
   {
     name: "Cornelius Roenz",
-    role: "Co-founder",
+    role: "Strategy, organisational design and executive production",
     email: "cornelius@katamedia.cc",
-    note: "Production leader who has built and run production functions at agency and brand level across Europe — from the set to the boardroom.",
+    notes: [
+      "Production leader with extensive experience building and running production functions at agency and brand level across Europe.",
+      "Has operated at every level of high end commercial production, from the set to the boardroom. Knows what it takes to deliver creatively demanding, commercially complex campaigns, and what it takes to lead the organisations that produce them through growth, transition, and change.",
+      "Specialist in production strategy, organisational transformation, and sustainable structures for brands and agencies navigating a shifting market.",
+    ],
     photo: "/team/cornelius.png",
     ar: 1.3953, // 960 × 688
-    k: 0.3517, // the widest shot — his frame is the one that keeps the bridge
+    k: 0.3517, // the widest shot — takes the most crop to match the others
     e: 0.2587,
   },
   {
     name: "Jankel Huppertz",
-    role: "Co-founder",
+    role: "Production leadership, operations and advisory",
     email: "jankel@katamedia.cc",
-    note: "Production leader across agency production — how TVC, content and campaigns work, from idea to execution, and where value is made or lost.",
+    notes: [
+      "Production leader with deep experience across agency production. Understands how TVC, content, and campaign production works, from idea to execution.",
+      "Has built and managed production across formats and scales, from agile content to large international campaigns. Knows how to run complex productions, align teams, and deliver against creative and commercial demands.",
+      "Specialist in production structures, processes, and budgets, and where value is created or lost.",
+    ],
     photo: "/team/jankel.png",
     ar: 1.5607, // 1080 × 692
     k: 0.5954, // sets the DROP ceiling — 97.1% of his photo height is used

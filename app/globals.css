@@ -1287,6 +1287,13 @@ img {
   grid-row: 2;
   /* clears the bottom ticks at their hover reach (10px) with air to spare */
   padding-top: 26px;
+  /* .f-mail bottom-aligns with margin-top:auto, which needs a flex column.
+     .founder used to be one; it's a subgrid now, so the column moves here —
+     otherwise the three emails rag with the bio lengths. */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  height: 100%;
 }
 .founder .f-nm {
   font-family: var(--display);
@@ -1302,16 +1309,23 @@ img {
   text-transform: uppercase;
   color: var(--clay);
   margin-top: 5px;
+  line-height: 1.5; /* the discipline lines are long enough to wrap */
 }
 .founder .f-note {
   font-family: var(--serif);
   font-size: 14.5px;
   line-height: 1.55;
   color: var(--ink-60);
+  margin-top: 14px;
+}
+/* the opening line carries the person; the rest is supporting detail */
+.founder .f-note:first-of-type {
+  color: var(--ink-80);
 }
 .founder .f-mail {
   font-family: var(--sans);
   font-size: 12px;
+  align-self: stretch;
   letter-spacing: 0.03em;
   color: var(--ink-80);
   border-top: 1px solid var(--hair);
