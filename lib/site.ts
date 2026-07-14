@@ -12,6 +12,10 @@ export const site = {
   domain: "katamedia.cc",
   url: "https://katamedia.cc",
   tagline: "Knowledge applied to action",
+  // Shared alias to all three founders. Enquiries land here, and it's the
+  // fallback shown if the form can't send. Founders' direct addresses are on
+  // the founders list below.
+  email: "hello@katamedia.cc",
   descriptor: "Independent Production Advisory",
   short:
     "Independent production advisory for brands and agencies — without the conflicts built into the system.",

@@ -9,11 +9,11 @@ import {
   NEEDS,
   TIMINGS,
 } from "@/lib/enquiry";
-import { founders } from "@/lib/site";
+import { site } from "@/lib/site";
 
 type Status = "idle" | "sending" | "sent" | "unwired" | "error";
 
-const FALLBACK = founders[0].email;
+const FALLBACK = site.email;
 
 export function ContactForm() {
   const [status, setStatus] = useState<Status>("idle");
@@ -22,6 +22,12 @@ export function ContactForm() {
   const onSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const fd = new FormData(e.currentTarget);
+    // Honeypot: hidden and off the tab order, so only a bot fills it. Show the
+    // normal success state rather than an error — a bot told it failed retries.
+    if (String(fd.get("website") || "").trim()) {
+      setStatus("sent");
+      return;
+    }
     const data: Enquiry = {
       name: String(fd.get("name") || "").trim(),
       email: String(fd.get("email") || "").trim(),
@@ -58,6 +64,16 @@ export function ContactForm() {
 
   return (
     <form className="form" onSubmit={onSubmit}>
+      {/* honeypot — not for humans; see onSubmit */}
+      <input
+        type="text"
+        name="website"
+        tabIndex={-1}
+        autoComplete="off"
+        aria-hidden="true"
+        style={{ position: "absolute", left: "-9999px", width: 1, height: 1 }}
+      />
+
       <div className="f-row">
         <div className="field">
           <label htmlFor="f-name">Your name</label>
