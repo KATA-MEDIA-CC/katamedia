@@ -60,31 +60,75 @@ export function Loader() {
     const mk = root.querySelector<HTMLElement>(".lk-mk");
     const cap = root.querySelector<HTMLElement>(".lcap");
 
-    // Align the bar row (and, when it fits, the slogan) to the exact width of
-    // the KATA wordmark — first bar on the K, last on the final A. A
-    // ResizeObserver re-runs it whenever the wordmark reflows (e.g. once the
-    // web font finishes loading), so the measured width is always correct.
+    // Measure the wordmark's *visible glyph ink* — not its layout box, which
+    // includes the trailing letter-spacing after the final A and so is always
+    // wider than the actual letters. Align the grid + slogan to those true ink
+    // edges (first bar under the K, last under the A). A ResizeObserver re-runs
+    // it whenever the wordmark reflows (e.g. after the web font loads).
+    const measureVisible = () => {
+      const el = mk as HTMLElement;
+      const cs = getComputedStyle(el);
+      const rect = el.getBoundingClientRect();
+      const lsPx = parseFloat(cs.letterSpacing) || 0;
+      const boxCenter = rect.left + rect.width / 2;
+      try {
+        const ctx = document.createElement("canvas").getContext("2d");
+        if (ctx) {
+          ctx.font = `${cs.fontStyle} ${cs.fontWeight} ${cs.fontSize} ${cs.fontFamily}`;
+          (ctx as CanvasRenderingContext2D & { letterSpacing?: string }).letterSpacing =
+            cs.letterSpacing;
+          const m = ctx.measureText((el.textContent || "").toUpperCase());
+          const l = m.actualBoundingBoxLeft;
+          const r = m.actualBoundingBoxRight;
+          if (typeof l === "number" && typeof r === "number") {
+            const left = rect.left - l;
+            const right = rect.left + r;
+            const w = right - left;
+            // guard against garbage from a not-yet-loaded font (canvas falls
+            // back to a default face and reports a nonsense width)
+            if (w > rect.width * 0.6 && w <= rect.width + 4) {
+              return { left, right, boxCenter };
+            }
+          }
+        }
+      } catch {}
+      // fallback: strip the trailing letter-spacing from the layout box
+      return { left: rect.left, right: rect.right - lsPx, boxCenter };
+    };
+
     const matchWidth = () => {
       if (!mk) return;
-      const w = mk.offsetWidth;
-      if (w <= 40) return;
-      bars.style.width = `${w}px`;
+      const v = measureVisible();
+      const width = v.right - v.left;
+      if (width <= 40) return;
+      const shift = (v.left + v.right) / 2 - v.boxCenter; // to the visible centre
+      bars.style.width = `${width}px`;
       bars.style.justifyContent = "space-between";
       bars.style.gap = "0px";
+      bars.style.transform = `translateX(${shift}px)`;
       if (cap) {
-        // reset, measure the slogan's natural width, then span it to the mark
-        // width only when it fits (on small screens the long line is wider
-        // than the 4-letter mark, so it stays centred).
         cap.style.width = "";
         cap.style.textAlignLast = "";
-        if (w >= cap.scrollWidth) {
-          cap.style.width = `${w}px`;
+        cap.style.transform = "";
+        // span the slogan to the same ink width when it fits; on small screens
+        // the long line is wider than the 4-letter mark, so leave it centred.
+        if (width >= cap.scrollWidth) {
+          cap.style.width = `${width}px`;
           cap.style.textAlignLast = "justify";
+          cap.style.transform = `translateX(${shift}px)`;
         }
       }
     };
     matchWidth();
     document.fonts?.ready?.then(matchWidth).catch(() => {});
+    // Re-measure across the first ~1.2s: the canvas can't report correct glyph
+    // metrics until the web font is actually loaded, so poll briefly until it
+    // locks onto the real face.
+    let ticks = 0;
+    const iv = window.setInterval(() => {
+      matchWidth();
+      if (++ticks >= 8) window.clearInterval(iv);
+    }, 150);
     let ro: ResizeObserver | undefined;
     if (mk && typeof ResizeObserver !== "undefined") {
       ro = new ResizeObserver(() => matchWidth());
@@ -133,6 +177,7 @@ export function Loader() {
     return () => {
       tl.kill();
       ro?.disconnect();
+      window.clearInterval(iv);
       unlockScroll();
     };
   }, []);
