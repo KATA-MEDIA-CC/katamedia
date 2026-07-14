@@ -1934,8 +1934,25 @@ a.cframe:hover .cf-v {
   .csheet {
     grid-template-columns: 1fr;
   }
+  /* Page heroes hug their content instead of leaving a void above it. */
+  .hero {
+    min-height: auto;
+    padding-top: calc(var(--nav-h) + 48px);
+    padding-bottom: clamp(44px, 10vw, 68px);
+  }
+  /* Home stays full-bleed, but centred — bottom-aligning it left the top
+     half of the screen empty. */
   .hero--home {
-    align-items: flex-end;
+    min-height: 100svh;
+    align-items: center;
+  }
+  /* The clamp floor (180px) made the mark ~540px wide on a 390px screen, and
+     bottom:-14% pushed it off the bottom — so only slivers showed. Size it to
+     the viewport and bring it back into frame. */
+  .hero-wm {
+    font-size: 34vw;
+    right: -3%;
+    bottom: 3%;
   }
   .hero-foot {
     align-items: flex-start;
