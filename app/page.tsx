@@ -10,7 +10,7 @@ export default function Home() {
     <>
       <Hero
         variant="home"
-        lead="Independent Production Advisory — for brands & agencies"
+        lead={site.descriptor}
         title={
           <>
             Better
@@ -78,14 +78,19 @@ export default function Home() {
         <div className="wrap">
           <Reveal className="cta-inner">
             <p className="st-kick" style={{ color: "var(--clay-d)" }}>
-              {site.booking}
+              — Start with a conversation —
             </p>
             <p className="cta-line">
-              The first conversation is the <em>front door.</em>
+              Tell us what you are trying to <em>figure out.</em>
+            </p>
+            <p className="cta-body">
+              A 45 minute call. We will come back within 24 hours with an honest
+              read on whether we are the right people to help, and which founder
+              you would be working with.
             </p>
             <Link href="/contact" className="btn solid">
               <span className="dot" />
-              Start a conversation
+              Book a call
             </Link>
           </Reveal>
         </div>
