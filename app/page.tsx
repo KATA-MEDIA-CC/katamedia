@@ -23,20 +23,13 @@ export default function Home() {
         desc={site.short}
       />
 
-      {/* Belief */}
-      <section className="statement ink">
-        <div className="wrap">
-          <Reveal>
-            <p className="st-kick">Our conviction</p>
-            <p className="st-quote">
-              We sit beside the <em>decision</em> — never above the process,
-              never inside the margin.
-            </p>
-          </Reveal>
-        </div>
-      </section>
-
-      {/* What we do — four pillars, compact */}
+      {/* What we do — four pillars, compact.
+          Sits directly under the hero on purpose: what we sell has to be the
+          first thing after the name, not the third. The conviction band that
+          used to live here said "never inside the margin" — the same sentence,
+          verbatim, that /approach already carries in its belief statement. It
+          was repetition, and it pushed the pillars below two screens of
+          abstraction. */}
       <section className="feature">
         <div className="wrap">
           <FeatureHead
@@ -46,7 +39,7 @@ export default function Home() {
                 What we <em>do</em>
               </>
             }
-            deck="Four pillars, one partner — cost, strategy, organisation and AI, held to a single independent standard."
+            deck="Four pillars, one partner — strategy, organisation, AI and cost, held to a single independent standard."
           />
           <div className="g12">
             <Reveal className="pillars min">
@@ -65,7 +58,7 @@ export default function Home() {
             </Reveal>
           </div>
           <div className="caption">
-            <span>Controlling · Strategy · Organisation · AI</span>
+            <span>Strategy · Organisation · AI · Controlling</span>
             <Link href="/services" className="clink">
               All services →
             </Link>

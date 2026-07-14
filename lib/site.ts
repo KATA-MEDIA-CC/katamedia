@@ -92,22 +92,13 @@ export const founders = [
 ] as const;
 
 // The four service pillars (from the pitch — Four pillars. One partner.)
+// Ordered as the arc we actually work in: design the system, build it,
+// modernise it, then run it with rigour. Controlling sits last deliberately —
+// it is the proof of discipline, not the identity. The numbers are read as a
+// hierarchy claim, so this order IS the positioning: change it with care.
 export const pillars = [
   {
     no: "01",
-    icon: "controlling" as const,
-    title: "Production Controlling",
-    lead: "Cost intelligence and real-time visibility across every production.",
-    items: [
-      "Budget development & management",
-      "Cost reporting & variance analysis",
-      "Vendor & supplier negotiation",
-      "Buyout & rights management",
-      "Post-production cost control",
-    ],
-  },
-  {
-    no: "02",
     icon: "strategy" as const,
     title: "Strategic Advisory",
     lead: "Shaping how brands and agencies commission and plan content at scale.",
@@ -120,7 +111,7 @@ export const pillars = [
     ],
   },
   {
-    no: "03",
+    no: "02",
     icon: "organisation" as const,
     title: "Organisational Setup & Studio Builds",
     lead: "Building the production capability organisations need — from scratch or from inside.",
@@ -133,7 +124,7 @@ export const pillars = [
     ],
   },
   {
-    no: "04",
+    no: "03",
     icon: "ai" as const,
     title: "AI Integration & Transformation",
     lead: "Practical AI adoption in production — with governance, training, and real results.",
@@ -143,6 +134,19 @@ export const pillars = [
       "Workflow integration",
       "Training & upskilling",
       "Ethics & governance",
+    ],
+  },
+  {
+    no: "04",
+    icon: "controlling" as const,
+    title: "Production Controlling",
+    lead: "Cost intelligence and real-time visibility across every production.",
+    items: [
+      "Budget development & management",
+      "Cost reporting & variance analysis",
+      "Vendor & supplier negotiation",
+      "Buyout & rights management",
+      "Post-production cost control",
     ],
   },
 ] as const;

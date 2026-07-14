@@ -42,10 +42,10 @@ export const SIDES = ["Brand", "Agency", "Other"] as const;
 
 export const NEEDS = [
   "Not sure yet",
-  "Production controlling",
   "Strategic advisory",
   "Organisational setup & studio builds",
   "AI integration",
+  "Production controlling",
 ] as const;
 
 export const TIMINGS = [
