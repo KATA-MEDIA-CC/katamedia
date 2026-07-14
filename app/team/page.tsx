@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import { Hero } from "@/components/Hero";
 import { FeatureHead } from "@/components/FeatureHead";
 import { Reveal } from "@/components/Reveal";
-import { founders, partnerNetwork, site, pageMetadata } from "@/lib/site";
+import { Founders } from "@/components/Founders";
+import { partnerNetwork, site, pageMetadata } from "@/lib/site";
 
 export const metadata: Metadata = pageMetadata({
   title: "Team",
@@ -10,8 +11,6 @@ export const metadata: Metadata = pageMetadata({
     "The people behind Kata — three founding partners who have built, run and controlled productions, plus an extended network of specialists across finance, strategy, AI, creative and production.",
   path: "/team",
 });
-
-const initial = (name: string) => name.trim()[0].toUpperCase();
 
 export default function TeamPage() {
   return (
@@ -40,24 +39,10 @@ export default function TeamPage() {
             deck="Built by people who have done this work — on set, in the edit, and in the negotiation. Between us, decades of hands-on production."
           />
           <div className="g12">
-            <Reveal className="founders" stagger>
-              {founders.map((f) => (
-                <div className="founder" key={f.email}>
-                  <div className="f-av">
-                    <span>{initial(f.name)}</span>
-                  </div>
-                  <div>
-                    <div className="f-nm">{f.name}</div>
-                    <div className="f-ro">{f.role}</div>
-                  </div>
-                  <p className="f-note">{f.note}</p>
-                  <a className="f-mail" href={`mailto:${f.email}`}>
-                    <span className="d" />
-                    {f.email}
-                  </a>
-                </div>
-              ))}
-            </Reveal>
+            <Founders />
+          </div>
+          <div className="caption">
+            <span>Three distances. One eyeline.</span>
           </div>
         </div>
       </section>

@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1071" height="714" viewBox="0 0 1071 714">
+  <rect width="1071" height="714" fill="#8d8a83"/>
+  <rect y="443" width="1071" height="271" fill="#6f6c66"/>
+  <ellipse cx="536" cy="260" rx="136" ry="200" fill="#2b2925"/>
+  <path d="M176 714 q360 -600 720 0 z" fill="#2b2925"/>
+  <line x1="0" y1="240" x2="1071" y2="240" stroke="#C0532C" stroke-width="3" stroke-dasharray="12 8"/>
+  <text x="16" y="30" font-family="monospace" font-size="22" fill="#f6f2e8">CLOSE · ar 1.5 · k 0.56 · e 0.336</text>
+  <text x="16" y="698" font-family="monospace" font-size="18" fill="#f6f2e8">bald · stubble · steps</text>
+</svg>

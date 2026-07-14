@@ -78,24 +78,57 @@ export const nav: NavItem[] = [
 // The single call-to-action, surfaced in the nav on every page.
 export const cta = { label: "Book a call", href: "/contact" } as const;
 
+// The founders, and the three numbers that place their portrait.
+//
+// The photos were shot at three different distances, so three identical boxes
+// would show three different head sizes. Cropping can only ever crop *in*, so
+// matching the heads inside one fixed box means the closest shot sets the
+// ceiling and the wider ones lose their backgrounds. Instead the FRAME absorbs
+// the difference: a wide shot gets a wide frame and keeps its world, and every
+// head still lands the same size on the page.
+//
+// All three come from measuring the file itself — nothing here is taste:
+//   ar = frame width / frame height
+//   k  = head height (crown→chin) / frame height   ← literally how close the camera was
+//   e  = eye height from frame top / frame height
+//
+// Everything on screen derives from them: column width ∝ ar/k, and the frame's
+// aspect-ratio is ar / (e + DROP·k). Swap a photo without re-measuring and the
+// heads silently drift out of register.
+//
+// ⚠️ The numbers below were measured off the supplied JPEGs by eye and the
+// portraits are placeholders. Re-measure against the real files before this is
+// anything but a preview.
 export const founders = [
   {
     name: "Justin Stiebel",
     role: "Co-founder · Advisory",
     email: "justin@katamedia.cc",
     note: "Production controlling and advisory specialist with deep knowledge of the German and European market — its rates, its production companies, its directors.",
+    photo: "/team/_placeholder-wide.svg",
+    ar: 1.383,
+    k: 0.32,
+    e: 0.256,
   },
   {
     name: "Cornelius Roenz",
     role: "Co-founder",
     email: "cornelius@katamedia.cc",
     note: "Production leader who has built and run production functions at agency and brand level across Europe — from the set to the boardroom.",
+    photo: "/team/_placeholder-medium.svg",
+    ar: 1.5,
+    k: 0.5625,
+    e: 0.358,
   },
   {
     name: "Jankel Huppertz",
     role: "Co-founder",
     email: "jankel@katamedia.cc",
     note: "Production leader across agency production — how TVC, content and campaigns work, from idea to execution, and where value is made or lost.",
+    photo: "/team/_placeholder-close.svg",
+    ar: 1.5,
+    k: 0.56,
+    e: 0.336,
   },
 ] as const;
 

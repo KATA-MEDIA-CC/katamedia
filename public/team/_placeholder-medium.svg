@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="720" viewBox="0 0 1080 720">
+  <rect width="1080" height="720" fill="#8d8a83"/>
+  <rect y="446" width="1080" height="274" fill="#6f6c66"/>
+  <ellipse cx="540" cy="278" rx="138" ry="202" fill="#2b2925"/>
+  <path d="M176 720 q364 -608 729 0 z" fill="#2b2925"/>
+  <line x1="0" y1="258" x2="1080" y2="258" stroke="#C0532C" stroke-width="3" stroke-dasharray="12 8"/>
+  <text x="16" y="30" font-family="monospace" font-size="22" fill="#f6f2e8">MEDIUM · ar 1.5 · k 0.5625 · e 0.358</text>
+  <text x="16" y="704" font-family="monospace" font-size="18" fill="#f6f2e8">sunglasses · slicked · building</text>
+</svg>
