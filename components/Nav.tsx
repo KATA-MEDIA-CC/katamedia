@@ -44,10 +44,13 @@ export function Nav() {
     };
   }, [pathname]);
 
-  // Close the mobile sheet on navigation.
+  // Close the mobile sheet on navigation. Link clicks close it directly; this
+  // covers browser back/forward, which doesn't run those handlers.
   useEffect(() => {
-    setOpen(false);
-  }, [pathname]);
+    const onPop = () => setOpen(false);
+    window.addEventListener("popstate", onPop);
+    return () => window.removeEventListener("popstate", onPop);
+  }, []);
 
   // Close the sheet if the viewport grows past the mobile breakpoint.
   useEffect(() => {

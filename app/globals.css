@@ -1288,6 +1288,161 @@ img {
 }
 
 /* ═══════════════════════════════════════════════════════════════════════
+   CONTACT FORM
+   ═══════════════════════════════════════════════════════════════════════ */
+.form-col {
+  grid-column: 1 / 8;
+}
+.form-side {
+  grid-column: 9 / 13;
+}
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(22px, 2.6vw, 30px);
+}
+.f-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(18px, 2vw, 26px);
+}
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+}
+.field label {
+  font-family: var(--sans);
+  font-weight: 600;
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ink-60);
+}
+.field input,
+.field textarea {
+  font-family: var(--serif);
+  font-size: 17px;
+  line-height: 1.5;
+  color: var(--ink);
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid var(--line);
+  border-radius: 0;
+  padding: 10px 0;
+  outline: none;
+  -webkit-appearance: none;
+  appearance: none;
+  transition: border-color 0.3s ease;
+  width: 100%;
+}
+.field textarea {
+  resize: vertical;
+  min-height: 118px;
+}
+.field input:focus,
+.field textarea:focus {
+  border-bottom-color: var(--clay);
+}
+.field input::placeholder,
+.field textarea::placeholder {
+  color: var(--ink-40);
+}
+.f-foot {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-top: 4px;
+}
+.f-foot .btn:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+.f-msg {
+  font-family: var(--serif);
+  font-size: 14.5px;
+  line-height: 1.5;
+  color: var(--ink-60);
+  max-width: 40ch;
+}
+.f-msg a {
+  color: var(--clay);
+  border-bottom: 1px solid var(--clay);
+}
+/* sent confirmation */
+.form-done {
+  border-top: 1px solid var(--line);
+  padding-top: clamp(22px, 3vw, 32px);
+}
+.fd-k {
+  font-family: var(--sans);
+  font-weight: 600;
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--clay);
+}
+.fd-h {
+  font-family: var(--serif);
+  font-weight: 300;
+  font-size: clamp(24px, 3.4vw, 40px);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  margin-top: 16px;
+  max-width: 18ch;
+}
+.fd-h em {
+  font-style: italic;
+  color: var(--clay);
+}
+.fd-b {
+  font-family: var(--serif);
+  font-size: 15.5px;
+  line-height: 1.55;
+  color: var(--ink-60);
+  max-width: 44ch;
+  margin-top: 16px;
+}
+/* side note */
+.fs-k {
+  font-family: var(--sans);
+  font-weight: 600;
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--clay);
+  margin-bottom: 20px;
+}
+.fs-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.fs-list li {
+  font-family: var(--serif);
+  font-size: 14.5px;
+  line-height: 1.5;
+  color: var(--ink-60);
+  display: flex;
+  gap: 12px;
+  align-items: baseline;
+  border-top: 1px solid var(--hair);
+  padding-top: 14px;
+}
+.fs-list .n {
+  font-family: var(--sans);
+  font-weight: 600;
+  font-size: 9.5px;
+  letter-spacing: 0.1em;
+  color: var(--clay);
+  flex: none;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════
    CONTACT SHEET — every route in, one film frame each
    ═══════════════════════════════════════════════════════════════════════ */
 .csheet {
@@ -1559,6 +1714,13 @@ a.cframe:hover .cf-v {
     grid-column: 1 / 13;
     text-align: left;
   }
+  .form-col {
+    grid-column: 1 / 13;
+  }
+  .form-side {
+    grid-column: 1 / 13;
+    margin-top: clamp(44px, 6vw, 64px);
+  }
 }
 
 @media (max-width: 720px) {
@@ -1593,6 +1755,9 @@ a.cframe:hover .cf-v {
   .hero-foot {
     align-items: flex-start;
     flex-direction: column;
+  }
+  .f-row {
+    grid-template-columns: 1fr;
   }
 }
 

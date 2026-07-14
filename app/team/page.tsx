@@ -1,9 +1,8 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { Hero } from "@/components/Hero";
 import { FeatureHead } from "@/components/FeatureHead";
 import { Reveal } from "@/components/Reveal";
-import { founders, partnerNetwork, site, cta, pageMetadata } from "@/lib/site";
+import { founders, partnerNetwork, site, pageMetadata } from "@/lib/site";
 
 export const metadata: Metadata = pageMetadata({
   title: "Team",
@@ -96,30 +95,6 @@ export default function TeamPage() {
         </div>
       </section>
 
-      {/* Independence */}
-      <section className="statement ink">
-        <div className="wrap">
-          <Reveal>
-            <p className="st-kick">Why it matters</p>
-            <p className="st-quote">
-              No one here is on anyone else&rsquo;s <em>payroll.</em>
-            </p>
-            <p className="st-sub">
-              We hold no financial relationships with the directors, production
-              companies or vendors we recommend. The network exists to widen what
-              we can bring you — never to route work to a friend.
-            </p>
-          </Reveal>
-          <div style={{ marginTop: "clamp(40px,5vw,64px)" }}>
-            <Reveal>
-              <Link href={cta.href} className="btn dk">
-                <span className="dot" />
-                {cta.label}
-              </Link>
-            </Reveal>
-          </div>
-        </div>
-      </section>
     </>
   );
 }
