@@ -17,31 +17,17 @@ export function Nav() {
   const firstLinkRef = useRef<HTMLAnchorElement>(null);
   const wasOpen = useRef(false);
 
-  // Solid state: the nav becomes a paper bar once the ink hero has scrolled
-  // up past it. Precise + generic — reads the current page's .hero rect.
+  // No glass while pinned to the top; the moment you start scrolling it plops
+  // in — which also stops hero copy sliding under a bare bar. Reading scrollY
+  // is cheap (no layout flush), so this runs straight off the scroll event.
   useEffect(() => {
-    let raf = 0;
-    const evaluate = () => {
-      raf = 0;
-      const hero = document.querySelector(".hero");
-      const navEl = navRef.current;
-      const navBottom = navEl ? navEl.getBoundingClientRect().bottom : 66;
-      if (!hero) {
-        setSolid(true); // page without an ink hero → solid on paper
-        return;
-      }
-      setSolid(hero.getBoundingClientRect().bottom <= navBottom + 4);
-    };
-    const onScroll = () => {
-      if (!raf) raf = requestAnimationFrame(evaluate);
-    };
-    evaluate();
+    const onScroll = () => setSolid(window.scrollY > 12);
+    onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     window.addEventListener("resize", onScroll);
     return () => {
       window.removeEventListener("scroll", onScroll);
       window.removeEventListener("resize", onScroll);
-      if (raf) cancelAnimationFrame(raf);
     };
   }, [pathname]);
 
