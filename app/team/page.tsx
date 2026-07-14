@@ -41,9 +41,6 @@ export default function TeamPage() {
           <div className="g12">
             <Founders />
           </div>
-          <div className="caption">
-            <span>Three distances. One eyeline.</span>
-          </div>
         </div>
       </section>
 

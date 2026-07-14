@@ -1136,80 +1136,43 @@ img {
    FOUNDERS
    ═══════════════════════════════════════════════════════════════════════ */
 /* ── THE FOUNDERS ──────────────────────────────────────────────────────
-   Three portraits shot at three distances, made into one system: every head
-   renders at the same size, every eyeline lands on one line, every plate sits
-   flush on one rule. The tops rag, because that is the honest record of how
-   close the camera stood.
-
-   The geometry falls out of three measured numbers per photo (--ar/--k/--e in
-   lib/site.ts). Nothing is eyeballed:
-     column width ∝ ar/k   — the wide shot needs a wide frame to carry its head
-                             at the shared size, so it gets one
-     frame ratio  = ar / (e + DROP·k)
-                           — height is "frame top → eyes, plus DROP head-heights
-                             below". DROP is measured in head heights, and heads
-                             are matched, so every eyeline sits the same distance
-                             off the rule.
-   The photo inside is width:100% and top-aligned; the frame clips the rest.
-   No container queries, no JS, no runtime measuring — it holds at any width.
-
-   Note we do NOT normalise into one uniform box: cropping only ever crops IN,
-   so the closest shot would set the ceiling and the wider ones would lose the
-   bridge, the trees and the building. The frame absorbs the difference instead
-   of the photograph. */
+   Three identical plates on three equal columns. Justin's photo sets the frame
+   ratio; the other two are zoomed into it (--zoom) and offset (--ox/--oy) so
+   every head renders the same size and every eyeline lands at the same height.
+   Cornelius crops in hardest — he was shot widest. The maths is in
+   Founders.tsx; the measured inputs are in lib/site.ts. */
 .founders {
   grid-column: 1 / 13;
   display: grid;
-  /* fr per column ∝ ar/k — emitted by Founders.tsx as --cols so the mobile
-     media query below can still override it (an inline grid-template-columns
-     would outrank it and the row would never collapse). */
-  grid-template-columns: var(--cols);
+  grid-template-columns: repeat(3, 1fr);
   gap: 0 var(--col-gap);
   grid-template-rows: auto auto;
-  align-items: end;
-  --drop: 1; /* head-heights below the eyes. Capped at 1.049 by Jankel —
-                see the note on `founders` in lib/site.ts before changing it. */
 }
 .founder {
-  grid-column: var(--i); /* explicit — see the note in Founders.tsx */
   display: grid;
   grid-template-rows: subgrid;
   grid-row: 1 / 3;
   min-width: 0;
 }
-/* the plate. --paper-3 ground + hairline is .mthumb (kata.css:121), the only
-   piece of image grammar the CI actually has. */
+/* --paper-3 ground + hairline is .mthumb (kata.css:121), the CI's only image
+   container. */
 .f-fig {
   grid-row: 1;
-  align-self: end; /* bottoms flush — the rule they all stand on */
   margin: 0;
+  position: relative;
   overflow: hidden;
   background: var(--paper-3);
   border: 1px solid var(--hair);
-  aspect-ratio: var(--ar) / calc(var(--e) + var(--drop) * var(--k));
+  aspect-ratio: var(--frame-ar);
 }
 .f-fig img {
-  width: 100%;
-  height: auto;
-  display: block; /* top-aligned; the frame crops the body away */
-}
-/* the rule every plate stands on — clay origin tick, like .drawline */
-.f-base {
-  grid-column: 1 / -1;
-  grid-row: 1;
-  align-self: end; /* the plates' own baseline, not below the copy */
-  height: 1px;
-  background: var(--line);
-  position: relative;
-}
-.f-base::before {
-  content: "";
   position: absolute;
-  left: 0;
-  top: -3px;
-  width: 1px;
-  height: 7px;
-  background: var(--clay);
+  left: var(--ox);
+  top: var(--oy);
+  width: calc(var(--zoom) * 100%);
+  height: auto;
+  max-width: none; /* the global img{max-width:100%} would cap the zoom */
+  display: block;
 }
 .f-txt {
   grid-row: 2;
@@ -1972,23 +1935,14 @@ a.cframe:hover .cf-v {
   .csheet {
     grid-template-columns: 1fr;
   }
-  /* Stacked, there is no row to register across — so each plate takes its own
-     share of the width instead. Heads stay matched, the right edge rags, and
-     the wide shot still reads as the wide shot. */
   .founders {
     grid-template-rows: none;
     gap: clamp(40px, 9vw, 64px) 0;
-    align-items: start;
   }
   .founder {
-    grid-column: 1; /* one column when stacked */
     grid-row: auto;
     grid-template-rows: none;
     display: block;
-    width: calc(var(--fw) * 100%);
-  }
-  .f-base {
-    display: none;
   }
   /* Phones: no blank space at the top — every hero starts straight under the
      menu and hugs its content, on every page. */
