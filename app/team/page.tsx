@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import { Hero } from "@/components/Hero";
 import { FeatureHead } from "@/components/FeatureHead";
-import { Reveal } from "@/components/Reveal";
 import { Founders } from "@/components/Founders";
-import { partnerNetwork, site, pageMetadata } from "@/lib/site";
+import { Network } from "@/components/Network";
+import { site, pageMetadata } from "@/lib/site";
 
 export const metadata: Metadata = pageMetadata({
   title: "Team",
@@ -54,25 +54,13 @@ export default function TeamPage() {
                 The extended <em>network</em>
               </>
             }
-            deck="Specialists we bring in when the work calls for them — curated, and never on anyone else's payroll."
+            deck="Specialists we bring in when the work calls for them — curated, and never on anyone else's payroll. Open a sector to see who that is."
           />
           <div className="g12">
-            <Reveal className="netgrid" stagger>
-              {partnerNetwork.map((p) => (
-                <div className="netcard" key={p.no}>
-                  <div className="nc-top">
-                    <span className="nc-no">{p.no}</span>
-                    <span className="nc-status">{p.status}</span>
-                  </div>
-                  <h3>{p.discipline}</h3>
-                  <p>{p.body}</p>
-                </div>
-              ))}
-            </Reveal>
+            <Network />
           </div>
           <div className="caption">
-            <span>Finance · Strategy · AI · Creative · Production</span>
-            <span className="r">Partner roles being filled through 2026</span>
+            <span>Nine sectors · more than one specialist behind each</span>
           </div>
         </div>
       </section>

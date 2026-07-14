@@ -1364,6 +1364,7 @@ img {
   background: var(--line);
   border: 1px solid var(--line);
 }
+/* a button now — each tile opens its sector panel */
 .netcard {
   background: var(--paper);
   padding: clamp(24px, 2.8vw, 38px);
@@ -1372,6 +1373,58 @@ img {
   gap: 14px;
   min-height: clamp(180px, 18vw, 230px);
   transition: background 0.4s ease;
+  border: 0;
+  width: 100%;
+  text-align: left;
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+}
+.netcard:hover {
+  background: var(--paper-2);
+}
+.netcard:focus-visible {
+  outline: 2px solid var(--clay);
+  outline-offset: -4px;
+}
+/* the affordance, where the status pill used to sit */
+.nc-plus {
+  position: relative;
+  width: 13px;
+  height: 13px;
+  flex: none;
+  opacity: 0.55;
+  transition: opacity 0.3s ease, transform 0.4s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+.nc-plus::before,
+.nc-plus::after {
+  content: "";
+  position: absolute;
+  background: var(--clay);
+}
+.nc-plus::before {
+  top: 6px;
+  left: 0;
+  width: 13px;
+  height: 1.5px;
+}
+.nc-plus::after {
+  left: 6px;
+  top: 0;
+  width: 1.5px;
+  height: 13px;
+}
+.netcard:hover .nc-plus {
+  opacity: 1;
+  transform: rotate(90deg);
+}
+@media (prefers-reduced-motion: reduce) {
+  .nc-plus {
+    transition: none;
+  }
+  .netcard:hover .nc-plus {
+    transform: none;
+  }
 }
 .netcard:hover {
   background: var(--paper-2);
@@ -1389,18 +1442,6 @@ img {
   line-height: 0.8;
   color: var(--clay);
   letter-spacing: -0.02em;
-}
-.nc-status {
-  font-family: var(--sans);
-  font-weight: 600;
-  font-size: 8.5px;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--ink-60);
-  border: 1px solid var(--line);
-  border-radius: 100px;
-  padding: 5px 10px;
-  white-space: nowrap;
 }
 .netcard h3 {
   font-family: var(--display);
@@ -2170,4 +2211,20 @@ a.cframe:hover .cf-v {
 .loader .lcap b,
 .statement.ink .st-kick {
   color: var(--clay-on-ink);
+}
+
+/* the sector panel — same frosted glass as the booking modal, but it holds
+   prose rather than a form, so it wants a shorter measure */
+.nw-panel {
+  max-width: 620px;
+}
+.nw-foot {
+  font-family: var(--sans);
+  font-size: 11.5px;
+  line-height: 1.6;
+  letter-spacing: 0.02em;
+  color: var(--ink-60);
+  margin-top: clamp(22px, 2.4vw, 30px);
+  padding-top: 16px;
+  border-top: 1px solid var(--hair);
 }

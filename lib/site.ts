@@ -255,37 +255,74 @@ export const dimensions = [
   },
 ] as const;
 
-// The extended partner network — specialists working alongside the founders.
-// Roles are being filled; update `status` as each partner lands.
+// The extended partner network — nine sectors, not nine people.
+//
+// Deliberately unnamed: there is no single specialist per sector, there are
+// several, and which one comes in depends on the brief. Naming them would
+// promise the wrong thing (and date the moment someone moves on), so each tile
+// describes the KIND of person instead. `who` is what opens in the modal.
 export const partnerNetwork = [
   {
     no: "01",
     discipline: "Finance",
     body: "Cost modelling, financial governance, and the numbers underneath every production decision.",
-    status: "Joining soon",
+    lead: "Someone who has signed the budget off, not just built it.",
+    who: "Controllers and heads of production finance who have carried real P&L responsibility inside a brand, an agency or a production company. People who can model a slate before it is committed, and who know which line in a bid is the one that actually moves.",
   },
   {
     no: "02",
     discipline: "Strategy",
     body: "Brand and content strategy at the altitude where production decisions are actually made.",
-    status: "Joining soon",
+    lead: "Someone who has decided what gets made, not only how.",
+    who: "Brand and content strategists who have sat on both the client and the agency side of the table. People who can tell you whether the work should exist before we spend a month costing it.",
   },
   {
     no: "03",
     discipline: "AI",
     body: "Applied AI in production — tooling, workflow integration, and the governance around it.",
-    status: "Joining soon",
+    lead: "Someone who has shipped it, not demoed it.",
+    who: "Practitioners who have put AI into a live pipeline and lived with the result — the tooling, the integration, the governance. People who can tell the difference between a saving and a slide.",
   },
   {
     no: "04",
     discipline: "Creative",
     body: "Creative direction, and the bridge between what is conceived and what can be built.",
-    status: "Joining soon",
+    lead: "Someone who has made the thing, not just approved it.",
+    who: "Creative directors and makers who have stood on both sides of the gap between the idea and the build. People who can protect the work through its constraints without pretending the constraints are not real.",
   },
   {
     no: "05",
     discipline: "Production",
     body: "Specialist production capability across formats, markets and scales.",
-    status: "Joining soon",
+    lead: "Someone who has run this, at this scale, in this market.",
+    who: "Producers and heads of production with specialist depth — a format, a territory, a scale. The hand you bring in when the brief needs someone who has done exactly this before, not something adjacent.",
+  },
+  {
+    no: "06",
+    discipline: "HR",
+    body: "Hiring, structure and retention for the people who actually make the work.",
+    lead: "Someone who has built the team, not just the org chart.",
+    who: "People and organisational specialists who have hired, restructured and held on to production talent. People who know what a production function needs in order to function — and what it costs when it does not.",
+  },
+  {
+    no: "07",
+    discipline: "Venture",
+    body: "Building the business around the work — new studios, new divisions, new companies.",
+    lead: "Someone who has built the business, not advised one.",
+    who: "Founders and operators who have started, scaled and sold companies. The people we bring in when a client is building something new and wants someone who has carried that risk personally, not read about it.",
+  },
+  {
+    no: "08",
+    discipline: "Media",
+    body: "Where the work lands, and how that shapes what gets made.",
+    lead: "Someone who knows where the work has to land.",
+    who: "Media and distribution specialists who understand how content behaves once it leaves the edit. People who work backwards from the channel to the brief, so production is not designing in the dark.",
+  },
+  {
+    no: "09",
+    discipline: "Talent Partnerships",
+    body: "Connecting brands with exceptional talent across entertainment, culture and sport.",
+    lead: "Someone with the relationships — and the judgement to use them.",
+    who: "Specialists who put brands together with exceptional talent across entertainment, culture and sport. People who know who is right, who is actually available, and what the deal should cost.",
   },
 ] as const;
