@@ -880,17 +880,14 @@ img {
   color: var(--clay);
   margin-top: clamp(18px, 2.4vw, 28px);
 }
-.hero-rule {
-  height: 1px;
-  background: rgba(246, 242, 232, 0.28);
-  margin: clamp(26px, 4vw, 46px) 0 clamp(22px, 3vw, 32px);
-}
 .hero-foot {
   display: flex;
   align-items: flex-end;
   justify-content: space-between;
   gap: 28px;
   flex-wrap: wrap;
+  /* carries the space the old hero rule used to occupy */
+  margin-top: clamp(48px, 7vw, 78px);
 }
 .hero-desc {
   font-family: var(--serif);

@@ -84,7 +84,6 @@ export function Hero({
         </p>
         {(desc || pill) && (
           <>
-            <div className="hero-rule" data-hero />
             <div className="hero-foot" data-hero>
               {desc ? <p className="hero-desc">{desc}</p> : <span />}
               {pill ? (
