@@ -491,16 +491,22 @@ img {
   inset: 0;
   z-index: -1;
   border-radius: 16px;
-  background: rgba(246, 242, 232, 0.65);
-  backdrop-filter: blur(22px) saturate(1.4);
-  -webkit-backdrop-filter: blur(22px) saturate(1.4);
-  border: 1px solid rgba(26, 24, 19, 0.1);
-  box-shadow: 0 16px 40px -30px rgba(26, 24, 19, 0.42),
-    inset 0 1px 0 rgba(255, 255, 255, 0.6);
+  /* Real glass: a 20% tint, with the blur and saturation doing the work —
+     not an opaque white bar. */
+  background: rgba(246, 242, 232, 0.2);
+  backdrop-filter: blur(26px) saturate(1.9);
+  -webkit-backdrop-filter: blur(26px) saturate(1.9);
+  /* a dark hairline reads on paper, the inner highlight reads on ink */
+  border: 1px solid rgba(26, 24, 19, 0.08);
+  box-shadow: 0 18px 44px -30px rgba(26, 24, 19, 0.45),
+    inset 0 1px 0 rgba(255, 255, 255, 0.38);
   opacity: 0;
-  transform: scale(0.96) translateY(-9px);
-  transition: opacity 0.28s ease,
-    transform 0.55s cubic-bezier(0.34, 1.56, 0.64, 1);
+  transform: translateY(-8px);
+  /* one duration, one ease, no scale — scaling a backdrop-filter re-samples
+     the blur every frame and shimmers, which is what looked sloppy */
+  transition: opacity 0.42s cubic-bezier(0.22, 0.7, 0.2, 1),
+    transform 0.42s cubic-bezier(0.22, 0.7, 0.2, 1);
+  will-change: opacity, transform;
 }
 .nav.solid .nav-in::before {
   opacity: 1;
@@ -583,11 +589,11 @@ img {
 .nav-cta:hover .d {
   transform: scale(1.5);
 }
-.nav.solid .nav-cta {
+.nav.onlight .nav-cta {
   border-color: rgba(26, 24, 19, 0.5);
   color: var(--ink);
 }
-.nav.solid .nav-cta:hover {
+.nav.onlight .nav-cta:hover {
   background: var(--ink);
   color: var(--paper);
   border-color: var(--ink);
@@ -635,17 +641,17 @@ img {
   transform: scaleX(1);
 }
 /* scrolled → ink text once the glass is behind it */
-.nav.solid .nav-mk {
+.nav.onlight .nav-mk {
   color: var(--ink);
 }
-.nav.solid .nav-tag {
+.nav.onlight .nav-tag {
   color: var(--clay-d);
 }
-.nav.solid .nav-links a {
+.nav.onlight .nav-links a {
   color: var(--ink-60);
 }
-.nav.solid .nav-links a:hover,
-.nav.solid .nav-links a.active {
+.nav.onlight .nav-links a:hover,
+.nav.onlight .nav-links a.active {
   color: var(--ink);
 }
 
@@ -681,7 +687,7 @@ img {
 .burger span:nth-child(3) {
   bottom: 15px;
 }
-.nav.solid .burger span {
+.nav.onlight .burger span {
   background: var(--ink);
 }
 .burger.open span {

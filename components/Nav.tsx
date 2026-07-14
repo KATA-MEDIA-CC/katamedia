@@ -9,7 +9,8 @@ import { lockScroll, unlockScroll } from "@/lib/scrollLock";
 
 export function Nav() {
   const pathname = usePathname();
-  const [solid, setSolid] = useState(false);
+  const [solid, setSolid] = useState(false); // glass shown
+  const [onLight, setOnLight] = useState(false); // bar is over a light section
   const [open, setOpen] = useState(false);
   const navRef = useRef<HTMLElement>(null);
   const burgerRef = useRef<HTMLButtonElement>(null);
@@ -17,11 +18,18 @@ export function Nav() {
   const firstLinkRef = useRef<HTMLAnchorElement>(null);
   const wasOpen = useRef(false);
 
-  // No glass while pinned to the top; the moment you start scrolling it plops
-  // in — which also stops hero copy sliding under a bare bar. Reading scrollY
-  // is cheap (no layout flush), so this runs straight off the scroll event.
+  // Two independent states, because the glass is only 20% — too sheer to
+  // normalise what's behind it:
+  //   solid   → glass appears the moment you scroll
+  //   onLight → the bar has cleared the ink hero, so text flips to ink
+  // Tying text colour to the glass would put ink text on the dark hero.
   useEffect(() => {
-    const onScroll = () => setSolid(window.scrollY > 12);
+    const onScroll = () => {
+      setSolid(window.scrollY > 12);
+      const hero = document.querySelector(".hero");
+      const navBottom = navRef.current?.getBoundingClientRect().bottom ?? 66;
+      setOnLight(!hero || hero.getBoundingClientRect().bottom <= navBottom + 4);
+    };
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     window.addEventListener("resize", onScroll);
@@ -94,7 +102,12 @@ export function Nav() {
 
   return (
     <>
-      <header ref={navRef} className={`nav ${solid && !open ? "solid" : ""}`}>
+      <header
+        ref={navRef}
+        className={`nav ${solid && !open ? "solid" : ""} ${
+          onLight && !open ? "onlight" : ""
+        }`}
+      >
         <div className="nav-in">
           <Link
             href="/"
