@@ -460,73 +460,67 @@ img {
 /* ═══════════════════════════════════════════════════════════════════════
    NAV
    ═══════════════════════════════════════════════════════════════════════ */
-/* The dock: flush and bare at the top of the page, then it drops and the glass
-   contracts inward into a floating bar. Expo-out curve — decisive, no bounce. */
+/* ── THE DOCK ──────────────────────────────────────────────────────────
+   Ported 1:1 from shift-media.io's nav (read off its live inline styles) and
+   retinted to the Kata CI. Flush + bare at the top; on scroll it contracts in,
+   drops, rounds off and the glass fades up — while the padding shrinks so the
+   content spreads toward the dock's edges. That padding shift is the "text
+   moves" part: nothing scales (their logo is 16px in both states).
+   Their tint is 55% of their own dark brand colour, not a light wash — so ink
+   at 55% here. The dock is therefore always dark, which is why nav text is
+   always paper and needs no light/dark switching. */
 .nav {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   z-index: 100;
-  padding: 0 clamp(12px, 2.4vw, 26px);
-  pointer-events: none;
-  transition: top 0.55s cubic-bezier(0.16, 1, 0.3, 1);
+  /* they use `padding: 0 var(--margin-x)` — their gutter token. Ours is --gut,
+     so this is the same move: undocked the bar sits on the page gutter, docked
+     it collapses to a flat 28px and the content slides outward with it. */
+  padding: 0 var(--gut);
+  border: 1px solid transparent;
+  border-radius: 0;
+  background-color: transparent;
+  box-shadow: none;
+  transition: left 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+    right 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+    top 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+    border-radius 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+    padding 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+    background-color 0.4s ease, backdrop-filter 0.4s ease,
+    box-shadow 0.4s ease, border-color 0.4s ease;
 }
 .nav.solid {
-  top: clamp(8px, 1.2vw, 16px);
+  left: 16px;
+  right: 16px;
+  top: 12px;
+  border-radius: 20px;
+  padding: 0 28px;
+  /* Their tint is 0.55 of their own dark brand colour. At 0.55 here the dock
+     composites to mid-grey over a paper section, where the links fall to
+     3.07:1 and the clay tagline to 1.26:1 — invisible. 0.70 is the lowest
+     tint where every element clears 4.5:1 in both states; blur + saturate
+     carry the frost. */
+  background-color: rgba(26, 24, 19, 0.7);
+  backdrop-filter: blur(20px) saturate(1.6);
+  -webkit-backdrop-filter: blur(20px) saturate(1.6);
+  border-color: rgba(246, 242, 232, 0.12);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.18),
+    inset 0 1px 0 rgba(246, 242, 232, 0.1);
 }
+@media (prefers-reduced-motion: reduce) {
+  .nav {
+    transition: background-color 0.3s ease, backdrop-filter 0.3s ease;
+  }
+}
+/* the row inside the dock — the glass now lives on .nav itself */
 .nav-in {
-  pointer-events: auto;
-  position: relative;
-  isolation: isolate;
-  max-width: var(--maxw);
-  margin: 0 auto;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 20px;
-  padding: 10px clamp(14px, 1.6vw, 20px) 10px clamp(16px, 1.8vw, 22px);
-}
-/* The glass itself — absent at the top of the page, then plops into place
-   once you start scrolling. Kept on a pseudo-element so it can spring in
-   without dragging the nav content with it. */
-.nav-in::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  /* starts wider than the bar and square, then contracts in and rounds off —
-     the panel docks rather than just fading. Animating left/right (not scale)
-     keeps the backdrop blur from re-sampling and shimmering. */
-  left: -52px;
-  right: -52px;
-  z-index: -1;
-  border-radius: 0;
-  /* Real glass: a 20% tint, with a deep blur and saturation doing the work. */
-  background: rgba(246, 242, 232, 0.2);
-  backdrop-filter: blur(28px) saturate(1.7);
-  -webkit-backdrop-filter: blur(28px) saturate(1.7);
-  /* a dark hairline reads on paper, the inner highlight reads on ink */
-  border: 1px solid rgba(26, 24, 19, 0.08);
-  box-shadow: 0 18px 44px -30px rgba(26, 24, 19, 0.45),
-    inset 0 1px 0 rgba(255, 255, 255, 0.38);
-  opacity: 0;
-  transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1),
-    left 0.55s cubic-bezier(0.16, 1, 0.3, 1),
-    right 0.55s cubic-bezier(0.16, 1, 0.3, 1),
-    border-radius 0.55s cubic-bezier(0.16, 1, 0.3, 1);
-}
-.nav.solid .nav-in::before {
-  opacity: 1;
-  left: 0;
-  right: 0;
-  border-radius: 16px;
-}
-@media (prefers-reduced-motion: reduce) {
-  .nav-in::before {
-    transition: opacity 0.28s ease;
-    transform: none;
-  }
+  padding: 10px 0;
 }
 /* horizontal lockup (mark · rule · line) fills the top-left */
 .nav-lockup {
@@ -543,7 +537,6 @@ img {
   font-size: 29px;
   line-height: 1;
   color: var(--paper);
-  transition: color 0.5s ease;
 }
 .nav-rule {
   width: 1px;
@@ -558,8 +551,13 @@ img {
   letter-spacing: 0.13em;
   text-transform: uppercase;
   line-height: 1.35;
-  color: var(--clay);
+  color: var(--clay-on-ink);
   max-width: 13ch;
+  transition: color 0.4s ease;
+}
+/* clay can't survive the translucent dock (1.26:1) — paper does */
+.nav.solid .nav-tag {
+  color: rgba(246, 242, 232, 0.8);
 }
 .nav-right {
   display: flex;
@@ -598,15 +596,6 @@ img {
 }
 .nav-cta:hover .d {
   transform: scale(1.5);
-}
-.nav.onlight .nav-cta {
-  border-color: rgba(26, 24, 19, 0.5);
-  color: var(--ink);
-}
-.nav.onlight .nav-cta:hover {
-  background: var(--ink);
-  color: var(--paper);
-  border-color: var(--ink);
 }
 .sheet-cta {
   align-self: flex-start;
@@ -650,20 +639,6 @@ img {
 .nav-links a.active::after {
   transform: scaleX(1);
 }
-/* scrolled → ink text once the glass is behind it */
-.nav.onlight .nav-mk {
-  color: var(--ink);
-}
-.nav.onlight .nav-tag {
-  color: var(--clay-d);
-}
-.nav.onlight .nav-links a {
-  color: var(--ink-60);
-}
-.nav.onlight .nav-links a:hover,
-.nav.onlight .nav-links a.active {
-  color: var(--ink);
-}
 
 /* burger + mobile sheet */
 .burger {
@@ -696,9 +671,6 @@ img {
 }
 .burger span:nth-child(3) {
   bottom: 15px;
-}
-.nav.onlight .burger span {
-  background: var(--ink);
 }
 .burger.open span {
   background: var(--paper);

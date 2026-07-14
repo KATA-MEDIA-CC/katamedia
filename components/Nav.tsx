@@ -9,45 +9,22 @@ import { lockScroll, unlockScroll } from "@/lib/scrollLock";
 
 export function Nav() {
   const pathname = usePathname();
-  const [solid, setSolid] = useState(false); // glass shown
-  const [onLight, setOnLight] = useState(false); // bar is over a light section
+  const [solid, setSolid] = useState(false); // docked — glass shown
   const [open, setOpen] = useState(false);
-  const navRef = useRef<HTMLElement>(null);
   const burgerRef = useRef<HTMLButtonElement>(null);
   const sheetRef = useRef<HTMLDivElement>(null);
   const firstLinkRef = useRef<HTMLAnchorElement>(null);
   const wasOpen = useRef(false);
 
-  // Two independent states, because the glass is only 20% — too sheer to
-  // normalise what's behind it:
-  //   solid   → glass appears the moment you scroll
-  //   onLight → an ink section is NOT behind the bar, so text flips to ink
-  //
-  // Text colour has to follow whatever is actually under the bar. "Past the
-  // hero" is not the same as "on a light background" — home drops straight
-  // from the hero into the ink conviction band, so that assumption turned the
-  // links dark-on-dark. Probe the bar's midline against every ink section.
+  // One state. The bar starts flush and bare over the ink hero, then docks on
+  // the first scroll: it contracts in, drops, rounds off and the glass fades
+  // up. Because the dock's own tint is ink, it stays dark over any section —
+  // so the text is paper throughout and never has to flip.
   useEffect(() => {
-    const DARK = ".hero, .statement.ink";
-    const onScroll = () => {
-      setSolid(window.scrollY > 12);
-      const navEl = navRef.current;
-      if (!navEl) return;
-      const r = navEl.getBoundingClientRect();
-      const mid = r.top + r.height / 2;
-      const overDark = Array.from(document.querySelectorAll(DARK)).some((el) => {
-        const b = el.getBoundingClientRect();
-        return b.top <= mid && b.bottom >= mid;
-      });
-      setOnLight(!overDark);
-    };
+    const onScroll = () => setSolid(window.scrollY > 12);
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
-    window.addEventListener("resize", onScroll);
-    return () => {
-      window.removeEventListener("scroll", onScroll);
-      window.removeEventListener("resize", onScroll);
-    };
+    return () => window.removeEventListener("scroll", onScroll);
   }, [pathname]);
 
   // Close the mobile sheet on navigation. Link clicks close it directly; this
@@ -113,12 +90,7 @@ export function Nav() {
 
   return (
     <>
-      <header
-        ref={navRef}
-        className={`nav ${solid && !open ? "solid" : ""} ${
-          onLight && !open ? "onlight" : ""
-        }`}
-      >
+      <header className={`nav ${solid && !open ? "solid" : ""}`}>
         <div className="nav-in">
           <Link
             href="/"
