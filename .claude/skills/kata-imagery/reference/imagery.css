@@ -1,0 +1,222 @@
+/* ═══════════════════════════════════════════════════════════════════════
+   KATA — IMAGERY
+   Lifted verbatim from "Kata — Imagery Motion" (Option 05 brackets).
+   This is the canonical treatment for every photograph on a Kata surface.
+   The CI proper has no photography spec; this fills that gap.
+   ═══════════════════════════════════════════════════════════════════════ */
+
+/* ── THE PLATE ──────────────────────────────────────────────────────────
+   Ink ground, 3:2, clipped. The filter + the two blend layers are what put
+   the photograph INTO the paper/ink palette instead of laying a neutral grey
+   picture on top of cream — without them a b&w photo reads as a cold cutout. */
+.shot {
+  position: relative;
+  aspect-ratio: 3 / 2;
+  background: var(--ink);
+  overflow: hidden;
+}
+.shot img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  filter: grayscale(1) sepia(0.08) contrast(1.05) brightness(1.02);
+}
+/* ink into the shadows */
+.shot::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--ink);
+  mix-blend-mode: multiply;
+  opacity: 0.14;
+  z-index: 1;
+}
+/* paper into the highlights */
+.shot::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--paper);
+  mix-blend-mode: screen;
+  opacity: 0.12;
+  z-index: 1;
+}
+
+/* ── THE BRACKET FRAME (Option 05) ──────────────────────────────────────
+   Four clay registration ticks, held OUTSIDE the plate. .brkt must not clip. */
+.brkt {
+  position: relative;
+}
+.tk {
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  z-index: 3;
+}
+.tk.tl {
+  top: -7px;
+  left: -7px;
+  border-top: 1.5px solid var(--clay);
+  border-left: 1.5px solid var(--clay);
+}
+.tk.tr {
+  top: -7px;
+  right: -7px;
+  border-top: 1.5px solid var(--clay);
+  border-right: 1.5px solid var(--clay);
+}
+.tk.bl {
+  bottom: -7px;
+  left: -7px;
+  border-bottom: 1.5px solid var(--clay);
+  border-left: 1.5px solid var(--clay);
+}
+.tk.br {
+  bottom: -7px;
+  right: -7px;
+  border-bottom: 1.5px solid var(--clay);
+  border-right: 1.5px solid var(--clay);
+}
+
+/* ═══ MOTION — pick exactly one per surface ═══════════════════════════ */
+
+/* A · DRAW-IN — corners strike in, staggered. The photo stays still. */
+.a-draw .tk {
+  width: 0;
+  height: 0;
+  animation: aGrow 4s cubic-bezier(0.4, 0.8, 0.3, 1) infinite;
+}
+.a-draw .tk.tl { animation-delay: 0s; }
+.a-draw .tk.tr { animation-delay: 0.12s; }
+.a-draw .tk.bl { animation-delay: 0.24s; }
+.a-draw .tk.br { animation-delay: 0.36s; }
+@keyframes aGrow {
+  0%   { width: 0; height: 0; opacity: 0; }
+  8%   { opacity: 1; }
+  22%, 82% { width: 18px; height: 18px; opacity: 1; }
+  96%, 100% { width: 18px; height: 18px; opacity: 0; }
+}
+
+/* B · SETTLE — picture eases up out of scale and gloom; brackets fade in. */
+.b-settle .shot img { animation: bImg 4s cubic-bezier(0.2, 0.7, 0.2, 1) infinite; }
+.b-settle .tk { opacity: 0; animation: bTk 4s ease infinite; }
+@keyframes bImg {
+  0%   { transform: scale(1.06); filter: grayscale(1) contrast(1.15) brightness(0.86); }
+  24%, 82% { transform: scale(1); filter: grayscale(1) sepia(0.08) contrast(1.05) brightness(1.02); }
+  100% { transform: scale(1.06); filter: grayscale(1) contrast(1.15) brightness(0.86); }
+}
+@keyframes bTk {
+  0%, 10% { opacity: 0; }
+  26%, 82% { opacity: 1; }
+  96%, 100% { opacity: 0; }
+}
+
+/* C · FOCUS — rest is genuinely soft; hover pulls sharp, reticle converges. */
+.c-focus .shot img {
+  filter: grayscale(1) sepia(0.08) contrast(0.92) brightness(1.04) blur(3px);
+  transition: filter 0.55s cubic-bezier(0.3, 0.6, 0.2, 1);
+}
+.c-focus .tk {
+  opacity: 0.5;
+  transition: top 0.55s cubic-bezier(0.3, 0.6, 0.2, 1), left 0.55s cubic-bezier(0.3, 0.6, 0.2, 1),
+    right 0.55s cubic-bezier(0.3, 0.6, 0.2, 1), bottom 0.55s cubic-bezier(0.3, 0.6, 0.2, 1),
+    width 0.55s ease, height 0.55s ease, opacity 0.4s ease;
+}
+.c-focus .tk.tl { top: -14px; left: -14px; }
+.c-focus .tk.tr { top: -14px; right: -14px; }
+.c-focus .tk.bl { bottom: -14px; left: -14px; }
+.c-focus .tk.br { bottom: -14px; right: -14px; }
+.c-focus:hover .shot img { filter: grayscale(1) sepia(0.06) contrast(1.07) brightness(1.02) blur(0); }
+.c-focus:hover .tk { opacity: 1; }
+.c-focus:hover .tk.tl { top: -6px; left: -6px; }
+.c-focus:hover .tk.tr { top: -6px; right: -6px; }
+.c-focus:hover .tk.bl { bottom: -6px; left: -6px; }
+.c-focus:hover .tk.br { bottom: -6px; right: -6px; }
+
+/* C.1 · ZOOM — sharp at rest; hover pushes in, reticle opens outward.
+   Attention through scale, not lens. */
+.c1-zoom .shot img { transition: transform 0.7s cubic-bezier(0.2, 0.7, 0.2, 1), filter 0.5s ease; }
+.c1-zoom .tk { opacity: 0.7; transition: all 0.5s cubic-bezier(0.2, 0.7, 0.2, 1); }
+.c1-zoom:hover .shot img {
+  transform: scale(1.09);
+  filter: grayscale(1) sepia(0.05) contrast(1.06) brightness(1.05);
+}
+.c1-zoom:hover .tk { opacity: 1; }
+.c1-zoom:hover .tk.tl { top: -10px; left: -10px; }
+.c1-zoom:hover .tk.tr { top: -10px; right: -10px; }
+.c1-zoom:hover .tk.bl { bottom: -10px; left: -10px; }
+.c1-zoom:hover .tk.br { bottom: -10px; right: -10px; }
+
+/* D · SCAN — one clay measure-line sweeps; brackets set behind it. */
+.d-scan .scan {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 2px;
+  background: var(--clay);
+  z-index: 2;
+  box-shadow: 0 0 14px 1px rgba(192, 83, 44, 0.45);
+  animation: dScan 4s cubic-bezier(0.5, 0, 0.3, 1) infinite;
+}
+@keyframes dScan {
+  0%   { left: -2%; opacity: 0; }
+  8%   { opacity: 1; }
+  58%  { left: 100%; opacity: 1; }
+  62%  { left: 100%; opacity: 0; }
+  100% { opacity: 0; }
+}
+.d-scan .tk { opacity: 0; animation: dTk 4s ease infinite; }
+@keyframes dTk {
+  0%, 20% { opacity: 0; }
+  40%, 82% { opacity: 1; }
+  96%, 100% { opacity: 0; }
+}
+
+/* E · DEVELOP — the print comes up out of the ink, then the brackets draw. */
+.e-dev .shot img { animation: eDev 4s ease infinite; }
+.e-dev .tk { opacity: 0; animation: eTk 4s ease infinite; }
+@keyframes eDev {
+  0%   { filter: grayscale(1) brightness(0.28) contrast(1.5); }
+  18%  { filter: grayscale(1) brightness(0.55) contrast(1.3); }
+  34%, 82% { filter: grayscale(1) sepia(0.08) contrast(1.05) brightness(1.02); }
+  100% { filter: grayscale(1) brightness(0.28) contrast(1.5); }
+}
+@keyframes eTk {
+  0%, 22% { opacity: 0; }
+  40%, 82% { opacity: 1; }
+  96%, 100% { opacity: 0; }
+}
+
+/* Motion is decoration. Nothing here carries meaning, so all of it goes. */
+@media (prefers-reduced-motion: reduce) {
+  .a-draw .tk,
+  .b-settle .shot img,
+  .b-settle .tk,
+  .d-scan .scan,
+  .d-scan .tk,
+  .e-dev .shot img,
+  .e-dev .tk {
+    animation: none;
+  }
+  .a-draw .tk,
+  .b-settle .tk,
+  .d-scan .tk,
+  .e-dev .tk {
+    width: 18px;
+    height: 18px;
+    opacity: 1;
+  }
+  .c1-zoom .shot img,
+  .c-focus .shot img,
+  .c1-zoom .tk,
+  .c-focus .tk {
+    transition: none;
+  }
+  .c1-zoom:hover .shot img { transform: none; }
+  .c-focus .shot img { filter: grayscale(1) sepia(0.08) contrast(1.05) brightness(1.02); }
+  .d-scan .scan { display: none; }
+}

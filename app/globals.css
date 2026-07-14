@@ -1135,17 +1135,20 @@ img {
 /* ═══════════════════════════════════════════════════════════════════════
    FOUNDERS
    ═══════════════════════════════════════════════════════════════════════ */
-/* ── THE FOUNDERS ──────────────────────────────────────────────────────
-   Three identical plates on three equal columns. Justin's photo sets the frame
-   ratio; the other two are zoomed into it (--zoom) and offset (--ox/--oy) so
-   every head renders the same size and every eyeline lands at the same height.
-   Cornelius crops in hardest — he was shot widest. The maths is in
-   Founders.tsx; the measured inputs are in lib/site.ts. */
+/* ── THE FOUNDERS / IMAGERY ────────────────────────────────────────────
+   Per the kata-imagery skill (.claude/skills/kata-imagery): the Option-05
+   bracket frame, the paper/ink duotone plate, and C.1 (zoom on hover).
+   The canonical source is that skill's reference/imagery.css — keep in step. */
 .founders {
   grid-column: 1 / 13;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 0 var(--col-gap);
+  /* NOT --col-gap (16.7px here): the bracket ticks live outside the plate and
+     reach 7px at rest, 10px on hover. Two facing ticks need 20px plus air, so
+     the grid gutter would have them overlapping by 3.3px mid-hover. The row
+     sets its own gap. Outer ticks overhang into the page gutter on purpose —
+     registration marks belong outside the trim. */
+  gap: 0 clamp(32px, 3.2vw, 48px);
   grid-template-rows: auto auto;
 }
 .founder {
@@ -1154,18 +1157,24 @@ img {
   grid-row: 1 / 3;
   min-width: 0;
 }
-/* --paper-3 ground + hairline is .mthumb (kata.css:121), the CI's only image
-   container. */
+/* .brkt — must NOT clip, the ticks live outside the plate */
 .f-fig {
   grid-row: 1;
   margin: 0;
   position: relative;
-  overflow: hidden;
-  background: var(--paper-3);
-  border: 1px solid var(--hair);
-  aspect-ratio: var(--frame-ar);
 }
-.f-fig img {
+
+/* the plate */
+.shot {
+  position: relative;
+  aspect-ratio: 3 / 2;
+  background: var(--ink);
+  overflow: hidden;
+}
+/* We override the spec's `inset:0; object-fit:cover` — cover would render three
+   different head sizes from three shot distances. Placed by measured zoom and
+   offset instead; see Founders.tsx and the ar/k/e note in lib/site.ts. */
+.shot img {
   position: absolute;
   left: var(--ox);
   top: var(--oy);
@@ -1173,10 +1182,111 @@ img {
   height: auto;
   max-width: none; /* the global img{max-width:100%} would cap the zoom */
   display: block;
+  filter: grayscale(1) sepia(0.08) contrast(1.05) brightness(1.02);
+  /* pivot the C.1 push-in on the face's own eyes, not the image centre —
+     these images are offset, so a centre pivot would slide the face */
+  transform-origin: var(--fx) var(--fy);
 }
+/* ink into the shadows, paper into the highlights — this is what prints the
+   photograph IN the palette rather than laying a cold grey picture on cream */
+.shot::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--ink);
+  mix-blend-mode: multiply;
+  opacity: 0.14;
+  z-index: 1;
+}
+.shot::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--paper);
+  mix-blend-mode: screen;
+  opacity: 0.12;
+  z-index: 1;
+}
+
+/* the bracket frame — four clay registration ticks, held outside the plate.
+   A deliberate exception to clay's display-only discipline. */
+.tk {
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  z-index: 3;
+}
+.tk.tl {
+  top: -7px;
+  left: -7px;
+  border-top: 1.5px solid var(--clay);
+  border-left: 1.5px solid var(--clay);
+}
+.tk.tr {
+  top: -7px;
+  right: -7px;
+  border-top: 1.5px solid var(--clay);
+  border-right: 1.5px solid var(--clay);
+}
+.tk.bl {
+  bottom: -7px;
+  left: -7px;
+  border-bottom: 1.5px solid var(--clay);
+  border-left: 1.5px solid var(--clay);
+}
+.tk.br {
+  bottom: -7px;
+  right: -7px;
+  border-bottom: 1.5px solid var(--clay);
+  border-right: 1.5px solid var(--clay);
+}
+
+/* C.1 · ZOOM — sharp at rest; hover pushes in, the reticle opens outward */
+.c1-zoom .shot img {
+  transition: transform 0.7s cubic-bezier(0.2, 0.7, 0.2, 1), filter 0.5s ease;
+}
+.c1-zoom .tk {
+  opacity: 0.7;
+  transition: all 0.5s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+.c1-zoom:hover .shot img {
+  transform: scale(1.09);
+  filter: grayscale(1) sepia(0.05) contrast(1.06) brightness(1.05);
+}
+.c1-zoom:hover .tk {
+  opacity: 1;
+}
+.c1-zoom:hover .tk.tl {
+  top: -10px;
+  left: -10px;
+}
+.c1-zoom:hover .tk.tr {
+  top: -10px;
+  right: -10px;
+}
+.c1-zoom:hover .tk.bl {
+  bottom: -10px;
+  left: -10px;
+}
+.c1-zoom:hover .tk.br {
+  bottom: -10px;
+  right: -10px;
+}
+/* motion is decoration — nothing depends on it having run */
+@media (prefers-reduced-motion: reduce) {
+  .c1-zoom .shot img,
+  .c1-zoom .tk {
+    transition: none;
+  }
+  .c1-zoom:hover .shot img {
+    transform: none;
+  }
+}
+
 .f-txt {
   grid-row: 2;
-  padding-top: 18px;
+  /* clears the bottom ticks at their hover reach (10px) with air to spare */
+  padding-top: 26px;
 }
 .founder .f-nm {
   font-family: var(--display);

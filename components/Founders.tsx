@@ -4,16 +4,21 @@ import { Reveal } from "@/components/Reveal";
 
 type CSSVars = React.CSSProperties & Record<string, string | number>;
 
-// Three identical plates. Justin's photo sets the frame — his native ratio, his
-// crop — and the other two are zoomed into it until every head renders the same
-// size and every pair of eyes sits on the same line. Cornelius takes the most
-// crop, because he was shot widest; his bridge is the price of a uniform row.
+// Three identical 3:2 plates, treated per the kata-imagery skill (Option-05
+// brackets + C.1 zoom on hover).
+//
+// We override the spec's default `.shot img { inset:0; object-fit:cover }`: the
+// three portraits were shot at three different distances, so cover would show
+// three different head sizes. Instead each image is placed by a measured zoom
+// and offset until every head renders the same size and every pair of eyes sits
+// on one line. Cornelius takes the most crop — he was shot widest, so his bridge
+// is the price of a uniform row.
 //
 // Derived from the measured ar/k/e in lib/site.ts:
 //   zoom ∝ ar/k    how far each photo must come in for its head to match
 //   r    = rendered image height ÷ frame height
 //   oy   = EYE_LINE − e·r        puts every eyeline at the same height
-const FRAME_AR = founders[0].ar; // Justin's native ratio
+const FRAME_AR = 3 / 2; // the plate is 3:2 per the imagery spec (.shot)
 
 // Where the eyes sit as a fraction of frame height — the upper third.
 const EYE_LINE = 0.33;
@@ -60,19 +65,30 @@ export function Founders() {
               "--zoom": plates[i].zoom.toFixed(4),
               "--ox": `${(plates[i].ox * 100).toFixed(3)}%`,
               "--oy": `${(plates[i].oy * 100).toFixed(3)}%`,
+              // C.1's hover scale pivots here — the face's own eye point inside
+              // the image. Scaling about the image centre would slide the face
+              // sideways, because these images are offset.
+              "--fx": `${(FACE_X[i] * 100).toFixed(2)}%`,
+              "--fy": `${(f.e * 100).toFixed(2)}%`,
             } as CSSVars
           }
         >
-          <figure className="f-fig">
-            <Image
-              src={f.photo}
-              // Empty on purpose: .f-nm names the person directly below, and a
-              // real alt would make a screen reader announce each founder twice.
-              alt=""
-              width={1600}
-              height={Math.round(1600 / f.ar)}
-              sizes="(max-width: 720px) 92vw, 33vw"
-            />
+          <figure className="f-fig brkt c1-zoom">
+            <div className="shot">
+              <Image
+                src={f.photo}
+                // Empty on purpose: .f-nm names the person directly below, and a
+                // real alt would make a screen reader announce each founder twice.
+                alt=""
+                width={1600}
+                height={Math.round(1600 / f.ar)}
+                sizes="(max-width: 720px) 92vw, 33vw"
+              />
+            </div>
+            <span className="tk tl" aria-hidden="true" />
+            <span className="tk tr" aria-hidden="true" />
+            <span className="tk bl" aria-hidden="true" />
+            <span className="tk br" aria-hidden="true" />
           </figure>
           <div className="f-txt">
             <div className="f-nm">{f.name}</div>

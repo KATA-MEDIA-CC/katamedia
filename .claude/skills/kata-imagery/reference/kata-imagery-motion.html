@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="design_doc_mode" content="canvas">
+<title>Kata — Imagery Motion</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Schibsted+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F6F2E8; --ink:#1A1813; --ink-80:rgba(26,24,19,.80); --ink-60:rgba(26,24,19,.58); --ink-40:rgba(26,24,19,.40);
+    --line:rgba(26,24,19,.22); --hair:rgba(26,24,19,.12); --clay:#C0532C;
+    --serif:'Spectral',Georgia,serif; --sans:'Schibsted Grotesk',system-ui,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{background:var(--paper);color:var(--ink);font-family:var(--serif);}
+  .card{position:absolute;width:440px;}
+  .card .kick{font-family:var(--sans);font-weight:600;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-60);margin-bottom:16px;}
+  .card .kick b{color:var(--clay);}
+  .card .tag{font-family:var(--sans);font-weight:600;font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:var(--paper);background:var(--ink);padding:3px 7px;margin-left:8px;vertical-align:middle;}
+  .card .tag.hv{background:var(--clay);}
+  .card .desc{font-family:var(--serif);font-size:14px;line-height:1.55;color:var(--ink-80);margin-top:18px;max-width:38ch;}
+  .card figcaption{display:flex;align-items:baseline;gap:9px;margin-top:15px;font-family:var(--sans);}
+  .card figcaption::before{content:"";width:7px;height:7px;background:var(--clay);flex:none;transform:translateY(1px);}
+  .card figcaption .nm{font-weight:600;font-size:15px;color:var(--ink);}
+  .card figcaption .rl{font-weight:600;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-60);}
+
+  .shot{position:relative;aspect-ratio:3/2;background:var(--ink);overflow:hidden;}
+  .shot img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;filter:grayscale(1) sepia(.08) contrast(1.05) brightness(1.02);}
+  .shot::before{content:"";position:absolute;inset:0;background:var(--ink);mix-blend-mode:multiply;opacity:.14;z-index:1;}
+  .shot::after{content:"";position:absolute;inset:0;background:var(--paper);mix-blend-mode:screen;opacity:.12;z-index:1;}
+
+  /* Option-5 bracket frame */
+  .brkt{position:relative;}
+  .tk{position:absolute;width:18px;height:18px;z-index:3;}
+  .tk.tl{top:-7px;left:-7px;border-top:1.5px solid var(--clay);border-left:1.5px solid var(--clay);}
+  .tk.tr{top:-7px;right:-7px;border-top:1.5px solid var(--clay);border-right:1.5px solid var(--clay);}
+  .tk.bl{bottom:-7px;left:-7px;border-bottom:1.5px solid var(--clay);border-left:1.5px solid var(--clay);}
+  .tk.br{bottom:-7px;right:-7px;border-bottom:1.5px solid var(--clay);border-right:1.5px solid var(--clay);}
+
+  /* ===== A · DRAW-IN — brackets grow from their corners, staggered ===== */
+  .a-draw .tk{width:0;height:0;animation:aGrow 4s cubic-bezier(.4,.8,.3,1) infinite;}
+  .a-draw .tk.tl{animation-delay:0s;} .a-draw .tk.tr{animation-delay:.12s;}
+  .a-draw .tk.bl{animation-delay:.24s;} .a-draw .tk.br{animation-delay:.36s;}
+  @keyframes aGrow{0%{width:0;height:0;opacity:0}8%{opacity:1}22%,82%{width:18px;height:18px;opacity:1}96%,100%{width:18px;height:18px;opacity:0}}
+
+  /* ===== B · SETTLE — picture eases up + clears while brackets fade in ===== */
+  .b-settle .shot img{animation:bImg 4s cubic-bezier(.2,.7,.2,1) infinite;}
+  .b-settle .tk{opacity:0;animation:bTk 4s ease infinite;}
+  @keyframes bImg{0%{transform:scale(1.06);filter:grayscale(1) contrast(1.15) brightness(.86)}24%,82%{transform:scale(1);filter:grayscale(1) sepia(.08) contrast(1.05) brightness(1.02)}100%{transform:scale(1.06);filter:grayscale(1) contrast(1.15) brightness(.86)}}
+  @keyframes bTk{0%,10%{opacity:0}26%,82%{opacity:1}96%,100%{opacity:0}}
+
+  /* ===== C · FOCUS — hover pulls the lens into focus; the reticle locks ===== */
+  .c-focus .shot img{filter:grayscale(1) sepia(.08) contrast(.92) brightness(1.04) blur(3px);transition:filter .55s cubic-bezier(.3,.6,.2,1);}
+  .c-focus .tk{transition:top .55s cubic-bezier(.3,.6,.2,1),left .55s cubic-bezier(.3,.6,.2,1),right .55s cubic-bezier(.3,.6,.2,1),bottom .55s cubic-bezier(.3,.6,.2,1),width .55s ease,height .55s ease,opacity .4s ease;opacity:.5;}
+  /* rest: reticle open (wide) + soft */
+  .c-focus .tk.tl{top:-14px;left:-14px;} .c-focus .tk.tr{top:-14px;right:-14px;}
+  .c-focus .tk.bl{bottom:-14px;left:-14px;} .c-focus .tk.br{bottom:-14px;right:-14px;}
+  /* hover: snap sharp, reticle converges + locks */
+  .c-focus:hover .shot img{filter:grayscale(1) sepia(.06) contrast(1.07) brightness(1.02) blur(0);}
+  .c-focus:hover .tk{opacity:1;}
+  .c-focus:hover .tk.tl{top:-6px;left:-6px;} .c-focus:hover .tk.tr{top:-6px;right:-6px;}
+  .c-focus:hover .tk.bl{bottom:-6px;left:-6px;} .c-focus:hover .tk.br{bottom:-6px;right:-6px;}
+
+  /* ===== C.1 · ZOOM — hover pushes into the frame (Ken-Burns), reticle opens ===== */
+  .c1-zoom .shot img{transition:transform .7s cubic-bezier(.2,.7,.2,1),filter .5s ease;}
+  .c1-zoom .tk{transition:all .5s cubic-bezier(.2,.7,.2,1);opacity:.7;}
+  .c1-zoom:hover .shot img{transform:scale(1.09);filter:grayscale(1) sepia(.05) contrast(1.06) brightness(1.05);}
+  .c1-zoom:hover .tk{opacity:1;}
+  .c1-zoom:hover .tk.tl{top:-10px;left:-10px;} .c1-zoom:hover .tk.tr{top:-10px;right:-10px;}
+  .c1-zoom:hover .tk.bl{bottom:-10px;left:-10px;} .c1-zoom:hover .tk.br{bottom:-10px;right:-10px;}
+
+  /* ===== D · SCAN — a clay measure-line sweeps across ===== */
+  .d-scan .scan{position:absolute;top:0;bottom:0;width:2px;background:var(--clay);z-index:2;left:0;box-shadow:0 0 14px 1px rgba(192,83,44,.45);animation:dScan 4s cubic-bezier(.5,0,.3,1) infinite;}
+  @keyframes dScan{0%{left:-2%;opacity:0}8%{opacity:1}58%{left:100%;opacity:1}62%{left:100%;opacity:0}100%{opacity:0}}
+  .d-scan .tk{opacity:0;animation:dTk 4s ease infinite;}
+  @keyframes dTk{0%,20%{opacity:0}40%,82%{opacity:1}96%,100%{opacity:0}}
+
+  /* ===== E · DEVELOP — the print comes up out of the ink ===== */
+  .e-dev .shot img{animation:eDev 4s ease infinite;}
+  .e-dev .tk{opacity:0;animation:eTk 4s ease infinite;}
+  @keyframes eDev{0%{filter:grayscale(1) brightness(.28) contrast(1.5)}18%{filter:grayscale(1) brightness(.55) contrast(1.3)}34%,82%{filter:grayscale(1) sepia(.08) contrast(1.05) brightness(1.02)}100%{filter:grayscale(1) brightness(.28) contrast(1.5)}}
+  @keyframes eTk{0%,22%{opacity:0}40%,82%{opacity:1}96%,100%{opacity:0}}
+</style>
+</head>
+<body>
+
+  <div class="card" style="left:80px;top:60px;width:900px;">
+    <p style="font-family:var(--sans);font-weight:600;font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--clay);">Kata — Imagery · Option 05 brackets</p>
+    <h1 style="font-family:var(--sans);font-weight:600;font-size:40px;letter-spacing:-.02em;margin-top:14px;">Motion options</h1>
+    <p style="font-family:var(--serif);font-size:16px;line-height:1.55;color:var(--ink-80);margin-top:14px;max-width:60ch;">Five ways the bracket frame can move. Loops run automatically for comparison; the FOCUS option is hover-only — mouse over it. All are quiet, measured, and tied to the system's registration-mark language.</p>
+  </div>
+
+  <!-- A DRAW-IN -->
+  <div class="card" style="left:80px;top:300px;">
+    <p class="kick">A — Draw-in <span class="tag">On load</span></p>
+    <figure style="margin:0">
+      <div class="brkt a-draw"><div class="shot"><img src="images/cornelius.png" alt=""></div><span class="tk tl"></span><span class="tk tr"></span><span class="tk bl"></span><span class="tk br"></span></div>
+      <figcaption><span class="nm">Cornelius Roenz</span><span class="rl">Co-founder</span></figcaption>
+    </figure>
+    <p class="desc">The four corners draw in from nothing, staggered like registration marks being struck. The photo stays still.</p>
+  </div>
+
+  <!-- B SETTLE -->
+  <div class="card" style="left:580px;top:300px;">
+    <p class="kick">B — Settle <span class="tag">On load</span></p>
+    <figure style="margin:0">
+      <div class="brkt b-settle"><div class="shot"><img src="images/cornelius.png" alt=""></div><span class="tk tl"></span><span class="tk tr"></span><span class="tk bl"></span><span class="tk br"></span></div>
+      <figcaption><span class="nm">Cornelius Roenz</span><span class="rl">Co-founder</span></figcaption>
+    </figure>
+    <p class="desc">The picture eases up from a slightly dark, over-scaled state into focus while the brackets fade in. The image moves, not the frame.</p>
+  </div>
+
+  <!-- C FOCUS -->
+  <div class="card" style="left:1080px;top:300px;">
+    <p class="kick">C — Focus <span class="tag hv">Hover</span></p>
+    <figure style="margin:0">
+      <div class="brkt c-focus"><div class="shot"><img src="images/cornelius.png" alt=""></div><span class="tk tl"></span><span class="tk tr"></span><span class="tk bl"></span><span class="tk br"></span></div>
+      <figcaption><span class="nm">Cornelius Roenz</span><span class="rl">Co-founder</span></figcaption>
+    </figure>
+    <p class="desc">Rest is genuinely out of focus — soft, low-contrast, reticle held open. On hover the lens pulls sharp and the corners converge and lock. A focus, not a zoom.</p>
+  </div>
+
+  <!-- D SCAN -->
+  <div class="card" style="left:80px;top:800px;">
+    <p class="kick">D — Scan <span class="tag">On load</span></p>
+    <figure style="margin:0">
+      <div class="brkt d-scan"><div class="shot"><img src="images/cornelius.png" alt=""><i class="scan"></i></div><span class="tk tl"></span><span class="tk tr"></span><span class="tk bl"></span><span class="tk br"></span></div>
+      <figcaption><span class="nm">Cornelius Roenz</span><span class="rl">Co-founder</span></figcaption>
+    </figure>
+    <p class="desc">A single clay measure-line sweeps across; the brackets set behind it. Reads as the image being read, or scanned.</p>
+  </div>
+
+  <!-- E DEVELOP -->
+  <div class="card" style="left:580px;top:800px;">
+    <p class="kick">E — Develop <span class="tag">On load</span></p> <span class="tag">On load</span></p>
+    <figure style="margin:0">
+      <div class="brkt e-dev"><div class="shot"><img src="images/cornelius.png" alt=""></div><span class="tk tl"></span><span class="tk tr"></span><span class="tk bl"></span><span class="tk br"></span></div>
+      <figcaption><span class="nm">Cornelius Roenz</span><span class="rl">Co-founder</span></figcaption>
+    </figure>
+    <p class="desc">The print comes up out of the ink — dark to full duotone — then the brackets draw. Most photographic; nods to the film direction.</p>
+  </div>
+  <!-- C.1 ZOOM -->
+  <div class="card" style="left:1080px;top:800px;">
+    <p class="kick">C.1 — Zoom <span class="tag hv">Hover</span></p>
+    <figure style="margin:0">
+      <div class="brkt c1-zoom"><div class="shot"><img src="images/cornelius.png" alt=""></div><span class="tk tl"></span><span class="tk tr"></span><span class="tk bl"></span><span class="tk br"></span></div>
+      <figcaption><span class="nm">Cornelius Roenz</span><span class="rl">Co-founder</span></figcaption>
+    </figure>
+    <p class="desc">Sharp at rest; on hover the picture pushes into the frame and the reticle opens outward. Attention through scale, not lens.</p>
+  </div>
+
+</body></html>
