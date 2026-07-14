@@ -10,18 +10,14 @@ export function Hero({
   title,
   tag = site.tagline,
   desc,
-  pill,
   watermark = site.wordmark,
-  glassPill = false,
 }: {
   variant?: "home" | "page";
   lead: ReactNode;
   title: ReactNode;
   tag?: string;
   desc?: ReactNode;
-  pill?: string;
   watermark?: string;
-  glassPill?: boolean;
 }) {
   const ref = useRef<HTMLElement>(null);
 
@@ -82,25 +78,10 @@ export function Hero({
         <p className="hero-tag" data-hero>
           {tag}
         </p>
-        {(desc || pill) && (
-          <>
-            <div className="hero-foot" data-hero>
-              {desc ? <p className="hero-desc">{desc}</p> : <span />}
-              {pill ? (
-                <span
-                  className={`hero-pill ${glassPill ? "kglass" : ""}`}
-                  style={
-                    glassPill
-                      ? undefined
-                      : { border: "1px solid rgba(246,242,232,.28)" }
-                  }
-                >
-                  <span className="d" />
-                  {pill}
-                </span>
-              ) : null}
-            </div>
-          </>
+        {desc && (
+          <div className="hero-foot" data-hero>
+            <p className="hero-desc">{desc}</p>
+          </div>
         )}
       </div>
     </section>

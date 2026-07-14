@@ -21,7 +21,6 @@ export default function Home() {
         }
         tag={site.tagline}
         desc={site.short}
-        pill={site.booking}
       />
 
       {/* Belief */}

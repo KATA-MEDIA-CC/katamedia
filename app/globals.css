@@ -896,25 +896,6 @@ img {
   color: rgba(246, 242, 232, 0.85);
   max-width: 44ch;
 }
-.hero-pill {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 9px 16px;
-  border-radius: 100px;
-  font-family: var(--sans);
-  font-weight: 600;
-  font-size: 10px;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  white-space: nowrap;
-}
-.hero-pill .d {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: var(--clay);
-}
 /* interior (page) hero */
 .hero--page .hero-title {
   font-size: clamp(40px, 9vw, 120px);
