@@ -24,7 +24,7 @@ export default function ContactPage() {
           </>
         }
         tag={site.tagline}
-        desc="Independent by design. On your side by choice. Tell us what you are trying to figure out — no deck, no pitch."
+        desc="Tell us what you are trying to figure out — no deck, no pitch."
       />
 
       {/* The form */}
