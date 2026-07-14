@@ -1295,6 +1295,30 @@ img {
   align-items: flex-start;
   height: 100%;
 }
+/* CO-FOUNDER ▪ Name — one line, the clay square doing the separating */
+.founder .f-hd {
+  display: flex;
+  align-items: baseline;
+  gap: 9px;
+  flex-wrap: wrap;
+}
+.founder .f-tag {
+  font-family: var(--sans);
+  font-weight: 600;
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ink-60);
+  white-space: nowrap;
+}
+.founder .f-dot {
+  width: 6px;
+  height: 6px;
+  background: var(--clay);
+  flex: none;
+  /* sits on the shared baseline rather than floating in the leading */
+  transform: translateY(-1px);
+}
 .founder .f-nm {
   font-family: var(--display);
   font-weight: 600;
@@ -1321,6 +1345,13 @@ img {
 /* the opening line carries the person; the rest is supporting detail */
 .founder .f-note:first-of-type {
   color: var(--ink-80);
+}
+/* The emails bottom-align, so the space above each rule is whatever the bio
+   leaves over — which gave the longest bio (Cornelius) almost none while the
+   short ones got a lot. This sets a floor: he gets exactly this much air, the
+   others get this plus their slack, and every rule moves down together. */
+.founder .f-note:last-of-type {
+  margin-bottom: clamp(26px, 2.6vw, 36px);
 }
 .founder .f-mail {
   font-family: var(--sans);

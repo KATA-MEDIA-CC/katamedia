@@ -91,7 +91,11 @@ export function Founders() {
             <span className="tk br" aria-hidden="true" />
           </figure>
           <div className="f-txt">
-            <div className="f-nm">{f.name}</div>
+            <div className="f-hd">
+              <span className="f-tag">Co-founder</span>
+              <span className="f-dot" aria-hidden="true" />
+              <span className="f-nm">{f.name}</span>
+            </div>
             <div className="f-ro">{f.role}</div>
             {f.notes.map((n) => (
               <p className="f-note" key={n.slice(0, 24)}>

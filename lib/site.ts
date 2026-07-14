@@ -97,7 +97,7 @@ export const cta = { label: "Book a call", href: "/contact" } as const;
 export const founders = [
   {
     name: "Justin Stiebel",
-    role: "Strategy, production leadership and advisory",
+    role: "Strategy, organisational design and advisory",
     email: "justin@katamedia.cc",
     notes: [
       "Production controlling and advisory specialist with deep market knowledge across German and European TVC, content, and campaign production.",
@@ -111,7 +111,7 @@ export const founders = [
   },
   {
     name: "Cornelius Roenz",
-    role: "Strategy, organisational design and executive production",
+    role: "Strategy, production leadership and executive production",
     email: "cornelius@katamedia.cc",
     notes: [
       "Production leader with extensive experience building and running production functions at agency and brand level across Europe.",
