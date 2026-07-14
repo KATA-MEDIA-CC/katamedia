@@ -771,20 +771,30 @@ img {
   gap: 30px;
   padding: 0 24px;
 }
+/* Ported 1:1 from the CI's load screen (.loader-inner .lk-mk). */
 .loader .lk-mk {
   color: var(--paper);
   font-family: var(--display);
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.16em;
-  font-size: clamp(44px, 11vw, 96px);
+  font-size: clamp(40px, 7vw, 86px);
   line-height: 1;
+}
+/* The CI's row is fixed at 48 cells x 5px + 3px gaps = 381px, and deliberately
+   wider than the wordmark. That overflows a 375px phone, so the geometry scales
+   below ~556px viewport and is exactly the CI's numbers above it. */
+.loader .defrag.lg {
+  gap: clamp(2px, 0.55vw, 3px);
+}
+.loader .defrag.lg i {
+  width: clamp(3px, 0.9vw, 5px);
 }
 .loader .lcap {
   font-family: var(--sans);
   font-weight: 600;
-  font-size: clamp(12px, 3.4vw, 15px);
-  letter-spacing: 0.12em;
+  font-size: 10px;
+  letter-spacing: 0.26em;
   text-transform: uppercase;
   text-align: center;
   color: rgba(246, 242, 232, 0.5);
