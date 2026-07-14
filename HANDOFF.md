@@ -66,10 +66,11 @@ Almost all copy lives in **`lib/site.ts`**. Change it there, not in the pages.
 ## Component notes
 
 - **`Loader.tsx`** — plain solid defrag bars (glass/sheen versions were tried and rejected). Slow, readable settle, **3s hold**, caption **"FROM FRAGMENTS — ORDER."**. The grid + slogan align to the wordmark's **visible glyph ink** (via canvas `actualBoundingBox`), *not* its layout box — the box includes trailing letter-spacing and overhangs the letters. Once per session (`sessionStorage`).
-- **`Nav.tsx`** — two independent states:
-  - `solid` → glass appears on scroll (>12px)
-  - `onLight` → text flips to ink **only when no ink section is behind the bar** (probes `.hero, .statement.ink` against the bar's midline). These must stay decoupled: the glass is only 20%, too sheer to normalise what's behind it.
-  - **Dock animation** (borrowed from shift-media.io): flush at `top:0` and bare, then drops to 16px while the glass contracts from `left/right: -52px` → `0` and rounds `0` → `16px`, on `cubic-bezier(0.16, 1, 0.3, 1)`. Never animate `scale` on a backdrop-filter — it re-samples the blur and shimmers.
+- **`Nav.tsx`** — **one** state: `solid` (docked), set on scroll >12px. The old `onLight` probe is gone — the dock's tint is ink, so the bar is dark in both states and the text is paper throughout.
+  - **The dock** is ported 1:1 from shift-media.io (read off its live inline styles) and retinted. Flush + bare at `top:0`; docked it goes `left/right:16px`, `top:12px`, `radius:20px`, `padding: var(--gut) → 28px`, `blur(20px)`, all on `cubic-bezier(0.16, 1, 0.3, 1)` / 0.5s (glass fades on 0.4s ease). The **padding collapse is what makes the text appear to grow** — nothing scales. Their logo is 16px in both states.
+  - The glass lives on **`.nav` itself**, not a pseudo-element, because left/right/padding animate on the bar.
+  - Never animate `scale` on a backdrop-filter — it re-samples the blur and shimmers.
+  - **Tint is `rgba(26,24,19,0.70)`, not their 0.55.** At 0.55 the dock composites to mid-grey over a paper section and the links fall to 3.07:1. 0.70 is the lowest tint clearing 4.5:1 everywhere. **Clay cannot be dock text at any usable tint** (1.26:1 at 0.55; needs ~0.95) — hence `.nav.solid .nav-tag` flips the tagline to paper, keeping clay on the ink hero.
 - **`Booking.tsx`** — provider + modal + `BookingButton`. Panel uses the same glass as the nav.
 - **`Hero.tsx`** — desktop: watermark is an absolute bleed, bottom-right, with parallax. **Mobile (≤720px): the watermark joins the flow, ordered last**, so it can't overlap the copy; parallax disabled there.
 
@@ -81,7 +82,7 @@ Almost all copy lives in **`lib/site.ts`**. Change it there, not in the pages.
 
 ## Gotchas that cost real time
 
-- **The in-app browser preview is heavily limited.** It cannot render `backdrop-filter`, does not advance CSS transitions, does not fire scroll events for programmatic `scrollTo`, and throttles `requestAnimationFrame`. Working code repeatedly *looked* broken. Verify by measuring computed values, injecting `*{transition:none}` to read end states, and dispatching `new Event('scroll')` manually.
+- **The in-app browser preview is heavily limited.** It cannot render `backdrop-filter` — it drops the *entire element's layer*, so a `.nav.solid` screenshot comes back blank even though the DOM is correct. It also does not advance CSS transitions (computed styles freeze at the *start* value, so a correctly-applied class looks like it did nothing) and throttles `requestAnimationFrame`, so GSAP reveals never run. Working code repeatedly *looked* broken. Verify by measuring computed values and injecting `*{transition:none}` to read end states. `scrollTo` **does** work, but only with `behavior:'instant'` — `html{scroll-behavior:smooth}` otherwise animates it and `scrollY` reads 0 in the same tick.
 - **Never run `npm run build` while `npm run dev` uses the same `.next`.** It poisons the cache and the dev server serves *stale CSS* — a change is on disk but not in the browser. Fix: `rm -rf .next` and restart dev.
 - **DNS:** registrar Namecheap. `A @ → 216.198.79.1`, `CNAME www → b224b41abe4b3ecb.vercel-dns-017.com`. **Do not touch the two TXT records or Mail Settings — `MX: smtp.google.com` is live Google Workspace email.**
 - The client's home router (Fritz!Box `192.168.178.1`) caches DNS aggressively; test on 5G before believing the site is down.
