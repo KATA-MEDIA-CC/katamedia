@@ -76,9 +76,21 @@ Almost all copy lives in **`lib/site.ts`**. Change it there, not in the pages.
 
 ## ⚠️ Open items
 
-1. **THE CONTACT FORM DOES NOT SEND.** Highest priority. `lib/enquiry.ts` is the single swap-in point and throws `NotConfiguredError` **on purpose** so no enquiry is ever silently lost — but every "Book a call" on the live site currently ends in *"The form isn't connected yet."* The client chose **ship now, wire right after**, and picked **Web3Forms** (needs one free access key) — Resend is the better long-term option.
-2. **`/approach` has never had a design pass** — it's the only page still as first drafted.
-3. **"Now booking · 2026"** still appears 3× on `/contact` (hero kicker, caption, meta description). The pill was removed from the hero as useless; the client may want these gone too.
+1. **`/approach` has never had a design pass** — it's the only page still as first drafted.
+2. **"Now booking · 2026"** still appears 3× on `/contact` (hero kicker, caption, meta description). The pill was removed from the hero as useless; the client may want these gone too.
+
+## Contact form (Web3Forms)
+
+Wired and verified end-to-end. `lib/enquiry.ts` is the only file that talks to the provider.
+
+- Enquiries go to **hello@katamedia.cc** — a Google **Group** (not an alias) with all three founders as members. Also `site.email`, and the fallback shown if sending fails.
+- Key lives in `NEXT_PUBLIC_WEB3FORMS_KEY` (`.env.local` locally, Vercel env vars in prod). **Public by design** — Web3Forms keys are meant to be embedded client-side and this one is inlined into the browser bundle. It only ever mails its own registered address.
+- **The site is static, so the key is baked in at BUILD time.** Changing it in Vercel does nothing until a redeploy.
+- **The fetch must stay client-side.** Web3Forms answers 403 "Use our API in client side" to server IPs on the free plan — a server action or route handler would break it. Moving to Resend is the fix if that's ever needed.
+- Checks `body.success`, not just `res.ok`: Web3Forms returns **200 with `{success:false}`** for a bad or throttled key, so `res.ok` alone would report a dropped enquiry as delivered.
+- Honeypot is the `website` field; if filled, the form shows the success state and sends nothing (verified: zero fetches).
+
+**The failure mode to watch:** the Google Group must allow **External** senders under Access settings → *Who can post*. Web3Forms sends from their own servers, so if External is blocked, Google bounces the mail **after** Web3Forms has already returned `success: true` — the site says "Sent" and the enquiry is gone. `NotConfiguredError` cannot catch this; it happens downstream. If enquiries ever stop arriving, check that setting first.
 
 ## Gotchas that cost real time
 
