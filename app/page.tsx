@@ -3,7 +3,8 @@ import { Hero } from "@/components/Hero";
 import { FeatureHead } from "@/components/FeatureHead";
 import { Reveal } from "@/components/Reveal";
 import { PillarIcon } from "@/components/Icons";
-import { pillars, site } from "@/lib/site";
+import { BookingButton } from "@/components/Booking";
+import { pillars, site, cta } from "@/lib/site";
 
 export default function Home() {
   return (
@@ -88,10 +89,10 @@ export default function Home() {
               read on whether we are the right people to help, and which founder
               you would be working with.
             </p>
-            <Link href="/contact" className="btn solid">
+            <BookingButton className="btn solid">
               <span className="dot" />
-              Book a call
-            </Link>
+              {cta.label}
+            </BookingButton>
           </Reveal>
         </div>
       </section>

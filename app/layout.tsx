@@ -4,6 +4,7 @@ import "./globals.css";
 import { Nav } from "@/components/Nav";
 import { Footer } from "@/components/Footer";
 import { Loader } from "@/components/Loader";
+import { BookingProvider } from "@/components/Booking";
 import { site } from "@/lib/site";
 
 const schibsted = Schibsted_Grotesk({
@@ -66,10 +67,12 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${schibsted.variable} ${spectral.variable}`}>
       <body>
-        <Loader />
-        <Nav />
-        <main>{children}</main>
-        <Footer />
+        <BookingProvider>
+          <Loader />
+          <Nav />
+          <main>{children}</main>
+          <Footer />
+        </BookingProvider>
       </body>
     </html>
   );

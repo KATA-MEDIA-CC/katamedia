@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState, type KeyboardEvent } from "react";
 import { nav, site, cta } from "@/lib/site";
+import { BookingButton } from "@/components/Booking";
 import { lockScroll, unlockScroll } from "@/lib/scrollLock";
 
 export function Nav() {
@@ -134,10 +135,10 @@ export function Nav() {
                 ))}
               </ul>
             </nav>
-            <Link href={cta.href} className="nav-cta">
+            <BookingButton className="nav-cta">
               <span className="d" aria-hidden="true" />
               {cta.label}
-            </Link>
+            </BookingButton>
             <button
               ref={burgerRef}
               className={`burger ${open ? "open" : ""}`}
@@ -177,14 +178,13 @@ export function Nav() {
             </li>
           ))}
         </ul>
-        <Link
-          href={cta.href}
+        <BookingButton
           className="sheet-cta btn dk"
-          onClick={() => setOpen(false)}
+          onActivate={() => setOpen(false)}
         >
           <span className="dot" aria-hidden="true" />
           {cta.label}
-        </Link>
+        </BookingButton>
         <div className="sheet-foot">
           <span>{site.tagline}</span>
           <Link href="/contact" onClick={() => setOpen(false)}>

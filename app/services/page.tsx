@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { Hero } from "@/components/Hero";
+import { BookingButton } from "@/components/Booking";
 import { FeatureHead } from "@/components/FeatureHead";
 import { Reveal } from "@/components/Reveal";
 import { PillarIcon } from "@/components/Icons";
@@ -105,10 +105,10 @@ export default function ServicesPage() {
               Not sure where you would <em>start?</em>
             </p>
             <p className="cta-body">That is what the call is for.</p>
-            <Link href={cta.href} className="btn solid">
+            <BookingButton className="btn solid">
               <span className="dot" />
               {cta.label}
-            </Link>
+            </BookingButton>
           </Reveal>
         </div>
       </section>

@@ -44,8 +44,31 @@ export type Enquiry = {
   name: string;
   email: string;
   company: string;
+  role: string;
+  side: string; // Brand | Agency | Other
+  need: string; // which pillar, or "Not sure yet"
+  timing: string;
   message: string;
 };
+
+// Qualification options — keep these in step with the four pillars.
+export const SIDES = ["Brand", "Agency", "Other"] as const;
+
+export const NEEDS = [
+  "Not sure yet",
+  "Production controlling",
+  "Strategic advisory",
+  "Organisational setup & studio builds",
+  "AI integration",
+] as const;
+
+export const TIMINGS = [
+  "Not sure yet",
+  "Now — it's live",
+  "Next 3 months",
+  "Later in 2026",
+  "Just exploring",
+] as const;
 
 export class NotConfiguredError extends Error {
   constructor() {
