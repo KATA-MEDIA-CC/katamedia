@@ -521,6 +521,57 @@ img {
   color: var(--clay);
   max-width: 13ch;
 }
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: clamp(14px, 1.8vw, 26px);
+}
+/* the one CTA, present in the bar on every page */
+.nav-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 15px;
+  border-radius: 100px;
+  font-family: var(--sans);
+  font-weight: 600;
+  font-size: 10px;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  border: 1px solid rgba(246, 242, 232, 0.42);
+  color: var(--paper);
+  transition: background 0.35s ease, color 0.35s ease, border-color 0.35s ease;
+}
+.nav-cta .d {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--clay);
+  flex: none;
+  transition: transform 0.35s ease;
+}
+.nav-cta:hover {
+  background: var(--paper);
+  color: var(--ink);
+  border-color: var(--paper);
+}
+.nav-cta:hover .d {
+  transform: scale(1.5);
+}
+.nav.solid .nav-cta {
+  border-color: rgba(26, 24, 19, 0.5);
+  color: var(--ink);
+}
+.nav.solid .nav-cta:hover {
+  background: var(--ink);
+  color: var(--paper);
+  border-color: var(--ink);
+}
+.sheet-cta {
+  align-self: flex-start;
+  margin-top: clamp(26px, 4vw, 40px);
+}
 .nav-links {
   display: flex;
   gap: clamp(14px, 1.8vw, 28px);
@@ -1031,7 +1082,7 @@ img {
 }
 
 /* ═══════════════════════════════════════════════════════════════════════
-   ROWS  (front doors, engagements, dimensions, deliverables)
+   ROWS  (entry points, dimensions, deliverables)
    ═══════════════════════════════════════════════════════════════════════ */
 .trio {
   grid-column: 1 / 13;
@@ -1170,6 +1221,159 @@ img {
   height: 5px;
   background: var(--clay);
   flex: none;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════
+   EXTENDED NETWORK (team)
+   ═══════════════════════════════════════════════════════════════════════ */
+.netgrid {
+  grid-column: 1 / 13;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--line);
+  border: 1px solid var(--line);
+}
+.netcard {
+  background: var(--paper);
+  padding: clamp(24px, 2.8vw, 38px);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  min-height: clamp(180px, 18vw, 230px);
+  transition: background 0.4s ease;
+}
+.netcard:hover {
+  background: var(--paper-2);
+}
+.nc-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+.nc-no {
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: clamp(22px, 2.6vw, 32px);
+  line-height: 0.8;
+  color: var(--clay);
+  letter-spacing: -0.02em;
+}
+.nc-status {
+  font-family: var(--sans);
+  font-weight: 600;
+  font-size: 8.5px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-60);
+  border: 1px solid var(--line);
+  border-radius: 100px;
+  padding: 5px 10px;
+  white-space: nowrap;
+}
+.netcard h3 {
+  font-family: var(--display);
+  font-weight: 600;
+  font-size: clamp(19px, 2vw, 26px);
+  line-height: 1.05;
+  margin: 0;
+  margin-top: auto;
+}
+.netcard p {
+  font-family: var(--serif);
+  font-size: clamp(13.5px, 1.25vw, 15.5px);
+  line-height: 1.5;
+  color: var(--ink-60);
+}
+
+/* ═══════════════════════════════════════════════════════════════════════
+   CONTACT SHEET — every route in, one film frame each
+   ═══════════════════════════════════════════════════════════════════════ */
+.csheet {
+  grid-column: 1 / 13;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(10px, 1.2vw, 16px);
+}
+.cframe {
+  aspect-ratio: 3 / 2;
+  background: var(--ink);
+  position: relative;
+  padding: clamp(18px, 2vw, 26px);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
+  transition: background 0.4s ease;
+}
+/* clay corner marks, as on the spec frames */
+.cframe::before,
+.cframe::after {
+  content: "";
+  position: absolute;
+  width: 9px;
+  height: 9px;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+.cframe::before {
+  top: 8px;
+  left: 8px;
+  border-top: 1.5px solid var(--clay);
+  border-left: 1.5px solid var(--clay);
+}
+.cframe::after {
+  bottom: 8px;
+  right: 8px;
+  border-bottom: 1.5px solid var(--clay);
+  border-right: 1.5px solid var(--clay);
+}
+a.cframe:hover::before,
+a.cframe:hover::after {
+  opacity: 1;
+}
+a.cframe:hover {
+  background: #221f18;
+}
+.cf-no {
+  font-family: var(--sans);
+  font-weight: 600;
+  font-size: 9px;
+  letter-spacing: 0.2em;
+  color: var(--clay);
+}
+.cf-body {
+  display: flex;
+  flex-direction: column;
+}
+.cf-nm {
+  font-family: var(--display);
+  font-weight: 600;
+  font-size: clamp(16px, 1.7vw, 21px);
+  line-height: 1.1;
+  color: var(--paper);
+  letter-spacing: -0.01em;
+}
+.cf-ro {
+  font-family: var(--sans);
+  font-weight: 600;
+  font-size: 8.5px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--clay);
+  margin-top: 6px;
+}
+.cf-v {
+  font-family: var(--sans);
+  font-size: 11.5px;
+  letter-spacing: 0.02em;
+  color: rgba(246, 242, 232, 0.7);
+  margin-top: 14px;
+  transition: color 0.4s ease;
+}
+a.cframe:hover .cf-v {
+  color: var(--paper);
 }
 
 /* ═══════════════════════════════════════════════════════════════════════
@@ -1365,6 +1569,10 @@ img {
   .nav-tag {
     display: none;
   }
+  /* the CTA moves into the sheet on phones so the bar stays clean */
+  .nav-cta {
+    display: none;
+  }
   .burger {
     display: block;
   }
@@ -1374,7 +1582,9 @@ img {
   .trio,
   .quad,
   .founders,
-  .metrics {
+  .metrics,
+  .netgrid,
+  .csheet {
     grid-template-columns: 1fr;
   }
   .hero--home {

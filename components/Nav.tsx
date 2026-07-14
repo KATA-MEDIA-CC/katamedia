@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState, type KeyboardEvent } from "react";
-import { nav, site } from "@/lib/site";
+import { nav, site, cta } from "@/lib/site";
 import { lockScroll, unlockScroll } from "@/lib/scrollLock";
 
 export function Nav() {
@@ -115,33 +115,39 @@ export function Nav() {
             <span className="nav-rule" aria-hidden="true" />
             <span className="nav-tag">{site.tagline}</span>
           </Link>
-          <nav aria-label="Primary">
-            <ul className="nav-links">
-              {nav.map((item) => (
-                <li key={item.href}>
-                  <Link
-                    href={item.href}
-                    className={isActive(item.href) ? "active" : ""}
-                    aria-current={isActive(item.href) ? "page" : undefined}
-                  >
-                    {item.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </nav>
-          <button
-            ref={burgerRef}
-            className={`burger ${open ? "open" : ""}`}
-            aria-label={open ? "Close menu" : "Open menu"}
-            aria-expanded={open}
-            aria-controls="mobile-menu"
-            onClick={() => setOpen((v) => !v)}
-          >
-            <span />
-            <span />
-            <span />
-          </button>
+          <div className="nav-right">
+            <nav aria-label="Primary">
+              <ul className="nav-links">
+                {nav.map((item) => (
+                  <li key={item.href}>
+                    <Link
+                      href={item.href}
+                      className={isActive(item.href) ? "active" : ""}
+                      aria-current={isActive(item.href) ? "page" : undefined}
+                    >
+                      {item.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </nav>
+            <Link href={cta.href} className="nav-cta">
+              <span className="d" aria-hidden="true" />
+              {cta.label}
+            </Link>
+            <button
+              ref={burgerRef}
+              className={`burger ${open ? "open" : ""}`}
+              aria-label={open ? "Close menu" : "Open menu"}
+              aria-expanded={open}
+              aria-controls="mobile-menu"
+              onClick={() => setOpen((v) => !v)}
+            >
+              <span />
+              <span />
+              <span />
+            </button>
+          </div>
         </div>
       </header>
 
@@ -168,6 +174,14 @@ export function Nav() {
             </li>
           ))}
         </ul>
+        <Link
+          href={cta.href}
+          className="sheet-cta btn dk"
+          onClick={() => setOpen(false)}
+        >
+          <span className="dot" aria-hidden="true" />
+          {cta.label}
+        </Link>
         <div className="sheet-foot">
           <span>{site.tagline}</span>
           <Link href="/contact" onClick={() => setOpen(false)}>

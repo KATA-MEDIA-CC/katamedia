@@ -7,11 +7,46 @@ import { founders, site, pageMetadata } from "@/lib/site";
 export const metadata: Metadata = pageMetadata({
   title: "Contact",
   description:
-    "Talk to Kata. Independent production advisory for brands and agencies — now booking 2026. Reach the founding partners directly.",
+    "Talk to Kata. Independent production advisory — now booking 2026. A 45 minute call, and an honest read within 24 hours.",
   path: "/contact",
 });
 
-const initial = (name: string) => name.trim()[0].toUpperCase();
+type Frame = {
+  no: string;
+  name: string;
+  label: string;
+  value: string;
+  href?: string;
+};
+
+// The contact sheet — every way in, one frame each.
+const frames: Frame[] = [
+  ...founders.map((f, i) => ({
+    no: String(i + 1).padStart(2, "0"),
+    name: f.name,
+    label: f.role,
+    value: f.email,
+    href: `mailto:${f.email}`,
+  })),
+  {
+    no: "04",
+    name: "The call",
+    label: "45 minutes",
+    value: "An honest read, back within 24 hours",
+  },
+  {
+    no: "05",
+    name: "Online",
+    label: "Web",
+    value: site.domain,
+  },
+  {
+    no: "06",
+    name: "Booking",
+    label: "Availability",
+    value: site.booking,
+  },
+];
 
 export default function ContactPage() {
   return (
@@ -25,40 +60,49 @@ export default function ContactPage() {
           </>
         }
         tag={site.tagline}
-        desc="Independent by design. On your side by choice. The first conversation is the front door — no deck, no pitch."
+        desc="Independent by design. On your side by choice. Tell us what you are trying to figure out — no deck, no pitch."
       />
 
-      {/* Founders */}
+      {/* The contact sheet */}
       <section className="feature">
         <div className="wrap">
           <FeatureHead
             no="01"
             title={
               <>
-                The <em>partners</em>
+                The contact <em>sheet</em>
               </>
             }
-            deck="Built by people who have done this work — from cost control to creative delivery. Reach any of us directly."
+            deck="Every way in, one frame each. Reach any of us directly — you will get a person, not a form."
           />
           <div className="g12">
-            <Reveal className="founders" stagger>
-              {founders.map((f) => (
-                <div className="founder" key={f.email}>
-                  <div className="f-av">
-                    <span>{initial(f.name)}</span>
-                  </div>
-                  <div>
-                    <div className="f-nm">{f.name}</div>
-                    <div className="f-ro">{f.role}</div>
-                  </div>
-                  <p className="f-note">{f.note}</p>
-                  <a className="f-mail" href={`mailto:${f.email}`}>
-                    <span className="d" />
-                    {f.email}
+            <Reveal className="csheet" stagger>
+              {frames.map((f) => {
+                const inner = (
+                  <>
+                    <span className="cf-no">{f.no}</span>
+                    <span className="cf-body">
+                      <span className="cf-nm">{f.name}</span>
+                      <span className="cf-ro">{f.label}</span>
+                      <span className="cf-v">{f.value}</span>
+                    </span>
+                  </>
+                );
+                return f.href ? (
+                  <a className="cframe" href={f.href} key={f.no}>
+                    {inner}
                   </a>
-                </div>
-              ))}
+                ) : (
+                  <div className="cframe" key={f.no}>
+                    {inner}
+                  </div>
+                );
+              })}
             </Reveal>
+          </div>
+          <div className="caption">
+            <span>Contact sheet · six frames</span>
+            <span className="r">Frames 01–03 are live — click to write</span>
           </div>
         </div>
       </section>
@@ -73,8 +117,8 @@ export default function ContactPage() {
             </p>
             <p className="st-sub">
               Kata is a media consultancy for the German-speaking market and
-              beyond. We&rsquo;re booking engagements for 2026 now — audits,
-              workshops and pilots first.
+              beyond. We&rsquo;re booking engagements for 2026 now — an audit, a
+              workshop or a pilot first.
             </p>
           </Reveal>
           <div className="g12">

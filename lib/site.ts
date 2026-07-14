@@ -57,10 +57,14 @@ export type NavItem = { label: string; href: string };
 
 export const nav: NavItem[] = [
   { label: "Home", href: "/" },
-  { label: "Approach", href: "/approach" },
   { label: "Services", href: "/services" },
+  { label: "Approach", href: "/approach" },
+  { label: "Team", href: "/team" },
   { label: "Contact", href: "/contact" },
 ];
+
+// The single call-to-action, surfaced in the nav on every page.
+export const cta = { label: "Book a call", href: "/contact" } as const;
 
 export const founders = [
   {
@@ -95,7 +99,7 @@ export const pillars = [
       "Cost reporting & variance analysis",
       "Vendor & supplier negotiation",
       "Buyout & rights management",
-      "The Kata Platform",
+      "Post-production cost control",
     ],
   },
   {
@@ -139,8 +143,8 @@ export const pillars = [
   },
 ] as const;
 
-// Three low-commitment entry points (How to start — three front doors)
-export const frontDoors = [
+// How we engage — the three low-commitment ways a relationship starts.
+export const entryPoints = [
   {
     no: "01",
     title: "Audit",
@@ -195,30 +199,37 @@ export const dimensions = [
   },
 ] as const;
 
-// Ways to engage
-export const engagements = [
+// The extended partner network — specialists working alongside the founders.
+// Roles are being filled; update `status` as each partner lands.
+export const partnerNetwork = [
   {
     no: "01",
-    kicker: "For live productions",
-    title: "Embedded Advisory",
-    body: "We sit alongside your team for the duration of a production — joining calls, reviewing documents, providing real-time input. Independent of the agency and the production company.",
+    discipline: "Finance",
+    body: "Cost modelling, financial governance, and the numbers underneath every production decision.",
+    status: "Joining soon",
   },
   {
     no: "02",
-    kicker: "For defined deliverables",
-    title: "Project-Based",
-    body: "Focused engagements with a clearly defined scope, timeline and tangible outcomes — from in-house builds and strategy frameworks to audits and studio setups.",
+    discipline: "Strategy",
+    body: "Brand and content strategy at the altitude where production decisions are actually made.",
+    status: "Joining soon",
   },
   {
     no: "03",
-    kicker: "For ongoing relationships",
-    title: "Retainer",
-    body: "A fixed monthly engagement covering an agreed scope. Suited to clients with regular production volumes or ongoing transformation through the year.",
+    discipline: "AI",
+    body: "Applied AI in production — tooling, workflow integration, and the governance around it.",
+    status: "Joining soon",
   },
   {
     no: "04",
-    kicker: "For the platform only",
-    title: "Platform Access",
-    body: "Subscription access to the Kata Platform — standalone or bundled with advisory. Pricing based on active productions and user seats.",
+    discipline: "Creative",
+    body: "Creative direction, and the bridge between what is conceived and what can be built.",
+    status: "Joining soon",
+  },
+  {
+    no: "05",
+    discipline: "Production",
+    body: "Specialist production capability across formats, markets and scales.",
+    status: "Joining soon",
   },
 ] as const;
