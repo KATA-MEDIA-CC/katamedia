@@ -8,7 +8,7 @@ import { site, pageMetadata } from "@/lib/site";
 export const metadata: Metadata = pageMetadata({
   title: "Team",
   description:
-    "The people behind Kata — three founding partners who have built, run and controlled productions, plus an extended network of specialists across finance, strategy, AI, creative and production.",
+    "The people behind Kata — three founding partners who have built, run and controlled productions, plus a network of specialists across finance, strategy, AI, creative, production, HR, venture, media and talent partnerships.",
   path: "/team",
 });
 
@@ -51,16 +51,13 @@ export default function TeamPage() {
             no="02"
             title={
               <>
-                The extended <em>network</em>
+                The <em>network</em>
               </>
             }
-            deck="Specialists we bring in when the work calls for them — curated, and never on anyone else's payroll. Open a sector to see who that is."
+            deck="Specialists we bring in when the work calls for them. Open a sector to see who that is."
           />
           <div className="g12">
             <Network />
-          </div>
-          <div className="caption">
-            <span>Nine sectors · more than one specialist behind each</span>
           </div>
         </div>
       </section>

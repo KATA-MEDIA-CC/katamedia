@@ -255,74 +255,70 @@ export const dimensions = [
   },
 ] as const;
 
-// The extended partner network — nine sectors, not nine people.
+// The network — nine sectors, not nine people.
 //
-// Deliberately unnamed: there is no single specialist per sector, there are
-// several, and which one comes in depends on the brief. Naming them would
-// promise the wrong thing (and date the moment someone moves on), so each tile
-// describes the KIND of person instead. `who` is what opens in the modal.
+// Deliberately unnamed: several specialists sit behind each sector and the
+// brief decides who comes in. Naming them would promise the wrong thing, and
+// date the moment someone moves on. `who` is what opens in the panel.
+//
+// On the writing: an earlier pass gave every sector an aphorism of the form
+// "Someone who has X, not just Y." Nine times. The antithesis is a tic and
+// repeating it is what makes copy read as machine-written — so the lead line is
+// gone, the sector name is the headline, and each paragraph is shaped
+// differently on purpose. Keep it that way.
 export const partnerNetwork = [
   {
     no: "01",
     discipline: "Finance",
     body: "Cost modelling, financial governance, and the numbers underneath every production decision.",
-    lead: "Someone who has signed the budget off, not just built it.",
-    who: "Controllers and heads of production finance who have carried real P&L responsibility inside a brand, an agency or a production company. People who can model a slate before it is committed, and who know which line in a bid is the one that actually moves.",
+    who: "Controllers and heads of production finance who have carried a real P&L — inside a brand, an agency, a production company. Ask them to model a slate before it is committed, or to find the line in a bid that actually moves.",
   },
   {
     no: "02",
     discipline: "Strategy",
     body: "Brand and content strategy at the altitude where production decisions are actually made.",
-    lead: "Someone who has decided what gets made, not only how.",
-    who: "Brand and content strategists who have sat on both the client and the agency side of the table. People who can tell you whether the work should exist before we spend a month costing it.",
+    who: "Brand and content strategists, client-side and agency-side. They work upstream of us: whether the work should exist at all, before anyone spends a month costing it.",
   },
   {
     no: "03",
     discipline: "AI",
     body: "Applied AI in production — tooling, workflow integration, and the governance around it.",
-    lead: "Someone who has shipped it, not demoed it.",
-    who: "Practitioners who have put AI into a live pipeline and lived with the result — the tooling, the integration, the governance. People who can tell the difference between a saving and a slide.",
+    who: "Practitioners, not evangelists. Each has put AI into a live pipeline and stayed for the consequences — the tooling, the integration, the governance, and the parts that quietly break.",
   },
   {
     no: "04",
     discipline: "Creative",
     body: "Creative direction, and the bridge between what is conceived and what can be built.",
-    lead: "Someone who has made the thing, not just approved it.",
-    who: "Creative directors and makers who have stood on both sides of the gap between the idea and the build. People who can protect the work through its constraints without pretending the constraints are not real.",
+    who: "Creative directors and makers who have stood on both sides of the gap between an idea and a build. They carry the work across it without losing what made it worth doing.",
   },
   {
     no: "05",
     discipline: "Production",
     body: "Specialist production capability across formats, markets and scales.",
-    lead: "Someone who has run this, at this scale, in this market.",
-    who: "Producers and heads of production with specialist depth — a format, a territory, a scale. The hand you bring in when the brief needs someone who has done exactly this before, not something adjacent.",
+    who: "A format, a territory, a scale. Producers with the specific depth a brief needs, brought in when it needs a hand that has done precisely this before.",
   },
   {
     no: "06",
     discipline: "HR",
     body: "Hiring, structure and retention for the people who actually make the work.",
-    lead: "Someone who has built the team, not just the org chart.",
-    who: "People and organisational specialists who have hired, restructured and held on to production talent. People who know what a production function needs in order to function — and what it costs when it does not.",
+    who: "Hiring, restructuring, retention. Specialists who have built production teams and kept them, and who can tell you what a production function costs when it is not working.",
   },
   {
     no: "07",
     discipline: "Venture",
     body: "Building the business around the work — new studios, new divisions, new companies.",
-    lead: "Someone who has built the business, not advised one.",
-    who: "Founders and operators who have started, scaled and sold companies. The people we bring in when a client is building something new and wants someone who has carried that risk personally, not read about it.",
+    who: "Founders and operators — started, scaled, sold. We bring them in when a client is building something new and wants someone who has carried that risk themselves.",
   },
   {
     no: "08",
     discipline: "Media",
     body: "Where the work lands, and how that shapes what gets made.",
-    lead: "Someone who knows where the work has to land.",
-    who: "Media and distribution specialists who understand how content behaves once it leaves the edit. People who work backwards from the channel to the brief, so production is not designing in the dark.",
+    who: "Media and distribution specialists. They understand how the work behaves after it leaves the edit, and they plan backwards from the channel to the brief.",
   },
   {
     no: "09",
     discipline: "Talent Partnerships",
     body: "Connecting brands with exceptional talent across entertainment, culture and sport.",
-    lead: "Someone with the relationships — and the judgement to use them.",
-    who: "Specialists who put brands together with exceptional talent across entertainment, culture and sport. People who know who is right, who is actually available, and what the deal should cost.",
+    who: "The people who put brands together with exceptional talent across entertainment, culture and sport. Who is right, who is actually available, and what the deal should cost.",
   },
 ] as const;

@@ -99,16 +99,14 @@ export function Network() {
           </button>
           {item && (
             <>
-              <p className="bk-k">
-                {item.no} · {item.discipline}
-              </p>
+              <p className="bk-k">The network · {item.no}</p>
               <p className="bk-h" id="nw-title">
-                {item.lead}
+                {item.discipline}
               </p>
               <p className="bk-b">{item.who}</p>
               <p className="nw-foot">
-                We do not name the network. There is more than one specialist
-                behind every sector — the brief decides which one comes in.
+                We don&rsquo;t name the network. Who comes in depends on the
+                brief.
               </p>
             </>
           )}
