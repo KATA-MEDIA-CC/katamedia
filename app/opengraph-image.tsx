@@ -75,7 +75,7 @@ export default async function OpengraphImage() {
             fontWeight: 600,
           }}
         >
-          <div style={{ display: "flex" }}>Independent Production Advisory</div>
+          <div style={{ display: "flex" }}>{site.descriptor}</div>
           <div style={{ display: "flex" }}>{site.domain}</div>
         </div>
 

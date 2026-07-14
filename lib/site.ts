@@ -16,9 +16,17 @@ export const site = {
   // fallback shown if the form can't send. Founders' direct addresses are on
   // the founders list below.
   email: "hello@katamedia.cc",
-  descriptor: "Independent Production Advisory",
+  // Drives the sitewide <title>, the OG title and the home hero kicker.
+  // "Architects" over "Advisory" is a deliberate positioning trade: advisors
+  // advise on decisions, architects design and build. It costs us the search
+  // term — nobody googles "production architects" — so `short` below carries
+  // the discoverable language instead. See it as brand-first, SEO-second.
+  descriptor: "Independent Production Architects",
+  // Doubles as the home meta description, so it has to do two jobs: lead with
+  // what we build (not with our independence — that's a controller's opening),
+  // and still contain the words people actually search for.
   short:
-    "Independent production advisory for brands and agencies — without the conflicts built into the system.",
+    "We design and build how brands and agencies make content — production strategy, capability, AI and cost. Independently.",
   belief: "We sit beside the decision — never above the process, never inside the margin.",
   booking: "Now booking · 2026",
 } as const;

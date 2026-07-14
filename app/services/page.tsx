@@ -9,7 +9,7 @@ import { pillars, entryPoints, site, cta, pageMetadata } from "@/lib/site";
 export const metadata: Metadata = pageMetadata({
   title: "Services",
   description:
-    "How we engage — an audit, a workshop or a pilot, fixed fee. Then four pillars: production controlling, strategic advisory, organisational setup and studio builds, and AI integration.",
+    "How we engage — an audit, a workshop or a pilot, fixed fee. Then four pillars: strategic advisory, organisational setup and studio builds, AI integration, and production controlling.",
   path: "/services",
 });
 

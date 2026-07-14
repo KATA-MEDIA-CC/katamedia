@@ -16,7 +16,7 @@ export default function Home() {
           <>
             Better
             <br />
-            <em>decisions.</em>
+            <em>by design.</em>
           </>
         }
         tag={site.tagline}
