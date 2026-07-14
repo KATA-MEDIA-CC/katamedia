@@ -2106,6 +2106,14 @@ a.cframe:hover .cf-v {
     grid-template-rows: none;
     display: block;
   }
+  /* .f-txt's height:100% resolves against row 2 of .founder's subgrid on
+     desktop — but .founder is a plain block here, so 100% became the WHOLE
+     column, plate included. .f-txt overflowed by exactly the plate's height and
+     margin-top:auto threw the email that far past the section, over the next
+     heading. Stacked there is nothing to bottom-align to anyway. */
+  .f-txt {
+    height: auto;
+  }
   /* Phones: no blank space at the top — every hero starts straight under the
      menu and hugs its content, on every page. */
   .hero,
