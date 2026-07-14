@@ -8,7 +8,7 @@ import { founders, site, pageMetadata } from "@/lib/site";
 export const metadata: Metadata = pageMetadata({
   title: "Contact",
   description:
-    "Talk to Kata. Independent production advisory — now booking 2026. A 45 minute call, and an honest read within 24 hours.",
+    "Talk to Kata. Independent production advisory, now booking 2026. A 45 minute call, and an honest read within 24 hours.",
   path: "/contact",
 });
 
@@ -24,7 +24,7 @@ export default function ContactPage() {
           </>
         }
         tag={site.tagline}
-        desc="Tell us what you are trying to figure out — no deck, no pitch."
+        desc="Tell us what you are trying to figure out. No deck, no pitch."
       />
 
       {/* The form */}

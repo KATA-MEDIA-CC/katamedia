@@ -26,8 +26,8 @@ export const site = {
   // what we build (not with our independence — that's a controller's opening),
   // and still contain the words people actually search for.
   short:
-    "We design and build how brands and agencies make content — production strategy, capability, AI and cost. Independently.",
-  belief: "We sit beside the decision — never above the process, never inside the margin.",
+    "We design and build how brands and agencies make content: production strategy, capability, AI and cost. Independently.",
+  belief: "We sit beside the decision, never above the process and never inside the margin.",
   booking: "Now booking · 2026",
 } as const;
 
@@ -44,7 +44,7 @@ export function pageMetadata({
   path: string;
 }): Metadata {
   const url = `${site.url}${path === "/" ? "" : path}`;
-  const ogTitle = `${title} — ${site.name}`;
+  const ogTitle = `${title} · ${site.name}`;
   return {
     title,
     description,
@@ -162,7 +162,7 @@ export const pillars = [
     no: "02",
     icon: "organisation" as const,
     title: "Organisational Setup & Studio Builds",
-    lead: "Building the production capability organisations need — from scratch or from inside.",
+    lead: "Building the production capability organisations need, from scratch or from inside.",
     items: [
       "In-house department setup",
       "Agency production builds",
@@ -175,7 +175,7 @@ export const pillars = [
     no: "03",
     icon: "ai" as const,
     title: "AI Integration & Transformation",
-    lead: "Practical AI adoption in production — with governance, training, and real results.",
+    lead: "Practical AI adoption in production, with governance, training, and real results.",
     items: [
       "AI readiness audit",
       "Tool selection & evaluation",
@@ -205,19 +205,19 @@ export const entryPoints = [
     no: "01",
     title: "Audit",
     meta: "2–4 weeks · fixed fee",
-    body: "Your production setup — mapped, benchmarked and scored across all six dimensions of the Method.",
+    body: "Your production setup: mapped, benchmarked and scored across all six dimensions of the Method.",
   },
   {
     no: "02",
     title: "Workshop",
     meta: "1–2 days · fixed fee",
-    body: "One topic — AI readiness, production strategy or process — worked through with your team, ending in a written deliverable.",
+    body: "One topic (AI readiness, production strategy or process), worked through with your team, ending in a written deliverable.",
   },
   {
     no: "03",
     title: "Pilot",
     meta: "4–8 weeks · scoped fee",
-    body: "A pressing project, run end to end with us embedded — from brief through to handover.",
+    body: "A pressing project, run end to end with us embedded, from brief through to handover.",
   },
 ] as const;
 
@@ -231,7 +231,7 @@ export const dimensions = [
   {
     no: "02",
     title: "Technology & Systems",
-    body: "We assess the tech stack, integration health and adoption — whether the investment is serving production goals or creating new complexity.",
+    body: "We assess the tech stack, integration health and adoption: whether the investment is serving production goals or creating new complexity.",
   },
   {
     no: "03",
@@ -246,12 +246,12 @@ export const dimensions = [
   {
     no: "05",
     title: "Pipeline & Quality",
-    body: "We trace content from brief to archive and evaluate quality control, rework rates and feedback loops — where quality is made and where it erodes.",
+    body: "We trace content from brief to archive and evaluate quality control, rework rates and feedback loops: where quality is made and where it erodes.",
   },
   {
     no: "06",
     title: "Vendor & Partner",
-    body: "We segment the vendor portfolio and assess contract structure and service levels. Not all vendors are equal — most brands treat them as if they are.",
+    body: "We segment the vendor portfolio and assess contract structure and service levels. Not all vendors are equal. Most brands treat them as if they are.",
   },
 ] as const;
 
@@ -271,7 +271,7 @@ export const partnerNetwork = [
     no: "01",
     discipline: "Finance",
     body: "Cost modelling, financial governance, and the numbers underneath every production decision.",
-    who: "Controllers and heads of production finance who have carried a real P&L — inside a brand, an agency, a production company. Ask them to model a slate before it is committed, or to find the line in a bid that actually moves.",
+    who: "Controllers and heads of production finance who have carried a real P&L inside a brand, an agency or a production company. Ask them to model a slate before it is committed, or to find the line in a bid that actually moves.",
   },
   {
     no: "02",
@@ -282,8 +282,8 @@ export const partnerNetwork = [
   {
     no: "03",
     discipline: "AI",
-    body: "Applied AI in production — tooling, workflow integration, and the governance around it.",
-    who: "Practitioners, not evangelists. Each has put AI into a live pipeline and stayed for the consequences — the tooling, the integration, the governance, and the parts that quietly break.",
+    body: "Applied AI in production: tooling, workflow integration, and the governance around it.",
+    who: "Practitioners, not evangelists. Each has put AI into a live pipeline and stayed for the consequences: the tooling, the integration, the governance, and the parts that quietly break.",
   },
   {
     no: "04",
@@ -306,8 +306,8 @@ export const partnerNetwork = [
   {
     no: "07",
     discipline: "Venture",
-    body: "Building the business around the work — new studios, new divisions, new companies.",
-    who: "Founders and operators — started, scaled, sold. We bring them in when a client is building something new and wants someone who has carried that risk themselves.",
+    body: "Building the business around the work: new studios, new divisions, new companies.",
+    who: "Founders and operators. Started, scaled, sold. We bring them in when a client is building something new and wants someone who has carried that risk themselves.",
   },
   {
     no: "08",

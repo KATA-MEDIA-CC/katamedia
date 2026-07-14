@@ -52,7 +52,7 @@ export function ContactForm() {
       <div className="form-done">
         <p className="fd-k">Sent</p>
         <p className="fd-h">
-          Thank you — we&rsquo;ll come back within <em>24 hours.</em>
+          Thank you. We&rsquo;ll come back within <em>24 hours.</em>
         </p>
         <p className="fd-b">
           You&rsquo;ll get an honest read on whether we&rsquo;re the right people
@@ -182,7 +182,7 @@ export function ContactForm() {
         </button>
         {status === "unwired" && (
           <p className="f-msg" role="alert">
-            The form isn&rsquo;t connected yet — please email us directly at{" "}
+            The form isn&rsquo;t connected yet. Please email us directly at{" "}
             <a href={`mailto:${FALLBACK}`}>{FALLBACK}</a>.
           </p>
         )}

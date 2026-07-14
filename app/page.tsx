@@ -39,7 +39,7 @@ export default function Home() {
                 What we <em>do</em>
               </>
             }
-            deck="Four pillars, one partner — strategy, organisation, AI and cost, held to a single independent standard."
+            deck="Four pillars, one partner: strategy, organisation, AI and cost, held to a single independent standard."
           />
           <div className="g12">
             <Reveal className="pillars min">

@@ -95,7 +95,7 @@ export function Nav() {
           <Link
             href="/"
             className="nav-lockup"
-            aria-label={`${site.name} — home`}
+            aria-label={`${site.name}, home`}
           >
             <span className="nav-mk">{site.wordmark}</span>
             <span className="nav-rule" aria-hidden="true" />

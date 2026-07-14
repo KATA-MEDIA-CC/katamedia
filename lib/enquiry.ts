@@ -50,7 +50,7 @@ export const NEEDS = [
 
 export const TIMINGS = [
   "Not sure yet",
-  "Now — it's live",
+  "Now, it's live",
   "Next 3 months",
   "Later in 2026",
   "Just exploring",
@@ -88,7 +88,7 @@ export async function submitEnquiry(data: Enquiry): Promise<void> {
       signal: AbortSignal.timeout(20_000),
       body: JSON.stringify({
         access_key: KEY,
-        subject: `Enquiry — ${data.name}, ${data.company}`,
+        subject: `Enquiry: ${data.name}, ${data.company}`,
         from_name: "katamedia.cc",
         // so replying in the mail client goes straight back to them
         replyto: data.email,
@@ -97,7 +97,7 @@ export async function submitEnquiry(data: Enquiry): Promise<void> {
         Name: data.name,
         Email: data.email,
         Company: data.company,
-        Role: data.role || "—",
+        Role: data.role || "Not given",
         "They are a": data.side,
         "What they need": data.need,
         Timing: data.timing,

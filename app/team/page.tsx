@@ -8,7 +8,7 @@ import { site, pageMetadata } from "@/lib/site";
 export const metadata: Metadata = pageMetadata({
   title: "Team",
   description:
-    "The people behind Kata — three founding partners who have built, run and controlled productions, plus a network of specialists across finance, strategy, AI, creative, production, HR, venture, media and talent partnerships.",
+    "The people behind Kata. Three founding partners who have built, run and controlled productions, plus a network of specialists across finance, strategy, AI, creative, production, HR, venture, media and talent partnerships.",
   path: "/team",
 });
 
@@ -36,7 +36,7 @@ export default function TeamPage() {
                 The <em>founders</em>
               </>
             }
-            deck="Built by people who have done this work — on set, in the edit, and in the negotiation. Between us, decades of hands-on production."
+            deck="Built by people who have done this work. On set, in the edit, and in the negotiation. Between us, decades of hands-on production."
           />
           <div className="g12">
             <Founders />

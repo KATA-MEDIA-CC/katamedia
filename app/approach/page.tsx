@@ -8,7 +8,7 @@ import { dimensions, site, pageMetadata } from "@/lib/site";
 export const metadata: Metadata = pageMetadata({
   title: "Approach",
   description:
-    "How Kata works — independent judgement applied in time. The Kata Method: six dimensions, one roadmap. And four ways to engage.",
+    "How Kata works. Independent judgement applied in time. The Kata Method: six dimensions, one roadmap. And four ways to engage.",
   path: "/approach",
 });
 
@@ -36,8 +36,8 @@ export default function ApproachPage() {
             </p>
             <p className="st-sub">
               Most production advice comes from people with a financial stake in
-              the outcome. We don&rsquo;t. We sit beside the decision — never
-              above the process, never inside the margin — and every
+              the outcome. We don&rsquo;t. We sit beside the decision, never
+              above the process and never inside the margin. Every
               recommendation is grounded in what actually happens on set, in the
               edit, and in the negotiation.
             </p>
@@ -55,7 +55,7 @@ export default function ApproachPage() {
                 The <em>method</em>
               </>
             }
-            deck="Most production problems are operational, not creative. Six dimensions are how we diagnose them — and build one clear roadmap."
+            deck="Most production problems are operational, not creative. Six dimensions are how we diagnose them, and build one clear roadmap."
           />
           <div className="g12">
             <Reveal className="trio" stagger>
@@ -69,7 +69,7 @@ export default function ApproachPage() {
             </Reveal>
           </div>
           <div className="caption">
-            <span>Diagnostic · Roadmap · Recommendation — yours to keep</span>
+            <span>Diagnostic · Roadmap · Recommendation · yours to keep</span>
             <span className="r">RAG-scored across all six dimensions</span>
           </div>
         </div>
@@ -85,7 +85,7 @@ export default function ApproachPage() {
             </p>
             <p className="st-sub">
               Not a production company. Not an agency. No financial ties to the
-              directors or production companies we recommend — so our advice is
+              directors or production companies we recommend, so our advice is
               only ever in the client&rsquo;s interest.
             </p>
           </Reveal>

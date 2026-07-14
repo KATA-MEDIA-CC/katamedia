@@ -9,7 +9,7 @@ import { pillars, entryPoints, site, cta, pageMetadata } from "@/lib/site";
 export const metadata: Metadata = pageMetadata({
   title: "Services",
   description:
-    "How we engage — an audit, a workshop or a pilot, fixed fee. Then four pillars: strategic advisory, organisational setup and studio builds, AI integration, and production controlling.",
+    "How we engage. An audit, a workshop or a pilot, fixed fee. Then four pillars: strategic advisory, organisational setup and studio builds, AI integration, and production controlling.",
   path: "/services",
 });
 
@@ -37,7 +37,7 @@ export default function ServicesPage() {
                 How we <em>engage</em>
               </>
             }
-            deck="Every relationship starts one of three ways — fixed scope, fixed fee, and a recommendation you keep whatever you decide next."
+            deck="Every relationship starts one of three ways: fixed scope, fixed fee, and a recommendation you keep whatever you decide next."
           />
           <div className="g12">
             <Reveal className="trio" stagger>
@@ -52,7 +52,7 @@ export default function ServicesPage() {
             </Reveal>
           </div>
           <div className="caption">
-            <span>Each one ends in a written recommendation — yours to keep.</span>
+            <span>Each one ends in a written recommendation. Yours to keep.</span>
             <span className="r">No retainer required to start</span>
           </div>
         </div>
@@ -68,7 +68,7 @@ export default function ServicesPage() {
                 Four <em>pillars</em>
               </>
             }
-            deck="Where the work goes from there — one partner across cost, strategy, organisation and AI, held to a single independent standard."
+            deck="Where the work goes from there. One partner across strategy, organisation, AI and cost, held to a single independent standard."
           />
           <div className="g12">
             <Reveal className="pillars">
