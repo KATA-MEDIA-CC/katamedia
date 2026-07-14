@@ -460,15 +460,20 @@ img {
 /* ═══════════════════════════════════════════════════════════════════════
    NAV
    ═══════════════════════════════════════════════════════════════════════ */
-/* frosted-glass floating menu, inset from the edges */
+/* The dock: flush and bare at the top of the page, then it drops and the glass
+   contracts inward into a floating bar. Expo-out curve — decisive, no bounce. */
 .nav {
   position: fixed;
-  top: clamp(10px, 1.4vw, 18px);
+  top: 0;
   left: 0;
   right: 0;
   z-index: 100;
   padding: 0 clamp(12px, 2.4vw, 26px);
   pointer-events: none;
+  transition: top 0.55s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.nav.solid {
+  top: clamp(8px, 1.2vw, 16px);
 }
 .nav-in {
   pointer-events: auto;
@@ -488,29 +493,34 @@ img {
 .nav-in::before {
   content: "";
   position: absolute;
-  inset: 0;
+  top: 0;
+  bottom: 0;
+  /* starts wider than the bar and square, then contracts in and rounds off —
+     the panel docks rather than just fading. Animating left/right (not scale)
+     keeps the backdrop blur from re-sampling and shimmering. */
+  left: -52px;
+  right: -52px;
   z-index: -1;
-  border-radius: 16px;
-  /* Real glass: a 20% tint, with the blur and saturation doing the work —
-     not an opaque white bar. */
+  border-radius: 0;
+  /* Real glass: a 20% tint, with a deep blur and saturation doing the work. */
   background: rgba(246, 242, 232, 0.2);
-  backdrop-filter: blur(26px) saturate(1.9);
-  -webkit-backdrop-filter: blur(26px) saturate(1.9);
+  backdrop-filter: blur(28px) saturate(1.7);
+  -webkit-backdrop-filter: blur(28px) saturate(1.7);
   /* a dark hairline reads on paper, the inner highlight reads on ink */
   border: 1px solid rgba(26, 24, 19, 0.08);
   box-shadow: 0 18px 44px -30px rgba(26, 24, 19, 0.45),
     inset 0 1px 0 rgba(255, 255, 255, 0.38);
   opacity: 0;
-  transform: translateY(-8px);
-  /* one duration, one ease, no scale — scaling a backdrop-filter re-samples
-     the blur every frame and shimmers, which is what looked sloppy */
-  transition: opacity 0.42s cubic-bezier(0.22, 0.7, 0.2, 1),
-    transform 0.42s cubic-bezier(0.22, 0.7, 0.2, 1);
-  will-change: opacity, transform;
+  transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+    left 0.55s cubic-bezier(0.16, 1, 0.3, 1),
+    right 0.55s cubic-bezier(0.16, 1, 0.3, 1),
+    border-radius 0.55s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .nav.solid .nav-in::before {
   opacity: 1;
-  transform: none;
+  left: 0;
+  right: 0;
+  border-radius: 16px;
 }
 @media (prefers-reduced-motion: reduce) {
   .nav-in::before {
