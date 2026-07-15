@@ -217,7 +217,7 @@ export const entryPoints = [
     no: "01",
     title: "Audit",
     meta: "2–4 weeks · fixed fee",
-    body: "Your production setup: mapped, benchmarked and scored across all six dimensions of the Method.",
+    body: "Your production setup: mapped, benchmarked and scored across all six dimensions of the Method. It typically surfaces 10 to 20% in recoverable cost.",
   },
   {
     no: "02",
