@@ -26,7 +26,7 @@ export const site = {
   // what we build (not with our independence — that's a controller's opening),
   // and still contain the words people actually search for.
   short:
-    "We design and build how brands and agencies make content: production strategy, capability, AI and cost. Independently.",
+    "We design and build how brands and agencies make content: production strategy, capability, AI and cost. We don't run your productions. We design the system they run in. Independently.",
   belief: "We sit beside the decision, never above the process and never inside the margin.",
   booking: "Now booking · 2026",
 } as const;

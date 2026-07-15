@@ -23,17 +23,6 @@ export default function Home() {
         desc={site.short}
       />
 
-      <section className="statement lead-in">
-        <div className="wrap">
-          <Reveal>
-            <p className="st-quote">
-              We don&rsquo;t run your productions. We design the{" "}
-              <em>system</em> they run in.
-            </p>
-          </Reveal>
-        </div>
-      </section>
-
       {/* What we do — four pillars, compact.
           Sits directly under the hero on purpose: what we sell has to be the
           first thing after the name, not the third. The conviction band that
