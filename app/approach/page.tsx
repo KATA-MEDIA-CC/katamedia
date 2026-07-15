@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { Hero } from "@/components/Hero";
 import { FeatureHead } from "@/components/FeatureHead";
 import { Reveal } from "@/components/Reveal";
-import { dimensions, site, pageMetadata } from "@/lib/site";
+import { dimensions, site, cta, pageMetadata } from "@/lib/site";
+import { BookingButton } from "@/components/Booking";
 
 export const metadata: Metadata = pageMetadata({
   title: "Approach",
@@ -93,31 +93,28 @@ export default function ApproachPage() {
               directors, production companies. From the inside.
             </p>
           </Reveal>
-          <div style={{ marginTop: "clamp(40px,5vw,64px)" }}>
-            <Reveal>
-              <Link href="/contact" className="btn dk">
-                <span className="dot" />
-                Talk to us
-              </Link>
-            </Reveal>
-          </div>
         </div>
       </section>
 
-      {/* The self-audit. Reachable from here only: it is deliberately absent
-          from the nav, so this link is its single front door. */}
-      <section className="feature">
+      {/* Closing CTA, the same band Home and Services end on */}
+      <section className="feature cta-band">
         <div className="wrap">
-          <Reveal className="audit-cta">
-            <p className="ac-h">
-              Score yourself <em>first.</em>
+          <Reveal className="cta-inner">
+            <p className="st-kick" style={{ color: "var(--clay-d)" }}>
+              — Start with a conversation —
             </p>
-            <p className="ac-b">
-              Eighteen statements, six dimensions, ten minutes.
+            <p className="cta-line">
+              Tell us what you are trying to <em>figure out.</em>
             </p>
-            <Link href="/self-audit" className="clink ac-link">
-              The Self-Audit →
-            </Link>
+            <p className="cta-body">
+              A 45 minute call. We will come back within 24 hours with an honest
+              read on whether we are the right people to help, and which founder
+              you would be working with.
+            </p>
+            <BookingButton className="btn solid">
+              <span className="dot" />
+              {cta.label}
+            </BookingButton>
           </Reveal>
         </div>
       </section>

@@ -22,11 +22,14 @@ export const site = {
   // term — nobody googles "production architects" — so `short` below carries
   // the discoverable language instead. See it as brand-first, SEO-second.
   descriptor: "Independent Production Architects",
-  // Doubles as the home meta description, so it has to do two jobs: lead with
-  // what we build (not with our independence — that's a controller's opening),
-  // and still contain the words people actually search for.
+  // The home hero's only body line, and the home meta description. It used to
+  // be one of two: a statement band right beneath it said "We don't run your
+  // productions. We design the system they run in." Two sentences making the
+  // same claim, back to back, is clutter, so they are merged here. Leads with
+  // what we build (never with our independence — that's a controller's
+  // opening) and still carries a term people search for.
   short:
-    "We design and build how brands and agencies make content: production strategy, capability, AI and cost. Independently.",
+    "We don't run your productions. We design the system they run in: production strategy, capability, AI and cost. Independently.",
   belief: "We sit beside the decision, never above the process and never inside the margin.",
   booking: "Now booking · 2026",
 } as const;
@@ -234,68 +237,36 @@ export const entryPoints = [
 ] as const;
 
 // The Kata Method: six dimensions.
-// `statements` powers /self-audit. They live here, on the dimensions
-// themselves, so the audit can never drift from the Method it claims to score.
 export const dimensions = [
   {
     no: "01",
     title: "Workflow & Process",
     body: "We map the end-to-end flow from brief to delivery and quantify where time and money are lost. Most waste is invisible until someone maps it.",
-    statements: [
-      "Brief-to-delivery is mapped, end to end.",
-      "We can say where time and money leak, in numbers.",
-      "Approval rounds are fixed, and held.",
-    ],
   },
   {
     no: "02",
     title: "Technology & Systems",
     body: "We assess the tech stack, integration health and adoption: whether the investment is serving production goals or creating new complexity.",
-    statements: [
-      "The stack serves production, not the other way round.",
-      "Tools are integrated. Nothing critical lives in email.",
-      "Adoption is measured, not assumed.",
-    ],
   },
   {
     no: "03",
     title: "Budget & Resource",
     body: "We examine budget structure, cost-variance patterns and financial governance across the production lifecycle.",
-    statements: [
-      "Budgets have one structure, used everywhere.",
-      "Variances surface during production, not after.",
-      "We know our real cost per asset.",
-    ],
   },
   {
     no: "04",
     title: "Team & Capability",
     body: "We map roles, decision rights, capability coverage and key-person risk. Who does what, who decides what, and what happens when someone leaves.",
-    statements: [
-      "Roles and decision rights are written down.",
-      "No single person is a point of failure.",
-      "Capability gaps are known, and planned for.",
-    ],
   },
   {
     no: "05",
     title: "Pipeline & Quality",
     body: "We trace content from brief to archive and evaluate quality control, rework rates and feedback loops: where quality is made and where it erodes.",
-    statements: [
-      "Content is traceable from brief to archive.",
-      "Rework is tracked, and it is falling.",
-      "Quality is checked where it is made, not at the end.",
-    ],
   },
   {
     no: "06",
     title: "Vendor & Partner",
     body: "We segment the vendor portfolio and assess contract structure and service levels. Not all vendors are equal. Most brands treat them as if they are.",
-    statements: [
-      "Vendors are segmented, not treated as equals.",
-      "Contracts and service levels are current.",
-      "Every key rate has been benchmarked this year.",
-    ],
   },
 ] as const;
 
