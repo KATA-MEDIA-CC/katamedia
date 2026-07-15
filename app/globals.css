@@ -2240,15 +2240,8 @@ a.cframe:hover .cf-v {
 }
 
 
-/* The lead-in statement carries a longer line than .st-quote is built for
-   (20ch at up to 74px). Same device, sized for its length. */
 .statement.lead-in {
   padding: clamp(46px, 5.4vw, 76px) 0 0;
-}
-.statement.lead-in .st-quote {
-  font-size: clamp(24px, 3.7vw, 48px);
-  line-height: 1.12;
-  max-width: 26ch;
 }
 
 /* the proof line under a grid. It is the only number on the page, so it gets

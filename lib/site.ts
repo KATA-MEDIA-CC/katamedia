@@ -22,14 +22,11 @@ export const site = {
   // term — nobody googles "production architects" — so `short` below carries
   // the discoverable language instead. See it as brand-first, SEO-second.
   descriptor: "Independent Production Architects",
-  // The home hero's only body line, and the home meta description. It used to
-  // be one of two: a statement band right beneath it said "We don't run your
-  // productions. We design the system they run in." Two sentences making the
-  // same claim, back to back, is clutter, so they are merged here. Leads with
-  // what we build (never with our independence — that's a controller's
-  // opening) and still carries a term people search for.
+  // Doubles as the home meta description, so it has to do two jobs: lead with
+  // what we build (not with our independence — that's a controller's opening),
+  // and still contain the words people actually search for.
   short:
-    "We don't run your productions. We design the system they run in: production strategy, capability, AI and cost. Independently.",
+    "We design and build how brands and agencies make content: production strategy, capability, AI and cost. Independently.",
   belief: "We sit beside the decision, never above the process and never inside the margin.",
   booking: "Now booking · 2026",
 } as const;
