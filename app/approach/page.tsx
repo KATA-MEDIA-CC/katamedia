@@ -88,6 +88,10 @@ export default function ApproachPage() {
               directors or production companies we recommend, so our advice is
               only ever in the client&rsquo;s interest.
             </p>
+            <p className="st-sub">
+              Nobody knows the German market like we do. Rates, rosters,
+              directors, production companies. From the inside.
+            </p>
           </Reveal>
           <div style={{ marginTop: "clamp(40px,5vw,64px)" }}>
             <Reveal>
@@ -97,6 +101,24 @@ export default function ApproachPage() {
               </Link>
             </Reveal>
           </div>
+        </div>
+      </section>
+
+      {/* The self-audit. Reachable from here only: it is deliberately absent
+          from the nav, so this link is its single front door. */}
+      <section className="feature">
+        <div className="wrap">
+          <Reveal className="audit-cta">
+            <p className="ac-h">
+              Score yourself <em>first.</em>
+            </p>
+            <p className="ac-b">
+              Eighteen statements, six dimensions, ten minutes.
+            </p>
+            <Link href="/self-audit" className="clink ac-link">
+              The Self-Audit →
+            </Link>
+          </Reveal>
         </div>
       </section>
     </>

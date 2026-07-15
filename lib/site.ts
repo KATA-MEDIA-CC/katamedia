@@ -100,6 +100,7 @@ export const founders = [
     role: "Strategy, organisational design and advisory",
     email: "justin@katamedia.cc",
     notes: [
+      "Fifteen years leading VFX, production and animation companies. The Mill, Stink, Psyop. Three companies built from scratch. Ten years in the UK.",
       "Production leader with extensive experience building and running production functions at agency and brand level across Europe.",
       "Has operated at every level of high end commercial production, from the set to the boardroom. Knows what it takes to deliver creatively demanding, commercially complex campaigns, and what it takes to lead the organisations that produce them through growth, transition, and change.",
       "Specialist in production strategy, organisational transformation, and sustainable structures for brands and agencies navigating a shifting market.",
@@ -114,6 +115,7 @@ export const founders = [
     role: "Strategy, production leadership and executive production",
     email: "cornelius@katamedia.cc",
     notes: [
+      "Twenty-five years at Markenfilm, seven of them as Managing Director.",
       "Production controlling and advisory specialist with deep market knowledge across German and European TVC, content, and campaign production.",
       "Has built and managed production budgets across formats, from small social campaigns to large scale international shoots. Knows what things cost, what gets padded, and where clients are being underserved.",
       "Specialist in the German market. Its rates, its production companies, its directors, and its dynamics.",
@@ -128,6 +130,7 @@ export const founders = [
     role: "Production leadership, operations and advisory",
     email: "jankel@katamedia.cc",
     notes: [
+      "Twelve years at Jung von Matt, running production across formats and scales.",
       "Production leader with deep experience across agency production. Understands how TVC, content, and campaign production works, from idea to execution.",
       "Has built and managed production across formats and scales, from agile content to large international campaigns. Knows how to run complex productions, align teams, and deliver against creative and commercial demands.",
       "Specialist in production structures, processes, and budgets, and where value is created or lost.",
@@ -139,21 +142,27 @@ export const founders = [
   },
 ] as const;
 
-// The four service pillars (from the pitch — Four pillars. One partner.)
+// The four service pillars (from the pitch: Four pillars. One partner.)
 // Ordered as the arc we actually work in: design the system, build it,
-// modernise it, then run it with rigour. Controlling sits last deliberately —
+// modernise it, then run it with rigour. Controlling sits last deliberately:
 // it is the proof of discipline, not the identity. The numbers are read as a
 // hierarchy claim, so this order IS the positioning: change it with care.
+//
+// Two descriptions per pillar, because the pages do different jobs:
+//   homeLead  the home grid, where the pillar is a claim
+//   lead      /services, where it introduces the detail beneath it
+// `items` renders as bullets on /services, which shows the first THREE only.
 export const pillars = [
   {
     no: "01",
     icon: "strategy" as const,
     title: "Strategic Advisory",
+    homeLead: "How content gets commissioned, planned and made at scale. Decided, not inherited.",
     lead: "Shaping how brands and agencies commission and plan content at scale.",
     items: [
-      "Production strategy development",
-      "Roster & director advisory",
-      "Emerging format strategy",
+      "Production strategy: what you make, where, and with whom",
+      "Rosters and directors, chosen on judgement, not on relationships",
+      "Emerging formats, weighed before the market decides for you",
       "Sustainable production",
       "International structures",
     ],
@@ -162,11 +171,12 @@ export const pillars = [
     no: "02",
     icon: "organisation" as const,
     title: "Organisational Setup & Studio Builds",
+    homeLead: "The capability your organisation needs, designed from the ground up or rebuilt from inside.",
     lead: "Building the production capability organisations need, from scratch or from inside.",
     items: [
-      "In-house department setup",
-      "Agency production builds",
-      "Technology stack selection",
+      "In-house departments, designed before anyone is hired",
+      "Agency production builds that outlast the people who start them",
+      "The technology stack, selected while there is still nothing to migrate",
       "VFX · Post · AI studio builds",
       "Production talent advisory",
     ],
@@ -175,11 +185,12 @@ export const pillars = [
     no: "03",
     icon: "ai" as const,
     title: "AI Integration & Transformation",
-    lead: "Practical AI adoption in production, with governance, training, and real results.",
+    homeLead: "AI in the workflow, under real governance. Deployed, not piloted.",
+    lead: "AI in production, deployed. Not piloted.",
     items: [
-      "AI readiness audit",
-      "Tool selection & evaluation",
-      "Workflow integration",
+      "Readiness, audited across the six dimensions",
+      "Tools selected on evidence, not on demos",
+      "Workflows rewired, with governance and training that hold",
       "Training & upskilling",
       "Ethics & governance",
     ],
@@ -188,11 +199,12 @@ export const pillars = [
     no: "04",
     icon: "controlling" as const,
     title: "Production Controlling",
-    lead: "Cost intelligence and real-time visibility across every production.",
+    homeLead: "Cost is where strategy shows up. We read the numbers structurally: what carries load, what is padding, what is about to fail.",
+    lead: "Cost is where strategy shows up. Read by people who know what things should cost.",
     items: [
-      "Budget development & management",
-      "Cost reporting & variance analysis",
-      "Vendor & supplier negotiation",
+      "Budgets built to be read, not just approved",
+      "Variance surfaced during production, not after",
+      "Rates benchmarked and negotiated from inside knowledge of the market",
       "Buyout & rights management",
       "Post-production cost control",
     ],
@@ -221,37 +233,69 @@ export const entryPoints = [
   },
 ] as const;
 
-// The Kata Method — six dimensions
+// The Kata Method: six dimensions.
+// `statements` powers /self-audit. They live here, on the dimensions
+// themselves, so the audit can never drift from the Method it claims to score.
 export const dimensions = [
   {
     no: "01",
     title: "Workflow & Process",
     body: "We map the end-to-end flow from brief to delivery and quantify where time and money are lost. Most waste is invisible until someone maps it.",
+    statements: [
+      "Brief-to-delivery is mapped, end to end.",
+      "We can say where time and money leak, in numbers.",
+      "Approval rounds are fixed, and held.",
+    ],
   },
   {
     no: "02",
     title: "Technology & Systems",
     body: "We assess the tech stack, integration health and adoption: whether the investment is serving production goals or creating new complexity.",
+    statements: [
+      "The stack serves production, not the other way round.",
+      "Tools are integrated. Nothing critical lives in email.",
+      "Adoption is measured, not assumed.",
+    ],
   },
   {
     no: "03",
     title: "Budget & Resource",
     body: "We examine budget structure, cost-variance patterns and financial governance across the production lifecycle.",
+    statements: [
+      "Budgets have one structure, used everywhere.",
+      "Variances surface during production, not after.",
+      "We know our real cost per asset.",
+    ],
   },
   {
     no: "04",
     title: "Team & Capability",
     body: "We map roles, decision rights, capability coverage and key-person risk. Who does what, who decides what, and what happens when someone leaves.",
+    statements: [
+      "Roles and decision rights are written down.",
+      "No single person is a point of failure.",
+      "Capability gaps are known, and planned for.",
+    ],
   },
   {
     no: "05",
     title: "Pipeline & Quality",
     body: "We trace content from brief to archive and evaluate quality control, rework rates and feedback loops: where quality is made and where it erodes.",
+    statements: [
+      "Content is traceable from brief to archive.",
+      "Rework is tracked, and it is falling.",
+      "Quality is checked where it is made, not at the end.",
+    ],
   },
   {
     no: "06",
     title: "Vendor & Partner",
     body: "We segment the vendor portfolio and assess contract structure and service levels. Not all vendors are equal. Most brands treat them as if they are.",
+    statements: [
+      "Vendors are segmented, not treated as equals.",
+      "Contracts and service levels are current.",
+      "Every key rate has been benchmarked this year.",
+    ],
   },
 ] as const;
 

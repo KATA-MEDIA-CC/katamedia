@@ -52,7 +52,7 @@ export default function ServicesPage() {
             </Reveal>
           </div>
           <div className="caption">
-            <span>Each one ends in a written recommendation. Yours to keep.</span>
+            <span>Each engagement ends in a recommendation you keep, whatever you decide next.</span>
             <span className="r">No retainer required to start</span>
           </div>
         </div>
@@ -91,6 +91,10 @@ export default function ServicesPage() {
               ))}
             </Reveal>
           </div>
+          <p className="proof">
+            Our audits typically surface 10 to 20% in recoverable cost. The
+            roadmap is yours either way.
+          </p>
         </div>
       </section>
 

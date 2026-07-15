@@ -36,7 +36,7 @@ export default function TeamPage() {
                 The <em>founders</em>
               </>
             }
-            deck="Built by people who have done this work. On set, in the edit, and in the negotiation. Between us, decades of hands-on production."
+            deck="Built by people who ran the companies that make this work. Studios founded, departments built, budgets carried. The strategy is never theoretical."
           />
           <div className="g12">
             <Founders />
