@@ -20,8 +20,21 @@ export default function Home() {
           </>
         }
         tag={site.tagline}
-        desc={site.short}
       />
+
+      {/* The claim, given the weight it had. It is site.short verbatim, which
+          is also the meta description: one text, said once. */}
+      <section className="statement lead-in">
+        <div className="wrap">
+          <Reveal>
+            <p className="st-quote">
+              We don&rsquo;t run your productions. We design the{" "}
+              <em>system</em> they run in: production strategy, capability, AI
+              and cost. Independently.
+            </p>
+          </Reveal>
+        </div>
+      </section>
 
       {/* What we do — four pillars, compact.
           Sits directly under the hero on purpose: what we sell has to be the

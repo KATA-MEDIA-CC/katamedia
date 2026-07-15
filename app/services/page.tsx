@@ -92,8 +92,8 @@ export default function ServicesPage() {
             </Reveal>
           </div>
           <p className="proof">
-            Our audits typically surface 10 to 20% in recoverable cost. The
-            roadmap is yours either way.
+            Our audits typically surface <em>10 to 20%</em> in recoverable cost.
+            The roadmap is yours either way.
           </p>
         </div>
       </section>
