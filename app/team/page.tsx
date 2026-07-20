@@ -25,6 +25,7 @@ export default function TeamPage() {
             The <em>team</em>
           </>
         }
+        tag="Studios founded. Departments built."
       />
 
       {/* The founders */}

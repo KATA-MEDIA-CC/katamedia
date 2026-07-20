@@ -23,6 +23,7 @@ export default function ApproachPage() {
             The <em>approach</em>
           </>
         }
+        tag="Six dimensions. One roadmap."
       />
 
       {/* Belief */}
