@@ -3,7 +3,9 @@ import { Hero } from "@/components/Hero";
 import { FeatureHead } from "@/components/FeatureHead";
 import { Founders } from "@/components/Founders";
 import { Network } from "@/components/Network";
-import { site, pageMetadata } from "@/lib/site";
+import { BookingButton } from "@/components/Booking";
+import { Reveal } from "@/components/Reveal";
+import { cta, pageMetadata } from "@/lib/site";
 
 export const metadata: Metadata = pageMetadata({
   title: "Team",
@@ -23,7 +25,6 @@ export default function TeamPage() {
             The <em>team</em>
           </>
         }
-        tag={site.tagline}
       />
 
       {/* The founders */}
@@ -60,6 +61,28 @@ export default function TeamPage() {
         </div>
       </section>
 
+      {/* Closing CTA, the same band Home, Services and Approach end on */}
+      <section className="feature cta-band">
+        <div className="wrap">
+          <Reveal className="cta-inner">
+            <p className="st-kick" style={{ color: "var(--clay-d)" }}>
+              — Start with a conversation —
+            </p>
+            <p className="cta-line">
+              Tell us what you are trying to <em>figure out.</em>
+            </p>
+            <p className="cta-body">
+              A 45 minute call. We will come back within 24 hours with an honest
+              read on whether we are the right people to help, and which founder
+              you would be working with.
+            </p>
+            <BookingButton className="btn solid">
+              <span className="dot" />
+              {cta.label}
+            </BookingButton>
+          </Reveal>
+        </div>
+      </section>
     </>
   );
 }

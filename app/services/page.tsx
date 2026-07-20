@@ -4,7 +4,7 @@ import { BookingButton } from "@/components/Booking";
 import { FeatureHead } from "@/components/FeatureHead";
 import { Reveal } from "@/components/Reveal";
 import { PillarIcon } from "@/components/Icons";
-import { pillars, entryPoints, site, cta, pageMetadata } from "@/lib/site";
+import { pillars, entryPoints, cta, pageMetadata } from "@/lib/site";
 
 export const metadata: Metadata = pageMetadata({
   title: "Services",
@@ -24,7 +24,6 @@ export default function ServicesPage() {
             The <em>services</em>
           </>
         }
-        tag={site.tagline}
       />
 
       {/* How we engage — the way a relationship starts */}

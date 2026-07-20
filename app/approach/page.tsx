@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Hero } from "@/components/Hero";
 import { FeatureHead } from "@/components/FeatureHead";
 import { Reveal } from "@/components/Reveal";
-import { dimensions, site, cta, pageMetadata } from "@/lib/site";
+import { dimensions, cta, pageMetadata } from "@/lib/site";
 import { BookingButton } from "@/components/Booking";
 
 export const metadata: Metadata = pageMetadata({
@@ -17,13 +17,12 @@ export default function ApproachPage() {
     <>
       <Hero
         variant="page"
-        lead="What we believe"
+        lead="The Method"
         title={
           <>
             The <em>approach</em>
           </>
         }
-        tag={site.tagline}
       />
 
       {/* Belief */}

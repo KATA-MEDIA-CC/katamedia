@@ -23,7 +23,6 @@ export default function ContactPage() {
             Let&rsquo;s <em>talk.</em>
           </>
         }
-        tag={site.tagline}
         desc="Tell us what you are trying to figure out. No deck, no pitch."
       />
 

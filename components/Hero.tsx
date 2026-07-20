@@ -8,7 +8,7 @@ export function Hero({
   variant = "page",
   lead,
   title,
-  tag = site.tagline,
+  tag,
   desc,
   watermark = site.wordmark,
 }: {
@@ -118,9 +118,11 @@ export function Hero({
         <h1 className="hero-title" data-hero data-optical>
           {title}
         </h1>
-        <p className="hero-tag" data-hero data-optical>
-          {tag}
-        </p>
+        {tag && (
+          <p className="hero-tag" data-hero data-optical>
+            {tag}
+          </p>
+        )}
         {desc && (
           <div className="hero-foot" data-hero>
             <p className="hero-desc" data-optical>
