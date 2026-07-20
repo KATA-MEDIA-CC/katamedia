@@ -239,7 +239,6 @@ img {
 /* ── section scaffold ───────────────────────────────────────────────── */
 .feature {
   padding: clamp(80px, 10vw, 150px) 0;
-  border-top: 1px solid var(--hair);
 }
 .g12 {
   display: grid;
@@ -908,7 +907,6 @@ img {
 .cred {
   background: var(--ink);
   color: var(--paper);
-  border-top: 1px solid rgba(246, 242, 232, 0.14);
   padding: clamp(22px, 3vw, 34px) 0;
   position: relative;
   z-index: 2;
@@ -923,7 +921,7 @@ img {
 .cred-years {
   font-family: var(--sans);
   font-weight: 600;
-  font-size: clamp(10px, 1vw, 12px);
+  font-size: clamp(12px, 1.35vw, 16px);
   letter-spacing: 0.2em;
   text-transform: uppercase;
   color: var(--clay-on-ink, #d4703f);
@@ -932,7 +930,7 @@ img {
 .cred-houses {
   font-family: var(--sans);
   font-weight: 600;
-  font-size: clamp(11px, 1.2vw, 14px);
+  font-size: clamp(13px, 1.7vw, 18px);
   letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--paper);
