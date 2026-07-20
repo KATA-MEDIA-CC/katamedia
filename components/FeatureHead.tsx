@@ -3,14 +3,19 @@
 import { useRef, ReactNode } from "react";
 import { gsap, useIsoLayoutEffect, prefersReducedMotion } from "@/lib/gsap";
 
-// Section header: numbered spec frame · title (with clay <em>) · deck · the
-// drawn measuring rule. The rule scales in from the left on scroll.
+// Section header: title (with clay <em>) · deck · the drawn measuring rule.
+// The rule scales in from the left on scroll.
+//
+// `no` (the numbered spec frame) is optional and currently unused: the founders
+// asked for the 01/02/03 section numbering to go (Jul 2026) — with sections
+// added and removed per page, the sequences kept reading as half-finished. The
+// frame renders again the moment a caller passes `no`.
 export function FeatureHead({
   no,
   title,
   deck,
 }: {
-  no: string;
+  no?: string;
   title: ReactNode;
   deck?: string;
 }) {
@@ -39,12 +44,14 @@ export function FeatureHead({
   }, []);
 
   return (
-    <div className="g12 fhead">
-      <span className="mk">
-        <span className="spec">
-          <span className="no">{no}</span>
+    <div className={`g12 fhead${no ? "" : " bare"}`}>
+      {no ? (
+        <span className="mk">
+          <span className="spec">
+            <span className="no">{no}</span>
+          </span>
         </span>
-      </span>
+      ) : null}
       <h2>{title}</h2>
       {deck ? <p className="deck">{deck}</p> : null}
       <span ref={lineRef} className="drawline" />

@@ -31,7 +31,6 @@ export default function ServicesPage() {
       <section className="feature">
         <div className="wrap">
           <FeatureHead
-            no="01"
             title={
               <>
                 How we <em>engage</em>
@@ -42,8 +41,7 @@ export default function ServicesPage() {
           <div className="g12">
             <Reveal className="trio" stagger>
               {entryPoints.map((d) => (
-                <div className="card" key={d.no}>
-                  <span className="c-no">{d.no}</span>
+                <div className="card" key={d.title}>
                   <h3>{d.title}</h3>
                   <span className="c-meta">{d.meta}</span>
                   <p className="c-spacer">{d.body}</p>
@@ -62,7 +60,6 @@ export default function ServicesPage() {
       <section className="feature">
         <div className="wrap">
           <FeatureHead
-            no="02"
             title={
               <>
                 Four <em>pillars</em>
@@ -73,20 +70,15 @@ export default function ServicesPage() {
           <div className="g12">
             <Reveal className="pillars">
               {pillars.map((p) => (
-                <div className="pillar" key={p.no}>
+                <div className="pillar" key={p.title}>
                   <div className="pillar-top">
-                    <span className="pillar-no">{p.no}</span>
                     <span className="pillar-ico">
                       <PillarIcon name={p.icon} />
                     </span>
                   </div>
                   <h3>{p.title}</h3>
                   <p className="p-lead">{p.lead}</p>
-                  <ul>
-                    {p.items.slice(0, 3).map((it) => (
-                      <li key={it}>{it}</li>
-                    ))}
-                  </ul>
+                  <p className="p-detail">{p.detail}</p>
                 </div>
               ))}
             </Reveal>

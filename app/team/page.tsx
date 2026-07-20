@@ -30,7 +30,6 @@ export default function TeamPage() {
       <section className="feature">
         <div className="wrap">
           <FeatureHead
-            no="01"
             title={
               <>
                 The <em>founders</em>
@@ -48,7 +47,6 @@ export default function TeamPage() {
       <section className="feature">
         <div className="wrap">
           <FeatureHead
-            no="02"
             title={
               <>
                 The <em>network</em>

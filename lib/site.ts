@@ -27,8 +27,28 @@ export const site = {
   // and still contain the words people actually search for.
   short:
     "We design and build how brands and agencies make content: production strategy, capability, AI and cost. We don't run your productions. We design the system they run in. Independently.",
+  // The hero's displayed subline. `short` above stays the meta description —
+  // the two diverge because the cred band directly under the hero now carries
+  // independence and the pedigree, so the subline must not say either twice.
+  sub: "We design and build how brands and agencies make content: production strategy, organisation, AI and cost. We don't run your productions. We design the system they run in.",
   belief: "We sit beside the decision, never above the process and never inside the margin.",
   booking: "Now booking · 2026",
+  // Company page handle — CONFIRM the slug before publishing.
+  linkedin: "https://www.linkedin.com/company/katamedia",
+} as const;
+
+// The cred band — one slim strip directly under the home hero.
+// Founder feedback (Jul 2026): the pedigree and the independence claim are the
+// reason anyone takes the 45-minute call, so they cannot live only on /team.
+// Wording note: the word "kickback" is banned (Cornelius — negatively loaded);
+// independence is stated as the absence of financial ties instead.
+// 50+ = 15 (Justin) + 25 (Cornelius) + 12 (Jankel), rounded down on purpose so
+// the number can never be accused of inflation.
+export const cred = {
+  years: "50+ years of production leadership",
+  houses: ["The Mill", "Stink", "Psyop", "Markenfilm", "Jung von Matt"],
+  independence:
+    "Independent. No financial ties to the production companies, directors or agencies we recommend.",
 } as const;
 
 // Per-page metadata: correct canonical + full OpenGraph/Twitter (Next replaces
@@ -99,6 +119,8 @@ export const founders = [
     name: "Justin Stiebel",
     role: "Strategy, organisational design and advisory",
     email: "justin@katamedia.cc",
+    // One line for the home founder card — the pedigree, nothing else.
+    card: "Fifteen years leading VFX and production companies. The Mill, Stink, Psyop.",
     notes: [
       "Fifteen years leading VFX, production and animation companies. The Mill, Stink, Psyop. Three companies built from scratch. Ten years in the UK.",
       "Production leader with extensive experience building and running production functions at agency and brand level across Europe.",
@@ -114,6 +136,7 @@ export const founders = [
     name: "Cornelius Roenz",
     role: "Strategy, production leadership and executive production",
     email: "cornelius@katamedia.cc",
+    card: "Twenty-five years at Markenfilm, seven of them as Managing Director.",
     notes: [
       "Twenty-five years at Markenfilm, seven of them as Managing Director.",
       "Production controlling and advisory specialist with deep market knowledge across German and European TVC, content, and campaign production.",
@@ -129,6 +152,7 @@ export const founders = [
     name: "Jankel Huppertz",
     role: "Production leadership, operations and advisory",
     email: "jankel@katamedia.cc",
+    card: "Twelve years running production at Jung von Matt, across formats and scales.",
     notes: [
       "Twelve years at Jung von Matt, running production across formats and scales.",
       "Production leader with deep experience across agency production. Understands how TVC, content, and campaign production works, from idea to execution.",
@@ -151,7 +175,10 @@ export const founders = [
 // Two descriptions per pillar, because the pages do different jobs:
 //   homeLead  the home grid, where the pillar is a claim
 //   lead      /services, where it introduces the detail beneath it
-// `items` renders as bullets on /services, which shows the first THREE only.
+// `detail` is ONE prose paragraph on /services. It used to be a bullet list
+// (`items`) — removed on founder feedback: bullet runs read as machine-written
+// ("Claude Automatisierung Styles", Cornelius), and the CI voice is short
+// declaratives, not lists. Keep it prose.
 export const pillars = [
   {
     no: "01",
@@ -159,13 +186,8 @@ export const pillars = [
     title: "Strategic Advisory",
     homeLead: "How content gets commissioned, planned and made at scale. Decided, not inherited.",
     lead: "Shaping how brands and agencies commission and plan content at scale.",
-    items: [
-      "Production strategy: what you make, where, and with whom",
-      "Rosters and directors, chosen on judgement, not on relationships",
-      "Emerging formats, weighed before the market decides for you",
-      "Sustainable production",
-      "International structures",
-    ],
+    detail:
+      "What you make, where, and with whom. Rosters and directors chosen on judgement, not on relationships. Emerging formats weighed before the market decides for you, from sustainable production to international structures.",
   },
   {
     no: "02",
@@ -173,13 +195,8 @@ export const pillars = [
     title: "Organisational Setup & Studio Builds",
     homeLead: "The capability your organisation needs, designed from the ground up or rebuilt from inside.",
     lead: "Building the production capability organisations need, from scratch or from inside.",
-    items: [
-      "In-house departments, designed before anyone is hired",
-      "Agency production builds that outlast the people who start them",
-      "The technology stack, selected while there is still nothing to migrate",
-      "VFX · Post · AI studio builds",
-      "Production talent advisory",
-    ],
+    detail:
+      "In-house departments designed before anyone is hired. Agency production builds that outlast the people who start them. The technology stack selected while there is still nothing to migrate, through to VFX, post and AI studio builds.",
   },
   {
     no: "03",
@@ -187,13 +204,8 @@ export const pillars = [
     title: "AI Integration & Transformation",
     homeLead: "AI in the workflow, under real governance. Deployed, not piloted.",
     lead: "AI in production, deployed. Not piloted.",
-    items: [
-      "Readiness, audited across the six dimensions",
-      "Tools selected on evidence, not on demos",
-      "Workflows rewired, with governance and training that hold",
-      "Training & upskilling",
-      "Ethics & governance",
-    ],
+    detail:
+      "Readiness audited across the six dimensions. Tools selected on evidence, not on demos. Workflows rewired with governance, ethics and training that hold after we leave.",
   },
   {
     no: "04",
@@ -201,13 +213,8 @@ export const pillars = [
     title: "Production Controlling",
     homeLead: "Cost is where strategy shows up. We read the numbers structurally: what carries load, what is padding, what is about to fail.",
     lead: "Cost is where strategy shows up. Read by people who know what things should cost.",
-    items: [
-      "Budgets built to be read, not just approved",
-      "Variance surfaced during production, not after",
-      "Rates benchmarked and negotiated from inside knowledge of the market",
-      "Buyout & rights management",
-      "Post-production cost control",
-    ],
+    detail:
+      "Budgets built to be read, not just approved. Variance surfaced during production, not after. Rates, buyouts and post-production cost benchmarked and negotiated from inside knowledge of the market.",
   },
 ] as const;
 
@@ -234,38 +241,56 @@ export const entryPoints = [
 ] as const;
 
 // The Kata Method: six dimensions.
+// `icon` keys map to DimensionIcon in components/Icons.tsx — the home page
+// shows the six as icon + label only; /approach carries the full bodies.
 export const dimensions = [
   {
     no: "01",
+    icon: "workflow" as const,
     title: "Workflow & Process",
     body: "We map the end-to-end flow from brief to delivery and quantify where time and money are lost. Most waste is invisible until someone maps it.",
   },
   {
     no: "02",
+    icon: "systems" as const,
     title: "Technology & Systems",
     body: "We assess the tech stack, integration health and adoption: whether the investment is serving production goals or creating new complexity.",
   },
   {
     no: "03",
+    icon: "budget" as const,
     title: "Budget & Resource",
     body: "We examine budget structure, cost-variance patterns and financial governance across the production lifecycle.",
   },
   {
     no: "04",
+    icon: "team" as const,
     title: "Team & Capability",
     body: "We map roles, decision rights, capability coverage and key-person risk. Who does what, who decides what, and what happens when someone leaves.",
   },
   {
     no: "05",
+    icon: "quality" as const,
     title: "Pipeline & Quality",
     body: "We trace content from brief to archive and evaluate quality control, rework rates and feedback loops: where quality is made and where it erodes.",
   },
   {
     no: "06",
+    icon: "vendor" as const,
     title: "Vendor & Partner",
     body: "We segment the vendor portfolio and assess contract structure and service levels. Not all vendors are equal. Most brands treat them as if they are.",
   },
 ] as const;
+
+// References / client logos — INTENTIONALLY EMPTY.
+// Founder feedback (Jahnke): after the founders themselves, shown work is the
+// second-strongest trust point — "machen wir dann sobald wir können". The
+// moment there is something Kata may show, fill this in and render it (a slim
+// logo strip under "What we do" is the intended slot). Until then nothing
+// renders: an empty "clients" section is worse than none.
+// export const references = [
+//   { name: "Client name", logo: "/refs/client.svg", quote: "", person: "" },
+// ] as const;
 
 // The network — nine sectors, not nine people.
 //

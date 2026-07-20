@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import { founders } from "@/lib/site";
 import { Reveal } from "@/components/Reveal";
 
@@ -53,43 +54,69 @@ const plates = founders.map((f, i) => {
   return { zoom, ox, oy };
 });
 
+// Shared per-founder CSS vars — the measured plate placement plus the C.1
+// hover pivot. One source, because FounderCards below must render the exact
+// same heads at the exact same eye-line as the full /team grid.
+function plateVars(i: number): CSSVars {
+  const f = founders[i];
+  return {
+    "--zoom": plates[i].zoom.toFixed(4),
+    "--ox": `${(plates[i].ox * 100).toFixed(3)}%`,
+    "--oy": `${(plates[i].oy * 100).toFixed(3)}%`,
+    // C.1's hover scale pivots here — the face's own eye point inside
+    // the image. Scaling about the image centre would slide the face
+    // sideways, because these images are offset.
+    "--fx": `${(FACE_X[i] * 100).toFixed(2)}%`,
+    "--fy": `${(f.e * 100).toFixed(2)}%`,
+  } as CSSVars;
+}
+
+function Plate({ index }: { index: number }) {
+  const f = founders[index];
+  return (
+    <figure className="f-fig brkt c1-zoom">
+      <div className="shot">
+        <Image
+          src={f.photo}
+          // Empty on purpose: the name directly below carries it, and a
+          // real alt would make a screen reader announce each founder twice.
+          alt=""
+          width={1600}
+          height={Math.round(1600 / f.ar)}
+          sizes="(max-width: 720px) 92vw, 33vw"
+        />
+      </div>
+      <span className="tk tl" aria-hidden="true" />
+      <span className="tk tr" aria-hidden="true" />
+      <span className="tk bl" aria-hidden="true" />
+      <span className="tk br" aria-hidden="true" />
+    </figure>
+  );
+}
+
+// The compact home variant — photo, name, one line, and the whole card walks
+// to /team. Founder feedback (Jul 2026): the three of us are the strongest
+// argument on the site and were invisible from the homepage.
+export function FounderCards() {
+  return (
+    <Reveal className="fcards" style={{ "--frame-ar": FRAME_AR } as CSSVars} stagger>
+      {founders.map((f, i) => (
+        <Link href="/team" className="fcard" key={f.email} style={plateVars(i)}>
+          <Plate index={i} />
+          <span className="fc-nm">{f.name}</span>
+          <span className="fc-line">{f.card}</span>
+        </Link>
+      ))}
+    </Reveal>
+  );
+}
+
 export function Founders() {
   return (
     <Reveal className="founders" style={{ "--frame-ar": FRAME_AR } as CSSVars} stagger>
       {founders.map((f, i) => (
-        <div
-          className="founder"
-          key={f.email}
-          style={
-            {
-              "--zoom": plates[i].zoom.toFixed(4),
-              "--ox": `${(plates[i].ox * 100).toFixed(3)}%`,
-              "--oy": `${(plates[i].oy * 100).toFixed(3)}%`,
-              // C.1's hover scale pivots here — the face's own eye point inside
-              // the image. Scaling about the image centre would slide the face
-              // sideways, because these images are offset.
-              "--fx": `${(FACE_X[i] * 100).toFixed(2)}%`,
-              "--fy": `${(f.e * 100).toFixed(2)}%`,
-            } as CSSVars
-          }
-        >
-          <figure className="f-fig brkt c1-zoom">
-            <div className="shot">
-              <Image
-                src={f.photo}
-                // Empty on purpose: .f-nm names the person directly below, and a
-                // real alt would make a screen reader announce each founder twice.
-                alt=""
-                width={1600}
-                height={Math.round(1600 / f.ar)}
-                sizes="(max-width: 720px) 92vw, 33vw"
-              />
-            </div>
-            <span className="tk tl" aria-hidden="true" />
-            <span className="tk tr" aria-hidden="true" />
-            <span className="tk bl" aria-hidden="true" />
-            <span className="tk br" aria-hidden="true" />
-          </figure>
+        <div className="founder" key={f.email} style={plateVars(i)}>
+          <Plate index={i} />
           <div className="f-txt">
             <div className="f-nm">{f.name}</div>
             <div className="f-ro">{f.role}</div>

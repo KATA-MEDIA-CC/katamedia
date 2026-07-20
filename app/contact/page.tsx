@@ -31,7 +31,6 @@ export default function ContactPage() {
       <section className="feature">
         <div className="wrap">
           <FeatureHead
-            no="01"
             title={
               <>
                 Start a <em>conversation</em>
@@ -68,7 +67,6 @@ export default function ContactPage() {
       <section className="feature">
         <div className="wrap">
           <FeatureHead
-            no="02"
             title={
               <>
                 Individual <em>contacts</em>

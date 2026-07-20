@@ -49,7 +49,6 @@ export default function ApproachPage() {
       <section className="feature">
         <div className="wrap">
           <FeatureHead
-            no="01"
             title={
               <>
                 The <em>method</em>
@@ -60,8 +59,7 @@ export default function ApproachPage() {
           <div className="g12">
             <Reveal className="trio" stagger>
               {dimensions.map((d) => (
-                <div className="card" key={d.no}>
-                  <span className="c-no">{d.no}</span>
+                <div className="card" key={d.title}>
                   <h3>{d.title}</h3>
                   <p className="c-spacer">{d.body}</p>
                 </div>

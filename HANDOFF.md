@@ -59,9 +59,21 @@ Almost all copy lives in **`lib/site.ts`**. Change it there, not in the pages.
 - **Never say "front doors"** → it's **"How we engage"** (Audit / Workshop / Pilot).
 - **Never mention the Kata Platform** — not ready to ship. Removed from the pillar list too.
 - **Don't spell out "for brands & agencies"** in the hero lead.
-- **Independence is stated exactly twice** — home hero ("without the conflicts built into the system") and Approach ("Independent judgement, applied in time"). It was said 4–5× and felt repetitive.
 - **Every CTA opens the frosted-glass modal** — never navigates away.
 - **Services leads with "How we engage"**, then the four pillars.
+
+### Founder-feedback round, July 2026 (Cornelius + Jahnke sign-off)
+
+- **Home is the whole story, not a teaser** — hardly anyone clicks deeper. Order: Hero → cred band → What we do → How we engage → The method (six dimensions, icon + label) → The founders (cards → /team) → CTA.
+- **Cred band** (`components/Cred.tsx`, data in `cred` in `lib/site.ts`): 50+ years, the five houses, the independence line — directly under the home hero, on ink.
+- **Independence is now stated three times on purpose** — cred band, Approach, footer. This supersedes the earlier "exactly twice" rule: the founders asked for it on the first screen and in the footer.
+- **The word "kickback" is banned** (Cornelius: negatively loaded). Independence = "no financial ties", never "no kickbacks".
+- **Claims hierarchy:** "Knowledge applied to action" is THE claim (nav lockup + footer). "Better by design." is the home hero headline, "From fragments — order." the line under it. The claim and the hero headline never appear in one breath.
+- **No decorative 01/02/03 numbering** — section spec-frames and card numbers removed (`FeatureHead`'s `no` prop is now optional and unused). Numbers stay only where they mean something: the contact "what happens next" steps and the network's 01–12 directory index.
+- **No bullet lists in copy** — the pillar `items` arrays became one `detail` prose paragraph each (renders as `.p-detail` on /services). Bullets read as machine-written.
+- **Footer carries email, LinkedIn and the independence line.** ⚠️ The LinkedIn URL in `site.linkedin` is a guess (`/company/katamedia`) — confirm the real slug before relying on it.
+- **References/logos**: deliberately empty `references` scaffold (commented out in `lib/site.ts`) — fill and render a logo strip as soon as there is something Kata may show.
+- **Nav appears twice in the DOM by design** — desktop `.nav-links` + mobile `.sheet`, correctly gated with `aria-hidden`/`inert`. Not a bug; Jahnke's tech-check question, answered.
 
 ## Component notes
 
