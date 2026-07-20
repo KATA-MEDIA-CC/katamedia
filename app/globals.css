@@ -832,7 +832,9 @@ img {
 .hero-wm {
   position: absolute;
   right: -3%;
-  bottom: -14%;
+  /* was -14%, which sliced ~a third off the letters at the hero's clip edge.
+     -3% keeps just a hint of corner bleed, letters essentially whole. */
+  bottom: -3%;
   font-family: var(--display);
   font-weight: 700;
   text-transform: uppercase;
