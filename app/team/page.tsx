@@ -22,10 +22,9 @@ export default function TeamPage() {
         lead="Who we are"
         title={
           <>
-            The <em>team</em>
+            <em>Team</em>
           </>
         }
-        tag="Studios founded. Departments built."
       />
 
       {/* The founders */}

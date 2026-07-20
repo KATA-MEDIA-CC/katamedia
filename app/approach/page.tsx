@@ -20,10 +20,9 @@ export default function ApproachPage() {
         lead="The Method"
         title={
           <>
-            The <em>approach</em>
+            <em>Approach</em>
           </>
         }
-        tag="Six dimensions. One roadmap."
       />
 
       {/* Belief */}

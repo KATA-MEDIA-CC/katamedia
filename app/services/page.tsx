@@ -21,10 +21,9 @@ export default function ServicesPage() {
         lead="What we do"
         title={
           <>
-            The <em>services</em>
+            <em>Services</em>
           </>
         }
-        tag="Everything upstream of the shoot."
       />
 
       {/* How we engage — the way a relationship starts */}
