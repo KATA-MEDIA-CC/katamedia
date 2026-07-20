@@ -14,15 +14,20 @@ export function Cred() {
     <section className="cred" aria-label="Track record and independence">
       <div className="wrap">
         <Reveal className="cred-in">
-          <div className="cred-copy">
-            <p className="cred-years">{cred.years}</p>
-            <p className="cred-ind">{cred.independence}</p>
-          </div>
-          <ul className="cred-houses">
-            {cred.houses.map((h) => (
-              <li key={h}>{h}</li>
-            ))}
-          </ul>
+          <p className="cred-years">{cred.years}</p>
+          <p className="cred-ind">
+            Made at{" "}
+            {cred.houses.map((h, i) => {
+              const last = cred.houses.length - 1;
+              return (
+                <span key={h}>
+                  <em>{h}</em>
+                  {i < last - 1 ? ", " : i === last - 1 ? " and " : ""}
+                </span>
+              );
+            })}
+            . {cred.independence}
+          </p>
         </Reveal>
       </div>
     </section>

@@ -915,59 +915,31 @@ img {
 }
 .cred-in {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 24px 56px;
-  flex-wrap: wrap;
-}
-/* left column: the years label above the independence line */
-.cred-copy {
-  display: flex;
   flex-direction: column;
-  gap: 12px;
-  max-width: 46ch;
+  gap: clamp(16px, 1.8vw, 26px);
 }
+/* the pedigree, now the loud part of the band */
 .cred-years {
   font-family: var(--sans);
   font-weight: 600;
-  font-size: clamp(12px, 1.35vw, 16px);
-  letter-spacing: 0.2em;
+  font-size: clamp(26px, 3.6vw, 46px);
+  letter-spacing: 0.03em;
   text-transform: uppercase;
+  line-height: 1;
   color: var(--clay-on-ink, #d4703f);
 }
+/* one paragraph: the houses woven in as clay italics, then the independence line */
 .cred-ind {
   font-family: var(--serif);
-  font-size: clamp(12.5px, 1.2vw, 14.5px);
-  line-height: 1.5;
-  color: rgba(246, 242, 232, 0.7);
+  font-size: clamp(15px, 1.5vw, 19px);
+  line-height: 1.55;
+  color: rgba(246, 242, 232, 0.82);
+  max-width: 74ch;
 }
-/* right column: the houses as a right-aligned roster, no separators, bigger.
-   Stacked so they fill the band height and read as a statement, not a link row. */
-.cred-houses {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  gap: clamp(3px, 0.5vw, 7px);
-}
-.cred-houses li {
-  font-family: var(--sans);
-  font-weight: 600;
-  font-size: clamp(18px, 2vw, 26px);
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--paper);
-  line-height: 1.08;
-}
-@media (max-width: 720px) {
-  .cred-in {
-    align-items: flex-start;
-  }
-  .cred-houses {
-    align-items: flex-start;
-  }
+.cred-ind em {
+  font-style: italic;
+  font-weight: 400;
+  color: var(--clay-on-ink, #d4703f);
 }
 .statement {
   padding: clamp(80px, 12vw, 170px) 0;
