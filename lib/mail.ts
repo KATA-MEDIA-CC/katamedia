@@ -81,7 +81,7 @@ export function notificationHtml(
   const row = (label: string, value: string) =>
     `<tr><td style="font-family:Arial,Helvetica,sans-serif;font-size:10px;font-weight:bold;letter-spacing:1px;text-transform:uppercase;color:${GREY};padding:6px 16px 6px 0;white-space:nowrap;vertical-align:top;">${label}</td><td style="${P.replace("margin:0 0 14px;", "margin:0;")}padding:4px 0;">${esc(value || "—")}</td></tr>`;
   const attio = recordId
-    ? `<p style="${MUTED}margin-top:18px;"><a href="https://app.attio.com/kata-media-consultancy-gmbh/person/${recordId}" style="color:${CLAY};text-decoration:none;font-weight:bold;">&rarr; Open in Attio</a> &nbsp;(note + 24h task attached)</p>`
+    ? `<p style="${MUTED}margin-top:18px;"><a href="https://app.attio.com/kata-media-consultancy-gmb-h/person/${recordId}" style="color:${CLAY};text-decoration:none;font-weight:bold;">&rarr; Open in Attio</a> &nbsp;(note + 24h task attached)</p>`
     : "";
   return shell(`
         <p style="${P}margin-top:34px;font-weight:bold;">New website enquiry</p>

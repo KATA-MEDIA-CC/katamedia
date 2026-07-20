@@ -163,7 +163,21 @@ export async function POST(req: Request) {
         },
       });
 
-      // The 24-hour promise, as a deadline the CRM enforces.
+    }
+  } catch (err) {
+    console.error("enquiry: Attio person/note write failed:", err);
+    return NextResponse.json({ error: "delivery failed" }, { status: 502 });
+  }
+
+  // The 24-hour follow-up task — the site's promise, made a deadline the CRM
+  // enforces. Best-effort on purpose: the enquiry (person + note) is already
+  // written and the internal notification below carries every field, so a
+  // transient error here must never nuke an enquiry we've already captured or
+  // swallow the visitor's auto-reply. Logged loudly instead of thrown.
+  // Note: Attio's task endpoint needs the "User Management" read scope on the
+  // API key (a task can carry assignees) — without it this 403s, harmlessly.
+  if (recordId) {
+    try {
       await attio("/tasks", "POST", {
         data: {
           content: `Reply to website enquiry: ${name}${company ? `, ${company}` : ""} (24h promise)`,
@@ -174,10 +188,9 @@ export async function POST(req: Request) {
           assignees: [],
         },
       });
+    } catch (err) {
+      console.error("enquiry: Attio task creation failed (enquiry still captured):", err);
     }
-  } catch (err) {
-    console.error("enquiry: Attio write failed:", err);
-    return NextResponse.json({ error: "delivery failed" }, { status: 502 });
   }
 
   // ── 2 + 3. Mail: auto-reply + internal notification ────────────────────
