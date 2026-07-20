@@ -14,18 +14,15 @@ export function Cred() {
     <section className="cred" aria-label="Track record and independence">
       <div className="wrap">
         <Reveal className="cred-in">
-          <p className="cred-years">{cred.years}</p>
-          <p className="cred-houses">
-            {cred.houses.map((h, i) => (
-              <span key={h}>
-                {h}
-                {i < cred.houses.length - 1 ? (
-                  <b aria-hidden="true"> · </b>
-                ) : null}
-              </span>
+          <div className="cred-copy">
+            <p className="cred-years">{cred.years}</p>
+            <p className="cred-ind">{cred.independence}</p>
+          </div>
+          <ul className="cred-houses">
+            {cred.houses.map((h) => (
+              <li key={h}>{h}</li>
             ))}
-          </p>
-          <p className="cred-ind">{cred.independence}</p>
+          </ul>
         </Reveal>
       </div>
     </section>

@@ -915,10 +915,17 @@ img {
 }
 .cred-in {
   display: flex;
-  align-items: baseline;
+  align-items: center;
   justify-content: space-between;
-  gap: 18px 40px;
+  gap: 24px 56px;
   flex-wrap: wrap;
+}
+/* left column: the years label above the independence line */
+.cred-copy {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-width: 46ch;
 }
 .cred-years {
   font-family: var(--sans);
@@ -927,31 +934,41 @@ img {
   letter-spacing: 0.2em;
   text-transform: uppercase;
   color: var(--clay-on-ink, #d4703f);
-  flex: none;
-}
-.cred-houses {
-  font-family: var(--sans);
-  font-weight: 600;
-  font-size: clamp(13px, 1.7vw, 18px);
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--paper);
-}
-.cred-houses b {
-  color: rgba(246, 242, 232, 0.4);
-  font-weight: 600;
 }
 .cred-ind {
   font-family: var(--serif);
   font-size: clamp(12.5px, 1.2vw, 14.5px);
   line-height: 1.5;
   color: rgba(246, 242, 232, 0.7);
-  max-width: 46ch;
 }
-
-/* ═══════════════════════════════════════════════════════════════════════
-   STATEMENT band
-   ═══════════════════════════════════════════════════════════════════════ */
+/* right column: the houses as a right-aligned roster, no separators, bigger.
+   Stacked so they fill the band height and read as a statement, not a link row. */
+.cred-houses {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: clamp(3px, 0.5vw, 7px);
+}
+.cred-houses li {
+  font-family: var(--sans);
+  font-weight: 600;
+  font-size: clamp(18px, 2vw, 26px);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--paper);
+  line-height: 1.08;
+}
+@media (max-width: 720px) {
+  .cred-in {
+    align-items: flex-start;
+  }
+  .cred-houses {
+    align-items: flex-start;
+  }
+}
 .statement {
   padding: clamp(80px, 12vw, 170px) 0;
 }
