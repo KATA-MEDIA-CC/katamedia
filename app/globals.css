@@ -783,22 +783,24 @@ img {
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.16em;
-  font-size: clamp(40px, 7vw, 86px);
+  font-size: clamp(46px, 8.05vw, 99px); /* CI 40/7/86 +15% */
   line-height: 1;
 }
 /* The CI's row is fixed at 48 cells x 5px + 3px gaps = 381px, and deliberately
    wider than the wordmark. That overflows a 375px phone, so the geometry scales
    below ~556px viewport and is exactly the CI's numbers above it. */
 .loader .defrag.lg {
-  gap: clamp(2px, 0.55vw, 3px);
+  /* +25% on the CI row: 3px gap, 5px bar, 30px tall */
+  gap: clamp(2.5px, 0.6875vw, 3.75px);
+  height: 37.5px;
 }
 .loader .defrag.lg i {
-  width: clamp(3px, 0.9vw, 5px);
+  width: clamp(3.75px, 1.125vw, 6.25px);
 }
 .loader .lcap {
   font-family: var(--sans);
   font-weight: 600;
-  font-size: 10px;
+  font-size: 15px; /* CI 10px +50% */
   letter-spacing: 0.26em;
   text-transform: uppercase;
   text-align: center;
@@ -2356,11 +2358,20 @@ a.cframe:hover .cf-v {
 
 /* loader defrag bar: narrower bars on phones so the row never overflows */
 @media (max-width: 479px) {
+  /* tiny-phone fit: the 48-cell row is force-shrunk below the clamp. +25% like
+     the rest (2->2.5, 3->3.75); the row is 48x3.75 + 47x2.5 = 297px, inside a
+     360px+ phone after the 24px gutters. */
   .loader .defrag.lg {
-    gap: 2px;
+    gap: 2.5px;
   }
   .loader .defrag.lg i {
-    width: 3px;
+    width: 3.75px;
+  }
+  /* Caption is a fixed 15px (+50%), so its width is constant and would wrap
+     below ~356px. Desktop keeps the full +50%; phones get 13px so it never
+     breaks, down to a 320px screen. */
+  .loader .lcap {
+    font-size: 13px;
   }
 }
 
