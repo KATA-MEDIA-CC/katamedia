@@ -1,29 +1,25 @@
 // ─────────────────────────────────────────────────────────────────────────
-// Contact form delivery — Web3Forms.
+// Contact form delivery — own API route (/api/enquiry).
 //
-// This is the ONLY file that talks to the provider. The UI handles sending,
-// success and failure; swapping provider means rewriting submitEnquiry() and
-// nothing else.
+// This is the ONLY file the UI talks to. It used to POST straight to
+// Web3Forms from the browser; that could only forward an email — no CRM
+// record, no auto-reply. Now the browser posts to our own route on Vercel,
+// and the server does the real work:
 //
-// Setup:
-//   1. Get a free access key at https://web3forms.com — it's tied to the
-//      address enquiries are delivered to, so register it to the shared
-//      founders alias, hello@katamedia.cc (site.email).
-//   2. Vercel → Settings → Environment Variables →
-//      NEXT_PUBLIC_WEB3FORMS_KEY = <key>, for all environments.
-//   3. Redeploy. The key is inlined at BUILD time (this site is fully
-//      static), so setting the var alone does nothing until a rebuild.
-//   4. Locally: put the same line in .env.local (see .env.example).
+//   Attio    person upserted by email · enquiry attached as a note ·
+//            follow-up task with a 24h deadline (the promise on the site,
+//            enforced by the CRM)
+//   Resend   bilingual auto-reply to the enquirer from hello@katamedia.cc ·
+//            internal notification to hello@ (reply-to = the enquirer)
 //
-// The key is public by design — Web3Forms keys are meant to be embedded in
-// client-side code, and NEXT_PUBLIC_ ships it in the bundle. It's kept in an
-// env var so it stays out of this public repo and can be rotated without a
-// commit, not because it's a secret. Abuse is bounded by the honeypot and by
-// Web3Forms' own rate limiting; the key only ever sends mail to its owner.
+// Keys live server-side only (ATTIO_API_KEY, RESEND_API_KEY — no
+// NEXT_PUBLIC prefix, nothing ships in the bundle). See
+// app/api/enquiry/route.ts for scopes and setup, .env.example for the vars.
 //
-// If the key is missing this throws NotConfiguredError rather than pretending
-// to send. A form that silently swallows enquiries is worse than one that
-// admits it's broken.
+// If the server reports itself unconfigured (503), submitEnquiry throws
+// NotConfiguredError and the form shows the "email us directly" state — a
+// form that silently swallows enquiries is worse than one that admits it's
+// broken.
 // ─────────────────────────────────────────────────────────────────────────
 
 export type Enquiry = {
@@ -63,61 +59,29 @@ export class NotConfiguredError extends Error {
   }
 }
 
-// ⚠️ This fetch MUST run in the browser. Web3Forms rejects server-side calls
-// on the free plan — a request from a server IP gets 403 "This method is not
-// allowed. Use our API in client side". So do NOT turn submitEnquiry into a
-// server action or route handler without moving to a provider that allows it
-// (Resend, which is the better long-term answer anyway). ContactForm is a
-// client component, which is what keeps this legal.
-const ENDPOINT = "https://api.web3forms.com/submit";
-const KEY = process.env.NEXT_PUBLIC_WEB3FORMS_KEY;
-
-export function isConfigured(): boolean {
-  return Boolean(KEY);
-}
-
 export async function submitEnquiry(data: Enquiry): Promise<void> {
-  if (!KEY) throw new NotConfiguredError();
-
   let res: Response;
   try {
-    res = await fetch(ENDPOINT, {
+    res = await fetch("/api/enquiry", {
       method: "POST",
-      headers: { "Content-Type": "application/json", Accept: "application/json" },
+      headers: { "Content-Type": "application/json" },
       // A hung request would leave the button on "Sending…" forever.
-      signal: AbortSignal.timeout(20_000),
-      body: JSON.stringify({
-        access_key: KEY,
-        subject: `Enquiry: ${data.name}, ${data.company}`,
-        from_name: "katamedia.cc",
-        // so replying in the mail client goes straight back to them
-        replyto: data.email,
-        // Web3Forms mails the payload as-is, so these keys are the field
-        // labels that land in the inbox. Order is the order you read them in.
-        Name: data.name,
-        Email: data.email,
-        Company: data.company,
-        Role: data.role || "Not given",
-        "They are a": data.side,
-        "What they need": data.need,
-        Timing: data.timing,
-        "Trying to figure out": data.message,
-      }),
+      signal: AbortSignal.timeout(25_000),
+      body: JSON.stringify(data),
     });
   } catch {
     // network failure, DNS, timeout, offline
     throw new Error("Could not reach the enquiry service.");
   }
 
-  // Web3Forms answers 200 with {success:false} for a bad or throttled key, so
-  // res.ok alone is not enough to call this delivered.
-  let body: { success?: boolean; message?: string } = {};
+  if (res.status === 503) throw new NotConfiguredError();
+  let body: { ok?: boolean; error?: string } = {};
   try {
     body = await res.json();
   } catch {
     /* non-JSON body — fall through to the status check */
   }
-  if (!res.ok || body.success !== true) {
-    throw new Error(body.message || `Enquiry service returned ${res.status}.`);
+  if (!res.ok || body.ok !== true) {
+    throw new Error(body.error || `Enquiry service returned ${res.status}.`);
   }
 }
