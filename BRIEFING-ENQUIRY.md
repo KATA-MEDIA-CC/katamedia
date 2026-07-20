@@ -1,7 +1,12 @@
-# Briefing — ship the Attio + Resend enquiry pipeline
+# Attio + Resend enquiry pipeline
 
-Read `HANDOFF.md` first. This replaces Web3Forms as the contact-form backend.
-**The code is already written and on disk, uncommitted** — verify and ship.
+Read `HANDOFF.md` first. This replaced Web3Forms as the contact-form backend.
+
+**Status: shipped and verified live on 2026-07-20.** A real submission created
+the person, note and assigned 24h task in Attio and delivered both the
+auto-reply and the internal notification via Resend (both `delivered` per the
+Resend log). The follow-up task is assigned to a founder. See Gotchas for the
+two things that bit us during the first live test.
 
 New/changed files: `app/api/enquiry/route.ts` (new) · `lib/mail.ts` (new) ·
 `lib/enquiry.ts` (rewritten client) · `.env.example` (new vars) · this file.
@@ -26,7 +31,8 @@ stays prerendered.
 
 1. **Attio API key**: app.attio.com → Workspace settings → Developers →
    API keys → create. Scopes: Record read-write, Note read-write, Task
-   read-write, Object configuration read.
+   read-write, Object configuration read, **User Management read**
+   (the tasks endpoint 403s without it — see Gotchas).
 2. **Resend**: create account (free tier is plenty) → Domains → add
    `katamedia.cc` → set the DNS records Resend shows (at the DNS host for
    katamedia.cc) → wait for "verified" → API Keys → create.
@@ -50,11 +56,25 @@ fallback (route returns 503) — same behaviour as the old unconfigured state.
    Verify: person + note + task appear in Attio · auto-reply arrives ·
    notification arrives at hello@ with working reply-to.
 
+## Gotchas (learned in the first live test)
+
+- **Attio tasks need the "User Management" read scope.** Without it, `POST
+  /v2/tasks` returns 403 (a task can carry assignees, so it reads members).
+  The task write is now best-effort in the route, so a missing scope only
+  loses the task, not the whole enquiry — but grant the scope.
+- **Workspace slug is `kata-media-consultancy-gmb-h`** (hyphen before the
+  final `h`), not `...gmbh`. Taken from Attio's own `web_url`. It's the slug
+  in the notification's "Open in Attio" deep-link (`lib/mail.ts`).
+- **Task assignee format** (raw API): `assignees: [{ referenced_actor_type:
+  "workspace-member", referenced_actor_id: "<member id>" }]`. The assignee id
+  lives in `ENQUIRY_ASSIGNEE_MEMBER_ID` in `route.ts` (currently Justin, the
+  only member). When more founders join, rotate it.
+
 ## Notes / future
 
-- The notification's Attio deep-link assumes workspace slug
-  `kata-media-consultancy-gmbh` — if the link 404s, correct the slug in
-  `lib/mail.ts` (one string).
+- Only Justin is a workspace member today, so every enquiry assigns to him.
+  Add the other founders in Attio, then turn `ENQUIRY_ASSIGNEE_MEMBER_ID`
+  into a rotation or route by `need`.
 - Optional later: a "Website Enquiries" list in Attio (UI: create list on
   People) for pipeline stages; the route can then also add entries to it.
 - Company records are deliberately not created in v1 (no reliable unique key

@@ -47,6 +47,14 @@ type Payload = {
 
 const ATTIO = "https://api.attio.com/v2";
 
+// Every enquiry's follow-up task is assigned to a founder, so a new lead lands
+// in someone's "My tasks" in Attio rather than sitting on a record no one owns.
+// Justin is currently the only workspace member; when Cornelius & Jankel are
+// added, turn this into a rotation (a counter, or hash the email) or route by
+// `need`. A stale id here only costs the assignment — the task write is
+// best-effort, so it just logs and moves on.
+const ENQUIRY_ASSIGNEE_MEMBER_ID = "284cb5f7-36c9-41ac-ae7b-71a83cb1212c"; // Justin Stiebel
+
 async function attio(path: string, method: string, body: unknown) {
   const res = await fetch(`${ATTIO}${path}`, {
     method,
@@ -185,7 +193,12 @@ export async function POST(req: Request) {
           deadline_at: new Date(Date.now() + 24 * 60 * 60 * 1000).toISOString(),
           is_completed: false,
           linked_records: [{ target_object: "people", target_record_id: recordId }],
-          assignees: [],
+          assignees: [
+            {
+              referenced_actor_type: "workspace-member",
+              referenced_actor_id: ENQUIRY_ASSIGNEE_MEMBER_ID,
+            },
+          ],
         },
       });
     } catch (err) {
