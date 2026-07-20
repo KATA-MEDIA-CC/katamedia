@@ -238,7 +238,9 @@ img {
 
 /* ── section scaffold ───────────────────────────────────────────────── */
 .feature {
-  padding: clamp(80px, 10vw, 150px) 0;
+  /* Tightened after the section dividers came out: 150px top+bottom read as a
+     300px void between sections with no line to justify it. 88px -> 176px gap. */
+  padding: clamp(52px, 5.5vw, 88px) 0;
 }
 .g12 {
   display: grid;
@@ -247,7 +249,7 @@ img {
 }
 .fhead {
   align-items: start;
-  margin-bottom: clamp(52px, 6.5vw, 88px);
+  margin-bottom: clamp(32px, 3.8vw, 56px);
 }
 .fhead .mk {
   grid-column: 1 / 3;
