@@ -52,11 +52,7 @@ export function ContactForm() {
       <div className="form-done">
         <p className="fd-k">Sent</p>
         <p className="fd-h">
-          Thank you. We&rsquo;ll come back within <em>24 hours.</em>
-        </p>
-        <p className="fd-b">
-          You&rsquo;ll get an honest read on whether we&rsquo;re the right people
-          to help, and which founder you&rsquo;d be working with.
+          Thank you. We&rsquo;ll get back to you <em>as soon as we can.</em>
         </p>
       </div>
     );
