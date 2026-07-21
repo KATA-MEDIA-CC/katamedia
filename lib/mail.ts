@@ -55,11 +55,11 @@ export function autoReplyHtml(name: string): string {
   const first = esc(name.split(" ")[0] || name);
   return shell(`
         <p style="${P}margin-top:34px;">Hi ${first},</p>
-        <p style="${P}">danke, deine Anfrage ist angekommen.</p>
-        <p style="${P}">Innerhalb von 24 Stunden bekommst du eine ehrliche Einsch&auml;tzung, ob wir die Richtigen daf&uuml;r sind, und mit welchem Gr&uuml;nder du arbeiten w&uuml;rdest. Es antwortet ein Mensch, keine Standardmail.</p>
-        <p style="${P}">Bis gleich,<br>Justin, Cornelius &amp; Jankel</p>
+        <p style="${P}">danke f&uuml;r deine Nachricht &ndash; ist angekommen.</p>
+        <p style="${P}">Du h&ouml;rst innerhalb von 24 Stunden von uns.</p>
+        <p style="${P}">Bis bald,<br>Justin, Cornelius &amp; Jankel</p>
         <hr style="${RULE}">
-        <p style="${MUTED}"><em>English:</em> Thank you. Your enquiry has arrived. Within 24 hours you&rsquo;ll get an honest read on whether we&rsquo;re the right people to help, and which founder you&rsquo;d be working with. A person will reply, not a template.</p>`);
+        <p style="${MUTED}"><em>English:</em> Thanks for your message &ndash; it&rsquo;s arrived. You&rsquo;ll hear from us within 24 hours.</p>`);
 }
 
 // The internal notification to hello@ — same fields the Web3Forms mail
