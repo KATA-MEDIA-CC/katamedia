@@ -37,8 +37,8 @@ export default function ApproachPage() {
               Most production advice comes from people with a financial stake in
               the outcome. We don&rsquo;t. We sit beside the decision, never
               above the process and never inside the margin. Every
-              recommendation is grounded in what actually happens on set, in the
-              edit, and in the negotiation.
+              recommendation is grounded in systems we have designed and
+              built ourselves.
             </p>
           </Reveal>
         </div>
