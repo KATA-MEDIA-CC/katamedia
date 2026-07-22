@@ -27,10 +27,12 @@ export const site = {
   // and still contain the words people actually search for.
   short:
     "We design and build how brands and agencies make content: production strategy, capability, AI and cost. We don't run your productions. We design the system they run in. Independently.",
-  // The hero's displayed subline. `short` above stays the meta description —
-  // the two diverge because the cred band directly under the hero now carries
-  // independence and the pedigree, so the subline must not say either twice.
-  sub: "We design and build how brands and agencies make content: production strategy, organisation, AI and cost. We don't run your productions. We design the system they run in.",
+  // The hero's displayed subline — audience, offer, credibility in one
+  // breath (claim-hierarchy decision, Jul 2026). `short` above stays the
+  // meta description. The cred band directly under the hero carries the
+  // pedigree and the full independence statement; "Independently led."
+  // here is the two-word echo the founders asked for, not a repetition.
+  sub: "We build and sharpen production structures for brands and agencies. Independently led.",
   belief: "We sit beside the decision, never above the process and never inside the margin.",
   booking: "Now booking · 2026",
   // Company page handle — CONFIRM the slug before publishing.

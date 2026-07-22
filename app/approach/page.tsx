@@ -69,6 +69,20 @@ export default function ApproachPage() {
             <span>Diagnostic · Roadmap · Recommendation · yours to keep</span>
             <span className="r">RAG-scored across all six dimensions</span>
           </div>
+
+          {/* The name — why a method page belongs to a company called Kata.
+              Founder decision (Cornelius, Jul 2026): derive the Japanese
+              origin here, next to the six dimensions, not on the homepage. */}
+          <div className="g12">
+            <Reveal className="origin">
+              <p className="origin-kick">The name</p>
+              <p className="origin-line">
+                <b>Kata</b> — Japanese for <em>form</em>. A sequence of
+                movements, internalised through repetition, until it holds in
+                any situation.
+              </p>
+            </Reveal>
+          </div>
         </div>
       </section>
 

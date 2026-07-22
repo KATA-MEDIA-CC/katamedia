@@ -10,12 +10,17 @@ import { gsap, useIsoLayoutEffect, prefersReducedMotion } from "@/lib/gsap";
 // asked for the 01/02/03 section numbering to go (Jul 2026) — with sections
 // added and removed per page, the sequences kept reading as half-finished. The
 // frame renders again the moment a caller passes `no`.
+// `kick` renders a small clay crosshead above the title — added for the claim
+// hierarchy (Jul 2026): "Better by design." sits as a Zwischenüberschrift
+// before "What we do", now that it has left the hero.
 export function FeatureHead({
   no,
+  kick,
   title,
   deck,
 }: {
   no?: string;
+  kick?: string;
   title: ReactNode;
   deck?: string;
 }) {
@@ -52,7 +57,10 @@ export function FeatureHead({
           </span>
         </span>
       ) : null}
-      <h2>{title}</h2>
+      <h2>
+        {kick ? <span className="fkick">{kick}</span> : null}
+        {title}
+      </h2>
       {deck ? <p className="deck">{deck}</p> : null}
       <span ref={lineRef} className="drawline" />
     </div>

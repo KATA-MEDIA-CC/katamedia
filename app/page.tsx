@@ -15,10 +15,12 @@ import { pillars, entryPoints, dimensions, site, cta } from "@/lib/site";
 // The method → The founders → CTA. Each section stays a compression of its
 // page and links out to the full version.
 //
-// Claims hierarchy (settled with all three founders): "Better by design." is
-// the hero headline, "From fragments — order." the line under it, and
-// "Knowledge applied to action" stays the brand claim in the nav lockup and
-// footer — the two claims never appear in one breath.
+// Claims hierarchy (settled with all three founders, round 2, Jul 2026):
+// "Knowledge applied to action" stays in the header lockup as the brand core.
+// "From fragments — order." is the hero headline, with one concrete sentence
+// under it (audience · offer · credibility). "Better by design." moved out of
+// the hero and sits as the crosshead before "What we do". No two claims ever
+// share one breath.
 export default function Home() {
   return (
     <>
@@ -27,12 +29,11 @@ export default function Home() {
         lead={site.descriptor}
         title={
           <>
-            Better
+            From fragments,
             <br />
-            <em>by design.</em>
+            <em>order.</em>
           </>
         }
-        tag="From fragments — order."
         desc={site.sub}
       />
 
@@ -44,6 +45,7 @@ export default function Home() {
       <section className="feature">
         <div className="wrap">
           <FeatureHead
+            kick="Better by design."
             title={
               <>
                 What we <em>do</em>

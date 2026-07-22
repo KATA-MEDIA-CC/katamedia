@@ -294,6 +294,17 @@ img {
   line-height: 1;
   color: var(--ink);
 }
+/* clay crosshead above a section title — carries "Better by design." */
+.fhead .fkick {
+  display: block;
+  font-family: var(--sans);
+  font-weight: 600;
+  font-size: clamp(10px, 1vw, 12px);
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--clay-d);
+  margin-bottom: 14px;
+}
 .fhead h2 {
   grid-column: 3 / 9;
   font-family: var(--display);
@@ -367,6 +378,44 @@ img {
 .caption .r {
   color: var(--ink-40);
 }
+
+/* ── the name (approach) — one quiet line on the Japanese origin ─────── */
+.origin {
+  grid-column: 1 / 9;
+  margin-top: clamp(40px, 5vw, 64px);
+  border-top: 1px solid var(--hair);
+  padding-top: clamp(20px, 2.6vw, 30px);
+}
+.origin-kick {
+  font-family: var(--sans);
+  font-weight: 600;
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--ink-40);
+  margin-bottom: 10px;
+}
+.origin-line {
+  font-family: var(--serif);
+  font-size: clamp(16px, 1.8vw, 21px);
+  line-height: 1.55;
+  color: var(--ink-80);
+  max-width: 54ch;
+}
+.origin-line b {
+  font-weight: 500;
+  color: var(--ink);
+}
+.origin-line em {
+  color: var(--clay-d);
+}
+
+@media (max-width: 900px) {
+  .origin {
+    grid-column: 1 / 13;
+  }
+}
+
 /* interactive caption links must stay legible (not the ink-40 muted tint) */
 .caption a,
 .caption .clink {
