@@ -44,10 +44,11 @@ export const site = {
 // reason anyone takes the 45-minute call, so they cannot live only on /team.
 // Wording note: the word "kickback" is banned (Cornelius — negatively loaded);
 // independence is stated as the absence of financial ties instead.
-// 50+ = 15 (Justin) + 25 (Cornelius) + 12 (Jankel), rounded down on purpose so
-// the number can never be accused of inflation.
+// 45+ = 15 (Justin) + 20 (Cornelius, corrected from 25 — CR, Jul 2026) +
+// 12 (Jankel) = 47, rounded down on purpose so the number can never be
+// accused of inflation.
 export const cred = {
-  years: "50+ years of production leadership",
+  years: "45+ years of production leadership",
   houses: ["The Mill", "Stink", "Psyop", "Markenfilm", "Jung von Matt"],
   independence:
     "Independent. No financial ties to the production companies, directors or agencies we recommend.",
@@ -136,14 +137,14 @@ export const founders = [
   },
   {
     name: "Cornelius Roenz",
-    role: "Strategy, production leadership and executive production",
+    role: "Strategy, production controlling and executive production",
     email: "cornelius@katamedia.cc",
-    card: "Twenty-five years at Markenfilm, seven of them as Managing Director.",
+    card: "Twenty years at Markenfilm, seven of them as Managing Director.",
     notes: [
-      "Twenty-five years at Markenfilm, seven of them as Managing Director.",
-      "Production controlling and advisory specialist with deep market knowledge across German and European TVC, content, and campaign production.",
-      "Has built and managed production budgets across formats, from small social campaigns to large scale international shoots. Knows what things cost, what gets padded, and where clients are being underserved.",
-      "Specialist in the German market. Its rates, its production companies, its directors, and its dynamics.",
+      "Twenty years at Markenfilm, seven of them as Managing Director. Ran the company without leaving the work: pitches, directors, production negotiations, and the number on set.",
+      "Production leader and controlling specialist with deep market knowledge across German and European TVC, content, and campaign production.",
+      "Has built, assessed, and managed production budgets at every scale, from focused social campaigns to complex international shoots. Knows how ambitious creative work is costed, where the money shows up on screen, and when a number doesn't hold up.",
+      "Specialist in production economics and the German market. Its rates, its production companies, its directors, and the dynamics that shape it.",
     ],
     photo: "/team/cornelius.png",
     ar: 1.3953, // 960 × 688
@@ -226,7 +227,7 @@ export const entryPoints = [
     no: "01",
     title: "Audit",
     meta: "2–4 weeks · fixed fee",
-    body: "Your production setup: mapped, benchmarked and scored across all six dimensions of the Method. It typically surfaces 10 to 20% in recoverable cost.",
+    body: "Your production setup: mapped, benchmarked and scored across all six dimensions of the Method. Our benchmark data suggests 10–20% of production cost is typically recoverable.",
   },
   {
     no: "02",

@@ -16,7 +16,7 @@ export function Cred() {
         <Reveal className="cred-in">
           <p className="cred-years">{cred.years}</p>
           <p className="cred-ind">
-            Made at{" "}
+            Experience built at{" "}
             {cred.houses.map((h, i) => {
               const last = cred.houses.length - 1;
               return (

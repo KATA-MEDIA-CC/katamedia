@@ -48,7 +48,7 @@ export const TIMINGS = [
   "Not sure yet",
   "Now, it's live",
   "Next 3 months",
-  "Later in 2026",
+  "Later this year",
   "Just exploring",
 ] as const;
 

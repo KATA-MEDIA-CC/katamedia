@@ -53,7 +53,7 @@ export default function TeamPage() {
                 The <em>network</em>
               </>
             }
-            deck="Specialists we bring in when the work calls for them. Open a sector to see who that is."
+            deck="Specialists we bring in when the work calls for them. Open a sector to see what they do, and when they come in."
           />
           <div className="g12">
             <Network />
@@ -72,7 +72,7 @@ export default function TeamPage() {
               Tell us what you are trying to <em>figure out.</em>
             </p>
             <p className="cta-body">
-              A 45 minute call. We will come back within 24 hours with an honest
+              A 45-minute call. We will come back within 24 hours with an honest
               read on whether we are the right people to help, and which founder
               you would be working with.
             </p>

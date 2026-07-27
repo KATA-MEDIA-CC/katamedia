@@ -4,9 +4,10 @@ import { Cred } from "@/components/Cred";
 import { FeatureHead } from "@/components/FeatureHead";
 import { Reveal } from "@/components/Reveal";
 import { PillarIcon, DimensionIcon } from "@/components/Icons";
+import { EntryCards } from "@/components/EntryCards";
 import { FounderCards } from "@/components/Founders";
 import { BookingButton } from "@/components/Booking";
-import { pillars, entryPoints, dimensions, site, cta } from "@/lib/site";
+import { pillars, dimensions, site, cta } from "@/lib/site";
 
 // The home page is the whole story, not a teaser. Founder feedback (Jul 2026):
 // hardly anyone clicks past the first page, so everything that argues for the
@@ -88,18 +89,10 @@ export default function Home() {
                 How we <em>engage</em>
               </>
             }
-            deck="Every relationship starts one of three ways: fixed scope, fixed fee, and a recommendation you keep whatever you decide next."
+            deck="Every relationship starts one of three ways: an audit, a workshop or a pilot. Each one: fixed scope, a fee agreed before we start, and a recommendation you keep whatever you decide next."
           />
           <div className="g12">
-            <Reveal className="trio" stagger>
-              {entryPoints.map((d) => (
-                <div className="card" key={d.title}>
-                  <h3>{d.title}</h3>
-                  <span className="c-meta">{d.meta}</span>
-                  <p className="c-spacer">{d.body}</p>
-                </div>
-              ))}
-            </Reveal>
+            <EntryCards />
           </div>
           <div className="caption">
             <span>No retainer required to start</span>
@@ -177,7 +170,7 @@ export default function Home() {
               Tell us what you are trying to <em>figure out.</em>
             </p>
             <p className="cta-body">
-              A 45 minute call. We will come back within 24 hours with an honest
+              A 45-minute call. We will come back within 24 hours with an honest
               read on whether we are the right people to help, and which founder
               you would be working with.
             </p>

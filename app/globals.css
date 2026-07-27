@@ -1245,6 +1245,15 @@ img {
 .card .c-spacer {
   margin-top: auto;
 }
+.card .mlink {
+  color: inherit;
+  border-bottom: 1px solid var(--clay);
+  transition: color 0.3s ease;
+}
+.card .mlink:hover {
+  color: var(--clay-d);
+}
+
 
 /* ── the method, compact (home) — icon + label only ──────────────────── */
 .dims {
@@ -1718,6 +1727,29 @@ img {
 .field textarea::placeholder {
   color: var(--ink-40);
 }
+/* "optional" marker inside a label */
+.field > label .opt {
+  font-style: normal;
+  font-weight: 600;
+  color: var(--ink-40);
+  letter-spacing: 0.08em;
+}
+/* the GDPR line above the submit row */
+.f-privacy {
+  font-family: var(--sans);
+  font-size: 11.5px;
+  letter-spacing: 0.03em;
+  color: var(--ink-40);
+}
+.f-privacy a {
+  color: var(--ink-60);
+  border-bottom: 1px solid var(--hair);
+  transition: color 0.3s ease;
+}
+.f-privacy a:hover {
+  color: var(--clay-d);
+}
+
 /* fieldset reset for the chip group */
 .f-set {
   border: 0;
@@ -2258,6 +2290,43 @@ a.cframe:hover .cf-v {
   font-weight: 600;
 }
 
+/* ── legal pages (imprint / privacy) — plain prose, draft-marked ─────── */
+.legal {
+  grid-column: 1 / 9;
+}
+.legal .legal-draft {
+  font-family: var(--sans);
+  font-weight: 600;
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  color: var(--clay-d);
+  border: 1px solid var(--clay);
+  padding: 12px 16px;
+  margin-bottom: clamp(28px, 4vw, 44px);
+}
+.legal h2 {
+  font-family: var(--display);
+  font-weight: 600;
+  font-size: clamp(17px, 1.8vw, 22px);
+  letter-spacing: -0.01em;
+  margin: clamp(26px, 3.4vw, 40px) 0 10px;
+}
+.legal p {
+  font-family: var(--serif);
+  font-size: clamp(14px, 1.3vw, 16px);
+  line-height: 1.65;
+  color: var(--ink-80);
+  margin: 0 0 12px;
+}
+.legal a {
+  color: var(--clay-d);
+}
+
+/* muted legal links in the footer nav */
+.foot-nav .foot-legal {
+  color: var(--ink-40);
+}
+
 /* ═══════════════════════════════════════════════════════════════════════
    RESPONSIVE
    ═══════════════════════════════════════════════════════════════════════ */
@@ -2303,6 +2372,9 @@ a.cframe:hover .cf-v {
   .form-side {
     grid-column: 1 / 13;
     margin-top: clamp(44px, 6vw, 64px);
+  }
+  .legal {
+    grid-column: 1 / 13;
   }
   .cred-in {
     flex-direction: column;

@@ -37,6 +37,14 @@ export function Footer() {
                 {item.label}
               </Link>
             ))}
+            {/* legally required (DE) — German labels on purpose, so the
+                obligation is recognisable at a glance */}
+            <Link href="/imprint" className="foot-legal">
+              Impressum
+            </Link>
+            <Link href="/privacy" className="foot-legal">
+              Datenschutz
+            </Link>
           </nav>
           <p className="foot-meta">
             © {year} {site.name} · <b>{site.domain}</b>

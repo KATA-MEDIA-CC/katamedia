@@ -53,7 +53,7 @@ export default function ApproachPage() {
                 The <em>method</em>
               </>
             }
-            deck="Most production problems are operational, not creative. Six dimensions are how we diagnose them, and build one clear roadmap."
+            deck="Most production problems are operational, not creative. The Method frames every engagement: the audit scores all six dimensions, workshops and pilots go deep on one or two."
           />
           <div className="g12">
             <Reveal className="trio" stagger>
@@ -67,7 +67,7 @@ export default function ApproachPage() {
           </div>
           <div className="caption">
             <span>Diagnostic · Roadmap · Recommendation · yours to keep</span>
-            <span className="r">RAG-scored across all six dimensions</span>
+            <span className="r">Scored red, amber or green across all six dimensions</span>
           </div>
 
           {/* The name — why a method page belongs to a company called Kata.
@@ -100,8 +100,8 @@ export default function ApproachPage() {
               only ever in the client&rsquo;s interest.
             </p>
             <p className="st-sub">
-              Nobody knows the German market like we do. Rates, rosters,
-              directors, production companies. From the inside.
+              We&rsquo;ve worked in the German market for years. Rates, rosters,
+              directors, production companies. We know it from the inside.
             </p>
           </Reveal>
         </div>
@@ -118,7 +118,7 @@ export default function ApproachPage() {
               Tell us what you are trying to <em>figure out.</em>
             </p>
             <p className="cta-body">
-              A 45 minute call. We will come back within 24 hours with an honest
+              A 45-minute call. We will come back within 24 hours with an honest
               read on whether we are the right people to help, and which founder
               you would be working with.
             </p>

@@ -8,7 +8,7 @@ import { founders, site, pageMetadata } from "@/lib/site";
 export const metadata: Metadata = pageMetadata({
   title: "Contact",
   description:
-    "Talk to Kata. Independent production advisory, now booking 2026. A 45 minute call, and an honest read within 24 hours.",
+    "Talk to Kata. Independent production advisory, now booking 2026. A 45-minute call, and an honest read within 24 hours.",
   path: "/contact",
 });
 
@@ -45,7 +45,7 @@ export default function ContactPage() {
               <p className="fs-k">What happens next</p>
               <ul className="fs-list">
                 <li>
-                  <span className="n">01</span>A 45 minute call, at a time that
+                  <span className="n">01</span>A 45-minute call, at a time that
                   suits you.
                 </li>
                 <li>

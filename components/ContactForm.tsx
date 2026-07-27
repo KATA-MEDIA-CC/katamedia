@@ -99,13 +99,14 @@ export function ContactForm() {
           />
         </div>
         <div className="field">
-          <label htmlFor="f-role">Your role</label>
+          <label htmlFor="f-role">
+            Your role <i className="opt">· optional</i>
+          </label>
           <input
             id="f-role"
             name="role"
             type="text"
             autoComplete="organization-title"
-            placeholder="Optional"
           />
         </div>
       </div>
@@ -131,7 +132,9 @@ export function ContactForm() {
 
       <div className="f-row">
         <div className="field">
-          <label htmlFor="f-need">What you need</label>
+          <label htmlFor="f-need">
+            What you need <i className="opt">· optional</i>
+          </label>
           <div className="select">
             <select id="f-need" name="need" defaultValue={NEEDS[0]}>
               {NEEDS.map((n) => (
@@ -143,7 +146,9 @@ export function ContactForm() {
           </div>
         </div>
         <div className="field">
-          <label htmlFor="f-timing">Timing</label>
+          <label htmlFor="f-timing">
+            Timing <i className="opt">· optional</i>
+          </label>
           <div className="select">
             <select id="f-timing" name="timing" defaultValue={TIMINGS[0]}>
               {TIMINGS.map((t) => (
@@ -166,6 +171,13 @@ export function ContactForm() {
           placeholder="The more specific, the more useful the call."
         />
       </div>
+
+      {/* GDPR: the processing note the form legally needs (CR, Jul 2026).
+          Details live on /privacy — keep this line short and honest. */}
+      <p className="f-privacy">
+        We use your details only to answer this enquiry.{" "}
+        <a href="/privacy">How we handle data</a>.
+      </p>
 
       <div className="f-foot">
         <button

@@ -4,12 +4,13 @@ import { BookingButton } from "@/components/Booking";
 import { FeatureHead } from "@/components/FeatureHead";
 import { Reveal } from "@/components/Reveal";
 import { PillarIcon } from "@/components/Icons";
-import { pillars, entryPoints, cta, pageMetadata } from "@/lib/site";
+import { EntryCards } from "@/components/EntryCards";
+import { pillars, cta, pageMetadata } from "@/lib/site";
 
 export const metadata: Metadata = pageMetadata({
   title: "Services",
   description:
-    "How we engage. An audit, a workshop or a pilot, fixed fee. Then four pillars: strategic advisory, organisational setup and studio builds, AI integration, and production controlling.",
+    "How we engage. An audit, a workshop or a pilot, with a fee agreed before we start. Then four pillars: strategic advisory, organisational setup and studio builds, AI integration, and production controlling.",
   path: "/services",
 });
 
@@ -35,18 +36,10 @@ export default function ServicesPage() {
                 How we <em>engage</em>
               </>
             }
-            deck="Every relationship starts one of three ways: fixed scope, fixed fee, and a recommendation you keep whatever you decide next."
+            deck="Every relationship starts one of three ways: an audit, a workshop or a pilot. Each one: fixed scope, a fee agreed before we start, and a recommendation you keep whatever you decide next."
           />
           <div className="g12">
-            <Reveal className="trio" stagger>
-              {entryPoints.map((d) => (
-                <div className="card" key={d.title}>
-                  <h3>{d.title}</h3>
-                  <span className="c-meta">{d.meta}</span>
-                  <p className="c-spacer">{d.body}</p>
-                </div>
-              ))}
-            </Reveal>
+            <EntryCards />
           </div>
           <div className="caption">
             <span>Each engagement ends in a recommendation you keep, whatever you decide next.</span>
