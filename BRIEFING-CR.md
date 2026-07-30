@@ -12,8 +12,11 @@ Changed: `lib/site.ts` · `lib/enquiry.ts` · `components/Cred.tsx` ·
 
 ## Shipped fixes (CR's numbering)
 
-- HOME 1: audit body → "Our benchmark data suggests 10–20% of production cost
-  is typically recoverable" (no implied track record).
+- HOME 1 (superseded same day): the savings percentage is OUT entirely —
+  also the softer "benchmark data suggests" version. Audit body is now:
+  "Your production setup: mapped and scored across all six dimensions of the
+  Method, against rates we have negotiated ourselves. Where cost leaks, you
+  see it line by line." Rule going forward: no unevidenced numbers anywhere.
 - HOME 2+3 / SERVICES 1+2: engage-deck now names the three ways and resolves
   the fee inconsistency: "…an audit, a workshop or a pilot. Each one: fixed
   scope, a fee agreed before we start, and a recommendation you keep…".

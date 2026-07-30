@@ -27,14 +27,14 @@ export const site = {
   // and still contain the words people actually search for.
   short:
     "We design and build how brands and agencies make content: production strategy, capability, AI and cost. We don't run your productions. We design the system they run in. Independently.",
-  // The hero's displayed subline — audience and offer in one breath
-  // (claim-hierarchy decision, Jul 2026). `short` above stays the meta
-  // description. Independence is deliberately NOT stated here: it lives on
-  // the first screen via the cred band directly below (the claim, with
-  // proof) and again in the footer. The earlier "Independently led." tail
-  // was dropped Jul 2026 — it only echoed the cred band's stronger,
-  // substantiated line two rows down. Two placements, each earning its
-  // place, beats three.
+  // The hero's displayed subline — audience and offer, one breath. `short`
+  // above stays the meta description and carries the SEO keywords.
+  // "Independently led." was removed here (CR feedback, Jul 2026): it sat
+  // two lines above the cred band, which makes the same claim stronger and
+  // with proof. Independence now appears exactly twice on the home page —
+  // cred band (claim + proof) and footer (closing) — each with its own job.
+  // Also settled: no "advisory" in this line, ever — advisers recommend
+  // from outside, we build. The keywords live in the meta description.
   sub: "We build and sharpen production structures for brands and agencies.",
   belief: "We sit beside the decision, never above the process and never inside the margin.",
   booking: "Now booking · 2026",
@@ -230,7 +230,11 @@ export const entryPoints = [
     no: "01",
     title: "Audit",
     meta: "2–4 weeks · fixed fee",
-    body: "Your production setup: mapped, benchmarked and scored across all six dimensions of the Method. Our benchmark data suggests 10–20% of production cost is typically recoverable.",
+    // No savings percentage here — ever (CR, Jul 2026). A number we cannot
+    // yet evidence is exactly what a procurement reader is trained to
+    // distrust. Experience (rates we negotiated ourselves) and mechanism
+    // (line by line) carry more than an unproven percentage.
+    body: "Your production setup: mapped and scored across all six dimensions of the Method, against rates we have negotiated ourselves. Where cost leaks, you see it line by line.",
   },
   {
     no: "02",
