@@ -9,8 +9,8 @@ import type { Metadata } from "next";
 export const site = {
   name: "Kata",
   wordmark: "kata",
-  domain: "katamedia.cc",
-  url: "https://katamedia.cc",
+  domain: "bureau-kata.com",
+  url: "https://bureau-kata.com",
   tagline: "Knowledge applied to action",
   // Shared alias to all three founders. Enquiries land here, and it's the
   // fallback shown if the form can't send. Founders' direct addresses are on
