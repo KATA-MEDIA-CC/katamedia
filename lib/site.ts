@@ -15,7 +15,14 @@ export const site = {
   // Shared alias to all three founders. Enquiries land here, and it's the
   // fallback shown if the form can't send. Founders' direct addresses are on
   // the founders list below.
-  email: "hello@katamedia.cc",
+  email: "hello@bureau-kata.com",
+  // TEMPORARY (domain migration): the Resend "from" address. Sending needs a
+  // Resend-verified domain, and bureau-kata.com isn't verified there yet, so
+  // mail still SENDS from the verified katamedia.cc address while everything the
+  // visitor sees — plus reply-to and the internal notification target — is
+  // already bureau-kata.com. Once bureau-kata.com is verified in Resend, set
+  // this to site.email (or delete it) and this split disappears.
+  mailFrom: "hello@katamedia.cc",
   // Drives the sitewide <title>, the OG title and the home hero kicker.
   // "Architects" over "Advisory" is a deliberate positioning trade: advisors
   // advise on decisions, architects design and build. It costs us the search
@@ -124,7 +131,7 @@ export const founders = [
   {
     name: "Justin Stiebel",
     role: "Strategy, organisational design and advisory",
-    email: "justin@katamedia.cc",
+    email: "justin@bureau-kata.com",
     // One line for the home founder card — the pedigree, nothing else.
     card: "Fifteen years leading VFX and production companies. The Mill, Stink, Psyop.",
     notes: [
@@ -141,7 +148,7 @@ export const founders = [
   {
     name: "Cornelius Roenz",
     role: "Strategy, production controlling and executive production",
-    email: "cornelius@katamedia.cc",
+    email: "cornelius@bureau-kata.com",
     card: "Twenty years at Markenfilm, seven of them as Managing Director.",
     notes: [
       "Twenty years at Markenfilm, seven of them as Managing Director. Ran the company without leaving the work: pitches, directors, production negotiations, and the number on set.",
@@ -157,7 +164,7 @@ export const founders = [
   {
     name: "Jankel Huppertz",
     role: "Production leadership, operations and advisory",
-    email: "jankel@katamedia.cc",
+    email: "jankel@bureau-kata.com",
     card: "Twelve years running production at Jung von Matt, across formats and scales.",
     notes: [
       "Twelve years at Jung von Matt, running production across formats and scales.",

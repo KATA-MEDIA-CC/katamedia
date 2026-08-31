@@ -209,7 +209,10 @@ export async function POST(req: Request) {
   // ── 2 + 3. Mail: auto-reply + internal notification ────────────────────
   // Both are best-effort: the record exists, so a mail hiccup must not turn
   // into a visitor-facing error.
-  const FROM = `Kata <${site.email}>`;
+  // Sends from the Resend-verified domain (mailFrom); every visitor-facing
+  // address — reply-to below, notify-to, the displayed emails — is site.email.
+  // During the domain migration those differ; normally mailFrom === site.email.
+  const FROM = `Kata <${site.mailFrom}>`;
   try {
     await resend({
       from: FROM,
