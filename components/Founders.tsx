@@ -26,7 +26,7 @@ const EYE_LINE = 0.33;
 
 // Centre-x of each face as a fraction of photo width. Eyeballed off the files;
 // the only number here that isn't measured.
-const FACE_X = [0.45, 0.48, 0.4];
+const FACE_X = [0.45, 0.455, 0.4];
 
 const need = founders.map((f) => f.ar / f.k);
 const tightest = Math.min(...need);

@@ -157,9 +157,9 @@ export const founders = [
       "Specialist in production economics and the German market. Its rates, its production companies, its directors, and the dynamics that shape it.",
     ],
     photo: "/team/cornelius.png",
-    ar: 1.3953, // 960 × 688
-    k: 0.3517, // the widest shot — takes the most crop to match the others
-    e: 0.2587,
+    ar: 1.5, // 1920 × 1280 (new portrait, Aug 2026)
+    k: 0.35, // wide shot — re-measured so his head matches Justin & Jankel
+    e: 0.345, // eyes ~0.345 down the new frame; lands on the shared eye-line
   },
   {
     name: "Jankel Huppertz",
