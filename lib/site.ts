@@ -127,7 +127,25 @@ export const cta = { label: "Book a call", href: "/contact" } as const;
 // one global zoom factor that lets a single eye-line satisfy all three at once.
 // Swap a portrait without re-measuring and the heads silently drift apart.
 // The plate treatment itself is the kata-imagery skill (.claude/skills).
+// Display order (founder request, Sep 2026): Cornelius · Justin · Jankel.
+// FACE_X in Founders.tsx is indexed by this order — keep the two in step.
 export const founders = [
+  {
+    name: "Cornelius Roenz",
+    role: "Strategy, production controlling and executive production",
+    email: "cornelius@bureau-kata.com",
+    card: "Twenty years at Markenfilm, seven of them as Managing Director.",
+    notes: [
+      "Twenty years at Markenfilm, seven of them as Managing Director. Ran the company without leaving the work: pitches, directors, production negotiations, and the number on set.",
+      "Production leader and controlling specialist with deep market knowledge across German and European TVC, content, and campaign production.",
+      "Has built, assessed, and managed production budgets at every scale, from focused social campaigns to complex international shoots. Knows how ambitious creative work is costed, where the money shows up on screen, and when a number doesn't hold up.",
+      "Specialist in production economics and the German market. Its rates, its production companies, its directors, and the dynamics that shape it.",
+    ],
+    photo: "/team/cornelius.png",
+    ar: 1.5071, // 1706 × 1132 (new portrait, Sep 2026)
+    k: 0.4, // re-measured against the new file
+    e: 0.247, // eyes sit high in the new frame
+  },
   {
     name: "Justin Stiebel",
     role: "Strategy, organisational design and advisory",
@@ -146,22 +164,6 @@ export const founders = [
     e: 0.316,
   },
   {
-    name: "Cornelius Roenz",
-    role: "Strategy, production controlling and executive production",
-    email: "cornelius@bureau-kata.com",
-    card: "Twenty years at Markenfilm, seven of them as Managing Director.",
-    notes: [
-      "Twenty years at Markenfilm, seven of them as Managing Director. Ran the company without leaving the work: pitches, directors, production negotiations, and the number on set.",
-      "Production leader and controlling specialist with deep market knowledge across German and European TVC, content, and campaign production.",
-      "Has built, assessed, and managed production budgets at every scale, from focused social campaigns to complex international shoots. Knows how ambitious creative work is costed, where the money shows up on screen, and when a number doesn't hold up.",
-      "Specialist in production economics and the German market. Its rates, its production companies, its directors, and the dynamics that shape it.",
-    ],
-    photo: "/team/cornelius.png",
-    ar: 1.5, // 1920 × 1280 (new portrait, Aug 2026)
-    k: 0.35, // wide shot — re-measured so his head matches Justin & Jankel
-    e: 0.345, // eyes ~0.345 down the new frame; lands on the shared eye-line
-  },
-  {
     name: "Jankel Huppertz",
     role: "Production leadership, operations and advisory",
     email: "jankel@bureau-kata.com",
@@ -173,9 +175,9 @@ export const founders = [
       "Specialist in production structures, processes, and budgets, and where value is created or lost.",
     ],
     photo: "/team/jankel.png",
-    ar: 1.5607, // 1080 × 692
-    k: 0.5954, // sets the DROP ceiling — 97.1% of his photo height is used
-    e: 0.3757,
+    ar: 1.5, // 1536 × 1024 (new portrait, Sep 2026)
+    k: 0.83, // tight leaning-in close-up — sets the head size for the whole row
+    e: 0.43, // eyes ~0.43 down the new frame
   },
 ] as const;
 

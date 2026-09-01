@@ -12,8 +12,9 @@ type CSSVars = React.CSSProperties & Record<string, string | number>;
 // three portraits were shot at three different distances, so cover would show
 // three different head sizes. Instead each image is placed by a measured zoom
 // and offset until every head renders the same size and every pair of eyes sits
-// on one line. Cornelius takes the most crop — he was shot widest, so his bridge
-// is the price of a uniform row.
+// on one line. Jankel's new shot is the tightest (his head fills ~80% of its
+// frame), so it sets the row's head size and the others zoom in to match — which
+// makes the whole row read large and close-cropped.
 //
 // Derived from the measured ar/k/e in lib/site.ts:
 //   zoom ∝ ar/k    how far each photo must come in for its head to match
@@ -26,7 +27,7 @@ const EYE_LINE = 0.33;
 
 // Centre-x of each face as a fraction of photo width. Eyeballed off the files;
 // the only number here that isn't measured.
-const FACE_X = [0.45, 0.455, 0.4];
+const FACE_X = [0.45, 0.45, 0.48]; // Cornelius, Justin, Jankel — the display order
 
 const need = founders.map((f) => f.ar / f.k);
 const tightest = Math.min(...need);
