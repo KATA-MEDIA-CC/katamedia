@@ -8,7 +8,7 @@ import { EntryCards } from "@/components/EntryCards";
 import { FounderCards } from "@/components/Founders";
 import { BookingButton } from "@/components/Booking";
 import { Flip } from "@/components/Flip";
-import { pillars, dimensions, site, cta } from "@/lib/site";
+import { pillars, dimensions, site, cta, flipBack } from "@/lib/site";
 
 // The home page is the whole story, not a teaser. Founder feedback (Jul 2026):
 // hardly anyone clicks past the first page, so everything that argues for the
@@ -63,15 +63,16 @@ export default function Home() {
                 <Flip
                   className="pillar"
                   key={p.title}
-                  front={<span className="p-title">{p.title}</span>}
-                  back={
+                  front={
                     <>
                       <span className="pillar-ico">
                         <PillarIcon name={p.icon} />
                       </span>
+                      <h3 className="p-title">{p.title}</h3>
                       <p className="p-lead">{p.homeLead}</p>
                     </>
                   }
+                  back={<p className="flip-b">{flipBack}</p>}
                 />
               ))}
             </Reveal>
