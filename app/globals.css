@@ -2034,27 +2034,87 @@ img {
   }
 }
 
+/* ── how we work — principles above the six dimensions ─────────────────── */
+.prin {
+  grid-column: 1 / 13;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(215px, 1fr));
+  gap: clamp(20px, 2.4vw, 34px) clamp(28px, 4vw, 56px);
+  margin-bottom: clamp(40px, 5.5vw, 76px);
+}
+.prin-item {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding-top: 16px;
+  border-top: 1px solid var(--line);
+}
+.prin-item::before {
+  content: "";
+  position: absolute;
+  top: -1px;
+  left: 0;
+  width: 26px;
+  height: 2px;
+  background: var(--clay);
+}
+.prin-t {
+  font-family: var(--display);
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: clamp(13px, 1.2vw, 15px);
+  letter-spacing: 0.04em;
+  color: var(--ink);
+}
+.prin-d {
+  font-family: var(--serif);
+  font-size: clamp(13px, 1.25vw, 14.5px);
+  line-height: 1.45;
+  color: var(--ink-60);
+}
+
 /* ── the approach — a plain static spec list (simple, no instrument) ───── */
 .dimlist {
   grid-column: 1 / 13;
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: clamp(22px, 2.6vw, 40px) clamp(30px, 5vw, 72px);
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(26px, 3vw, 44px) clamp(30px, 4vw, 60px);
 }
 .dl-item {
-  display: grid;
-  grid-template-columns: auto 1fr;
-  gap: clamp(12px, 1.4vw, 20px);
+  display: flex;
+  flex-direction: column;
+  gap: clamp(10px, 1.2vw, 14px);
   border-top: 1px solid var(--line);
-  padding-top: clamp(14px, 1.6vw, 20px);
+  padding-top: clamp(16px, 1.8vw, 22px);
+}
+.dl-head {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.dl-ico {
+  width: 40px;
+  height: 40px;
+  display: grid;
+  place-items: center;
+  flex: none;
+}
+.dl-ico svg {
+  width: 32px;
+  height: 32px;
+  stroke: var(--ink);
+  stroke-width: 1.4;
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
 }
 .dl-no {
   font-family: var(--display);
   font-weight: 700;
-  font-size: clamp(12px, 1.1vw, 15px);
-  letter-spacing: 0.06em;
+  font-size: 12px;
+  letter-spacing: 0.14em;
   color: var(--clay);
-  padding-top: 0.35em;
 }
 .dl-t {
   font-family: var(--display);
@@ -2064,7 +2124,7 @@ img {
   letter-spacing: 0.02em;
   line-height: 1.1;
   color: var(--ink);
-  margin: 0 0 8px;
+  margin: 0;
 }
 .dl-b {
   font-family: var(--serif);
@@ -2072,24 +2132,13 @@ img {
   line-height: 1.5;
   color: var(--ink-60);
 }
-.dimlist--compact {
-  grid-template-columns: repeat(3, 1fr);
-  gap: clamp(16px, 1.8vw, 26px) clamp(24px, 3vw, 48px);
-}
-.dimlist--compact .dl-t {
-  margin: 0;
-  font-size: clamp(14px, 1.35vw, 17px);
-}
 @media (max-width: 760px) {
   .dimlist {
-    grid-template-columns: 1fr;
-  }
-  .dimlist--compact {
     grid-template-columns: 1fr 1fr;
   }
 }
 @media (max-width: 460px) {
-  .dimlist--compact {
+  .dimlist {
     grid-template-columns: 1fr;
   }
 }

@@ -400,6 +400,18 @@ export const entryPoints = [
   },
 ] as const;
 
+// How we work — the principles that sit above the six dimensions on the
+// approach: the posture Kata brings to every engagement.
+export const approachPrinciples = [
+  { t: "Integrated", d: "Our services are designed around you." },
+  { t: "Collaborative", d: "We work alongside your team, never above it." },
+  { t: "Unbiased & transparent", d: "Independent judgement, openly shown." },
+  { t: "Data-driven", d: "Insight-led, with an emotional edge." },
+  { t: "Impact-driven", d: "End to end or targeted — we do both." },
+  { t: "Experienced", d: "Decades of production leadership." },
+  { t: "Innovative", d: "Innovation at the core." },
+] as const;
+
 // The Kata Approach: six dimensions.
 // `icon` keys map to DimensionIcon in components/Icons.tsx — the home page
 // shows the six as icon + label only; /approach carries the full bodies.

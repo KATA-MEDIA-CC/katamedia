@@ -6,6 +6,7 @@ import { Reveal } from "@/components/Reveal";
 import { PillarIcon } from "@/components/Icons";
 import { EntryCards } from "@/components/EntryCards";
 import { DimensionList } from "@/components/DimensionList";
+import { Principles } from "@/components/Principles";
 import { FounderCards } from "@/components/Founders";
 import { BookingButton } from "@/components/Booking";
 import { Flip } from "@/components/Flip";
@@ -149,6 +150,9 @@ export default function Home() {
             }
             deck="Most production problems are operational, not creative. Every audit is scored across six dimensions, and one roadmap comes out."
           />
+          <div className="g12">
+            <Principles />
+          </div>
           <div className="g12">
             <DimensionList compact />
           </div>

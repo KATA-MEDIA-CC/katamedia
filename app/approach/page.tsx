@@ -3,6 +3,7 @@ import { Hero } from "@/components/Hero";
 import { FeatureHead } from "@/components/FeatureHead";
 import { Reveal } from "@/components/Reveal";
 import { DimensionList } from "@/components/DimensionList";
+import { Principles } from "@/components/Principles";
 import { cta, pageMetadata } from "@/lib/site";
 import { BookingButton } from "@/components/Booking";
 
@@ -56,6 +57,9 @@ export default function ApproachPage() {
             }
             deck="Most production problems are operational, not creative. The Approach frames every engagement: the audit scores all six dimensions, workshops and pilots go deep on one or two."
           />
+          <div className="g12">
+            <Principles />
+          </div>
           <div className="g12">
             <DimensionList />
           </div>
