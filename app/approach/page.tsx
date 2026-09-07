@@ -8,7 +8,7 @@ import { BookingButton } from "@/components/Booking";
 export const metadata: Metadata = pageMetadata({
   title: "Approach",
   description:
-    "How Kata works. Independent judgement applied in time. The Kata Method: six dimensions, one roadmap. And four ways to engage.",
+    "How Kata works. Independent judgement applied in time. The Kata Approach: six dimensions, one roadmap. And four ways to engage.",
   path: "/approach",
 });
 
@@ -17,7 +17,6 @@ export default function ApproachPage() {
     <>
       <Hero
         variant="page"
-        lead="The Method"
         title={
           <>
             <em>Approach</em>
@@ -44,16 +43,16 @@ export default function ApproachPage() {
         </div>
       </section>
 
-      {/* The Method — six dimensions */}
+      {/* The Approach — six dimensions */}
       <section className="feature">
         <div className="wrap">
           <FeatureHead
             title={
               <>
-                The <em>method</em>
+                The <em>approach</em>
               </>
             }
-            deck="Most production problems are operational, not creative. The Method frames every engagement: the audit scores all six dimensions, workshops and pilots go deep on one or two."
+            deck="Most production problems are operational, not creative. The Approach frames every engagement: the audit scores all six dimensions, workshops and pilots go deep on one or two."
           />
           <div className="g12">
             <Reveal className="trio" stagger>
@@ -70,7 +69,7 @@ export default function ApproachPage() {
             <span className="r">Scored red, amber or green across all six dimensions</span>
           </div>
 
-          {/* The name — why a method page belongs to a company called Kata.
+          {/* The name — why an approach page belongs to a company called Kata.
               Founder decision (Cornelius, Jul 2026): derive the Japanese
               origin here, next to the six dimensions, not on the homepage. */}
           <div className="g12">

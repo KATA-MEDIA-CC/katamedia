@@ -242,7 +242,7 @@ export const entryPoints = [
     // yet evidence is exactly what a procurement reader is trained to
     // distrust. Experience (rates we negotiated ourselves) and mechanism
     // (line by line) carry more than an unproven percentage.
-    body: "Your production setup: mapped and scored across all six dimensions of the Method, against rates we have negotiated ourselves. Where cost leaks, you see it line by line.",
+    body: "Your production setup: mapped and scored across all six dimensions of the Approach, against rates we have negotiated ourselves. Where cost leaks, you see it line by line.",
   },
   {
     no: "02",
@@ -258,7 +258,7 @@ export const entryPoints = [
   },
 ] as const;
 
-// The Kata Method: six dimensions.
+// The Kata Approach: six dimensions.
 // `icon` keys map to DimensionIcon in components/Icons.tsx — the home page
 // shows the six as icon + label only; /approach carries the full bodies.
 export const dimensions = [

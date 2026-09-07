@@ -12,8 +12,8 @@ import { pillars, dimensions, site, cta } from "@/lib/site";
 // The home page is the whole story, not a teaser. Founder feedback (Jul 2026):
 // hardly anyone clicks past the first page, so everything that argues for the
 // call has to be on it — the pedigree, the pillars, the entry points, the
-// method, the people. Order: Hero → cred band → What we do → How we engage →
-// The method → The founders → CTA. Each section stays a compression of its
+// approach, the people. Order: Hero → cred band → What we do → How we engage →
+// The approach → The founders → CTA. Each section stays a compression of its
 // page and links out to the full version.
 //
 // Claims hierarchy (settled with all three founders, round 2, Jul 2026):
@@ -102,14 +102,14 @@ export default function Home() {
         </div>
       </section>
 
-      {/* The method — six dimensions as icon + label only. The full bodies
+      {/* The approach — six dimensions as icon + label only. The full bodies
           live on /approach; here the grid just proves the IP exists. */}
       <section className="feature">
         <div className="wrap">
           <FeatureHead
             title={
               <>
-                The <em>method</em>
+                The <em>approach</em>
               </>
             }
             deck="Most production problems are operational, not creative. Every audit is scored across six dimensions, and one roadmap comes out."
@@ -129,7 +129,7 @@ export default function Home() {
           <div className="caption">
             <span>Diagnostic · Roadmap · Recommendation · yours to keep</span>
             <Link href="/approach" className="clink">
-              The full method →
+              The full approach →
             </Link>
           </div>
         </div>

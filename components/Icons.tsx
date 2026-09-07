@@ -11,7 +11,7 @@ type DimName =
   | "quality"
   | "vendor";
 
-// The six Method dimensions, drawn to the same spec as the pillar set:
+// The six Approach dimensions, drawn to the same spec as the pillar set:
 // hairline geometry, stroke inherited from CSS, exactly one clay accent each.
 export function DimensionIcon({ name }: { name: DimName }) {
   switch (name) {

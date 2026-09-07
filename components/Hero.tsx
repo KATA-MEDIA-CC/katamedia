@@ -13,7 +13,7 @@ export function Hero({
   watermark = site.wordmark,
 }: {
   variant?: "home" | "page";
-  lead: ReactNode;
+  lead?: ReactNode;
   title: ReactNode;
   tag?: string;
   desc?: ReactNode;
@@ -112,9 +112,11 @@ export function Hero({
         {watermark}
       </span>
       <div className="wrap">
-        <p className="hero-lead" data-hero data-optical>
-          {lead}
-        </p>
+        {lead && (
+          <p className="hero-lead" data-hero data-optical>
+            {lead}
+          </p>
+        )}
         <h1 className="hero-title" data-hero data-optical>
           {title}
         </h1>
