@@ -70,8 +70,7 @@ export default function Home() {
             </Reveal>
           </div>
           <div className="caption">
-            <span>Strategy · Organisation · AI · Controlling</span>
-            <Link href="/services" className="clink">
+            <Link href="/services" className="clink" style={{ marginLeft: "auto" }}>
               All services →
             </Link>
           </div>
@@ -127,8 +126,7 @@ export default function Home() {
             </Reveal>
           </div>
           <div className="caption">
-            <span>Diagnostic · Roadmap · Recommendation · yours to keep</span>
-            <Link href="/approach" className="clink">
+            <Link href="/approach" className="clink" style={{ marginLeft: "auto" }}>
               The full approach →
             </Link>
           </div>
@@ -150,8 +148,7 @@ export default function Home() {
             <FounderCards />
           </div>
           <div className="caption">
-            <span>Three founding partners · one independent standard</span>
-            <Link href="/team" className="clink">
+            <Link href="/team" className="clink" style={{ marginLeft: "auto" }}>
               Meet the team →
             </Link>
           </div>

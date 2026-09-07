@@ -64,10 +64,6 @@ export default function ApproachPage() {
               ))}
             </Reveal>
           </div>
-          <div className="caption">
-            <span>Diagnostic · Roadmap · Recommendation · yours to keep</span>
-            <span className="r">Scored red, amber or green across all six dimensions</span>
-          </div>
 
           {/* The name — why an approach page belongs to a company called Kata.
               Founder decision (Cornelius, Jul 2026): derive the Japanese

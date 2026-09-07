@@ -87,10 +87,6 @@ export default function ContactPage() {
               ))}
             </Reveal>
           </div>
-          <div className="caption">
-            <span>{site.domain}</span>
-            <span className="r">{site.booking}</span>
-          </div>
         </div>
       </section>
     </>
