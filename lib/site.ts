@@ -278,6 +278,32 @@ export const pillarBacks: Record<string, { t: string; d: string }[]> = {
       d: "Carbon budgeting, supplier selection and production data.",
     },
   ],
+  "Organisational Setup & Studio Builds": [
+    {
+      t: "Capability Assessment",
+      d: "What belongs in-house, what stays external, and why.",
+    },
+    {
+      t: "In-House Studio Build",
+      d: "Brand-side production units built from scratch or from existing teams.",
+    },
+    {
+      t: "Agency Production Setup",
+      d: "Production capability inside agencies, from structure to staffing.",
+    },
+    {
+      t: "Operating Model & Process Design",
+      d: "Roles, approvals and workflows.",
+    },
+    {
+      t: "Post & VFX Capability",
+      d: "Build, partner or buy external.",
+    },
+    {
+      t: "Handover & Interim Leadership",
+      d: "Running the setup until permanent leadership is in place.",
+    },
+  ],
   "AI Integration & Transformation": [
     {
       t: "AI Workflow Mapping",
@@ -285,7 +311,7 @@ export const pillarBacks: Record<string, { t: string; d: string }[]> = {
     },
     {
       t: "Tool & Vendor Evaluation",
-      d: "Independent assessment of AI production tools, without vendor bias.",
+      d: "Independent assessment of AI production tools.",
     },
     {
       t: "Governance & Rights Framework",
@@ -293,33 +319,41 @@ export const pillarBacks: Record<string, { t: string; d: string }[]> = {
     },
     {
       t: "Human-in-the-Loop Design",
-      d: "Defining what stays human, and who signs off.",
+      d: "Defining what stays human.",
     },
     {
       t: "Pilot & Rollout Planning",
-      d: "Testing AI integration on one real production before you scale it.",
+      d: "Testing AI integration on one real production before scaling.",
+    },
+    {
+      t: "Team Enablement",
+      d: "Training and documentation for the people doing the work.",
     },
   ],
   "Production Controlling": [
     {
       t: "Cost Benchmarking",
-      d: "Comparing your production costs against real market rates, not agency sub-supplier estimates.",
-    },
-    {
-      t: "Fee & Bid Validation",
-      d: "Independent review of agency and production company quotes before you sign.",
+      d: "Production costs compared against real market rates.",
     },
     {
       t: "Should-Cost Analysis",
-      d: "Building an independent cost estimate from scratch, before the agency’s KVA lands, so you have a real benchmark to hold it against.",
+      d: "A cost estimate before the first quote arrives.",
+    },
+    {
+      t: "Bid Validation",
+      d: "Independent review of supplier quotes before they are signed.",
+    },
+    {
+      t: "Live Cost Tracking",
+      d: "Cost reporting throughout the production.",
+    },
+    {
+      t: "Buyout & Usage Rights",
+      d: "Term, territory and renewals, priced against actual use.",
     },
     {
       t: "Invoice Reconciliation",
-      d: "Checking final costs against what was scoped and quoted.",
-    },
-    {
-      t: "Budget Governance",
-      d: "Approval structures and reporting that catch overruns before they happen.",
+      d: "Final costs checked against what was scoped and quoted.",
     },
   ],
 };
