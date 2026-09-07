@@ -42,7 +42,7 @@ export const site = {
   // cred band (claim + proof) and footer (closing) — each with its own job.
   // Also settled: no "advisory" in this line, ever — advisers recommend
   // from outside, we build. The keywords live in the meta description.
-  sub: "We help brand and agency teams commission smarter, build the right production structure, and control what it actually costs.",
+  sub: "We help Brands and Agencies commission smarter, build the right production structure, and control what it actually costs.",
   belief: "We sit beside the decision, never above the process and never inside the margin.",
   booking: "Now booking · 2026",
   // Company page handle — CONFIRM the slug before publishing.
