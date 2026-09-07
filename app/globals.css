@@ -324,13 +324,16 @@ img {
   grid-column: 1 / 9;
 }
 .fhead .deck {
-  grid-column: 9 / 13;
-  align-self: end;
+  /* sits directly under the headline (not off in the right column), on a
+     wider measure so it reads as a 2–4 line standfirst rather than a narrow
+     column. Overlapping the h2's columns pushes it to the next grid row. */
+  grid-column: 1 / 9;
+  margin-top: clamp(16px, 1.6vw, 22px);
   font-family: var(--serif);
-  font-size: 14px;
-  line-height: 1.5;
+  font-size: 15px;
+  line-height: 1.55;
   color: var(--ink-60);
-  max-width: 30ch;
+  max-width: 58ch;
 }
 .drawline {
   grid-column: 1 / 13;
