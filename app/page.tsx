@@ -64,22 +64,14 @@ export default function Home() {
         </div>
       </section>
 
-      {/* What we do — four pillars, compact.
-          Sits directly under the cred band on purpose: what we sell has to be
-          the first thing after who we are. */}
+      {/* What we do — mirror of the value section: the four pillars stacked on
+          the left, the heading + deck sticky on the right. Cards are creme (not
+          ink) and flip to rust. Explore deep-links to the matching service,
+          pre-expanded. */}
       <section className="feature">
         <div className="wrap">
-          <FeatureHead
-            kick="Better by design."
-            title={
-              <>
-                What we <em>do</em>
-              </>
-            }
-            deck="Four pillars, one partner: strategy, organisation, AI and cost, held to a single independent standard."
-          />
-          <div className="g12">
-            <Reveal className="pillars min">
+          <div className="g12 wgrid">
+            <Reveal className="wcards" stagger>
               {pillars.map((p) => (
                 <Flip
                   className="pillar"
@@ -95,7 +87,7 @@ export default function Home() {
                   back={
                     <>
                       <p className="p-lead">{p.homeLead}</p>
-                      <Link href="/services" className="explore">
+                      <Link href={`/services#${p.slug}`} className="explore">
                         Explore →
                       </Link>
                     </>
@@ -103,11 +95,18 @@ export default function Home() {
                 />
               ))}
             </Reveal>
-          </div>
-          <div className="caption">
-            <Link href="/services" className="clink" style={{ marginLeft: "auto" }}>
-              All services →
-            </Link>
+            <div className="whead">
+              <h2 className="vbig">
+                What we <em>do</em>
+              </h2>
+              <p className="vsub">
+                Four pillars, one partner: strategy, organisation, AI and cost,
+                held to a single independent standard.
+              </p>
+              <Link href="/services" className="whead-link">
+                All services →
+              </Link>
+            </div>
           </div>
         </div>
       </section>

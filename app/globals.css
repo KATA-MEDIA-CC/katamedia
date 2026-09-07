@@ -1156,14 +1156,14 @@ img {
   text-align: center;
   gap: clamp(12px, 1.4vw, 18px);
   padding: clamp(26px, 3.4vw, 46px);
-  border: 1px solid rgba(246, 242, 232, 0.32);
+  border: 1px solid var(--line);
 }
-/* FRONT — ink field: icon on top, the headline, then a small line of copy.
+/* FRONT — creme field with a hairline frame: icon on top, the headline.
    Top-anchored, with the headline reserving two lines, so the icons line up
    and the headlines line up across every card however the copy wraps. */
 .pillar .flip-front {
-  background: var(--ink);
-  color: var(--paper);
+  background: var(--paper);
+  color: var(--ink);
   justify-content: flex-start;
 }
 .pillar .flip-front .p-title {
@@ -1184,9 +1184,9 @@ img {
   color: var(--paper);
   max-width: 34ch;
 }
-/* icon lines read white on the ink front; the clay accents stay */
+/* icon lines read ink on the creme front; the clay accents stay */
 .pillar .flip-front .pillar-ico svg {
-  stroke: var(--paper);
+  stroke: var(--ink);
 }
 /* BACK — rust field: the small copy + an explore link (home), or a
    capabilities list (services) */
@@ -1330,6 +1330,54 @@ img {
 /* compact variant — icon · number · title · one line (no item list) */
 .pillars.min .pillar {
   min-height: clamp(200px, 20vw, 250px);
+}
+
+/* What we do — asymmetric, mirroring the value section: the four flip cards
+   stacked on the left, the heading + deck sticky on the right. */
+.wgrid {
+  grid-column: 1 / 13;
+  display: grid;
+  grid-template-columns: 7fr 5fr;
+  gap: clamp(28px, 5vw, 84px);
+  align-items: start;
+}
+.wcards {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(14px, 1.6vw, 22px);
+}
+.wcards .pillar {
+  min-height: clamp(150px, 15vw, 190px);
+}
+.whead {
+  position: sticky;
+  top: calc(var(--nav-h) + 28px);
+}
+.whead-link {
+  display: inline-block;
+  margin-top: clamp(20px, 2.4vw, 30px);
+  font-family: var(--sans);
+  font-weight: 600;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-80);
+  border-bottom: 1px solid var(--clay);
+  padding-bottom: 3px;
+  transition: color 0.3s ease;
+}
+.whead-link:hover {
+  color: var(--clay-d);
+}
+@media (max-width: 860px) {
+  .wgrid {
+    grid-template-columns: 1fr;
+    gap: clamp(24px, 5vw, 40px);
+  }
+  .whead {
+    position: static;
+    order: -1;
+  }
 }
 
 /* ── flip cards — rounded boxes that turn on hover to reveal the back.
@@ -1627,6 +1675,7 @@ img {
 }
 .acc-item {
   border-top: 1px solid var(--line);
+  scroll-margin-top: clamp(90px, 12vh, 130px);
 }
 .acc-item:last-child {
   border-bottom: 1px solid var(--line);

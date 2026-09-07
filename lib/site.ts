@@ -209,6 +209,7 @@ export const pillars = [
   {
     no: "01",
     icon: "strategy" as const,
+    slug: "strategic-advisory",
     title: "Strategic Advisory",
     homeLead: "How content gets commissioned, planned and made at scale. Decided, not inherited.",
     lead: "Shaping how brands and agencies commission and plan content at scale.",
@@ -218,6 +219,7 @@ export const pillars = [
   {
     no: "02",
     icon: "organisation" as const,
+    slug: "organisational-setup",
     title: "Organisational Setup & Studio Builds",
     homeLead: "The capability your organisation needs, designed from the ground up or rebuilt from inside.",
     lead: "Building the production capability organisations need, from scratch or from inside.",
@@ -227,6 +229,7 @@ export const pillars = [
   {
     no: "03",
     icon: "ai" as const,
+    slug: "ai-integration",
     title: "AI Integration & Transformation",
     homeLead: "AI in the workflow, under real governance. Deployed, not piloted.",
     lead: "AI in production, deployed. Not piloted.",
@@ -236,6 +239,7 @@ export const pillars = [
   {
     no: "04",
     icon: "controlling" as const,
+    slug: "production-controlling",
     title: "Production Controlling",
     homeLead: "Cost is where strategy shows up. We read the numbers structurally: what carries load, what is padding, what is about to fail.",
     lead: "Cost is where strategy shows up. Read by people who know what things should cost.",

@@ -96,6 +96,7 @@ export function Nav() {
             href="/"
             className="nav-lockup"
             aria-label={`${site.name}, home`}
+            onClick={() => window.scrollTo({ top: 0 })}
           >
             <span className="nav-mk">{site.wordmark}</span>
             <span className="nav-rule" aria-hidden="true" />

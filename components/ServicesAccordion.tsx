@@ -1,14 +1,29 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { pillars, pillarBacks } from "@/lib/site";
 
 // The four service pillars as an expand/collapse accordion (one open at a
 // time). Each row opens to an intro line and its Key focus areas. Built in the
 // house palette — hairline rows, clay accents — not a copy of the reference's
 // colourway. Panels animate open with the grid-rows 0fr→1fr technique.
+//
+// Deep link: /services#<pillar-slug> (from the home "Explore" links) opens the
+// matching pillar on load and scrolls it into view, so the visitor lands on the
+// expanded service rather than the top of the page.
 export function ServicesAccordion() {
   const [open, setOpen] = useState<number | null>(null);
+
+  useEffect(() => {
+    const slug = decodeURIComponent(window.location.hash.replace(/^#/, ""));
+    if (!slug) return;
+    const idx = pillars.findIndex((p) => p.slug === slug);
+    if (idx < 0) return;
+    setOpen(idx);
+    requestAnimationFrame(() => {
+      document.getElementById(slug)?.scrollIntoView({ block: "start" });
+    });
+  }, []);
 
   return (
     <div className="acc">
@@ -16,7 +31,11 @@ export function ServicesAccordion() {
         const isOpen = open === i;
         const focus = pillarBacks[p.title] ?? [];
         return (
-          <div className={`acc-item${isOpen ? " open" : ""}`} key={p.title}>
+          <div
+            className={`acc-item${isOpen ? " open" : ""}`}
+            id={p.slug}
+            key={p.title}
+          >
             <h3 className="acc-h">
               <button
                 type="button"
