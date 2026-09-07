@@ -86,27 +86,6 @@ export default function ApproachPage() {
         </div>
       </section>
 
-      {/* Difference — closing ink */}
-      <section className="statement ink">
-        <div className="wrap">
-          <Reveal>
-            <p className="st-kick">Our difference</p>
-            <p className="st-quote">
-              We have no relationships to <em>protect.</em>
-            </p>
-            <p className="st-sub">
-              Not a production company. Not an agency. No financial ties to the
-              directors or production companies we recommend, so our advice is
-              only ever in the client&rsquo;s interest.
-            </p>
-            <p className="st-sub">
-              We&rsquo;ve worked in the German market for years. Rates, rosters,
-              directors, production companies. We know it from the inside.
-            </p>
-          </Reveal>
-        </div>
-      </section>
-
       {/* Closing CTA, the same band Home and Services end on */}
       <section className="feature cta-band">
         <div className="wrap">
