@@ -982,18 +982,72 @@ img {
   line-height: 1;
   color: var(--clay-on-ink, #d4703f);
 }
-/* one paragraph: the houses woven in as clay italics, then the independence line */
-.cred-ind {
-  font-family: var(--serif);
-  font-size: clamp(15px, 1.5vw, 19px);
-  line-height: 1.55;
-  color: rgba(246, 242, 232, 0.82);
-  max-width: 74ch;
+/* the houses — an auto-scrolling roster, bold and upright (Sep 2026).
+   The track is the roster repeated N passes; it translates by -50% (half the
+   passes) and loops, so the stream is seamless with no gap at the edges. */
+.cred-marquee {
+  width: 100%;
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(
+    90deg,
+    transparent,
+    #000 6%,
+    #000 94%,
+    transparent
+  );
+  mask-image: linear-gradient(
+    90deg,
+    transparent,
+    #000 6%,
+    #000 94%,
+    transparent
+  );
 }
-.cred-ind em {
-  font-style: italic;
-  font-weight: 400;
+.cred-track {
+  display: flex;
+  width: max-content;
+  will-change: transform;
+  animation: cred-roll 42s linear infinite;
+}
+.cred-house {
+  flex: 0 0 auto;
+  white-space: nowrap;
+  font-family: var(--serif);
+  font-weight: 700;
+  font-size: clamp(20px, 2vw, 26px);
+  line-height: 1.2;
   color: var(--clay-on-ink, #d4703f);
+}
+.cred-sep {
+  margin: 0 clamp(18px, 2vw, 34px);
+  color: rgba(246, 242, 232, 0.28);
+  font-weight: 400;
+}
+@keyframes cred-roll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .cred-track {
+    animation: none;
+  }
+}
+
+/* screen-reader-only utility */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }
 .statement {
   padding: clamp(80px, 12vw, 170px) 0;
