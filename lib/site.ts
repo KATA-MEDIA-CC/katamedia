@@ -71,6 +71,10 @@ export const cred = {
   ],
 } as const;
 
+// Placeholder copy for the back of the flip cards until the real copy lands.
+export const flipBack =
+  "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua, quis nostrud exercitation.";
+
 // Per-page metadata: correct canonical + full OpenGraph/Twitter (Next replaces
 // the openGraph object per route rather than deep-merging, so include all
 // fields). The og:image comes from app/opengraph-image.tsx automatically.
