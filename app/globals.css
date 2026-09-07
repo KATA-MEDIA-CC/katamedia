@@ -1012,11 +1012,13 @@ img {
 .cred-house {
   flex: 0 0 auto;
   white-space: nowrap;
-  font-family: var(--serif);
+  font-family: var(--display);
   font-weight: 700;
   font-size: clamp(20px, 2vw, 26px);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
   line-height: 1.2;
-  color: var(--clay-on-ink, #d4703f);
+  color: var(--paper);
 }
 .cred-sep {
   margin: 0 clamp(18px, 2vw, 34px);
