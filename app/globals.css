@@ -981,6 +981,8 @@ img {
   text-transform: uppercase;
   line-height: 1;
   color: var(--clay-on-ink, #d4703f);
+  width: 100%;
+  text-align: center;
 }
 /* the houses — an auto-scrolling roster, bold and upright (Sep 2026).
    The track is the roster repeated N passes; it translates by -50% (half the
@@ -1014,7 +1016,7 @@ img {
   white-space: nowrap;
   font-family: var(--display);
   font-weight: 700;
-  font-size: clamp(20px, 2vw, 26px);
+  font-size: clamp(17px, 1.7vw, 22px);
   letter-spacing: 0.04em;
   text-transform: uppercase;
   line-height: 1.2;

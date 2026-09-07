@@ -60,7 +60,15 @@ export const site = {
 // accused of inflation.
 export const cred = {
   years: "45+ years of production leadership",
-  houses: ["The Mill", "Stink", "Psyop", "Markenfilm", "Jung von Matt"],
+  houses: [
+    "The Mill",
+    "Stink",
+    "Psyop",
+    "Markenfilm",
+    "Jung von Matt",
+    "Kolle Rebbe",
+    "DDB",
+  ],
 } as const;
 
 // Per-page metadata: correct canonical + full OpenGraph/Twitter (Next replaces

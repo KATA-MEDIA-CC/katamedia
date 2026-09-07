@@ -13,7 +13,17 @@ export function Cred() {
   // widest viewport: the CSS animates the track by translateX(-50%), so an
   // even number of full passes keeps the loop seamless with no edge gap.
   const PASSES = 8;
-  const roster = Array.from({ length: PASSES }, () => cred.houses).flat();
+  // Shuffle the roster once (Fisher-Yates), then repeat that single order
+  // across every pass — the marquee loops on translateX(-50%), so each pass
+  // must be identical for the seam to stay invisible. Cred is a server
+  // component, so this runs at build time: one random order, baked into the
+  // static HTML (a fresh order on each deploy, no hydration mismatch).
+  const shuffled = [...cred.houses];
+  for (let i = shuffled.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+  }
+  const roster = Array.from({ length: PASSES }, () => shuffled).flat();
   const last = cred.houses.length - 1;
 
   return (
