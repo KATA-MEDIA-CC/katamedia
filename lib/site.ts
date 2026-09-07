@@ -42,7 +42,7 @@ export const site = {
   // cred band (claim + proof) and footer (closing) — each with its own job.
   // Also settled: no "advisory" in this line, ever — advisers recommend
   // from outside, we build. The keywords live in the meta description.
-  sub: "We build and sharpen production structures for brands and agencies.",
+  sub: "We build and sharpen production structures for brands and agencies. We look at how your productions are set up, find what’s missing, and build what’s needed — process, team, technology, controlling. So you commission smarter, build the right production structure, put AI to work where it counts, and control what it actually costs.",
   belief: "We sit beside the decision, never above the process and never inside the margin.",
   booking: "Now booking · 2026",
   // Company page handle — CONFIRM the slug before publishing.
