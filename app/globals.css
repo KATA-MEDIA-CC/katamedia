@@ -2034,6 +2034,66 @@ img {
   }
 }
 
+/* ── the approach — a plain static spec list (simple, no instrument) ───── */
+.dimlist {
+  grid-column: 1 / 13;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(22px, 2.6vw, 40px) clamp(30px, 5vw, 72px);
+}
+.dl-item {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: clamp(12px, 1.4vw, 20px);
+  border-top: 1px solid var(--line);
+  padding-top: clamp(14px, 1.6vw, 20px);
+}
+.dl-no {
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: clamp(12px, 1.1vw, 15px);
+  letter-spacing: 0.06em;
+  color: var(--clay);
+  padding-top: 0.35em;
+}
+.dl-t {
+  font-family: var(--display);
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: clamp(15px, 1.5vw, 20px);
+  letter-spacing: 0.02em;
+  line-height: 1.1;
+  color: var(--ink);
+  margin: 0 0 8px;
+}
+.dl-b {
+  font-family: var(--serif);
+  font-size: clamp(13.5px, 1.3vw, 15.5px);
+  line-height: 1.5;
+  color: var(--ink-60);
+}
+.dimlist--compact {
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(16px, 1.8vw, 26px) clamp(24px, 3vw, 48px);
+}
+.dimlist--compact .dl-t {
+  margin: 0;
+  font-size: clamp(14px, 1.35vw, 17px);
+}
+@media (max-width: 760px) {
+  .dimlist {
+    grid-template-columns: 1fr;
+  }
+  .dimlist--compact {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+@media (max-width: 460px) {
+  .dimlist--compact {
+    grid-template-columns: 1fr;
+  }
+}
+
 /* ── the approach, compact (home) — icon + label only ──────────────────── */
 .dims {
   grid-column: 1 / 13;
