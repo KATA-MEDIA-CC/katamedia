@@ -244,6 +244,38 @@ export const pillars = [
   },
 ] as const;
 
+// The back of each pillar flip card: a capabilities list, keyed by pillar
+// title. Pillars without an entry here fall back to placeholder copy until
+// their real capabilities land.
+export const pillarBacks: Record<string, { t: string; d: string }[]> = {
+  "Strategic Advisory": [
+    {
+      t: "Production Strategy",
+      d: "Commissioning principles, partner frameworks and budget benchmarks.",
+    },
+    {
+      t: "Production Reality Check",
+      d: "Bringing production intelligence into the creative process early, without compromising creativity.",
+    },
+    {
+      t: "Content Planning at Scale",
+      d: "Structuring volume, bundling and capacity across the year.",
+    },
+    {
+      t: "Roster & Director Advisory",
+      d: "Independent recommendations on creative fit, format and budget.",
+    },
+    {
+      t: "Emerging Format Strategy",
+      d: "Production pipelines for social-first, micro drama and AI-generated content.",
+    },
+    {
+      t: "Sustainable Production",
+      d: "Carbon budgeting, supplier selection and production data.",
+    },
+  ],
+};
+
 // How we engage — the three low-commitment ways a relationship starts.
 export const entryPoints = [
   {

@@ -8,7 +8,8 @@ import { EntryCards } from "@/components/EntryCards";
 import { FounderCards } from "@/components/Founders";
 import { BookingButton } from "@/components/Booking";
 import { Flip } from "@/components/Flip";
-import { pillars, dimensions, site, cta, flipBack } from "@/lib/site";
+import { PillarBack } from "@/components/PillarBack";
+import { pillars, dimensions, site, cta } from "@/lib/site";
 
 // The home page is the whole story, not a teaser. Founder feedback (Jul 2026):
 // hardly anyone clicks past the first page, so everything that argues for the
@@ -72,7 +73,7 @@ export default function Home() {
                       <p className="p-lead">{p.homeLead}</p>
                     </>
                   }
-                  back={<p className="flip-b">{flipBack}</p>}
+                  back={<PillarBack title={p.title} />}
                 />
               ))}
             </Reveal>

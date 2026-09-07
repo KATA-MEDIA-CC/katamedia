@@ -6,7 +6,8 @@ import { Reveal } from "@/components/Reveal";
 import { PillarIcon } from "@/components/Icons";
 import { Flip } from "@/components/Flip";
 import { EntryCards } from "@/components/EntryCards";
-import { pillars, cta, pageMetadata, flipBack } from "@/lib/site";
+import { PillarBack } from "@/components/PillarBack";
+import { pillars, cta, pageMetadata } from "@/lib/site";
 
 export const metadata: Metadata = pageMetadata({
   title: "Services",
@@ -71,7 +72,7 @@ export default function ServicesPage() {
                       <p className="p-lead">{p.lead}</p>
                     </>
                   }
-                  back={<p className="flip-b">{flipBack}</p>}
+                  back={<PillarBack title={p.title} />}
                 />
               ))}
             </Reveal>

@@ -30,11 +30,7 @@ export function EntryCards() {
         <Flip
           className="card"
           key={d.title}
-          front={
-            <span className={`c-title${d.title.length > 6 ? " is-long" : ""}`}>
-              {d.title}
-            </span>
-          }
+          front={<span className="c-title">{d.title}</span>}
           back={
             <>
               <span className="c-meta">{d.meta}</span>

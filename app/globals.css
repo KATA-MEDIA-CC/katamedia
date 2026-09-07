@@ -1158,10 +1158,13 @@ img {
   padding: clamp(26px, 3.4vw, 46px);
   border: 1px solid rgba(246, 242, 232, 0.32);
 }
-/* FRONT — ink field: icon on top, the headline, then a small line of copy */
+/* FRONT — ink field: icon on top, the headline, then a small line of copy.
+   Top-anchored, with the headline reserving two lines, so the icons line up
+   and the headlines line up across every card however the copy wraps. */
 .pillar .flip-front {
   background: var(--ink);
   color: var(--paper);
+  justify-content: flex-start;
 }
 .pillar .flip-front .p-title {
   font-family: var(--display);
@@ -1171,22 +1174,53 @@ img {
   line-height: 1.08;
   letter-spacing: 0.01em;
   margin: 0;
+  min-height: 2.16em;
 }
 .pillar .flip-front .p-lead {
   font-family: var(--serif);
+  font-weight: 600;
   font-size: clamp(13px, 1.1vw, 15px);
   line-height: 1.45;
-  color: rgba(246, 242, 232, 0.82);
+  color: var(--paper);
   max-width: 34ch;
 }
 /* icon lines read white on the ink front; the clay accents stay */
 .pillar .flip-front .pillar-ico svg {
   stroke: var(--paper);
 }
-/* BACK — rust field, placeholder copy for now */
+/* BACK — rust field: placeholder copy, or a capabilities list where provided */
 .pillar .flip-back {
   background: var(--clay);
   color: var(--paper);
+}
+.pillar .flip-back .cap-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(8px, 1vw, 12px);
+  text-align: left;
+}
+.pillar .flip-back .cap-list li {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.pillar .flip-back .cap-t {
+  font-family: var(--sans);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  font-size: clamp(11px, 1vw, 12.5px);
+  color: var(--paper);
+}
+.pillar .flip-back .cap-d {
+  font-family: var(--serif);
+  font-size: clamp(11px, 1vw, 12.5px);
+  line-height: 1.35;
+  color: rgba(246, 242, 232, 0.85);
 }
 .pillar-top {
   display: flex;
@@ -1351,17 +1385,14 @@ img {
   justify-content: center;
   text-align: center;
 }
+/* one size for all three names — matched to the longest (WORKSHOP) */
 .card .flip-front .c-title {
   font-family: var(--display);
   font-weight: 700;
   text-transform: uppercase;
-  font-size: clamp(34px, 4.6vw, 60px);
+  font-size: clamp(28px, 3.7vw, 48px);
   line-height: 1;
   letter-spacing: 0.01em;
-}
-/* longer names (WORKSHOP) step down so they never run edge to edge */
-.card .flip-front .c-title.is-long {
-  font-size: clamp(28px, 3.7vw, 48px);
 }
 /* BACK — ink field, the detail in CI white */
 .card .flip-back {
