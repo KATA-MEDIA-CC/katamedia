@@ -1,19 +1,20 @@
 import { Reveal } from "@/components/Reveal";
 import { valuePoints } from "@/lib/site";
 
-// "How we create value" — three points shown as open editorial columns, not
-// cards. The interaction is deliberately unlike the flip tiles: on hover a clay
-// rule draws across the top of the column, the column lifts, and the copy
-// brightens. Everything stays visible — the motion emphasises, it never hides.
+// "How we create value" — the stepped list on the right of the section (the big
+// heading sits on the left). Interaction is unlike the flip tiles: hovering a
+// row slides it in, draws a clay rail down its left edge, brightens its copy
+// and dims the rest. Everything stays visible.
 export function ValuePoints() {
   return (
-    <Reveal className="vpoints" stagger>
+    <Reveal className="vlist" stagger>
       {valuePoints.map((p, i) => (
-        <div className="vpoint" key={p.t}>
-          <span className="vp-bar" aria-hidden="true" />
-          <span className="vp-no">{String(i + 1).padStart(2, "0")}</span>
-          <h3 className="vp-t">{p.t}</h3>
-          <p className="vp-d">{p.d}</p>
+        <div className="vrow" key={p.t}>
+          <span className="vrow-no">{String(i + 1).padStart(2, "0")}</span>
+          <div className="vrow-body">
+            <h3 className="vrow-t">{p.t}</h3>
+            <p className="vrow-d">{p.d}</p>
+          </div>
         </div>
       ))}
     </Reveal>

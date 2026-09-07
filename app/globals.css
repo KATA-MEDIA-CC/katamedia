@@ -1188,10 +1188,32 @@ img {
 .pillar .flip-front .pillar-ico svg {
   stroke: var(--paper);
 }
-/* BACK — rust field: placeholder copy, or a capabilities list where provided */
+/* BACK — rust field: the small copy + an explore link (home), or a
+   capabilities list (services) */
 .pillar .flip-back {
   background: var(--clay);
   color: var(--paper);
+}
+.pillar .flip-back .p-lead {
+  font-family: var(--serif);
+  font-size: clamp(14px, 1.3vw, 16px);
+  line-height: 1.5;
+  color: var(--paper);
+  max-width: 32ch;
+}
+.pillar .flip-back .explore {
+  font-family: var(--sans);
+  font-weight: 600;
+  font-size: 11.5px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--paper);
+  border-bottom: 1px solid rgba(246, 242, 232, 0.45);
+  padding-bottom: 3px;
+  transition: border-color 0.3s ease;
+}
+.pillar .flip-back .explore:hover {
+  border-bottom-color: var(--paper);
 }
 .pillar .flip-back .cap-list {
   list-style: none;
@@ -1464,88 +1486,134 @@ img {
 }
 
 /* ═══════════════════════════════════════════════════════════════════════
-   HOW WE CREATE VALUE — three open columns (not cards). Hover/focus draws a
-   clay rule across the top, lifts the column and brightens the copy. A
-   deliberately different interaction from the flip tiles.
+   HOW WE CREATE VALUE — asymmetric on purpose, to break the centered-header
+   rhythm: a big heading fixed on the left, a stepped list on the right (1 top,
+   2 middle, 3 bottom). Interaction (different again from the flip tiles):
+   hovering a row slides it in, draws a clay rail down its left edge, brightens
+   its copy and dims the others.
    ═══════════════════════════════════════════════════════════════════════ */
-.vpoints {
+.vgrid {
   grid-column: 1 / 13;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: clamp(20px, 3vw, 52px);
+  grid-template-columns: 5fr 7fr;
+  gap: clamp(28px, 5vw, 84px);
+  align-items: start;
 }
-.vpoint {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  gap: clamp(12px, 1.3vw, 16px);
-  padding-top: clamp(18px, 1.8vw, 26px);
-  border-top: 1px solid var(--line);
-  transition: transform 0.45s cubic-bezier(0.2, 0.7, 0.2, 1);
+.vhead {
+  position: sticky;
+  top: calc(var(--nav-h) + 28px);
 }
-.vp-bar {
-  position: absolute;
-  top: -1px;
-  left: 0;
-  width: 100%;
-  height: 2px;
-  background: var(--clay);
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform 0.6s cubic-bezier(0.2, 0.7, 0.2, 1);
-}
-.vpoint:hover,
-.vpoint:focus-within {
-  transform: translateY(-6px);
-}
-.vpoint:hover .vp-bar,
-.vpoint:focus-within .vp-bar {
-  transform: scaleX(1);
-}
-.vp-no {
+.vbig {
   font-family: var(--display);
   font-weight: 700;
-  font-size: clamp(30px, 3.2vw, 46px);
-  line-height: 1;
+  font-size: clamp(34px, 5vw, 68px);
+  line-height: 1.02;
   letter-spacing: -0.02em;
-  color: var(--ink-25);
-  transition: color 0.45s ease;
-}
-.vpoint:hover .vp-no,
-.vpoint:focus-within .vp-no {
-  color: var(--clay);
-}
-.vp-t {
-  font-family: var(--display);
-  font-weight: 700;
-  text-transform: uppercase;
-  font-size: clamp(15px, 1.5vw, 19px);
-  letter-spacing: 0.03em;
-  line-height: 1.18;
   color: var(--ink);
   margin: 0;
 }
-.vp-d {
+.vbig em {
+  font-style: normal;
+  color: var(--clay);
+}
+.vsub {
+  font-family: var(--serif);
+  font-size: clamp(16px, 1.6vw, 20px);
+  line-height: 1.5;
+  color: var(--ink-60);
+  margin-top: clamp(16px, 1.6vw, 22px);
+  max-width: 32ch;
+}
+.vlist {
+  display: flex;
+  flex-direction: column;
+}
+.vrow {
+  position: relative;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: clamp(14px, 1.8vw, 26px);
+  align-items: baseline;
+  padding: clamp(20px, 2.4vw, 32px) 0 clamp(20px, 2.4vw, 32px)
+    clamp(18px, 2vw, 28px);
+  border-top: 1px solid var(--line);
+  transition: transform 0.45s cubic-bezier(0.2, 0.7, 0.2, 1),
+    opacity 0.4s ease;
+}
+.vrow:last-child {
+  border-bottom: 1px solid var(--line);
+}
+.vrow::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: -1px;
+  bottom: -1px;
+  width: 2px;
+  background: var(--clay);
+  transform: scaleY(0);
+  transform-origin: top;
+  transition: transform 0.55s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+/* dim the set while one is hovered, so the active row stands out */
+.vlist:hover .vrow {
+  opacity: 0.45;
+}
+.vlist .vrow:hover,
+.vlist .vrow:focus-within {
+  opacity: 1;
+  transform: translateX(10px);
+}
+.vlist .vrow:hover::before,
+.vlist .vrow:focus-within::before {
+  transform: scaleY(1);
+}
+.vrow-no {
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: clamp(20px, 1.8vw, 26px);
+  line-height: 1;
+  letter-spacing: -0.02em;
+  color: var(--ink-25);
+  transition: color 0.4s ease;
+}
+.vrow:hover .vrow-no,
+.vrow:focus-within .vrow-no {
+  color: var(--clay);
+}
+.vrow-t {
+  font-family: var(--display);
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: clamp(16px, 1.6vw, 21px);
+  letter-spacing: 0.03em;
+  line-height: 1.15;
+  color: var(--ink);
+  margin: 0 0 8px;
+}
+.vrow-d {
   font-family: var(--serif);
   font-size: clamp(14px, 1.35vw, 16px);
   line-height: 1.55;
   color: var(--ink-60);
-  max-width: 34ch;
-  transition: color 0.45s ease;
+  transition: color 0.4s ease;
 }
-.vpoint:hover .vp-d,
-.vpoint:focus-within .vp-d {
+.vrow:hover .vrow-d,
+.vrow:focus-within .vrow-d {
   color: var(--ink-80);
 }
-@media (max-width: 760px) {
-  .vpoints {
+@media (max-width: 860px) {
+  .vgrid {
     grid-template-columns: 1fr;
-    gap: 0;
+    gap: clamp(22px, 5vw, 36px);
+  }
+  .vhead {
+    position: static;
   }
 }
 @media (prefers-reduced-motion: reduce) {
-  .vpoint,
-  .vp-bar {
+  .vrow,
+  .vrow::before {
     transition: none;
   }
 }

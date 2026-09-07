@@ -8,7 +8,6 @@ import { EntryCards } from "@/components/EntryCards";
 import { FounderCards } from "@/components/Founders";
 import { BookingButton } from "@/components/Booking";
 import { Flip } from "@/components/Flip";
-import { PillarBack } from "@/components/PillarBack";
 import { ValuePoints } from "@/components/ValuePoints";
 import { pillars, dimensions, site, cta } from "@/lib/site";
 
@@ -45,20 +44,21 @@ export default function Home() {
 
       <Cred />
 
-      {/* How we create value — three points, between the carousel and What we
-          do. Interaction is intentionally not a flip: a clay rule draws across
-          the top of each column on hover. */}
+      {/* How we create value — asymmetric on purpose: big heading left, a
+          stepped interactive list right (1 top, 2 middle, 3 bottom). The row
+          interaction is deliberately not a flip. */}
       <section className="feature">
         <div className="wrap">
-          <FeatureHead
-            title={
-              <>
+          <div className="g12 vgrid">
+            <div className="vhead">
+              <h2 className="vbig">
                 How we create <em>value</em>
-              </>
-            }
-            deck="Getting more from your production budget takes more than cutting costs."
-          />
-          <div className="g12">
+              </h2>
+              <p className="vsub">
+                Getting more from your production budget takes more than cutting
+                costs.
+              </p>
+            </div>
             <ValuePoints />
           </div>
         </div>
@@ -90,10 +90,16 @@ export default function Home() {
                         <PillarIcon name={p.icon} />
                       </span>
                       <h3 className="p-title">{p.title}</h3>
-                      <p className="p-lead">{p.homeLead}</p>
                     </>
                   }
-                  back={<PillarBack title={p.title} />}
+                  back={
+                    <>
+                      <p className="p-lead">{p.homeLead}</p>
+                      <Link href="/services" className="explore">
+                        Explore →
+                      </Link>
+                    </>
+                  }
                 />
               ))}
             </Reveal>
