@@ -41,9 +41,6 @@ export default function ServicesPage() {
           <div className="g12">
             <EntryCards />
           </div>
-          <div className="caption">
-            <span>Each engagement ends in a recommendation you keep, whatever you decide next.</span>
-          </div>
         </div>
       </section>
 
