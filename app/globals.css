@@ -1164,9 +1164,9 @@ img {
   text-align: center;
   gap: clamp(12px, 1.4vw, 18px);
   padding: clamp(26px, 3.4vw, 46px);
-  border: 1px solid var(--line);
+  border: none;
 }
-/* FRONT — creme field with a hairline frame: icon on top, the headline.
+/* FRONT — creme, no frame: the box dissolves into the page until it turns.
    Top-anchored, with the headline reserving two lines, so the icons line up
    and the headlines line up across every card however the copy wraps. */
 .pillar .flip-front {
@@ -1196,10 +1196,9 @@ img {
 .pillar .flip-front .pillar-ico svg {
   stroke: var(--ink);
 }
-/* BACK — rust field: the small copy + an explore link (home), or a
-   capabilities list (services) */
+/* BACK — a rust gradient (not a flat pill), the small copy + an explore link */
 .pillar .flip-back {
-  background: var(--clay);
+  background: linear-gradient(140deg, #cf6738 0%, var(--clay) 45%, var(--clay-d) 100%);
   color: var(--paper);
 }
 .pillar .flip-back .p-lead {
@@ -1345,17 +1344,17 @@ img {
 .wgrid {
   grid-column: 1 / 13;
   display: grid;
-  grid-template-columns: 7fr 5fr;
-  gap: clamp(28px, 5vw, 84px);
+  grid-template-columns: 5fr 7fr;
+  gap: clamp(28px, 5vw, 72px);
   align-items: start;
 }
 .wcards {
-  display: flex;
-  flex-direction: column;
-  gap: clamp(14px, 1.6vw, 22px);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(14px, 1.8vw, 26px);
 }
 .wcards .pillar {
-  min-height: clamp(150px, 15vw, 190px);
+  min-height: clamp(180px, 18vw, 230px);
 }
 .whead {
   position: sticky;
@@ -1384,7 +1383,11 @@ img {
   }
   .whead {
     position: static;
-    order: -1;
+  }
+}
+@media (max-width: 560px) {
+  .wcards {
+    grid-template-columns: 1fr;
   }
 }
 

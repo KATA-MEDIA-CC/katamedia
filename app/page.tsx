@@ -71,6 +71,18 @@ export default function Home() {
       <section className="feature">
         <div className="wrap">
           <div className="g12 wgrid">
+            <div className="whead">
+              <h2 className="vbig">
+                What we <em>do</em>
+              </h2>
+              <p className="vsub">
+                Four pillars, one partner: strategy, organisation, AI and cost,
+                held to a single independent standard.
+              </p>
+              <Link href="/services" className="whead-link">
+                All services →
+              </Link>
+            </div>
             <Reveal className="wcards" stagger>
               {pillars.map((p) => (
                 <Flip
@@ -95,18 +107,6 @@ export default function Home() {
                 />
               ))}
             </Reveal>
-            <div className="whead">
-              <h2 className="vbig">
-                What we <em>do</em>
-              </h2>
-              <p className="vsub">
-                Four pillars, one partner: strategy, organisation, AI and cost,
-                held to a single independent standard.
-              </p>
-              <Link href="/services" className="whead-link">
-                All services →
-              </Link>
-            </div>
           </div>
         </div>
       </section>
