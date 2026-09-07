@@ -962,9 +962,11 @@ img {
   color: rgba(246, 242, 232, 0.85);
   max-width: 44ch;
 }
-/* the home hero sub reads in caps (the sentence stays sentence-case in the
-   markup for SEO/reuse) */
+/* the home hero sub reads in caps, set in the header (display) font (the
+   sentence stays sentence-case in the markup for SEO/reuse) */
 .hero--home .hero-desc {
+  font-family: var(--display);
+  font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 0.02em;
 }
