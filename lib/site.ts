@@ -274,6 +274,50 @@ export const pillarBacks: Record<string, { t: string; d: string }[]> = {
       d: "Carbon budgeting, supplier selection and production data.",
     },
   ],
+  "AI Integration & Transformation": [
+    {
+      t: "AI Workflow Mapping",
+      d: "Where AI genuinely speeds up or improves production, and where it doesn’t.",
+    },
+    {
+      t: "Tool & Vendor Evaluation",
+      d: "Independent assessment of AI production tools, without vendor bias.",
+    },
+    {
+      t: "Governance & Rights Framework",
+      d: "Sign-off structures, usage rights and disclosure requirements for AI-generated content.",
+    },
+    {
+      t: "Human-in-the-Loop Design",
+      d: "Defining what stays human, and who signs off.",
+    },
+    {
+      t: "Pilot & Rollout Planning",
+      d: "Testing AI integration on one real production before you scale it.",
+    },
+  ],
+  "Production Controlling": [
+    {
+      t: "Cost Benchmarking",
+      d: "Comparing your production costs against real market rates, not agency sub-supplier estimates.",
+    },
+    {
+      t: "Fee & Bid Validation",
+      d: "Independent review of agency and production company quotes before you sign.",
+    },
+    {
+      t: "Should-Cost Analysis",
+      d: "Building an independent cost estimate from scratch, before the agency’s KVA lands, so you have a real benchmark to hold it against.",
+    },
+    {
+      t: "Invoice Reconciliation",
+      d: "Checking final costs against what was scoped and quoted.",
+    },
+    {
+      t: "Budget Governance",
+      d: "Approval structures and reporting that catch overruns before they happen.",
+    },
+  ],
 };
 
 // How we create value — three points, shown between the hero and What we do.

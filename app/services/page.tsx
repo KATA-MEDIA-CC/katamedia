@@ -3,11 +3,9 @@ import { Hero } from "@/components/Hero";
 import { BookingButton } from "@/components/Booking";
 import { FeatureHead } from "@/components/FeatureHead";
 import { Reveal } from "@/components/Reveal";
-import { PillarIcon } from "@/components/Icons";
-import { Flip } from "@/components/Flip";
 import { EntryCards } from "@/components/EntryCards";
-import { PillarBack } from "@/components/PillarBack";
-import { pillars, cta, pageMetadata } from "@/lib/site";
+import { ServicesAccordion } from "@/components/ServicesAccordion";
+import { cta, pageMetadata } from "@/lib/site";
 
 export const metadata: Metadata = pageMetadata({
   title: "Services",
@@ -58,24 +56,7 @@ export default function ServicesPage() {
             deck="Where the work goes from there. One partner across strategy, organisation, AI and cost, held to a single independent standard."
           />
           <div className="g12">
-            <Reveal className="pillars">
-              {pillars.map((p) => (
-                <Flip
-                  className="pillar"
-                  key={p.title}
-                  front={
-                    <>
-                      <span className="pillar-ico">
-                        <PillarIcon name={p.icon} />
-                      </span>
-                      <h3 className="p-title">{p.title}</h3>
-                      <p className="p-lead">{p.lead}</p>
-                    </>
-                  }
-                  back={<PillarBack title={p.title} />}
-                />
-              ))}
-            </Reveal>
+            <ServicesAccordion />
           </div>
         </div>
       </section>
