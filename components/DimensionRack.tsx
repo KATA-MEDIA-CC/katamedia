@@ -7,11 +7,6 @@ import { dimensions } from "@/lib/site";
 // six focal planes: the active dimension is pulled tack-sharp while the other
 // five stay in the same frame as soft bokeh. Turning the focus ring (the row of
 // marks) racks between them. `compact` (home teaser) drops the reading panel.
-//
-// It reads as looking THROUGH glass and changing the plane of focus, not a
-// diagram: real depth-of-field (CSS blur), a clay focal-plane line, and the
-// five unselected lenses never leave the frame — so the six always read as
-// facets of one business.
 const SPOTS = [
   [27, 29],
   [70, 23],
@@ -20,6 +15,7 @@ const SPOTS = [
   [22, 61],
   [46, 43],
 ];
+const DOTS = [10, 36.6, 63.3, 90];
 
 export function DimensionRack({ compact = false }: { compact?: boolean }) {
   const [active, setActive] = useState(0);
@@ -32,19 +28,15 @@ export function DimensionRack({ compact = false }: { compact?: boolean }) {
         <span className="rack-wm" aria-hidden="true">
           {cur.no}
         </span>
-        <svg
-          className="rack-pipe"
-          viewBox="0 0 100 56"
-          preserveAspectRatio="none"
-          aria-hidden="true"
-        >
-          <line x1="10" y1="28" x2="90" y2="28" />
-          <circle cx="10" cy="28" r="1.1" />
-          <circle cx="36.6" cy="28" r="1.1" />
-          <circle cx="63.3" cy="28" r="1.1" />
-          <circle cx="90" cy="28" r="1.1" />
-        </svg>
         <span className="rack-plane" aria-hidden="true" />
+        {DOTS.map((x, i) => (
+          <span
+            key={i}
+            className="rack-dot"
+            style={{ left: `${x}%` } as CSSProperties}
+            aria-hidden="true"
+          />
+        ))}
         {dimensions.map((d, i) => (
           <span
             key={d.title}
@@ -64,7 +56,6 @@ export function DimensionRack({ compact = false }: { compact?: boolean }) {
           <span className="rr-no">No.{cur.no} / 06</span>
           <h3 className="rr-t">{cur.title}</h3>
           <p className="rr-b">{cur.body}</p>
-          <p className="rr-meter">Scored red · amber · green</p>
         </div>
       )}
 

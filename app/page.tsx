@@ -1,7 +1,6 @@
 import Link from "next/link";
 import { Hero } from "@/components/Hero";
 import { Cred } from "@/components/Cred";
-import { FeatureHead } from "@/components/FeatureHead";
 import { Reveal } from "@/components/Reveal";
 import { PillarIcon } from "@/components/Icons";
 import { EntryCards } from "@/components/EntryCards";
@@ -140,22 +139,22 @@ export default function Home() {
           live on /approach; here the grid just proves the IP exists. */}
       <section className="feature">
         <div className="wrap">
-          <FeatureHead
-            caps
-            title={
-              <>
+          <div className="g12 wgrid">
+            <div className="whead">
+              <h2 className="vbig">
                 The <em>approach</em>
-              </>
-            }
-            deck="Most production problems are operational, not creative. Every audit is scored across six dimensions, and one roadmap comes out."
-          />
-          <div className="g12">
-            <DimensionRack compact />
-          </div>
-          <div className="caption">
-            <Link href="/approach" className="clink" style={{ marginLeft: "auto" }}>
-              The full approach →
-            </Link>
+              </h2>
+              <p className="vsub">
+                Most production problems are operational, not creative. Every
+                audit is scored across six dimensions, and one roadmap comes out.
+              </p>
+              <Link href="/approach" className="whead-link">
+                The full approach →
+              </Link>
+            </div>
+            <div className="wcol">
+              <DimensionRack compact />
+            </div>
           </div>
         </div>
       </section>
@@ -163,21 +162,22 @@ export default function Home() {
       {/* The founders — photo, name, one line. The full bios are on /team. */}
       <section className="feature">
         <div className="wrap">
-          <FeatureHead
-            title={
-              <>
+          <div className="g12 wgrid">
+            <div className="whead">
+              <h2 className="vbig">
                 The <em>founders</em>
-              </>
-            }
-            deck="The people you would actually work with. Studios founded, departments built, budgets carried."
-          />
-          <div className="g12">
-            <FounderCards />
-          </div>
-          <div className="caption">
-            <Link href="/team" className="clink" style={{ marginLeft: "auto" }}>
-              Meet the team →
-            </Link>
+              </h2>
+              <p className="vsub">
+                The people you would actually work with. Studios founded,
+                departments built, budgets carried.
+              </p>
+              <Link href="/team" className="whead-link">
+                Meet the team →
+              </Link>
+            </div>
+            <div className="wcol">
+              <FounderCards />
+            </div>
           </div>
         </div>
       </section>
