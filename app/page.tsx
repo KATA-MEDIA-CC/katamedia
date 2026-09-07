@@ -16,23 +16,25 @@ import { pillars, dimensions, site, cta } from "@/lib/site";
 // The approach → The founders → CTA. Each section stays a compression of its
 // page and links out to the full version.
 //
-// Claims hierarchy (settled with all three founders, round 2, Jul 2026):
+// Claims hierarchy (revised Sep 2026): the hero now leads with the
+// positioning itself — "Independent Production Architects." as the headline —
+// over the one concrete sentence beneath it (what we do, for whom). The old
+// "From fragments, order." headline and its kicker are retired from the hero.
 // "Knowledge applied to action" stays in the header lockup as the brand core.
-// "From fragments — order." is the hero headline, with one concrete sentence
-// under it (audience · offer · credibility). "Better by design." moved out of
-// the hero and sits as the crosshead before "What we do". No two claims ever
-// share one breath.
+// "Better by design." is the crosshead before "What we do". No two claims
+// ever share one breath.
 export default function Home() {
   return (
     <>
       <Hero
         variant="home"
-        lead={site.descriptor}
         title={
           <>
-            From fragments,
+            Independent
             <br />
-            <em>order.</em>
+            Production
+            <br />
+            <em>Architects.</em>
           </>
         }
         desc={site.sub}
