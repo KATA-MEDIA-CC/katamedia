@@ -1351,6 +1351,7 @@ img {
 .wcards {
   display: grid;
   grid-template-columns: 1fr 1fr;
+  grid-auto-rows: 1fr;
   gap: clamp(14px, 1.8vw, 26px);
 }
 .wcards .pillar {
@@ -1410,7 +1411,7 @@ img {
 .flip-face {
   grid-area: 1 / 1;
   border: 1px solid var(--line);
-  border-radius: 20px;
+  border-radius: 0;
   background: var(--paper);
   overflow: hidden;
   -webkit-backface-visibility: hidden;
@@ -1477,8 +1478,8 @@ img {
 }
 /* BACK — ink field, the detail in CI white */
 .card .flip-back {
-  background: var(--ink);
-  color: var(--paper);
+  background: var(--paper);
+  color: var(--ink);
   justify-content: center;
 }
 .card .c-no {
@@ -1529,20 +1530,8 @@ img {
 .card .mlink:hover {
   color: var(--clay-d);
 }
-/* the engage-card back is ink, so its meta + copy + link read in CI white */
-.card .flip-back .c-meta {
-  color: rgba(246, 242, 232, 0.6);
-}
-.card .flip-back p {
-  color: var(--paper);
-}
-.card .flip-back .mlink {
-  color: var(--paper);
-  border-bottom-color: var(--clay-on-ink);
-}
-.card .flip-back .mlink:hover {
-  color: var(--clay-on-ink);
-}
+/* the engage-card back is now creme (reads like the page), so the meta, copy
+   and link keep the default ink treatment */
 
 /* ═══════════════════════════════════════════════════════════════════════
    HOW WE CREATE VALUE — asymmetric on purpose, to break the centered-header
