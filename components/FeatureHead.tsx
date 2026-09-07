@@ -8,14 +8,16 @@ export function FeatureHead({
   kick,
   title,
   deck,
+  caps,
 }: {
   no?: string;
   kick?: string;
   title: ReactNode;
   deck?: string;
+  caps?: boolean;
 }) {
   return (
-    <div className={`g12 fhead${no ? "" : " bare"}`}>
+    <div className={`g12 fhead${no ? "" : " bare"}${caps ? " caps" : ""}`}>
       {no ? (
         <span className="mk">
           <span className="spec">

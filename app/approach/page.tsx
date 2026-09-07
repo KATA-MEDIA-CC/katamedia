@@ -48,6 +48,7 @@ export default function ApproachPage() {
       <section className="feature">
         <div className="wrap">
           <FeatureHead
+            caps
             title={
               <>
                 The <em>approach</em>

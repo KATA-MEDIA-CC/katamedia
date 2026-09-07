@@ -23,9 +23,13 @@ function linkifyApproach(text: string): ReactNode {
   );
 }
 
-export function EntryCards() {
+export function EntryCards({
+  layout = "trio",
+}: {
+  layout?: "trio" | "stack";
+} = {}) {
   return (
-    <Reveal className="trio" stagger>
+    <Reveal className={layout === "stack" ? "estack" : "trio"} stagger>
       {entryPoints.map((d) => (
         <Flip
           className="card"

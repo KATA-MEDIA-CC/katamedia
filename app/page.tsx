@@ -111,26 +111,26 @@ export default function Home() {
         </div>
       </section>
 
-      {/* How we engage — the three entry points, compressed from /services.
-          Answers the first questions any visitor has: how do I start, how
-          long does it take, what does it cost me to find out. */}
+      {/* How we engage — same treatment as What we do: heading + deck + link
+          sticky on the left, the three entry cards stacked on the right. */}
       <section className="feature">
         <div className="wrap">
-          <FeatureHead
-            title={
-              <>
+          <div className="g12 wgrid">
+            <div className="whead">
+              <h2 className="vbig">
                 How we <em>engage</em>
-              </>
-            }
-            deck="Every relationship starts one of three ways: an audit, a workshop or a pilot. Each one: fixed scope, a fee agreed before we start, and a recommendation you keep whatever you decide next."
-          />
-          <div className="g12">
-            <EntryCards />
-          </div>
-          <div className="caption">
-            <Link href="/services" className="clink" style={{ marginLeft: "auto" }}>
-              How engagements work →
-            </Link>
+              </h2>
+              <p className="vsub">
+                Every relationship starts one of three ways: an audit, a
+                workshop or a pilot. Each one: fixed scope, a fee agreed before
+                we start, and a recommendation you keep whatever you decide
+                next.
+              </p>
+              <Link href="/services" className="whead-link">
+                How engagements work →
+              </Link>
+            </div>
+            <EntryCards layout="stack" />
           </div>
         </div>
       </section>
@@ -140,6 +140,7 @@ export default function Home() {
       <section className="feature">
         <div className="wrap">
           <FeatureHead
+            caps
             title={
               <>
                 The <em>approach</em>
