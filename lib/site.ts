@@ -52,16 +52,16 @@ export const site = {
 // The cred band — one slim strip directly under the home hero.
 // Founder feedback (Jul 2026): the pedigree and the independence claim are the
 // reason anyone takes the 45-minute call, so they cannot live only on /team.
-// Wording note: the word "kickback" is banned (Cornelius — negatively loaded);
-// independence is stated as the absence of financial ties instead.
+// Wording note: the word "kickback" is banned (Cornelius — negatively loaded).
+// `independence` shortened to one word (Sep 2026): the "no financial ties"
+// sentence was dropped from both the cred band and the footer.
 // 45+ = 15 (Justin) + 20 (Cornelius, corrected from 25 — CR, Jul 2026) +
 // 12 (Jankel) = 47, rounded down on purpose so the number can never be
 // accused of inflation.
 export const cred = {
   years: "45+ years of production leadership",
   houses: ["The Mill", "Stink", "Psyop", "Markenfilm", "Jung von Matt"],
-  independence:
-    "Independent. No financial ties to the production companies, directors or agencies we recommend.",
+  independence: "Independent.",
 } as const;
 
 // Per-page metadata: correct canonical + full OpenGraph/Twitter (Next replaces

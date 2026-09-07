@@ -14,7 +14,6 @@ export function Cred() {
     <section className="cred" aria-label="Track record and independence">
       <div className="wrap">
         <Reveal className="cred-in">
-          <p className="cred-years">{cred.years}</p>
           <p className="cred-ind">
             Experience built at{" "}
             {cred.houses.map((h, i) => {
@@ -28,6 +27,7 @@ export function Cred() {
             })}
             . {cred.independence}
           </p>
+          <p className="cred-years">{cred.years}</p>
         </Reveal>
       </div>
     </section>
