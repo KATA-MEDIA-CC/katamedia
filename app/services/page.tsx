@@ -4,6 +4,7 @@ import { BookingButton } from "@/components/Booking";
 import { FeatureHead } from "@/components/FeatureHead";
 import { Reveal } from "@/components/Reveal";
 import { PillarIcon } from "@/components/Icons";
+import { Flip } from "@/components/Flip";
 import { EntryCards } from "@/components/EntryCards";
 import { pillars, cta, pageMetadata } from "@/lib/site";
 
@@ -58,16 +59,20 @@ export default function ServicesPage() {
           <div className="g12">
             <Reveal className="pillars">
               {pillars.map((p) => (
-                <div className="pillar" key={p.title}>
-                  <div className="pillar-top">
-                    <span className="pillar-ico">
-                      <PillarIcon name={p.icon} />
-                    </span>
-                  </div>
-                  <h3>{p.title}</h3>
-                  <p className="p-lead">{p.lead}</p>
-                  <p className="p-detail">{p.detail}</p>
-                </div>
+                <Flip
+                  className="pillar"
+                  key={p.title}
+                  front={<span className="p-title">{p.title}</span>}
+                  back={
+                    <>
+                      <span className="pillar-ico">
+                        <PillarIcon name={p.icon} />
+                      </span>
+                      <p className="p-lead">{p.lead}</p>
+                      <p className="p-detail">{p.detail}</p>
+                    </>
+                  }
+                />
               ))}
             </Reveal>
           </div>

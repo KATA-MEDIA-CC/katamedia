@@ -1151,11 +1151,52 @@ img {
 .pillar .flip-face {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 18px;
   padding: clamp(26px, 3.4vw, 46px);
+  border-color: transparent;
 }
-.pillar .flip-back {
+/* FRONT — ink field, the title alone, centered and loud in caps */
+.pillar .flip-front {
+  background: var(--ink);
+  color: var(--paper);
+  align-items: center;
   justify-content: center;
+  text-align: center;
+}
+.pillar .flip-front .p-title {
+  font-family: var(--display);
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: clamp(20px, 2.1vw, 30px);
+  line-height: 1.06;
+  letter-spacing: 0.01em;
+}
+/* BACK — rust field, the icon + copy in CI white */
+.pillar .flip-back {
+  background: var(--clay);
+  color: var(--paper);
+  align-items: flex-start;
+  justify-content: center;
+  text-align: left;
+}
+.pillars:not(.min) .pillar .flip-back {
+  justify-content: flex-start;
+}
+.pillar .flip-back .p-lead,
+.pillar .flip-back .p-detail {
+  color: var(--paper);
+}
+.pillar .flip-back .p-detail {
+  margin-top: 14px;
+  border-top-color: rgba(246, 242, 232, 0.28);
+}
+/* icon reads white on the rust back (overrides the ink stroke + clay accents) */
+.pillar .flip-back .pillar-ico svg,
+.pillar .flip-back .pillar-ico svg [stroke] {
+  stroke: var(--paper);
+}
+.pillar .flip-back .pillar-ico svg [fill]:not([fill="none"]) {
+  fill: var(--paper);
 }
 .pillar-top {
   display: flex;
@@ -1244,12 +1285,6 @@ img {
 .pillars.min .pillar {
   min-height: clamp(200px, 20vw, 250px);
 }
-.pillars.min .pillar .flip-face {
-  gap: 18px;
-}
-.pillars.min .pillar h3 {
-  margin-top: auto;
-}
 
 /* ── flip cards — rounded boxes that turn on hover to reveal the back.
    Direction (--flip-dir: 1 | -1) is randomised per card in <Flip>; the spin
@@ -1308,17 +1343,37 @@ img {
   gap: clamp(16px, 2.2vw, 30px);
 }
 .card {
-  border: 1px solid var(--line);
-  padding: clamp(24px, 2.8vw, 38px);
+  display: grid;
+  min-height: clamp(210px, 21vw, 270px);
+}
+.card .flip-face {
   display: flex;
   flex-direction: column;
-  gap: 14px;
-  min-height: clamp(200px, 20vw, 260px);
-  background: var(--paper);
-  transition: background 0.4s ease;
+  gap: 12px;
+  padding: clamp(24px, 2.8vw, 38px);
+  border-color: transparent;
 }
-.card:hover {
-  background: var(--paper-2);
+/* FRONT — rust field, the name alone, as large as it will go, centered */
+.card .flip-front {
+  background: var(--clay);
+  color: var(--paper);
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+.card .flip-front .c-title {
+  font-family: var(--display);
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: clamp(34px, 4.6vw, 60px);
+  line-height: 1;
+  letter-spacing: 0.01em;
+}
+/* BACK — ink field, the detail in CI white */
+.card .flip-back {
+  background: var(--ink);
+  color: var(--paper);
+  justify-content: center;
 }
 .card .c-no {
   font-family: var(--display);
@@ -1367,6 +1422,20 @@ img {
 }
 .card .mlink:hover {
   color: var(--clay-d);
+}
+/* the engage-card back is ink, so its meta + copy + link read in CI white */
+.card .flip-back .c-meta {
+  color: rgba(246, 242, 232, 0.6);
+}
+.card .flip-back p {
+  color: var(--paper);
+}
+.card .flip-back .mlink {
+  color: var(--paper);
+  border-bottom-color: var(--clay-on-ink);
+}
+.card .flip-back .mlink:hover {
+  color: var(--clay-on-ink);
 }
 
 
