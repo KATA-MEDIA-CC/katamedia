@@ -1463,6 +1463,93 @@ img {
   color: var(--clay-on-ink);
 }
 
+/* ═══════════════════════════════════════════════════════════════════════
+   HOW WE CREATE VALUE — three open columns (not cards). Hover/focus draws a
+   clay rule across the top, lifts the column and brightens the copy. A
+   deliberately different interaction from the flip tiles.
+   ═══════════════════════════════════════════════════════════════════════ */
+.vpoints {
+  grid-column: 1 / 13;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(20px, 3vw, 52px);
+}
+.vpoint {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(12px, 1.3vw, 16px);
+  padding-top: clamp(18px, 1.8vw, 26px);
+  border-top: 1px solid var(--line);
+  transition: transform 0.45s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+.vp-bar {
+  position: absolute;
+  top: -1px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: var(--clay);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.6s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+.vpoint:hover,
+.vpoint:focus-within {
+  transform: translateY(-6px);
+}
+.vpoint:hover .vp-bar,
+.vpoint:focus-within .vp-bar {
+  transform: scaleX(1);
+}
+.vp-no {
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: clamp(30px, 3.2vw, 46px);
+  line-height: 1;
+  letter-spacing: -0.02em;
+  color: var(--ink-25);
+  transition: color 0.45s ease;
+}
+.vpoint:hover .vp-no,
+.vpoint:focus-within .vp-no {
+  color: var(--clay);
+}
+.vp-t {
+  font-family: var(--display);
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: clamp(15px, 1.5vw, 19px);
+  letter-spacing: 0.03em;
+  line-height: 1.18;
+  color: var(--ink);
+  margin: 0;
+}
+.vp-d {
+  font-family: var(--serif);
+  font-size: clamp(14px, 1.35vw, 16px);
+  line-height: 1.55;
+  color: var(--ink-60);
+  max-width: 34ch;
+  transition: color 0.45s ease;
+}
+.vpoint:hover .vp-d,
+.vpoint:focus-within .vp-d {
+  color: var(--ink-80);
+}
+@media (max-width: 760px) {
+  .vpoints {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .vpoint,
+  .vp-bar {
+    transition: none;
+  }
+}
+
 
 /* ── the approach, compact (home) — icon + label only ──────────────────── */
 .dims {

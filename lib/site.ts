@@ -276,6 +276,22 @@ export const pillarBacks: Record<string, { t: string; d: string }[]> = {
   ],
 };
 
+// How we create value — three points, shown between the hero and What we do.
+export const valuePoints = [
+  {
+    t: "Smarter commissioning",
+    d: "We tighten how content gets briefed and commissioned, without slowing your team down.",
+  },
+  {
+    t: "The right production structure",
+    d: "We build or rebuild your production setup, without disrupting what’s already delivering.",
+  },
+  {
+    t: "Full process transparency",
+    d: "A full view across your production, from process to cost, without turning it into a finger-pointing exercise that may hurt the work.",
+  },
+] as const;
+
 // How we engage — the three low-commitment ways a relationship starts.
 export const entryPoints = [
   {

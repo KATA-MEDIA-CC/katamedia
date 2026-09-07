@@ -9,6 +9,7 @@ import { FounderCards } from "@/components/Founders";
 import { BookingButton } from "@/components/Booking";
 import { Flip } from "@/components/Flip";
 import { PillarBack } from "@/components/PillarBack";
+import { ValuePoints } from "@/components/ValuePoints";
 import { pillars, dimensions, site, cta } from "@/lib/site";
 
 // The home page is the whole story, not a teaser. Founder feedback (Jul 2026):
@@ -43,6 +44,25 @@ export default function Home() {
       />
 
       <Cred />
+
+      {/* How we create value — three points, between the carousel and What we
+          do. Interaction is intentionally not a flip: a clay rule draws across
+          the top of each column on hover. */}
+      <section className="feature">
+        <div className="wrap">
+          <FeatureHead
+            title={
+              <>
+                How we create <em>value</em>
+              </>
+            }
+            deck="Getting more from your production budget takes more than cutting costs."
+          />
+          <div className="g12">
+            <ValuePoints />
+          </div>
+        </div>
+      </section>
 
       {/* What we do — four pillars, compact.
           Sits directly under the cred band on purpose: what we sell has to be
