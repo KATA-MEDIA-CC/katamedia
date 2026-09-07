@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import { Hero } from "@/components/Hero";
 import { FeatureHead } from "@/components/FeatureHead";
 import { Reveal } from "@/components/Reveal";
-import { dimensions, cta, pageMetadata } from "@/lib/site";
+import { DimensionOrbit } from "@/components/DimensionOrbit";
+import { cta, pageMetadata } from "@/lib/site";
 import { BookingButton } from "@/components/Booking";
 
 export const metadata: Metadata = pageMetadata({
@@ -55,14 +56,7 @@ export default function ApproachPage() {
             deck="Most production problems are operational, not creative. The Approach frames every engagement: the audit scores all six dimensions, workshops and pilots go deep on one or two."
           />
           <div className="g12">
-            <Reveal className="trio" stagger>
-              {dimensions.map((d) => (
-                <div className="card" key={d.title}>
-                  <h3>{d.title}</h3>
-                  <p className="c-spacer">{d.body}</p>
-                </div>
-              ))}
-            </Reveal>
+            <DimensionOrbit />
           </div>
 
           {/* The name — why an approach page belongs to a company called Kata.

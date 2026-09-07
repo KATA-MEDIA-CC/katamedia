@@ -1829,6 +1829,183 @@ img {
   }
 }
 
+/* ═══════════════════════════════════════════════════════════════════════
+   THE APPROACH — radial "kata" diagram: six dimensions orbit a centre, spokes
+   run out to each, hover/focus draws its spoke in clay + shows its detail in
+   the centre. Falls back to a stacked list on phones.
+   ═══════════════════════════════════════════════════════════════════════ */
+.orbit {
+  grid-column: 1 / 13;
+  position: relative;
+  width: min(680px, 94%);
+  margin: clamp(8px, 2vw, 26px) auto 0;
+  aspect-ratio: 1;
+}
+.orbit-svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+.orbit-spoke {
+  stroke: var(--line);
+  stroke-width: 1;
+  vector-effect: non-scaling-stroke;
+  transition: stroke 0.4s ease, stroke-width 0.4s ease;
+}
+.orbit-spoke.active {
+  stroke: var(--clay);
+  stroke-width: 2;
+}
+.orbit-ring {
+  fill: none;
+  stroke: var(--hair);
+  stroke-width: 1;
+  vector-effect: non-scaling-stroke;
+}
+.orbit-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 44%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+.oc-ico {
+  width: 44px;
+  height: 44px;
+  display: grid;
+  place-items: center;
+}
+.oc-ico svg {
+  width: 36px;
+  height: 36px;
+  stroke: var(--ink);
+  stroke-width: 1.4;
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.oc-no {
+  font-family: var(--sans);
+  font-weight: 700;
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  color: var(--clay);
+}
+.oc-t {
+  font-family: var(--display);
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: clamp(15px, 1.5vw, 20px);
+  letter-spacing: 0.02em;
+  line-height: 1.1;
+  color: var(--ink);
+  margin: 0;
+}
+.oc-b {
+  font-family: var(--serif);
+  font-size: clamp(12.5px, 1.15vw, 14.5px);
+  line-height: 1.5;
+  color: var(--ink-60);
+}
+.orbit-node {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  background: var(--paper);
+  border: 0;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  padding: 6px 12px;
+  color: var(--ink-60);
+  transition: color 0.3s ease;
+}
+.orbit-node .on-no {
+  font-family: var(--sans);
+  font-weight: 700;
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  color: var(--ink-25);
+  transition: color 0.3s ease;
+}
+.orbit-node .on-label {
+  font-family: var(--display);
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: clamp(12px, 1.2vw, 15px);
+  letter-spacing: 0.03em;
+  white-space: nowrap;
+}
+.orbit-node:hover,
+.orbit-node:focus-visible,
+.orbit-node.active {
+  color: var(--clay);
+}
+.orbit-node.active .on-no,
+.orbit-node:hover .on-no,
+.orbit-node:focus-visible .on-no {
+  color: var(--clay);
+}
+.orbit-list {
+  display: none;
+}
+@media (max-width: 760px) {
+  .orbit {
+    display: none;
+  }
+  .orbit-list {
+    grid-column: 1 / 13;
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .orbit-list li {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 16px;
+    padding: 20px 0;
+    border-top: 1px solid var(--line);
+  }
+  .orbit-list li:last-child {
+    border-bottom: 1px solid var(--line);
+  }
+  .ol-no {
+    font-family: var(--sans);
+    font-weight: 700;
+    font-size: 12px;
+    color: var(--clay);
+    padding-top: 4px;
+  }
+  .ol-t {
+    font-family: var(--display);
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 16px;
+    letter-spacing: 0.02em;
+    margin: 0 0 6px;
+  }
+  .ol-b {
+    font-family: var(--serif);
+    font-size: 14px;
+    line-height: 1.5;
+    color: var(--ink-60);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .orbit-spoke {
+    transition: none;
+  }
+}
 
 /* ── the approach, compact (home) — icon + label only ──────────────────── */
 .dims {
