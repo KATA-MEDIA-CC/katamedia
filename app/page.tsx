@@ -3,13 +3,14 @@ import { Hero } from "@/components/Hero";
 import { Cred } from "@/components/Cred";
 import { FeatureHead } from "@/components/FeatureHead";
 import { Reveal } from "@/components/Reveal";
-import { PillarIcon, DimensionIcon } from "@/components/Icons";
+import { PillarIcon } from "@/components/Icons";
 import { EntryCards } from "@/components/EntryCards";
+import { DimensionRack } from "@/components/DimensionRack";
 import { FounderCards } from "@/components/Founders";
 import { BookingButton } from "@/components/Booking";
 import { Flip } from "@/components/Flip";
 import { ValuePoints } from "@/components/ValuePoints";
-import { pillars, dimensions, site, cta } from "@/lib/site";
+import { pillars, site, cta } from "@/lib/site";
 
 // The home page is the whole story, not a teaser. Founder feedback (Jul 2026):
 // hardly anyone clicks past the first page, so everything that argues for the
@@ -149,16 +150,7 @@ export default function Home() {
             deck="Most production problems are operational, not creative. Every audit is scored across six dimensions, and one roadmap comes out."
           />
           <div className="g12">
-            <Reveal className="dims" stagger>
-              {dimensions.map((d) => (
-                <div className="dim" key={d.title}>
-                  <span className="dim-ico">
-                    <DimensionIcon name={d.icon} />
-                  </span>
-                  <span className="dim-t">{d.title}</span>
-                </div>
-              ))}
-            </Reveal>
+            <DimensionRack compact />
           </div>
           <div className="caption">
             <Link href="/approach" className="clink" style={{ marginLeft: "auto" }}>
