@@ -43,7 +43,6 @@ export default function ServicesPage() {
           </div>
           <div className="caption">
             <span>Each engagement ends in a recommendation you keep, whatever you decide next.</span>
-            <span className="r">No retainer required to start</span>
           </div>
         </div>
       </section>

@@ -95,8 +95,7 @@ export default function Home() {
             <EntryCards />
           </div>
           <div className="caption">
-            <span>No retainer required to start</span>
-            <Link href="/services" className="clink">
+            <Link href="/services" className="clink" style={{ marginLeft: "auto" }}>
               How engagements work →
             </Link>
           </div>
