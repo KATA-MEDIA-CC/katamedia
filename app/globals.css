@@ -878,8 +878,11 @@ img {
   padding: calc(var(--nav-h) + clamp(40px, 8vw, 90px)) 0 clamp(40px, 6vw, 74px);
 }
 .hero--home {
-  min-height: 100svh;
+  /* Reserve the cred band (~166px) so the carousel is in view on first load,
+     instead of forcing a full 100svh that pushes it below the fold. */
+  min-height: calc(100svh - 170px);
   align-items: center;
+  padding-top: calc(var(--nav-h) + clamp(28px, 4vw, 60px));
 }
 .hero-wm {
   position: absolute;
@@ -920,7 +923,7 @@ img {
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.02em;
-  font-size: clamp(46px, 11vw, 168px);
+  font-size: clamp(42px, 8.6vw, 124px);
   line-height: 0.88;
   color: var(--paper);
   margin: 0;
@@ -946,6 +949,11 @@ img {
   flex-wrap: wrap;
   /* carries the space the old hero rule used to occupy */
   margin-top: clamp(48px, 7vw, 78px);
+}
+/* the home hero is shorter now (it reserves the cred band), so the sub sits
+   closer to the title than on interior heroes */
+.hero--home .hero-foot {
+  margin-top: clamp(28px, 3.5vw, 46px);
 }
 .hero-desc {
   font-family: var(--serif);
