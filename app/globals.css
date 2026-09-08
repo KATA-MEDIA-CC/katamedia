@@ -2225,32 +2225,35 @@ img {
   letter-spacing: 0.005em;
   line-height: 1.05;
   white-space: nowrap;
-  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
-/* the explainer — absolutely placed on the right half; on hover it slides in
-   from the right and the label nudges across, so the reveal is prominent, not
-   a faint fade. No row grows or shifts. */
+/* the explainer wipes on left-to-right via clip-path, led by a thin clay rule
+   at the reveal's origin — a smooth directional wipe, not a fade or a slide.
+   Absolutely placed so no row grows or shifts. */
 .prin--plakativ .prin-d {
   position: absolute;
   top: 50%;
   right: 0;
   width: 50%;
-  transform: translateY(-50%) translateX(44px);
+  transform: translateY(-50%);
   margin: 0;
-  opacity: 0;
-  transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1),
-    transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  padding-left: 16px;
+  clip-path: inset(0 100% 0 0);
+  transition: clip-path 0.6s cubic-bezier(0.65, 0, 0.35, 1);
   font-size: clamp(14px, 1.35vw, 16px);
   line-height: 1.45;
 }
-.prin--plakativ .prin-item:hover .prin-t,
-.prin--plakativ .prin-item:focus-within .prin-t {
-  transform: translateX(10px);
+.prin--plakativ .prin-d::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: var(--clay);
 }
 .prin--plakativ .prin-item:hover .prin-d,
 .prin--plakativ .prin-item:focus-within .prin-d {
-  opacity: 1;
-  transform: translateY(-50%) translateX(0);
+  clip-path: inset(0 0 0 0);
 }
 /* touch / narrow: no hover — drop the absolute reveal, stack and show each
    explainer under its label. */
@@ -2267,8 +2270,12 @@ img {
     transform: none;
     width: auto;
     grid-column: 2;
-    opacity: 1;
+    clip-path: none;
+    padding-left: 0;
     margin-top: 5px;
+  }
+  .prin--plakativ .prin-d::before {
+    display: none;
   }
 }
 /* pivot word inside body copy — italic emphasis only, no clay: the CI keeps

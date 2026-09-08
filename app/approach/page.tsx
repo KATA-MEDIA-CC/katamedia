@@ -44,37 +44,38 @@ export default function ApproachPage() {
         </div>
       </section>
 
-      {/* The Approach — six dimensions */}
+      {/* How we work — the seven principles. A titled section like every other
+          (the umbrella "The approach" head is dropped: the hero + belief already
+          frame the page, and the two named parts carry it). */}
       <section className="feature">
         <div className="wrap">
           <FeatureHead
             caps
             title={
               <>
-                The <em>approach</em>
+                How we <em>work</em>
               </>
             }
-            deck="Most production problems are operational. The Approach frames every engagement: an audit scores across all six dimensions, a workshop or pilot goes deep on the one or two that matter most."
+            deck="The posture we bring to every engagement, before a single number."
           />
-
-          {/* How we work — the seven principles, as a numbered list */}
-          <div className="g12">
-            <p className="blocklead">How we work</p>
-          </div>
           <div className="g12">
             <Principles />
           </div>
+        </div>
+      </section>
 
-          {/* The Kata Architecture Index — the six dimensions the audit scores */}
-          <div className="g12">
-            <p className="blocklead">The Kata Architecture Index</p>
-          </div>
-          <div className="g12">
-            <p className="blockdeck">
-              The six dimensions behind every engagement, scored red, amber or
-              green in a full audit.
-            </p>
-          </div>
+      {/* The Kata Architecture Index — the six dimensions the audit scores */}
+      <section className="feature">
+        <div className="wrap">
+          <FeatureHead
+            caps
+            title={
+              <>
+                The Kata Architecture <em>Index</em>
+              </>
+            }
+            deck="Most production problems are operational. Every engagement is scored across all six dimensions; a workshop or pilot goes deep on the one or two that matter most."
+          />
           <div className="g12">
             <DimensionList />
           </div>
