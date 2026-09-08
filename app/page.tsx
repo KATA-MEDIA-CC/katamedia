@@ -121,7 +121,7 @@ export default function Home() {
                 How we <em>engage</em>
               </h2>
               <p className="vsub">
-                Every relationship starts one of three ways: an audit, a
+                Every engagement starts one of three ways: an audit, a
                 workshop or a pilot. Each one: fixed scope, a fee agreed before
                 we start, and a recommendation you keep whatever you decide
                 next.
