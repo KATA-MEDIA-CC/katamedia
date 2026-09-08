@@ -2,6 +2,7 @@ import Link from "next/link";
 import { ReactNode } from "react";
 import { Reveal } from "@/components/Reveal";
 import { Flip } from "@/components/Flip";
+import { EngagementIcon } from "@/components/Icons";
 import { entryPoints } from "@/lib/site";
 
 // The three entry cards (Audit · Workshop · Pilot), shared by Home and
@@ -36,6 +37,9 @@ export function EntryCards({
           key={d.title}
           front={
             <>
+              <span className="c-ico">
+                <EngagementIcon name={d.icon} />
+              </span>
               <span className="c-no">{d.no}</span>
               <span className="c-title">{d.title}</span>
               <span className="c-meta">{d.meta}</span>

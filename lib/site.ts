@@ -379,6 +379,7 @@ export const entryPoints = [
   {
     no: "01",
     title: "Audit",
+    icon: "audit",
     meta: "2–4 weeks · fixed fee",
     // No savings percentage here — ever (CR, Jul 2026). A number we cannot
     // yet evidence is exactly what a procurement reader is trained to
@@ -389,12 +390,14 @@ export const entryPoints = [
   {
     no: "02",
     title: "Workshop",
+    icon: "workshop",
     meta: "1–2 days · fixed fee",
     body: "One topic (AI readiness, production strategy or process), worked through with your team, ending in a written deliverable.",
   },
   {
     no: "03",
     title: "Pilot",
+    icon: "pilot",
     meta: "4–8 weeks · scoped fee",
     body: "A pressing project, run end to end with us embedded, from brief through to handover.",
   },

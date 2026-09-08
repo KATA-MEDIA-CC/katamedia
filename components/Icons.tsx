@@ -3,6 +3,73 @@
 
 type IconName = "controlling" | "strategy" | "organisation" | "ai";
 
+type EngagementName = "audit" | "workshop" | "pilot";
+
+// The three engagement marks (Audit · Workshop · Pilot), drawn to the KATA
+// iconography spec: 40×40 grid, whole-unit coordinates, 1.5px non-scaling
+// stroke, butt caps, exactly one clay element (the payload) per mark. Diagrams,
+// not pictograms — the structure of what happens, not a picture of the thing.
+// Two channels: --acc (the accent line) and --dot (the focal node) so the
+// hierarchy survives inversion onto the clay card ground (set in CSS).
+export function EngagementIcon({ name }: { name: EngagementName }) {
+  switch (name) {
+    case "audit": // three readings against one benchmark; the short one fails it
+      return (
+        <svg viewBox="0 0 40 40" aria-hidden="true">
+          <line vectorEffect="non-scaling-stroke" x1="3" y1="9" x2="21" y2="9" />
+          <line vectorEffect="non-scaling-stroke" x1="3" y1="20" x2="15" y2="20" />
+          <line vectorEffect="non-scaling-stroke" x1="3" y1="31" x2="33" y2="31" />
+          <line
+            vectorEffect="non-scaling-stroke"
+            style={{ stroke: "var(--acc)" }}
+            x1="24"
+            y1="3"
+            x2="24"
+            y2="37"
+          />
+          <circle style={{ fill: "var(--dot)", stroke: "none" }} cx="15" cy="20" r="2.5" />
+        </svg>
+      );
+    case "workshop": // three positions converge on one node, one line leaves it
+      return (
+        <svg viewBox="0 0 40 40" aria-hidden="true">
+          <line vectorEffect="non-scaling-stroke" x1="3" y1="3" x2="16" y2="16" />
+          <line vectorEffect="non-scaling-stroke" x1="3" y1="37" x2="16" y2="24" />
+          <line vectorEffect="non-scaling-stroke" x1="20" y1="3" x2="20" y2="16" />
+          <line
+            vectorEffect="non-scaling-stroke"
+            style={{ stroke: "var(--acc)" }}
+            x1="24"
+            y1="20"
+            x2="37"
+            y2="20"
+          />
+          <circle style={{ fill: "var(--dot)", stroke: "none" }} cx="20" cy="20" r="3" />
+        </svg>
+      );
+    case "pilot": // dashed intent eases into a committed line, run to a hard stop
+      return (
+        <svg viewBox="0 0 40 40" aria-hidden="true">
+          <path
+            vectorEffect="non-scaling-stroke"
+            strokeDasharray="3 3"
+            d="M3 34c8 0 11-14 17-14"
+          />
+          <path vectorEffect="non-scaling-stroke" d="M20 20h14" />
+          <line
+            vectorEffect="non-scaling-stroke"
+            style={{ stroke: "var(--acc)" }}
+            x1="34"
+            y1="8"
+            x2="34"
+            y2="32"
+          />
+          <circle style={{ fill: "var(--dot)", stroke: "none" }} cx="20" cy="20" r="3" />
+        </svg>
+      );
+  }
+}
+
 type DimName =
   | "workflow"
   | "systems"

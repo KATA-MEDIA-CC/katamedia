@@ -1534,6 +1534,26 @@ img {
   border-left: 0;
   border-top: 0;
 }
+/* the engagement mark — CI iconography, its two channels inverted onto the clay
+   ground: cream hairlines, the accent line dropped to 62%, the focal node solid
+   cream so the hierarchy still reads on rust. */
+.card .flip-front .c-ico {
+  width: clamp(36px, 3.6vw, 44px);
+  height: clamp(36px, 3.6vw, 44px);
+  color: #fffdf8;
+  --acc: rgba(255, 253, 248, 0.62);
+  --dot: #fffdf8;
+}
+.card .flip-front .c-ico svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  stroke: currentColor;
+  stroke-width: 1.5;
+  fill: none;
+  stroke-linecap: butt;
+}
 .card .flip-front .c-no {
   font-family: var(--display);
   font-weight: 700;
