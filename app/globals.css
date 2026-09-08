@@ -2225,24 +2225,32 @@ img {
   letter-spacing: 0.005em;
   line-height: 1.05;
   white-space: nowrap;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
-/* the explainer — absolutely placed on the right half, revealed on hover so no
-   row grows or shifts */
+/* the explainer — absolutely placed on the right half; on hover it slides in
+   from the right and the label nudges across, so the reveal is prominent, not
+   a faint fade. No row grows or shifts. */
 .prin--plakativ .prin-d {
   position: absolute;
   top: 50%;
   right: 0;
   width: 50%;
-  transform: translateY(-50%);
+  transform: translateY(-50%) translateX(44px);
   margin: 0;
   opacity: 0;
-  transition: opacity 0.28s ease;
+  transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   font-size: clamp(14px, 1.35vw, 16px);
   line-height: 1.45;
+}
+.prin--plakativ .prin-item:hover .prin-t,
+.prin--plakativ .prin-item:focus-within .prin-t {
+  transform: translateX(10px);
 }
 .prin--plakativ .prin-item:hover .prin-d,
 .prin--plakativ .prin-item:focus-within .prin-d {
   opacity: 1;
+  transform: translateY(-50%) translateX(0);
 }
 /* touch / narrow: no hover — drop the absolute reveal, stack and show each
    explainer under its label. */
@@ -2263,10 +2271,10 @@ img {
     margin-top: 5px;
   }
 }
-/* clay pivot word inside serif body copy (CI: one per line, the rest ink) */
+/* pivot word inside body copy — italic emphasis only, no clay: the CI keeps
+   clay off small text, so the accent here is carried by the italic alone. */
 .pivot {
   font-style: italic;
-  color: var(--clay);
 }
 /* centred-off sub-heads inside the approach feature */
 .blocklead {

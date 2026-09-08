@@ -28,21 +28,19 @@ export default function ApproachPage() {
         desc="Most production problems are operational, not creative. Six dimensions, one honest roadmap."
       />
 
-      {/* Belief */}
-      <section className="statement">
+      {/* Belief — same head + deck treatment as every other section */}
+      <section className="feature">
         <div className="wrap">
-          <Reveal>
-            <p className="st-kick">The belief</p>
-            <p className="st-quote">
-              Independent judgement. On your <em>side.</em>
-            </p>
-            <p className="st-sub">
-              Production advice usually comes from someone with a financial
-              stake in the outcome. We sit beside the decision, never above the
-              process and never inside the margin. Every recommendation is
-              grounded in systems we have designed and built ourselves.
-            </p>
-          </Reveal>
+          <FeatureHead
+            caps
+            kick="The belief"
+            title={
+              <>
+                Independent judgement. On your <em>side.</em>
+              </>
+            }
+            deck="Production advice usually comes from someone with a financial stake in the outcome. We sit beside the decision, never above the process and never inside the margin. Every recommendation is grounded in systems we have designed and built ourselves."
+          />
         </div>
       </section>
 
@@ -67,11 +65,14 @@ export default function ApproachPage() {
             <Principles />
           </div>
 
-          {/* The six dimensions — the lenses the audit scores */}
+          {/* The Kata Architecture Index — the six dimensions the audit scores */}
+          <div className="g12">
+            <p className="blocklead">The Kata Architecture Index</p>
+          </div>
           <div className="g12">
             <p className="blockdeck">
-              These are the six lenses behind every engagement, scored red,
-              amber or green in a full audit.
+              The six dimensions behind every engagement, scored red, amber or
+              green in a full audit.
             </p>
           </div>
           <div className="g12">
