@@ -57,7 +57,7 @@ export default function ApproachPage() {
                   How we <em>work</em>
                 </>
               }
-              deck="The posture we bring to every engagement, before a single number."
+              deck="The posture we bring to every engagement."
             />
             <div className="g12">
               <Principles />
