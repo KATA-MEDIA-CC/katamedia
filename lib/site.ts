@@ -46,7 +46,7 @@ export const site = {
   belief: "We sit beside the decision, never above the process and never inside the margin.",
   booking: "Now booking · 2026",
   // Company page handle — CONFIRM the slug before publishing.
-  linkedin: "https://www.linkedin.com/company/katamedia",
+  linkedin: "https://www.linkedin.com/company/bureau-kata/",
 } as const;
 
 // The cred band — one slim strip directly under the home hero.
