@@ -3696,6 +3696,13 @@ a.cframe:hover .cf-v {
     padding-left: var(--gut);
     white-space: nowrap;
   }
+  /* On the home hero the mark drops in as a huge static block between the sub
+     and the cred band, fragmenting the whole thing. It is a desktop-only
+     flourish — hide it on phones so the copy flows straight into the cred band
+     as one cohesive dark block. */
+  .hero--home .hero-wm {
+    display: none;
+  }
   .hero-foot {
     align-items: flex-start;
     flex-direction: column;
