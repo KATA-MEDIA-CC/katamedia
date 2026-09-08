@@ -4,7 +4,6 @@ import { FeatureHead } from "@/components/FeatureHead";
 import { Reveal } from "@/components/Reveal";
 import { DimensionList } from "@/components/DimensionList";
 import { Principles } from "@/components/Principles";
-import { Defrag } from "@/components/Defrag";
 import { cta, pageMetadata } from "@/lib/site";
 import { BookingButton } from "@/components/Booking";
 
@@ -41,7 +40,10 @@ export default function ApproachPage() {
             kick="The belief"
             title={
               <>
-                Independent judgement. On your <em>side.</em>
+                Independent judgement.{" "}
+                <span className="nowrap">
+                  On your <em>side.</em>
+                </span>
               </>
             }
             deck="Production advice usually comes from someone with a financial stake in the outcome. We sit beside the decision, never above the process and never inside the margin. Every recommendation is grounded in systems we have designed and built ourselves."
@@ -77,22 +79,26 @@ export default function ApproachPage() {
             <div className="g12">
               <DimensionList />
             </div>
+          </div>
 
-            {/* The name — moved back here (Sep 2026): it frames the approach
-                better than it sat on the team page. */}
-            <div className="g12">
-              <Reveal className="origin">
-                <p className="origin-kick">The name</p>
-                {/* the defrag mark, settled once in view: fragments resolving
-                    into form — the motif living where its meaning is. */}
-                <Defrag cells={24} className="origin-frag" />
-                <p className="origin-line">
-                  <b>Kata</b> — Japanese for <em>form</em>. A sequence of
-                  movements, internalised through repetition, until it holds in
-                  any situation.
-                </p>
-              </Reveal>
-            </div>
+          {/* The name — its own titled section now, headline treatment like the
+              others (the meaning of Kata is a statement, not a footnote). */}
+          <div className="apart">
+            <FeatureHead
+              caps
+              title={
+                <>
+                  The <em>name</em>
+                </>
+              }
+            />
+            <Reveal className="g12">
+              <p className="origin-line">
+                <b>Kata</b> — Japanese for <em>form</em>. A sequence of
+                movements, internalised through repetition, until it holds in
+                any situation.
+              </p>
+            </Reveal>
           </div>
         </div>
       </section>

@@ -409,23 +409,20 @@ img {
   margin-bottom: 10px;
 }
 .origin-line {
+  grid-column: 1 / 9;
   font-family: var(--serif);
   font-size: clamp(16px, 1.8vw, 21px);
   line-height: 1.55;
   color: var(--ink-80);
   max-width: 54ch;
 }
-/* the defrag mark on its own line above the name — a small, quiet accent */
-.origin-frag {
-  display: flex;
-  margin-bottom: clamp(16px, 1.8vw, 24px);
-}
 .origin-line b {
   font-weight: 500;
   color: var(--ink);
 }
 .origin-line em {
-  color: var(--clay-d);
+  font-style: italic;
+  color: inherit;
 }
 
 @media (max-width: 900px) {
@@ -2314,6 +2311,10 @@ img {
    index parts) — a controlled gap, not a second stacked section padding */
 .apart {
   margin-top: clamp(48px, 5.5vw, 80px);
+}
+/* keep a phrase from breaking across lines (e.g. "On your side.") */
+.nowrap {
+  white-space: nowrap;
 }
 
 /* ── the approach — a plain static spec list (simple, no instrument) ───── */
