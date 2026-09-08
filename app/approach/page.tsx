@@ -19,11 +19,13 @@ export default function ApproachPage() {
     <>
       <Hero
         variant="page"
+        lead="How we work"
         title={
           <>
             <em>Approach</em>
           </>
         }
+        desc="Most production problems are operational, not creative. Six dimensions, one honest roadmap."
       />
 
       {/* Belief */}
@@ -62,20 +64,6 @@ export default function ApproachPage() {
           </div>
           <div className="g12">
             <DimensionList />
-          </div>
-
-          {/* The name — why an approach page belongs to a company called Kata.
-              Founder decision (Cornelius, Jul 2026): derive the Japanese
-              origin here, next to the six dimensions, not on the homepage. */}
-          <div className="g12">
-            <Reveal className="origin">
-              <p className="origin-kick">The name</p>
-              <p className="origin-line">
-                <b>Kata</b> — Japanese for <em>form</em>. A sequence of
-                movements, internalised through repetition, until it holds in
-                any situation.
-              </p>
-            </Reveal>
           </div>
         </div>
       </section>

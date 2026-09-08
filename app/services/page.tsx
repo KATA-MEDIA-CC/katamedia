@@ -25,6 +25,7 @@ export default function ServicesPage() {
             <em>Services</em>
           </>
         }
+        desc="Three ways to begin, four pillars of work — one independent partner across all of it."
       />
 
       {/* How we engage — the way a relationship starts */}

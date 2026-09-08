@@ -928,7 +928,9 @@ img {
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.02em;
-  font-size: clamp(42px, 8.6vw, 124px);
+  /* Home headline dialled back a notch (was 8.6vw/124) so the three lines no
+     longer fill the whole hero — the sub and cred band get room to breathe. */
+  font-size: clamp(40px, 7.8vw, 110px);
   line-height: 0.88;
   color: var(--paper);
   margin: 0;
@@ -1179,26 +1181,30 @@ img {
   justify-content: center;
   position: relative;
 }
-/* Full ink frame — an L bracket at all four corners, drawn on one pseudo so the
-   box reads as a measured, framed object once it dissolves into the page. Eight
-   gradient strips: a horizontal + a vertical arm per corner. */
-.pillar .flip-front::before {
+/* Two ink corner brackets — top-right + bottom-left — set close to the tile
+   edge so the frame reads at the tile's true size (the padding is large, so an
+   inset frame looked smaller than the tile). Opposite diagonal to the engage
+   cards' top-left/bottom-right, so the two families stay a matched set. */
+.pillar .flip-front::before,
+.pillar .flip-front::after {
   content: "";
   position: absolute;
-  inset: clamp(15px, 1.7vw, 22px);
+  width: clamp(16px, 1.9vw, 24px);
+  height: clamp(16px, 1.9vw, 24px);
+  border: 1.5px solid rgba(26, 24, 19, 0.5);
   pointer-events: none;
-  --bw: 1.5px;
-  --bl: clamp(12px, 1.7vw, 18px);
-  --bc: rgba(26, 24, 19, 0.5);
-  background:
-    linear-gradient(var(--bc), var(--bc)) top left / var(--bl) var(--bw) no-repeat,
-    linear-gradient(var(--bc), var(--bc)) top left / var(--bw) var(--bl) no-repeat,
-    linear-gradient(var(--bc), var(--bc)) top right / var(--bl) var(--bw) no-repeat,
-    linear-gradient(var(--bc), var(--bc)) top right / var(--bw) var(--bl) no-repeat,
-    linear-gradient(var(--bc), var(--bc)) bottom left / var(--bl) var(--bw) no-repeat,
-    linear-gradient(var(--bc), var(--bc)) bottom left / var(--bw) var(--bl) no-repeat,
-    linear-gradient(var(--bc), var(--bc)) bottom right / var(--bl) var(--bw) no-repeat,
-    linear-gradient(var(--bc), var(--bc)) bottom right / var(--bw) var(--bl) no-repeat;
+}
+.pillar .flip-front::before {
+  top: clamp(6px, 0.7vw, 11px);
+  right: clamp(6px, 0.7vw, 11px);
+  border-left: 0;
+  border-bottom: 0;
+}
+.pillar .flip-front::after {
+  bottom: clamp(6px, 0.7vw, 11px);
+  left: clamp(6px, 0.7vw, 11px);
+  border-right: 0;
+  border-top: 0;
 }
 .pillar .flip-front .p-title {
   font-family: var(--display);
@@ -1540,6 +1546,7 @@ img {
 .card .flip-front .c-ico {
   width: clamp(36px, 3.6vw, 44px);
   height: clamp(36px, 3.6vw, 44px);
+  flex-shrink: 0;
   color: #fffdf8;
   --acc: rgba(255, 253, 248, 0.62);
   --dot: #fffdf8;
@@ -1553,6 +1560,32 @@ img {
   stroke-width: 1.5;
   fill: none;
   stroke-linecap: butt;
+}
+/* number + name, kept together as one block (centred on the trio cards) */
+.card .flip-front .c-lede {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(2px, 0.4vw, 5px);
+  min-width: 0;
+}
+/* the stacked (home) engage cards read as horizontal bars — the mark on the
+   left, the name beside it, the meta pushed to the right edge, per the CI
+   engagement-panel layout. The trio (services) keeps the centred stack. */
+.estack .card .flip-front {
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  text-align: left;
+  gap: clamp(16px, 1.9vw, 30px);
+}
+.estack .card .flip-front .c-lede {
+  align-items: flex-start;
+}
+.estack .card .flip-front .c-meta {
+  margin-left: auto;
+  text-align: right;
+  flex-shrink: 0;
 }
 .card .flip-front .c-no {
   font-family: var(--display);

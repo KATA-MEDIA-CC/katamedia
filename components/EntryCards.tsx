@@ -40,8 +40,10 @@ export function EntryCards({
               <span className="c-ico">
                 <EngagementIcon name={d.icon} />
               </span>
-              <span className="c-no">{d.no}</span>
-              <span className="c-title">{d.title}</span>
+              <span className="c-lede">
+                <span className="c-no">{d.no}</span>
+                <span className="c-title">{d.title}</span>
+              </span>
               <span className="c-meta">{d.meta}</span>
             </>
           }
