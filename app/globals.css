@@ -1478,7 +1478,7 @@ img {
 }
 /* FRONT — rust field, the name alone, as large as it will go, centered */
 .card .flip-front {
-  background: var(--clay);
+  background: var(--ink);
   color: var(--paper);
   align-items: center;
   justify-content: center;
