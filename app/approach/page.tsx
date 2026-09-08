@@ -115,8 +115,7 @@ export default function ApproachPage() {
             </p>
             <p className="cta-body">
               A 45-minute call. We will come back within 24 hours with an honest
-              read on whether we are the right people to help, and which founder
-              you would be working with.
+              read on whether we are the right people to help.
             </p>
             <BookingButton className="btn solid">
               <span className="dot" />

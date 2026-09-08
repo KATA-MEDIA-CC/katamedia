@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { pillars, pillarBacks } from "@/lib/site";
+import { BookingButton } from "@/components/Booking";
 
 // The four service pillars as an expand/collapse accordion (one open at a
 // time). Each row opens to an intro line and its Key focus areas. Built in the
@@ -69,6 +70,11 @@ export function ServicesAccordion() {
                       </ul>
                     </>
                   )}
+                  {/* bespoke CTA, one per service */}
+                  <BookingButton className="btn solid acc-cta">
+                    <span className="dot" />
+                    {p.cta}
+                  </BookingButton>
                 </div>
               </div>
             </div>

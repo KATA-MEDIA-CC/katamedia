@@ -53,8 +53,8 @@ export default function ContactPage() {
                   whether we are the right people to help.
                 </li>
                 <li>
-                  <span className="n">03</span>Which founder you would be working
-                  with, and what a first engagement looks like.
+                  <span className="n">03</span>What a first engagement looks
+                  like, and where we would start.
                 </li>
               </ul>
             </Reveal>

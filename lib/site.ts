@@ -120,7 +120,7 @@ export const nav: NavItem[] = [
 ];
 
 // The single call-to-action, surfaced in the nav on every page.
-export const cta = { label: "Book a call", href: "/contact" } as const;
+export const cta = { label: "Start Building", href: "/contact" } as const;
 
 // The founders, and the three numbers that place each portrait.
 //
@@ -211,6 +211,7 @@ export const pillars = [
     icon: "strategy" as const,
     slug: "strategic-advisory",
     title: "Strategic Advisory",
+    cta: "Talk strategy",
     homeLead: "How content gets commissioned, planned and made at scale. Decided, not inherited.",
     lead: "Shaping how brands and agencies commission and plan content at scale.",
     detail:
@@ -221,6 +222,7 @@ export const pillars = [
     icon: "organisation" as const,
     slug: "organisational-setup",
     title: "Organisational Setup & Studio Builds",
+    cta: "Scope a build",
     homeLead: "Production capability designed from the ground up or rebuilt from inside.",
     lead: "Building the production capability organisations need, from scratch or from inside.",
     detail:
@@ -231,6 +233,7 @@ export const pillars = [
     icon: "ai" as const,
     slug: "ai-integration",
     title: "AI Integration & Transformation",
+    cta: "Start with AI",
     homeLead: "AI in the workflow, under governance. Tested before it scales.",
     lead: "AI in production, deployed. Not piloted.",
     detail:
@@ -241,6 +244,7 @@ export const pillars = [
     icon: "controlling" as const,
     slug: "production-controlling",
     title: "Production Controlling",
+    cta: "Pressure-test a budget",
     homeLead: "Cost is where strategy shows up. What a production should cost, known before the first quote arrives.",
     lead: "Cost is where strategy shows up. Read by people who know what things should cost.",
     detail:
