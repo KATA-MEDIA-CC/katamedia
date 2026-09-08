@@ -389,7 +389,7 @@ export const entryPoints = [
     // yet evidence is exactly what a procurement reader is trained to
     // distrust. Experience (rates we negotiated ourselves) and mechanism
     // (line by line) carry more than an unproven percentage.
-    body: "Your production setup: mapped and scored across all six dimensions of the Approach, against rates we have negotiated ourselves. Where cost leaks, you see it line by line.",
+    body: "Your production setup: mapped and scored across the full Kata Architecture Index, against rates we have negotiated ourselves. Where cost leaks, you see it line by line.",
   },
   {
     no: "02",

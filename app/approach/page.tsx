@@ -10,7 +10,7 @@ import { BookingButton } from "@/components/Booking";
 export const metadata: Metadata = pageMetadata({
   title: "Approach",
   description:
-    "How Kata works. Independent judgement applied in time. The Kata Approach: six dimensions, one roadmap. And four ways to engage.",
+    "How Kata works. Independent judgement applied in time. The Kata Approach and the Kata Architecture Index: one roadmap, and four ways to engage.",
   path: "/approach",
 });
 
@@ -74,7 +74,7 @@ export default function ApproachPage() {
                   The Kata Architecture <em>Index</em>
                 </>
               }
-              deck="Most production problems are operational. Every engagement is scored across all six dimensions; a workshop or pilot goes deep on the one or two that matter most."
+              deck="Most production problems are operational. Every engagement is scored against the Index; a workshop or pilot goes deep on the one or two dimensions that matter most."
             />
             <div className="g12">
               <DimensionList />

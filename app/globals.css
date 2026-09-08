@@ -3696,12 +3696,19 @@ a.cframe:hover .cf-v {
     padding-left: var(--gut);
     white-space: nowrap;
   }
-  /* On the home hero the mark drops in as a huge static block between the sub
-     and the cred band, fragmenting the whole thing. It is a desktop-only
-     flourish — hide it on phones so the copy flows straight into the cred band
-     as one cohesive dark block. */
+  /* On the home hero, keep the mark but as a faint corner bleed BEHIND the copy
+     (as on desktop) rather than a static in-flow block — the block was pushing
+     the cred band down and fragmenting the hero. Absolute, so it takes no flow
+     space and the copy runs straight into the cred band; clipped by the hero's
+     overflow; sitting under the copy via z-index. */
   .hero--home .hero-wm {
-    display: none;
+    position: absolute;
+    inset: auto -8% -2% auto;
+    order: 0;
+    margin: 0;
+    padding: 0;
+    font-size: 66vw;
+    z-index: 1;
   }
   .hero-foot {
     align-items: flex-start;

@@ -148,7 +148,7 @@ export default function Home() {
                 How we <em>work</em>
               </>
             }
-            deck="Most production problems are operational. The Approach frames every engagement: an audit scores across all six dimensions, a workshop or pilot goes deep on the one or two that matter most."
+            deck="Most production problems are operational. The Approach frames every engagement: an audit scores the full Kata Architecture Index, a workshop or pilot goes deep on the one or two that matter most."
           />
           <div className="g12">
             <Principles plakativ />
