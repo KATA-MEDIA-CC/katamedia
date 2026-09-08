@@ -25,7 +25,7 @@ export default function ApproachPage() {
             <em>Approach</em>
           </>
         }
-        desc="Most production problems are operational, not creative. So we built one roadmap for everyone who touches production: CMOs, procurement, agency leads, executive producers and business leaders. The Kata Architecture Index."
+        desc="Most production problems are operational, not creative. So we built one roadmap for everyone who touches production: CMOs, procurement, agency leads, executive producers and business leaders."
       />
 
       {/* The approach — belief, then the two named parts, all in ONE section so
