@@ -93,7 +93,7 @@ export default function ApproachPage() {
             />
             <Reveal className="g12">
               <p className="origin-line">
-                <b>Kata</b> — Japanese for <em>form</em>. A sequence of
+                <b>Kata</b>: Japanese for <em>form</em>. A sequence of
                 movements, internalised through repetition, until it holds in
                 any situation.
               </p>
@@ -107,7 +107,7 @@ export default function ApproachPage() {
         <div className="wrap">
           <Reveal className="cta-inner">
             <p className="st-kick" style={{ color: "var(--clay-d)" }}>
-              — Start with a conversation —
+              Start with a conversation
             </p>
             <p className="cta-line">
               Tell us what you are trying to <em>figure out.</em>

@@ -18,7 +18,7 @@ export function Footer() {
           <div className="foot-defrag">
             <Defrag cells={30} size="lg" loop loopCount={5} />
             <p className="defragcap">
-              From fragments — <b>order.</b>
+              From fragments, <b>order.</b>
             </p>
           </div>
         </div>

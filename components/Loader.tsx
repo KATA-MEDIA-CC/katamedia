@@ -125,7 +125,7 @@ export function Loader() {
           ))}
         </span>
         <span className="lcap">
-          From fragments — <b>order.</b>
+          From fragments, <b>order.</b>
         </span>
       </div>
     </div>

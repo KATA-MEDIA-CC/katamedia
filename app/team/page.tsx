@@ -25,7 +25,7 @@ export default function TeamPage() {
             <em>Team</em>
           </>
         }
-        desc="Three founding partners who built and ran productions — with a network of specialists behind them."
+        desc="Three founding partners who built and ran productions. A network of specialists behind them."
       />
 
       {/* The founders */}
@@ -45,9 +45,17 @@ export default function TeamPage() {
         </div>
       </section>
 
-      {/* Extended network — a static index led by the count, not an accordion */}
+      {/* Extended network — headline, then the static count-led index */}
       <section className="feature">
         <div className="wrap">
+          <FeatureHead
+            caps
+            title={
+              <>
+                The <em>network</em>
+              </>
+            }
+          />
           <Network />
         </div>
       </section>
@@ -57,7 +65,7 @@ export default function TeamPage() {
         <div className="wrap">
           <Reveal className="cta-inner">
             <p className="st-kick" style={{ color: "var(--clay-d)" }}>
-              — Start with a conversation —
+              Start with a conversation
             </p>
             <p className="cta-line">
               Tell us what you are trying to <em>figure out.</em>

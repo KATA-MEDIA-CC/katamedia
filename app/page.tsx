@@ -190,7 +190,7 @@ export default function Home() {
         <div className="wrap">
           <Reveal className="cta-inner">
             <p className="st-kick" style={{ color: "var(--clay-d)" }}>
-              — Start with a conversation —
+              Start with a conversation
             </p>
             <p className="cta-line">
               Tell us what you are trying to <em>figure out.</em>

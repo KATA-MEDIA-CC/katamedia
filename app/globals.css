@@ -2729,9 +2729,7 @@ img {
    EXTENDED NETWORK (team) — static index: a count, a line, twelve disciplines
    ═══════════════════════════════════════════════════════════════════════ */
 .net-head {
-  border-bottom: 1px solid var(--line);
-  padding-bottom: clamp(28px, 3.4vw, 46px);
-  margin-bottom: clamp(36px, 4vw, 58px);
+  margin-bottom: clamp(40px, 5vw, 72px);
 }
 .net-stat {
   display: block;
