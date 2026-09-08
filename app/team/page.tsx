@@ -45,20 +45,10 @@ export default function TeamPage() {
         </div>
       </section>
 
-      {/* Extended partner network */}
+      {/* Extended network — a static index led by the count, not an accordion */}
       <section className="feature">
         <div className="wrap">
-          <FeatureHead
-            title={
-              <>
-                The <em>network</em>
-              </>
-            }
-            deck="Specialists we bring in when the work calls for them. Open a sector to see what they do, and when they come in."
-          />
-          <div className="g12">
-            <Network />
-          </div>
+          <Network />
         </div>
       </section>
 

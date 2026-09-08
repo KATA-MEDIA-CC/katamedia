@@ -2702,8 +2702,77 @@ img {
 }
 
 /* ═══════════════════════════════════════════════════════════════════════
-   EXTENDED NETWORK (team)
+   EXTENDED NETWORK (team) — static index: a count, a line, twelve disciplines
    ═══════════════════════════════════════════════════════════════════════ */
+.net-head {
+  border-bottom: 1px solid var(--line);
+  padding-bottom: clamp(28px, 3.4vw, 46px);
+  margin-bottom: clamp(36px, 4vw, 58px);
+}
+.net-stat {
+  display: block;
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: clamp(64px, 9vw, 128px);
+  line-height: 0.86;
+  letter-spacing: -0.02em;
+  color: var(--clay);
+}
+.net-lead {
+  margin-top: clamp(18px, 2vw, 26px);
+  max-width: 32ch;
+  font-family: var(--sans);
+  font-weight: 600;
+  font-size: clamp(12px, 1.15vw, 14px);
+  letter-spacing: 0.14em;
+  line-height: 1.55;
+  text-transform: uppercase;
+  color: var(--ink-60);
+}
+.netgrid2 {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: clamp(28px, 3vw, 46px) clamp(22px, 2.6vw, 40px);
+}
+.ncell {
+  border-top: 1px solid var(--line);
+  padding-top: clamp(14px, 1.5vw, 20px);
+}
+.ncell-no {
+  display: block;
+  font-family: var(--sans);
+  font-weight: 600;
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  color: var(--clay);
+  margin-bottom: clamp(18px, 2.6vw, 36px);
+}
+.ncell-t {
+  margin: 0 0 clamp(8px, 1vw, 12px);
+  font-family: var(--sans);
+  font-weight: 700;
+  font-size: clamp(16px, 1.5vw, 19px);
+  letter-spacing: 0.005em;
+  color: var(--ink);
+}
+.ncell-b {
+  font-family: var(--serif);
+  font-size: clamp(13.5px, 1.3vw, 15px);
+  line-height: 1.5;
+  color: var(--ink-60);
+}
+@media (max-width: 900px) {
+  .netgrid2 {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+@media (max-width: 520px) {
+  .netgrid2 {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ── legacy accordion styles below (no longer rendered) ── */
 .netgrid {
   grid-column: 1 / 13;
   display: grid;

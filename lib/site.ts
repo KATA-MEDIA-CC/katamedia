@@ -214,37 +214,37 @@ export const pillars = [
     homeLead: "How content gets commissioned, planned and made at scale. Decided, not inherited.",
     lead: "Shaping how brands and agencies commission and plan content at scale.",
     detail:
-      "What you make, where, and with whom. Rosters and directors chosen on judgement, not on relationships. Emerging formats weighed before the market decides for you, from sustainable production to international structures.",
+      "What gets made, in what structure, and with whom. Production reality brought into the creative process while the idea is still open. Rosters, formats and sustainability weighed on creative judgement and market evidence.",
   },
   {
     no: "02",
     icon: "organisation" as const,
     slug: "organisational-setup",
     title: "Organisational Setup & Studio Builds",
-    homeLead: "The capability your organisation needs, designed from the ground up or rebuilt from inside.",
+    homeLead: "Production capability designed from the ground up or rebuilt from inside.",
     lead: "Building the production capability organisations need, from scratch or from inside.",
     detail:
-      "In-house departments designed before anyone is hired. Agency production builds that outlast the people who start them. The technology stack selected while there is still nothing to migrate, through to VFX, post and AI studio builds.",
+      "What belongs in-house and what stays external, clarified before anyone is hired. In-house departments and agency production units built to stand on their own. Roles, approvals and workflows defined, and led until permanent leadership is in place.",
   },
   {
     no: "03",
     icon: "ai" as const,
     slug: "ai-integration",
     title: "AI Integration & Transformation",
-    homeLead: "AI in the workflow, under real governance. Deployed, not piloted.",
+    homeLead: "AI in the workflow, under governance. Tested before it scales.",
     lead: "AI in production, deployed. Not piloted.",
     detail:
-      "Readiness audited across the six dimensions. Tools selected on evidence, not on demos. Workflows rewired with governance, ethics and training that hold after we leave.",
+      "Where AI actually helps, and where it does not. Tools selected on what they do in production. Governance, rights and human sign-off defined, then tested on one live project before anything scales.",
   },
   {
     no: "04",
     icon: "controlling" as const,
     slug: "production-controlling",
     title: "Production Controlling",
-    homeLead: "Cost is where strategy shows up. We read the numbers structurally: what carries load, what is padding, what is about to fail.",
+    homeLead: "Cost is where strategy shows up. What a production should cost, known before the first quote arrives.",
     lead: "Cost is where strategy shows up. Read by people who know what things should cost.",
     detail:
-      "Budgets built to be read, not just approved. Variance surfaced during production, not after. Rates, buyouts and post-production cost benchmarked and negotiated from inside knowledge of the market.",
+      "What a production should cost, established before the first quote arrives. Quotes reviewed line by line, then spend tracked as the production runs and final costs checked against what was scoped. Rates and buyouts benchmarked against what the market is paying now.",
   },
 ] as const;
 
