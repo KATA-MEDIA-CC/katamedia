@@ -50,7 +50,7 @@ export default function ServicesPage() {
           <FeatureHead
             title={
               <>
-                Four <em>pillars</em>
+                Our <em>services</em>
               </>
             }
             deck="Where the work goes from there. One partner across strategy, organisation, AI and cost, held to a single independent standard."
