@@ -2203,48 +2203,64 @@ img {
 }
 /* Plakativ (home) — number + big label only, laid out as a bold grid so the
    posture reads as a statement, not a list. */
-/* Plakativ (home): a single-column list of big numbered labels. Each row
-   reserves a right-hand column for its explainer, which fades in on hover —
-   so seven items sit cleanly in one column (no orphan row) and the layout
-   never shifts. Inherits the flex-column list from .prin. */
+/* Plakativ (home): a tight, uniform index — number + label per row, hairline
+   dividers, every label on one line so the rows are all the same height.
+   Hovering a row fades its explainer in on the right, absolutely placed so
+   nothing reflows and the rows never jump. Inherits the flex list from .prin. */
 .prin--plakativ {
   margin-bottom: clamp(34px, 4vw, 60px);
 }
 .prin--plakativ .prin-item {
-  grid-template-columns: 2.6rem minmax(240px, 34%) 1fr;
-  gap: clamp(16px, 2vw, 40px);
-  align-items: center;
-  padding: clamp(15px, 1.8vw, 24px) 0;
+  position: relative;
+  grid-template-columns: 2.4rem 1fr;
+  column-gap: clamp(14px, 1.5vw, 22px);
+  align-items: baseline;
+  padding: clamp(12px, 1.4vw, 18px) 0;
 }
 .prin--plakativ .prin-no {
   font-size: clamp(11px, 0.95vw, 13px);
-  align-self: center;
 }
 .prin--plakativ .prin-t {
-  font-size: clamp(19px, 2.1vw, 30px);
+  font-size: clamp(19px, 2vw, 28px);
   letter-spacing: 0.005em;
   line-height: 1.05;
+  white-space: nowrap;
 }
-/* the explainer, revealed on hover of the row */
+/* the explainer — absolutely placed on the right half, revealed on hover so no
+   row grows or shifts */
 .prin--plakativ .prin-d {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  width: 50%;
+  transform: translateY(-50%);
+  margin: 0;
   opacity: 0;
-  transition: opacity 0.3s ease;
+  transition: opacity 0.28s ease;
+  font-size: clamp(14px, 1.35vw, 16px);
+  line-height: 1.45;
 }
 .prin--plakativ .prin-item:hover .prin-d,
 .prin--plakativ .prin-item:focus-within .prin-d {
   opacity: 1;
 }
-/* touch / narrow: no hover, so stack and show the explainers outright */
+/* touch / narrow: no hover — drop the absolute reveal, stack and show each
+   explainer under its label. */
 @media (max-width: 720px) {
   .prin--plakativ .prin-item {
     grid-template-columns: 2rem 1fr;
-    gap: 4px 14px;
-    align-items: baseline;
+    column-gap: 14px;
+  }
+  .prin--plakativ .prin-t {
+    white-space: normal;
   }
   .prin--plakativ .prin-d {
-    grid-column: 2 / -1;
+    position: static;
+    transform: none;
+    width: auto;
+    grid-column: 2;
     opacity: 1;
-    margin-top: 4px;
+    margin-top: 5px;
   }
 }
 /* clay pivot word inside serif body copy (CI: one per line, the rest ink) */
