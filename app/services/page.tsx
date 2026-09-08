@@ -44,8 +44,10 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      {/* Four pillars — the work itself */}
-      <section className="feature">
+      {/* Four pillars — the work itself. id="services" is the jump target for
+          the home "All services →" link: it is not a pillar slug, so the
+          accordion scrolls into view collapsed rather than pre-expanded. */}
+      <section className="feature" id="services">
         <div className="wrap">
           <FeatureHead
             title={

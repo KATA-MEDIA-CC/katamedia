@@ -81,7 +81,7 @@ export default function Home() {
                 Four pillars, one partner: strategy, organisation, AI and cost,
                 held to a single independent standard.
               </p>
-              <Link href="/services" className="whead-link">
+              <Link href="/services#services" className="whead-link">
                 All services →
               </Link>
             </div>

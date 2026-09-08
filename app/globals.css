@@ -1177,6 +1177,30 @@ img {
   background: var(--paper);
   color: var(--ink);
   justify-content: flex-start;
+  position: relative;
+}
+/* Ink corner brackets — the same measured detail as the engage cards, but in
+   ink on the creme face, and on the right edge (top-right + bottom-right) so
+   the two card families read as a set without being identical. */
+.pillar .flip-front::before,
+.pillar .flip-front::after {
+  content: "";
+  position: absolute;
+  width: clamp(13px, 1.8vw, 20px);
+  height: clamp(13px, 1.8vw, 20px);
+  border: 1.5px solid rgba(26, 24, 19, 0.5);
+}
+.pillar .flip-front::before {
+  top: clamp(14px, 1.6vw, 20px);
+  right: clamp(14px, 1.6vw, 20px);
+  border-left: 0;
+  border-bottom: 0;
+}
+.pillar .flip-front::after {
+  bottom: clamp(14px, 1.6vw, 20px);
+  right: clamp(14px, 1.6vw, 20px);
+  border-left: 0;
+  border-top: 0;
 }
 .pillar .flip-front .p-title {
   font-family: var(--display);
@@ -1729,6 +1753,11 @@ img {
    ═══════════════════════════════════════════════════════════════════════ */
 .acc {
   grid-column: 1 / 13;
+}
+/* Jump target for the home "All services →" link — land the whole section
+   below the docked nav, accordion collapsed. */
+#services {
+  scroll-margin-top: clamp(90px, 12vh, 130px);
 }
 .acc-item {
   border-top: 1px solid var(--line);
