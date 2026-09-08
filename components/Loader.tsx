@@ -125,7 +125,7 @@ export function Loader() {
           ))}
         </span>
         <span className="lcap">
-          From fragments, <b>order.</b>
+          <b>Knowledge applied to action</b>
         </span>
       </div>
     </div>
