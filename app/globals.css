@@ -1176,31 +1176,29 @@ img {
 .pillar .flip-front {
   background: var(--paper);
   color: var(--ink);
-  justify-content: flex-start;
+  justify-content: center;
   position: relative;
 }
-/* Ink corner brackets — the same measured detail as the engage cards, but in
-   ink on the creme face, and on the right edge (top-right + bottom-right) so
-   the two card families read as a set without being identical. */
-.pillar .flip-front::before,
-.pillar .flip-front::after {
+/* Full ink frame — an L bracket at all four corners, drawn on one pseudo so the
+   box reads as a measured, framed object once it dissolves into the page. Eight
+   gradient strips: a horizontal + a vertical arm per corner. */
+.pillar .flip-front::before {
   content: "";
   position: absolute;
-  width: clamp(13px, 1.8vw, 20px);
-  height: clamp(13px, 1.8vw, 20px);
-  border: 1.5px solid rgba(26, 24, 19, 0.5);
-}
-.pillar .flip-front::before {
-  top: clamp(14px, 1.6vw, 20px);
-  right: clamp(14px, 1.6vw, 20px);
-  border-left: 0;
-  border-bottom: 0;
-}
-.pillar .flip-front::after {
-  bottom: clamp(14px, 1.6vw, 20px);
-  right: clamp(14px, 1.6vw, 20px);
-  border-left: 0;
-  border-top: 0;
+  inset: clamp(15px, 1.7vw, 22px);
+  pointer-events: none;
+  --bw: 1.5px;
+  --bl: clamp(12px, 1.7vw, 18px);
+  --bc: rgba(26, 24, 19, 0.5);
+  background:
+    linear-gradient(var(--bc), var(--bc)) top left / var(--bl) var(--bw) no-repeat,
+    linear-gradient(var(--bc), var(--bc)) top left / var(--bw) var(--bl) no-repeat,
+    linear-gradient(var(--bc), var(--bc)) top right / var(--bl) var(--bw) no-repeat,
+    linear-gradient(var(--bc), var(--bc)) top right / var(--bw) var(--bl) no-repeat,
+    linear-gradient(var(--bc), var(--bc)) bottom left / var(--bl) var(--bw) no-repeat,
+    linear-gradient(var(--bc), var(--bc)) bottom left / var(--bw) var(--bl) no-repeat,
+    linear-gradient(var(--bc), var(--bc)) bottom right / var(--bl) var(--bw) no-repeat,
+    linear-gradient(var(--bc), var(--bc)) bottom right / var(--bw) var(--bl) no-repeat;
 }
 .pillar .flip-front .p-title {
   font-family: var(--display);
@@ -1210,7 +1208,11 @@ img {
   line-height: 1.08;
   letter-spacing: 0.01em;
   margin: 0;
-  min-height: 2.16em;
+  /* Reserve three lines so every headline block is the same height — icons and
+     first lines align across the row even though only Organisational wraps to
+     three. balance evens those three lines so "Builds" is never left orphaned. */
+  min-height: 3.24em;
+  text-wrap: balance;
 }
 .pillar .flip-front .p-lead {
   font-family: var(--serif);
