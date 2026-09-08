@@ -1818,7 +1818,8 @@ img {
 }
 /* Jump target for the home "All services →" link — land the whole section
    below the docked nav, accordion collapsed. */
-#services {
+#services,
+#what-we-do {
   scroll-margin-top: clamp(90px, 12vh, 130px);
 }
 .acc-item {
@@ -1908,9 +1909,28 @@ img {
   padding: 0 0 clamp(30px, 3.4vw, 50px)
     calc(clamp(11px, 1vw, 13px) + clamp(14px, 2vw, 30px));
 }
-/* the bespoke per-service CTA, below the focus areas */
-.acc-cta {
+/* footer of each open panel: the bespoke CTA (left) and a subtle link back to
+   the home What-we-do grid (right) */
+.acc-foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
   margin-top: clamp(30px, 3.4vw, 48px);
+}
+.acc-back {
+  font-family: var(--sans);
+  font-weight: 600;
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-40);
+  transition: color 0.3s ease;
+  white-space: nowrap;
+}
+.acc-back:hover {
+  color: var(--clay-d);
 }
 .acc-intro {
   font-family: var(--serif);

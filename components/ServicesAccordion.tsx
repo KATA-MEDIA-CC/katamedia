@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useEffect, useState } from "react";
 import { pillars, pillarBacks } from "@/lib/site";
 import { BookingButton } from "@/components/Booking";
@@ -70,11 +71,17 @@ export function ServicesAccordion() {
                       </ul>
                     </>
                   )}
-                  {/* bespoke CTA, one per service */}
-                  <BookingButton className="btn solid acc-cta">
-                    <span className="dot" />
-                    {p.cta}
-                  </BookingButton>
+                  {/* footer: the bespoke CTA, and a subtle link back to the
+                      home "What we do" grid this service was opened from */}
+                  <div className="acc-foot">
+                    <BookingButton className="btn solid acc-cta">
+                      <span className="dot" />
+                      {p.cta}
+                    </BookingButton>
+                    <Link href="/#what-we-do" className="acc-back">
+                      ← Back to what we do
+                    </Link>
+                  </div>
                 </div>
               </div>
             </div>

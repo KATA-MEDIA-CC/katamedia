@@ -68,8 +68,9 @@ export default function Home() {
       {/* What we do — mirror of the value section: the four pillars stacked on
           the left, the heading + deck sticky on the right. Cards are creme (not
           ink) and flip to rust. Explore deep-links to the matching service,
-          pre-expanded. */}
-      <section className="feature">
+          pre-expanded. The id is the target of each service's "back to what we
+          do" link on /services. */}
+      <section className="feature" id="what-we-do">
         <div className="wrap">
           <div className="g12 wgrid">
             <div className="whead">
