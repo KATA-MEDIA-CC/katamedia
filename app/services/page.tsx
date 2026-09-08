@@ -56,7 +56,7 @@ export default function ServicesPage() {
                 Our <em>services</em>
               </>
             }
-            deck="Where the work goes from there. One partner across strategy, organisation, AI and cost, held to a single independent standard."
+            deck="Where the work goes from there. One partner across strategy, organisation, AI and cost."
           />
           <div className="g12">
             <ServicesAccordion />

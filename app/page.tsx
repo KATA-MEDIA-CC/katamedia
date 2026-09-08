@@ -77,8 +77,7 @@ export default function Home() {
                 What we <em>do</em>
               </h2>
               <p className="vsub">
-                Four pillars, one partner: strategy, organisation, AI and cost,
-                held to a single independent standard.
+                Four pillars, one partner: strategy, organisation, AI and cost.
               </p>
               <Link href="/services#services" className="whead-link">
                 All services →
