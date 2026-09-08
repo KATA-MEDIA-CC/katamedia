@@ -34,14 +34,13 @@ export default function ApproachPage() {
           <Reveal>
             <p className="st-kick">The belief</p>
             <p className="st-quote">
-              Independent judgement, applied in <em>time.</em>
+              Independent judgement. On your <em>side.</em>
             </p>
             <p className="st-sub">
-              Most production advice comes from people with a financial stake in
-              the outcome. We don&rsquo;t. We sit beside the decision, never
-              above the process and never inside the margin. Every
-              recommendation is grounded in systems we have designed and
-              built ourselves.
+              Production advice usually comes from someone with a financial
+              stake in the outcome. We sit beside the decision, never above the
+              process and never inside the margin. Every recommendation is
+              grounded in systems we have designed and built ourselves.
             </p>
           </Reveal>
         </div>
@@ -57,13 +56,39 @@ export default function ApproachPage() {
                 The <em>approach</em>
               </>
             }
-            deck="Most production problems are operational, not creative. The Approach frames every engagement: the audit scores all six dimensions, workshops and pilots go deep on one or two."
+            deck="Most production problems are operational. The Approach frames every engagement: an audit scores across all six dimensions, a workshop or pilot goes deep on the one or two that matter most."
           />
+
+          {/* How we work — the seven principles, as a numbered list */}
+          <div className="g12">
+            <p className="blocklead">How we work</p>
+          </div>
           <div className="g12">
             <Principles />
           </div>
+
+          {/* The six dimensions — the lenses the audit scores */}
+          <div className="g12">
+            <p className="blockdeck">
+              These are the six lenses behind every engagement, scored red,
+              amber or green in a full audit.
+            </p>
+          </div>
           <div className="g12">
             <DimensionList />
+          </div>
+
+          {/* The name — moved back here (Sep 2026): it frames the approach
+              better than it sat on the team page. */}
+          <div className="g12">
+            <Reveal className="origin">
+              <p className="origin-kick">The name</p>
+              <p className="origin-line">
+                <b>Kata</b> — Japanese for <em>form</em>. A sequence of
+                movements, internalised through repetition, until it holds in
+                any situation.
+              </p>
+            </Reveal>
           </div>
         </div>
       </section>

@@ -1,5 +1,6 @@
 import { Reveal } from "@/components/Reveal";
 import { DimensionIcon } from "@/components/Icons";
+import { pivot } from "@/components/Pivot";
 import { dimensions } from "@/lib/site";
 
 // The six dimensions as a plain, static spec list — icon + number + name
@@ -20,7 +21,7 @@ export function DimensionList({ compact = false }: { compact?: boolean }) {
             <span className="dl-no">{d.no}</span>
           </div>
           <h3 className="dl-t">{d.title}</h3>
-          {!compact && <p className="dl-b">{d.body}</p>}
+          {!compact && <p className="dl-b">{pivot(d.body)}</p>}
         </div>
       ))}
     </Reveal>

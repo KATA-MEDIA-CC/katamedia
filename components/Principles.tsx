@@ -1,15 +1,20 @@
 import { Reveal } from "@/components/Reveal";
+import { pivot } from "@/components/Pivot";
 import { approachPrinciples } from "@/lib/site";
 
-// The "how we work" principles, shown above the six dimensions on the approach.
-// Each carries a short clay tick (the measuring motif) + a caps label + a line.
-export function Principles() {
+// "How we work" — the seven principles behind every engagement. Two forms:
+//   • default: a numbered editorial list (no · label · description), the full
+//     version on /approach.
+//   • plakativ: number + large label only, no description — the bold home
+//     teaser that stands in for the approach without the six dimensions.
+export function Principles({ plakativ = false }: { plakativ?: boolean } = {}) {
   return (
-    <Reveal className="prin" stagger>
-      {approachPrinciples.map((p) => (
+    <Reveal className={`prin${plakativ ? " prin--plakativ" : ""}`} stagger>
+      {approachPrinciples.map((p, i) => (
         <div className="prin-item" key={p.t}>
+          <span className="prin-no">{String(i + 1).padStart(2, "0")}</span>
           <span className="prin-t">{p.t}</span>
-          <span className="prin-d">{p.d}</span>
+          {!plakativ && <span className="prin-d">{pivot(p.d)}</span>}
         </div>
       ))}
     </Reveal>

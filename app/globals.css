@@ -2161,58 +2161,124 @@ img {
 }
 
 /* ── how we work — principles above the six dimensions ─────────────────── */
+/* HOW WE WORK — the seven principles. Default: a numbered editorial list
+   (no · label · description), the full form on /approach. */
 .prin {
   grid-column: 1 / 13;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(215px, 1fr));
-  gap: clamp(20px, 2.4vw, 34px) clamp(28px, 4vw, 56px);
-  margin-bottom: clamp(40px, 5.5vw, 76px);
-}
-.prin-item {
-  position: relative;
   display: flex;
   flex-direction: column;
-  gap: 6px;
-  padding-top: 16px;
-  border-top: 1px solid var(--line);
+  margin-bottom: clamp(48px, 6vw, 84px);
 }
-.prin-item::before {
-  content: "";
-  position: absolute;
-  top: -1px;
-  left: 0;
-  width: 26px;
-  height: 2px;
-  background: var(--clay);
+.prin-item {
+  display: grid;
+  grid-template-columns: 2.2rem minmax(150px, 16vw) 1fr;
+  gap: clamp(14px, 2vw, 44px);
+  align-items: baseline;
+  padding: clamp(15px, 1.7vw, 22px) 0;
+  border-top: 1px solid var(--hair);
+}
+.prin-item:last-child {
+  border-bottom: 1px solid var(--hair);
+}
+.prin-no {
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  color: var(--clay);
 }
 .prin-t {
   font-family: var(--display);
   font-weight: 700;
   text-transform: uppercase;
   font-size: clamp(13px, 1.2vw, 15px);
-  letter-spacing: 0.04em;
+  letter-spacing: 0.06em;
   color: var(--ink);
 }
 .prin-d {
   font-family: var(--serif);
-  font-size: clamp(13px, 1.25vw, 14.5px);
-  line-height: 1.45;
+  font-size: clamp(15px, 1.5vw, 18px);
+  line-height: 1.5;
+  color: var(--ink-60);
+}
+/* Plakativ (home) — number + big label only, laid out as a bold grid so the
+   posture reads as a statement, not a list. */
+.prin--plakativ {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: clamp(18px, 2.2vw, 34px) clamp(28px, 3.5vw, 60px);
+  margin-bottom: clamp(34px, 4vw, 60px);
+}
+.prin--plakativ .prin-item {
+  display: flex;
+  align-items: baseline;
+  gap: clamp(9px, 1vw, 15px);
+  padding: 0;
+  border: none;
+}
+.prin--plakativ .prin-no {
+  flex: none;
+  font-size: clamp(11px, 0.9vw, 13px);
+}
+.prin--plakativ .prin-t {
+  font-size: clamp(19px, 2.3vw, 32px);
+  letter-spacing: 0.005em;
+  line-height: 1;
+}
+/* clay pivot word inside serif body copy (CI: one per line, the rest ink) */
+.pivot {
+  font-style: italic;
+  color: var(--clay);
+}
+/* centred-off sub-heads inside the approach feature */
+.blocklead {
+  grid-column: 1 / 13;
+  font-family: var(--sans);
+  font-weight: 600;
+  font-size: clamp(10px, 1vw, 12px);
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--clay-d);
+  margin-bottom: clamp(18px, 2.2vw, 28px);
+}
+.blockdeck {
+  grid-column: 1 / 13;
+  max-width: 60ch;
+  margin: clamp(20px, 2.6vw, 36px) 0 clamp(26px, 3vw, 40px);
+  font-family: var(--serif);
+  font-size: clamp(16px, 1.6vw, 20px);
+  line-height: 1.5;
   color: var(--ink-60);
 }
 
 /* ── the approach — a plain static spec list (simple, no instrument) ───── */
+/* The six dimensions as a bordered grid — hairline cells (the 1px gap on a
+   hair ground reads as shared gridlines), matching the approved lens table. */
 .dimlist {
   grid-column: 1 / 13;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: clamp(26px, 3vw, 44px) clamp(30px, 4vw, 60px);
+  gap: 1px;
+  background: var(--hair);
+  border: 1px solid var(--hair);
 }
 .dl-item {
   display: flex;
   flex-direction: column;
   gap: clamp(10px, 1.2vw, 14px);
+  background: var(--paper);
+  padding: clamp(20px, 2.2vw, 30px);
+}
+/* the compact home teaser (no bodies) keeps the older borderless row look */
+.dimlist--compact {
+  gap: clamp(26px, 3vw, 44px) clamp(30px, 4vw, 60px);
+  background: none;
+  border: none;
+}
+.dimlist--compact .dl-item {
+  background: none;
+  padding: clamp(16px, 1.8vw, 22px) 0 0;
   border-top: 1px solid var(--line);
-  padding-top: clamp(16px, 1.8vw, 22px);
 }
 .dl-head {
   display: flex;
@@ -3180,6 +3246,24 @@ a.cframe:hover .cf-v {
 @media (max-width: 720px) {
   .contact-cols {
     grid-template-columns: 1fr;
+  }
+}
+/* Approach: the six-dimension grid and the how-we-work list reflow on narrow */
+@media (max-width: 860px) {
+  .dimlist {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+@media (max-width: 640px) {
+  .dimlist {
+    grid-template-columns: 1fr;
+  }
+  .prin-item {
+    grid-template-columns: 2rem 1fr;
+    gap: 6px 14px;
+  }
+  .prin-item .prin-d {
+    grid-column: 1 / -1;
   }
 }
 

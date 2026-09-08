@@ -5,7 +5,6 @@ import { FeatureHead } from "@/components/FeatureHead";
 import { Reveal } from "@/components/Reveal";
 import { PillarIcon } from "@/components/Icons";
 import { EntryCards } from "@/components/EntryCards";
-import { DimensionList } from "@/components/DimensionList";
 import { Principles } from "@/components/Principles";
 import { FounderCards } from "@/components/Founders";
 import { BookingButton } from "@/components/Booking";
@@ -137,24 +136,22 @@ export default function Home() {
         </div>
       </section>
 
-      {/* The approach — six dimensions as icon + label only. The full bodies
-          live on /approach; here the grid just proves the IP exists. */}
+      {/* The approach, home teaser — divided into How we work + the six
+          dimensions. Home shows only How we work, plakativ (the seven
+          principles as bold labels); the dimensions live on /approach. */}
       <section className="feature">
         <div className="wrap">
           <FeatureHead
             caps
             title={
               <>
-                The <em>approach</em>
+                How we <em>work</em>
               </>
             }
-            deck="Most production problems are operational, not creative. Every audit is scored across six dimensions, and one roadmap comes out."
+            deck="The posture behind every Kata engagement — before a single number."
           />
           <div className="g12">
-            <Principles />
-          </div>
-          <div className="g12">
-            <DimensionList compact />
+            <Principles plakativ />
           </div>
           <div className="caption">
             <Link href="/approach" className="clink" style={{ marginLeft: "auto" }}>

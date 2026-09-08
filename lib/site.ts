@@ -405,55 +405,60 @@ export const entryPoints = [
 
 // How we work — the principles that sit above the six dimensions on the
 // approach: the posture Kata brings to every engagement.
+// Descriptions transcribed from the colleague's approved rework (Sep 2026);
+// a single *pivot* word per line renders as the clay accent (see components/
+// Pivot.tsx). Proofread against the source file — read off the mockup image.
 export const approachPrinciples = [
-  { t: "Integrated", d: "Our services are designed around you." },
-  { t: "Collaborative", d: "We work alongside your team, never above it." },
-  { t: "Unbiased & transparent", d: "Independent judgement, openly shown." },
-  { t: "Data-driven", d: "Insight-led, with an emotional edge." },
-  { t: "Impact-driven", d: "End to end or targeted — we do both." },
-  { t: "Experienced", d: "Decades of production leadership." },
-  { t: "Innovative", d: "Innovation at the core." },
+  { t: "Integrated", d: "One team, one view across brand, agency and *production*." },
+  { t: "Collaborative", d: "Built with your *team* in the room, shaped together from day one." },
+  { t: "Unbiased & transparent", d: "Full independence from the companies, directors and agencies we *recommend*." },
+  { t: "Data-driven", d: "Every recommendation traces back to a number you can *check*, benchmarked against real market rates." },
+  { t: "Impact-driven", d: "Every engagement ends with something you can *act* on." },
+  { t: "Experienced", d: "45+ years of production leadership, built at The Mill, Stink, Psyop, Markenfilm and Jung von Matt." },
+  { t: "Innovative", d: "Production pipelines built for what's *next*: social-first, micro drama, AI-generated content." },
 ] as const;
 
 // The Kata Approach: six dimensions.
 // `icon` keys map to DimensionIcon in components/Icons.tsx — the home page
 // shows the six as icon + label only; /approach carries the full bodies.
+// Bodies transcribed from the colleague's approved rework (Sep 2026); one
+// *pivot* word per body is the clay accent. Proofread against the source.
 export const dimensions = [
   {
     no: "01",
     icon: "workflow" as const,
     title: "Workflow & Process",
-    body: "We map the end-to-end flow from brief to delivery and quantify where time and money are lost. Most waste is invisible until someone maps it.",
+    body: "Most waste is invisible until someone maps it. We show you exactly where your *time* and budget leak between brief and delivery.",
   },
   {
     no: "02",
     icon: "systems" as const,
     title: "Technology & Systems",
-    body: "We assess the tech stack, integration health and adoption: whether the investment is serving production goals or creating new complexity.",
+    body: "Is your tech stack earning its budget, or just adding *complexity*? We assess stack, integration and adoption to give you a straight answer.",
   },
   {
     no: "03",
     icon: "budget" as const,
     title: "Budget & Resource",
-    body: "We examine budget structure, cost-variance patterns and financial governance across the production lifecycle.",
+    body: "Budget and reality rarely match by the end of a production. We examine structure, cost variance and governance to show you exactly where they *diverge*.",
   },
   {
     no: "04",
     icon: "team" as const,
     title: "Team & Capability",
-    body: "We map roles, decision rights, capability coverage and key-person risk. Who does what, who decides what, and what happens when someone leaves.",
+    body: "Who decides what, and what happens when someone *leaves*? We map roles, decision rights and capability coverage to close the key-person risk.",
   },
   {
     no: "05",
     icon: "quality" as const,
     title: "Pipeline & Quality",
-    body: "We trace content from brief to archive and evaluate quality control, rework rates and feedback loops: where quality is made and where it erodes.",
+    body: "Quality is made in specific places, and it erodes in specific places too. We trace content from brief to archive to find exactly where *rework* creeps in.",
   },
   {
     no: "06",
     icon: "vendor" as const,
     title: "Vendor & Partner",
-    body: "We segment the vendor portfolio and assess contract structure and service levels. Not all vendors are equal. Most brands treat them as if they are.",
+    body: "Vendor rosters carry real variation in risk and value. We segment yours and assess contract structure to show which partners actually *earn* their place.",
   },
 ] as const;
 

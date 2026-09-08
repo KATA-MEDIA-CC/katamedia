@@ -28,23 +28,6 @@ export default function TeamPage() {
         desc="Three founding partners who built and ran productions — with a network of specialists behind them."
       />
 
-      {/* The name — the meaning behind Kata, moved here from the approach page:
-          it frames "who we are" better than it sat beside the six dimensions. */}
-      <section className="feature">
-        <div className="wrap">
-          <div className="g12">
-            <Reveal className="origin">
-              <p className="origin-kick">The name</p>
-              <p className="origin-line">
-                <b>Kata</b> — Japanese for <em>form</em>. A sequence of
-                movements, internalised through repetition, until it holds in
-                any situation.
-              </p>
-            </Reveal>
-          </div>
-        </div>
-      </section>
-
       {/* The founders */}
       <section className="feature">
         <div className="wrap">
