@@ -23,7 +23,7 @@ export default function ContactPage() {
             Let&rsquo;s <em>talk.</em>
           </>
         }
-        desc="Tell us what you are trying to figure out. No deck, no pitch — a person replies within 24 hours."
+        desc="Tell us what you are trying to figure out."
       />
 
       {/* The form */}

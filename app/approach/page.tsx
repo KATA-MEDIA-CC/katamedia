@@ -25,7 +25,7 @@ export default function ApproachPage() {
             <em>Approach</em>
           </>
         }
-        desc="Most production problems are operational, not creative. Six dimensions, one honest roadmap."
+        desc="Most production problems are operational, not creative. The Kata Architecture Index, one roadmap."
       />
 
       {/* The approach — belief, then the two named parts, all in ONE section so
