@@ -37,7 +37,6 @@ export default function ApproachPage() {
           {/* Belief */}
           <FeatureHead
             caps
-            kick="The belief"
             title={
               <>
                 Independent judgement.{" "}
