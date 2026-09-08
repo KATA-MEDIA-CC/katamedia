@@ -34,13 +34,14 @@ export function EntryCards({
         <Flip
           className="card"
           key={d.title}
-          front={<span className="c-title">{d.title}</span>}
-          back={
+          front={
             <>
+              <span className="c-no">{d.no}</span>
+              <span className="c-title">{d.title}</span>
               <span className="c-meta">{d.meta}</span>
-              <p>{linkifyApproach(d.body)}</p>
             </>
           }
+          back={<p>{linkifyApproach(d.body)}</p>}
         />
       ))}
     </Reveal>
