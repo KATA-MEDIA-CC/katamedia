@@ -3753,6 +3753,16 @@ a.cframe:hover .cf-v {
   }
 }
 
+/* Portrait phones: reserve the dark intro so it fills the viewport down through
+   the cred band (as landscape and desktop already do), keeping the cream section
+   below the fold and the watermark prominent. 152px ≈ the mobile cred height.
+   Portrait only — landscape (>720px wide) uses the desktop hero and already fills. */
+@media (max-width: 720px) and (orientation: portrait) {
+  .hero--home {
+    min-height: calc(100svh - 152px);
+  }
+}
+
 /* loader defrag bar: narrower bars on phones so the row never overflows */
 @media (max-width: 479px) {
   /* tiny-phone fit: the 48-cell row is force-shrunk below the clamp. +25% like
