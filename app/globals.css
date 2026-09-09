@@ -39,7 +39,7 @@
   --display: var(--font-schibsted), system-ui, sans-serif;
   --sans: var(--font-schibsted), system-ui, sans-serif;
 
-  --gut: clamp(24px, 5vw, 84px);
+  --gut: clamp(20px, 5vw, 84px);
   --maxw: 1320px;
   --col-gap: clamp(14px, 1.6vw, 26px);
   --nav-h: 66px;
@@ -1487,37 +1487,6 @@ img {
 @media (prefers-reduced-motion: reduce) {
   .flip-inner {
     transition: none;
-  }
-}
-/* Touch has no hover, so the flip never fires and the back face — the pillar
-   description + Explore link, the engage-card body — is unreachable. On
-   hover-less pointers don't flip: un-stack the faces and show both, so every
-   card is fully readable without any interaction. Desktop (hover) is untouched. */
-@media (hover: none) {
-  .flip-inner {
-    transform: none !important;
-    display: flex;
-    flex-direction: column;
-  }
-  .flip-face {
-    grid-area: auto;
-    -webkit-backface-visibility: visible;
-    backface-visibility: visible;
-  }
-  .flip-back {
-    transform: none;
-  }
-  /* What we do: the back continues the creme card in ink, not white-on-rust */
-  .pillar .flip-back {
-    background: var(--paper);
-    border-top: 1px solid var(--hair);
-  }
-  .pillar .flip-back .p-lead {
-    color: var(--ink-80);
-  }
-  .pillar .flip-back .explore {
-    color: var(--clay-d);
-    border-bottom-color: rgba(192, 83, 44, 0.45);
   }
 }
 
