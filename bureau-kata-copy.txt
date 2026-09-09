@@ -1,0 +1,544 @@
+BUREAU-KATA.COM — WEBSITE COPY
+Full text of every page, in reading order. Generated 2026-09-09.
+Domain: bureau-kata.com
+
+========================================================================
+BRAND CORE
+========================================================================
+Name:            Kata
+Wordmark:        kata
+The line:        Knowledge applied to action
+Descriptor:      Independent Production Architects
+Booking label:   Now booking · 2026
+Contact email:   hello@bureau-kata.com
+LinkedIn:        https://www.linkedin.com/company/bureau-kata/about/
+
+Meta description (browser/search/social):
+  We design and build how brands and agencies make content: production strategy, capability, AI and cost. We don't run your productions. We design the system they run in. Independently.
+
+========================================================================
+GLOBAL — appears on every page
+========================================================================
+Navigation:      Home · Services · Approach · Team · Contact
+Primary button:  Start Building
+
+Loading screen:
+  kata
+  Knowledge applied to action
+
+Booking panel (opens from every "Start Building" button):
+  Start with a conversation
+  Tell us what you are trying to figure out.
+  A 45-minute call. We will come back within 24 hours with an honest read
+  on whether we are the right people to help.
+
+Footer:
+  Knowledge applied to action
+  From fragments, order.
+  hello@bureau-kata.com
+  LinkedIn
+  Home · Services · Approach · Team · Contact · Impressum · Datenschutz
+  © 2026 Kata · bureau-kata.com
+
+========================================================================
+01 · HOME   (/)
+========================================================================
+Browser title:     Kata · Independent Production Architects
+Meta description:  We design and build how brands and agencies make content: production strategy, capability, AI and cost. We don't run your productions. We design the system they run in. Independently.
+
+HERO
+----
+  Independent Production Architects.
+  We help Brands and Agencies commission smarter, build the right production structure, and control what it actually costs.
+
+CREDENTIALS BAND
+----------------
+  45+ years of production leadership
+  The Mill · Stink · Psyop · Markenfilm · Jung von Matt · Kolle Rebbe · DDB
+
+HOW WE CREATE VALUE
+-------------------
+  Getting more from your production budget takes more than cutting costs.
+
+  01  Smarter commissioning
+      We tighten how content gets briefed and commissioned, without slowing your team down.
+  02  The right production structure
+      We build or rebuild your production setup, without disrupting what’s already delivering.
+  03  Full process transparency
+      A full view across your production, from process to cost, without turning it into a finger-pointing exercise that may hurt the work.
+
+WHAT WE DO
+----------
+  Four pillars, one partner: strategy, organisation, AI and cost.
+  [Link] All services →
+
+  01  Strategic Advisory
+      How content gets commissioned, planned and made at scale. Decided, not inherited.
+      [Link] Explore →
+  02  Organisational Setup & Studio Builds
+      Production capability designed from the ground up or rebuilt from inside.
+      [Link] Explore →
+  03  AI Integration & Transformation
+      AI in the workflow, under governance. Tested before it scales.
+      [Link] Explore →
+  04  Production Controlling
+      Cost is where strategy shows up. What a production should cost, known before the first quote arrives.
+      [Link] Explore →
+
+HOW WE ENGAGE
+-------------
+  Every engagement starts one of three ways: an audit, a workshop or a
+  pilot. Each one: fixed scope, a fee agreed before we start, and a
+  recommendation you keep whatever you decide next.
+  [Link] How engagements work →
+
+  01  Audit   (2–4 weeks · fixed fee)
+      Your production setup: mapped and scored across the full Kata Architecture Index, against rates we have negotiated ourselves. Where cost leaks, you see it line by line.
+  02  Workshop   (1–2 days · fixed fee)
+      One topic (AI readiness, production strategy or process), worked through with your team, ending in a written deliverable.
+  03  Pilot   (4–8 weeks · scoped fee)
+      A pressing project, run end to end with us embedded, from brief through to handover.
+
+HOW WE WORK
+-----------
+  Most production problems are operational. The Approach frames every
+  engagement: an audit scores the full Kata Architecture Index, a workshop
+  or pilot goes deep on the one or two that matter most.
+  [Link] The full approach →
+
+  01  Integrated — One team, one view across brand, agency and production.
+  02  Collaborative — Built with your team in the room, shaped together from day one.
+  03  Unbiased & transparent — Full independence from the companies, directors and agencies we recommend.
+  04  Data-driven — Every recommendation traces back to a number you can check, benchmarked against real market rates.
+  05  Impact-driven — Every engagement ends with something you can act on.
+  06  Experienced — 45+ years of production leadership, built at The Mill, Stink, Psyop, Markenfilm and Jung von Matt.
+  07  Innovative — Production pipelines built for what's next: social-first, micro drama, AI-generated content.
+
+THE FOUNDERS
+------------
+  The people you would actually work with. Studios founded, departments
+  built, budgets carried.
+  [Link] Meet the team →
+
+  Cornelius Roenz
+      Twenty years at Markenfilm, seven of them as Managing Director.
+  Justin Stiebel
+      Fifteen years leading VFX and production companies. The Mill, Stink, Psyop.
+  Jankel Huppertz
+      Twelve years running production at Jung von Matt, across formats and scales.
+
+CLOSING CALL-TO-ACTION
+----------------------
+  Start with a conversation
+  Tell us what you are trying to figure out.
+  A 45-minute call. We will come back within 24 hours with an honest read
+  on whether we are the right people to help.
+  [Button] Start Building
+
+========================================================================
+02 · SERVICES   (/services)
+========================================================================
+Browser title:     Services · Kata
+Meta description:  How we engage. An audit, a workshop or a pilot, with a fee
+                   agreed before we start. Then four pillars: strategic
+                   advisory, organisational setup and studio builds, AI
+                   integration, and production controlling.
+
+HERO
+----
+  Kicker:  What we do
+  Title:   Services
+  One partner across strategy, organisation, AI and cost.
+
+HOW WE ENGAGE
+-------------
+  Every engagement starts one of three ways: an audit, a workshop or a
+  pilot. Each one: fixed scope, a fee agreed before we start, and a
+  recommendation you keep whatever you decide next.
+
+  01  Audit   (2–4 weeks · fixed fee)
+      Your production setup: mapped and scored across the full Kata Architecture Index, against rates we have negotiated ourselves. Where cost leaks, you see it line by line.
+  02  Workshop   (1–2 days · fixed fee)
+      One topic (AI readiness, production strategy or process), worked through with your team, ending in a written deliverable.
+  03  Pilot   (4–8 weeks · scoped fee)
+      A pressing project, run end to end with us embedded, from brief through to handover.
+
+OUR SERVICES
+------------
+
+  01  Strategic Advisory
+      Shaping how brands and agencies commission and plan content at scale.
+
+      What gets made, in what structure, and with whom. Production reality brought into the creative process while the idea is still open. Rosters, formats and sustainability weighed on creative judgement and market evidence.
+
+      Key focus areas
+        • Production Strategy — Commissioning principles, partner frameworks and budget benchmarks.
+        • Production Reality Check — Bringing production intelligence into the creative process early, without compromising creativity.
+        • Content Planning at Scale — Structuring volume, bundling and capacity across the year.
+        • Roster & Director Advisory — Independent recommendations on creative fit, format and budget.
+        • Emerging Format Strategy — Production pipelines for social-first, micro drama and AI-generated content.
+        • Sustainable Production — Carbon budgeting, supplier selection and production data.
+      [Button] Talk strategy
+
+  02  Organisational Setup & Studio Builds
+      Building the production capability organisations need, from scratch or from inside.
+
+      What belongs in-house and what stays external, clarified before anyone is hired. In-house departments and agency production units built to stand on their own. Roles, approvals and workflows defined, and led until permanent leadership is in place.
+
+      Key focus areas
+        • Capability Assessment — What belongs in-house, what stays external, and why.
+        • In-House Studio Build — Brand-side production units built from scratch or from existing teams.
+        • Agency Production Setup — Production capability inside agencies, from structure to staffing.
+        • Operating Model & Process Design — Roles, approvals and workflows.
+        • Post & VFX Capability — Build, partner or buy external.
+        • Handover & Interim Leadership — Running the setup until permanent leadership is in place.
+      [Button] Scope a build
+
+  03  AI Integration & Transformation
+      AI in production, deployed. Not piloted.
+
+      Where AI actually helps, and where it does not. Tools selected on what they do in production. Governance, rights and human sign-off defined, then tested on one live project before anything scales.
+
+      Key focus areas
+        • AI Workflow Mapping — Where AI genuinely speeds up or improves production, and where it doesn’t.
+        • Tool & Vendor Evaluation — Independent assessment of AI production tools.
+        • Governance & Rights Framework — Sign-off structures, usage rights and disclosure requirements for AI-generated content.
+        • Human-in-the-Loop Design — Defining what stays human.
+        • Pilot & Rollout Planning — Testing AI integration on one real production before scaling.
+        • Team Enablement — Training and documentation for the people doing the work.
+      [Button] Start with AI
+
+  04  Production Controlling
+      Cost is where strategy shows up. Read by people who know what things should cost.
+
+      What a production should cost, established before the first quote arrives. Quotes reviewed line by line, then spend tracked as the production runs and final costs checked against what was scoped. Rates and buyouts benchmarked against what the market is paying now.
+
+      Key focus areas
+        • Cost Benchmarking — Production costs compared against real market rates.
+        • Should-Cost Analysis — A cost estimate before the first quote arrives.
+        • Bid Validation — Independent review of supplier quotes before they are signed.
+        • Live Cost Tracking — Cost reporting throughout the production.
+        • Buyout & Usage Rights — Term, territory and renewals, priced against actual use.
+        • Invoice Reconciliation — Final costs checked against what was scoped and quoted.
+      [Button] Pressure-test a budget
+
+CLOSING CALL-TO-ACTION
+----------------------
+  Next step
+  Not sure where you would start?
+  That is what the call is for.
+  [Button] Start Building
+
+========================================================================
+03 · APPROACH   (/approach)
+========================================================================
+Browser title:     Approach · Kata
+Meta description:  How Kata works. Independent judgement applied in time. The
+                   Kata Approach and the Kata Architecture Index: one roadmap,
+                   and four ways to engage.
+
+HERO
+----
+  Kicker:  How we work
+  Title:   Approach
+  Most production problems are operational, not creative. So we built one
+  roadmap for everyone who touches production: CMOs, procurement, agency
+  leads, executive producers and business leaders.
+
+INDEPENDENT JUDGEMENT. ON YOUR SIDE.
+------------------------------------
+  Production advice usually comes from someone with a financial stake in the
+  outcome. We sit beside the decision, never above the process and never
+  inside the margin. Every recommendation is grounded in systems we have
+  designed and built ourselves.
+
+HOW WE WORK
+-----------
+  The posture we bring to every engagement.
+
+  01  Integrated
+      One team, one view across brand, agency and production.
+  02  Collaborative
+      Built with your team in the room, shaped together from day one.
+  03  Unbiased & transparent
+      Full independence from the companies, directors and agencies we recommend.
+  04  Data-driven
+      Every recommendation traces back to a number you can check, benchmarked against real market rates.
+  05  Impact-driven
+      Every engagement ends with something you can act on.
+  06  Experienced
+      45+ years of production leadership, built at The Mill, Stink, Psyop, Markenfilm and Jung von Matt.
+  07  Innovative
+      Production pipelines built for what's next: social-first, micro drama, AI-generated content.
+
+THE KATA ARCHITECTURE INDEX
+---------------------------
+  Most production problems are operational. Every engagement is scored
+  against the Index; a workshop or pilot goes deep on the one or two
+  dimensions that matter most.
+
+  01  Workflow & Process
+      Most waste is invisible until someone maps it. We show you exactly where your time and budget leak between brief and delivery.
+  02  Technology & Systems
+      Is your tech stack earning its budget, or just adding complexity? We assess stack, integration and adoption to give you a straight answer.
+  03  Budget & Resource
+      Budget and reality rarely match by the end of a production. We examine structure, cost variance and governance to show you exactly where they diverge.
+  04  Team & Capability
+      Who decides what, and what happens when someone leaves? We map roles, decision rights and capability coverage to close the key-person risk.
+  05  Pipeline & Quality
+      Quality is made in specific places, and it erodes in specific places too. We trace content from brief to archive to find exactly where rework creeps in.
+  06  Vendor & Partner
+      Vendor rosters carry real variation in risk and value. We segment yours and assess contract structure to show which partners actually earn their place.
+
+THE NAME
+--------
+  Kata: Japanese for form. A sequence of movements, internalised through
+  repetition, until it holds in any situation.
+
+CLOSING CALL-TO-ACTION
+----------------------
+  Start with a conversation
+  Tell us what you are trying to figure out.
+  A 45-minute call. We will come back within 24 hours with an honest read
+  on whether we are the right people to help.
+  [Button] Start Building
+
+========================================================================
+04 · TEAM   (/team)
+========================================================================
+Browser title:     Team · Kata
+Meta description:  The people behind Kata. Three founding partners who have
+                   built, run and controlled productions, plus a network of
+                   specialists across finance, strategy, technology, AI,
+                   creative, production, HR, venture, media, talent
+                   partnerships, legal and sustainability.
+
+HERO
+----
+  Kicker:  Who we are
+  Title:   Team
+  Three founding partners who built and ran productions. A network of
+  specialists behind them.
+
+THE FOUNDERS
+------------
+  Built by people who ran the companies that make this work. Studios
+  founded, departments built, budgets carried. The strategy is never
+  theoretical.
+
+  Cornelius Roenz
+  Strategy, production controlling and executive production
+  cornelius@bureau-kata.com
+      Twenty years at Markenfilm, seven of them as Managing Director. Ran the company without leaving the work: pitches, directors, production negotiations, and the number on set.
+      Production leader and controlling specialist with deep market knowledge across German and European TVC, content, and campaign production.
+      Has built, assessed, and managed production budgets at every scale, from focused social campaigns to complex international shoots. Knows how ambitious creative work is costed, where the money shows up on screen, and when a number doesn't hold up.
+      Specialist in production economics and the German market. Its rates, its production companies, its directors, and the dynamics that shape it.
+
+  Justin Stiebel
+  Strategy, organisational design and advisory
+  justin@bureau-kata.com
+      Fifteen years leading VFX, production and animation companies. The Mill, Stink, Psyop. Three companies built from scratch. Ten years in the UK.
+      Production leader with extensive experience building and running production functions at agency and brand level across Europe.
+      Has operated at every level of high end commercial production, from the set to the boardroom. Knows what it takes to deliver creatively demanding, commercially complex campaigns, and what it takes to lead the organisations that produce them through growth, transition, and change.
+      Specialist in production strategy, organisational transformation, and sustainable structures for brands and agencies navigating a shifting market.
+
+  Jankel Huppertz
+  Production leadership, operations and advisory
+  jankel@bureau-kata.com
+      Twelve years at Jung von Matt, running production across formats and scales.
+      Production leader with deep experience across agency production. Understands how TVC, content, and campaign production works, from idea to execution.
+      Has built and managed production across formats and scales, from agile content to large international campaigns. Knows how to run complex productions, align teams, and deliver against creative and commercial demands.
+      Specialist in production structures, processes, and budgets, and where value is created or lost.
+
+THE NETWORK
+-----------
+  30+
+  Trusted specialists across twelve disciplines, on call the moment a
+  project needs them.
+
+  01  Finance
+      The business case for a studio that does not exist yet, costed to year three.
+  02  Strategy
+      Which capability is worth owning, and which is worth renting forever.
+  03  Technology
+      The stack a new studio runs on, picked while there is still nothing to migrate.
+  04  AI
+      AI in the workflow: what goes in, where, and under whose rules.
+  05  Creative
+      Creative direction inside the building, on work the brand makes itself.
+  06  Production
+      Producers who start a studio, and the department still standing when they leave.
+  07  HR
+      The org chart for a team nobody has hired yet.
+  08  Venture
+      New studios, new divisions, sometimes a whole new company.
+  09  Media
+      What the channels will demand of the work, and how much of it there is.
+  10  Talent Partnerships
+      Brands and talent, across entertainment, culture and sport, on terms that get reused.
+  11  Legal
+      Rights, contracts and IP, from the moment a brand starts owning its own work.
+  12  Sustainability
+      Carbon counted on the job itself, and a number that holds up.
+
+CLOSING CALL-TO-ACTION
+----------------------
+  Start with a conversation
+  Tell us what you are trying to figure out.
+  A 45-minute call. We will come back within 24 hours with an honest read
+  on whether we are the right people to help.
+  [Button] Start Building
+
+========================================================================
+05 · CONTACT   (/contact)
+========================================================================
+Browser title:     Contact · Kata
+Meta description:  Talk to Kata. Independent production advisory, now booking
+                   2026. A 45-minute call, and an honest read within 24 hours.
+
+HERO
+----
+  Kicker:  Contact · Now booking · 2026
+  Title:   Let’s talk.
+  Tell us what you are trying to figure out.
+
+START A CONVERSATION
+--------------------
+  Tell us what you are trying to figure out. You will get a person, not a
+  form response.
+
+  Form fields:
+    • Your name
+    • Email
+    • Company
+    • Your role  (optional)
+    • You are a:  Brand / Agency / Other
+    • What you need  (optional):  Not sure yet / Strategic advisory / Organisational setup & studio builds / AI integration / Production controlling
+    • Timing  (optional):  Not sure yet / Now, it's live / Next 3 months / Later this year / Just exploring
+    • What are you trying to figure out?
+        Placeholder: The more specific, the more useful the call.
+  Privacy note: We use your details only to answer this enquiry.
+                How we handle data.
+  [Button] Send   (while sending: Sending…)
+
+  On success:
+    Sent
+    Thank you. We’ll get back to you as soon as we can.
+
+  If the form is not connected:
+    The form isn’t connected yet. Please email us directly at hello@bureau-kata.com.
+  If something goes wrong:
+    Something went wrong. Please email us at hello@bureau-kata.com.
+
+WHAT HAPPENS NEXT
+-----------------
+  01  A 45-minute call, at a time that suits you.
+  02  An honest read within 24 hours on whether we are the right people to help.
+  03  What a first engagement looks like, and where we would start.
+
+INDIVIDUAL CONTACTS
+-------------------
+  Or skip the form and write to one of us directly.
+
+  01  Cornelius Roenz
+      Strategy, production controlling and executive production
+      cornelius@bureau-kata.com
+
+  02  Justin Stiebel
+      Strategy, organisational design and advisory
+      justin@bureau-kata.com
+
+  03  Jankel Huppertz
+      Production leadership, operations and advisory
+      jankel@bureau-kata.com
+
+========================================================================
+06 · IMPRESSUM   (/imprint)
+========================================================================
+Browser title:     Impressum · Kata
+Meta description:  Impressum der Kata Media Consultancy GmbH.
+NOTE: draft legal page; bracketed values are placeholders to be filled in.
+
+  Kicker:  Rechtliches
+  Title:   Impressum
+
+  Entwurf — Platzhalter in eckigen Klammern müssen mit den echten
+  Firmendaten gefüllt und dieser Hinweis entfernt werden, bevor die Seite
+  gilt. Vor Veröffentlichung juristisch prüfen lassen.
+
+  Angaben gemäß § 5 DDG
+    Kata Media Consultancy GmbH
+    [Straße und Hausnummer]
+    [PLZ Ort]
+
+  Vertreten durch
+    [Geschäftsführer: Vor- und Nachnamen]
+
+  Kontakt
+    E-Mail: hello@bureau-kata.com
+
+  Registereintrag
+    Eintragung im Handelsregister.
+    Registergericht: Amtsgericht [Ort]
+    Registernummer: HRB [Nummer]
+
+  Umsatzsteuer-ID
+    Umsatzsteuer-Identifikationsnummer gemäß § 27a UStG:
+    [DE000000000]
+
+  Verantwortlich im Sinne von § 18 Abs. 2 MStV
+    [Name, Anschrift wie oben]
+
+========================================================================
+07 · DATENSCHUTZ   (/privacy)
+========================================================================
+Browser title:     Datenschutz · Kata
+Meta description:  Datenschutzerklärung der Kata Media Consultancy GmbH.
+NOTE: draft legal page; bracketed values are placeholders to be filled in.
+
+  Kicker:  Rechtliches
+  Title:   Datenschutz
+
+  Entwurf — Platzhalter füllen, Hinweis entfernen, juristisch prüfen lassen.
+
+  Verantwortlicher
+    Kata Media Consultancy GmbH · [Straße und Hausnummer] · [PLZ Ort] · hello@bureau-kata.com
+
+  Grundsatz
+    Diese Website setzt keine Cookies, verwendet keine Analyse- oder
+    Tracking-Dienste und bindet keine Schriften oder Skripte von Drittservern
+    ein — die Schriften werden lokal ausgeliefert. Es werden nur die Daten
+    verarbeitet, die technisch nötig sind oder die du uns aktiv über das
+    Kontaktformular gibst.
+
+  Hosting
+    Die Website wird bei Vercel Inc. (USA) gehostet. Beim Aufruf verarbeitet
+    Vercel technisch notwendige Server-Logdaten (u. a. IP-Adresse, Zeitpunkt,
+    aufgerufene Seite) zur Auslieferung und Absicherung der Seite (Art. 6
+    Abs. 1 lit. f DSGVO). Mit Vercel besteht ein Auftragsverarbeitungsvertrag;
+    die Übermittlung in die USA stützt sich auf EU-Standardvertragsklauseln.
+
+  Kontaktformular
+    Wenn du uns über das Formular schreibst, verarbeiten wir die angegebenen
+    Daten (Name, E-Mail, Unternehmen sowie deine Nachricht und optionale
+    Angaben) ausschließlich zur Bearbeitung und Beantwortung deiner Anfrage
+    (Art. 6 Abs. 1 lit. b DSGVO). Die Anfrage wird in unserem CRM-System Attio
+    (Attio Ltd., Vereinigtes Königreich) gespeichert; Bestätigungs- und
+    Antwortmails werden über den Dienst Resend (Resend Inc., USA) versendet.
+    Mit beiden Anbietern bestehen Auftragsverarbeitungsverträge; Übermittlungen
+    in Drittländer stützen sich auf EU-Standardvertragsklauseln bzw. den
+    Angemessenheitsbeschluss für das Vereinigte Königreich.
+
+    Wir speichern Anfragen so lange, wie es für die Bearbeitung und eine
+    mögliche Zusammenarbeit nötig ist, längstens [Frist, z. B. 24 Monate] nach
+    dem letzten Kontakt, soweit keine gesetzlichen Aufbewahrungspflichten
+    entgegenstehen.
+
+  Deine Rechte
+    Du hast das Recht auf Auskunft, Berichtigung, Löschung, Einschränkung der
+    Verarbeitung, Datenübertragbarkeit und Widerspruch (Art. 15–21 DSGVO)
+    sowie das Recht, dich bei einer Datenschutz-Aufsichtsbehörde zu
+    beschweren. Schreib uns dazu an hello@bureau-kata.com.
+
+========================================================================
+END OF COPY
