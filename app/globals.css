@@ -3737,18 +3737,30 @@ a.cframe:hover .cf-v {
      overflow; sitting under the copy via z-index. */
   .hero--home .hero-wm {
     position: absolute;
-    right: -3%;
+    left: -4%;
+    right: auto;
     bottom: -2%;
-    left: auto;
     top: auto;
     order: 0;
     margin: 0;
     padding: 0;
-    /* 36vw is the largest that still shows the whole word: at 66vw only "ATA"
-       was left on screen. The full "KATA" now reads, K essentially flush to the
-       left edge with a hint of bleed on the last A (as on the desktop mark). */
-    font-size: 36vw;
+    /* Left-anchored so the K — the identifying letter — is always the one on
+       screen: right-anchoring at any real size slid the word left until only
+       "ATA" showed. At 38vw the word reads whole with just the K and the final A
+       lightly clipped, and the tail bleeds off the right exactly as the desktop
+       mark does. Bigger than this only crops more of the word for no real gain —
+       the mark is one short line, so its height barely changes the fill. */
+    font-size: 38vw;
     z-index: 1;
+  }
+  /* Bigger on portrait phones — headline and sub read small against the tall
+     reserved intro. The headline clamp caps so "INDEPENDENT" holds one line to
+     the gutter on the narrowest phones (≈340px content); no regression at 320. */
+  .hero--home .hero-title {
+    font-size: clamp(40px, 11.8vw, 48px);
+  }
+  .hero--home .hero-desc {
+    font-size: clamp(17px, 4.6vw, 19px);
   }
   .hero-foot {
     align-items: flex-start;
@@ -3766,9 +3778,12 @@ a.cframe:hover .cf-v {
 @media (max-width: 720px) and (orientation: portrait) {
   .hero--home {
     min-height: calc(100svh - 118px);
-    /* centre the copy in the reserved intro rather than pinning it to the top —
-       the fill left a large empty band under the headline ("too spaced"). */
-    justify-content: center;
+    /* Top-align the copy: centring it split the fill into an empty band above
+       the headline (under the nav) as well as below. Anchored to the top, the
+       headline sits right under the nav and the watermark grounds the bottom, so
+       the unavoidable dark space (the intro fills the viewport with only a
+       headline + one line of copy) sits as a single band, not two. */
+    justify-content: flex-start;
   }
 }
 
