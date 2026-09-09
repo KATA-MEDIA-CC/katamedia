@@ -1802,6 +1802,13 @@ img {
     position: static;
   }
 }
+/* Touch has no hover to reveal the row number, so on phones it reads clay
+   outright (like the approach list) instead of near-invisible ink-25. */
+@media (max-width: 720px) {
+  .vrow-no {
+    color: var(--clay);
+  }
+}
 @media (prefers-reduced-motion: reduce) {
   .vrow,
   .vrow::before {
@@ -3426,8 +3433,10 @@ a.cframe:hover .cf-v {
     grid-template-columns: 2rem 1fr;
     gap: 6px 14px;
   }
+  /* indent the description under the label (col 2), not flush under the number,
+     so the text block has one clean left edge */
   .prin-item .prin-d {
-    grid-column: 1 / -1;
+    grid-column: 2;
   }
 }
 
