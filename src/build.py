@@ -130,7 +130,7 @@ doc=('<!doctype html>\n<html lang="en">\n<head>\n'+head.strip()+'\n</head>\n<bod
 open(f'{DIST}/index.html','w',encoding='utf-8').write(doc)
 
 # ---------- 6. assets actually referenced, plus fonts -----------------------
-refs=set(re.findall(r'/assets/([A-Za-z0-9_\-./]+?\.(?:jpg|webp|png|svg))',doc))
+refs=set(re.findall(r'/assets/([A-Za-z0-9_\-./]+?\.(?:jpg|webp|avif|png|svg))',doc))
 refs|={f'people/{n}.{e}' for n in ('cornelius','justin','jankel') for e in ('jpg','webp')}
 for r in sorted(refs):
     src=f'{ASSETS}/{r}'; dst=f'{DIST}/assets/{r}'

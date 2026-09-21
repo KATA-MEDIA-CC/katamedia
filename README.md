@@ -7,7 +7,8 @@ The Kata website (CI V3.0): a static site plus one serverless function, deployed
 | Path | What it is | Edit it? |
 |---|---|---|
 | `src/kata.html` | The design source: every page, all styles and all scripts in one file. Most copy sits in the HTML. The lists (services, founders, network, the seven principles, the Index) are arrays in the script near the bottom. | **Yes, this is where changes happen** |
-| `src/assets/` | The images the site uses, plus the vector mark (`mark.svg`, `tagline.svg`). | Yes |
+| `src/assets/` | The images the site uses, plus the vector mark (`mark.svg`, `tagline.svg`). The background plates in here are made by `src/plates.py`. | Yes, except the plates |
+| `src/plates-src/`, `src/plates.py` | The background plates as delivered, and the script that makes the served copies from them: deblocked, 2560 px wide, as AVIF, WebP and JPEG in `src/assets/`. Needs Python with OpenCV and Pillow. | Only to add or replace a plate |
 | `src/legal.json` | Impressum and Datenschutz details. `src/legal_pages.py` turns them into `/imprint` and `/privacy`. | Yes |
 | `src/fonts/`, `src/static/` | Self-hosted fonts; favicons and the share card (`src/gen_static.py` regenerates them). | Rarely |
 | `src/build.py` | Builds `src/` into `site/` and `vercel.json`. | Only to change how the site is built |

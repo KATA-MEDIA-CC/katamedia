@@ -107,29 +107,29 @@ em{font-style:italic}
 .g-caustic{--bg:url("assets/caustic.jpg");--pos:center 40%}
 .g-rays{--bg:url("assets/rays.jpg");--pos:left top}
 
-/* The plates are served as WebP where the browser can decode it — about a
-   quarter of the JPEG weight for the same picture. The @supports guard means
+/* The plates are served as AVIF, then WebP, where the browser can decode
+   them (src/plates.py makes all three from the originals in src/plates-src). The @supports guard means
    a browser without image-set() never sees these rules and keeps the JPEGs,
    so the grounds can never come back empty. */
 @supports (background-image: image-set(url("a.webp") type("image/webp"))){
-  .g-sky-arc{--bg:image-set(url("assets/sky-arc.webp") type("image/webp"),url("assets/sky-arc.jpg") type("image/jpeg"));--pos:58% 42%}
-  .g-deep-arc{--bg:image-set(url("assets/deep-arc.webp") type("image/webp"),url("assets/deep-arc.jpg") type("image/jpeg"));--pos:44% 38%;--flip:scaleX(-1)}
-  .g-deep-beam{--bg:image-set(url("assets/deep-beam.webp") type("image/webp"),url("assets/deep-beam.jpg") type("image/jpeg"));--pos:54% 40%}
-  .g-warm-beam{--bg:image-set(url("assets/warm-beam.webp") type("image/webp"),url("assets/warm-beam.jpg") type("image/jpeg"));--pos:50% 6%}
+  .g-sky-arc{--bg:image-set(url("assets/sky-arc.avif") type("image/avif"),url("assets/sky-arc.webp") type("image/webp"),url("assets/sky-arc.jpg") type("image/jpeg"));--pos:58% 42%}
+  .g-deep-arc{--bg:image-set(url("assets/deep-arc.avif") type("image/avif"),url("assets/deep-arc.webp") type("image/webp"),url("assets/deep-arc.jpg") type("image/jpeg"));--pos:44% 38%;--flip:scaleX(-1)}
+  .g-deep-beam{--bg:image-set(url("assets/deep-beam.avif") type("image/avif"),url("assets/deep-beam.webp") type("image/webp"),url("assets/deep-beam.jpg") type("image/jpeg"));--pos:54% 40%}
+  .g-warm-beam{--bg:image-set(url("assets/warm-beam.avif") type("image/avif"),url("assets/warm-beam.webp") type("image/webp"),url("assets/warm-beam.jpg") type("image/jpeg"));--pos:50% 6%}
   .g-water{--bg:image-set(url("assets/water.webp") type("image/webp"),url("assets/water.jpg") type("image/jpeg"))}
   .g-stone{--bg:image-set(url("assets/stone.webp") type("image/webp"),url("assets/stone.jpg") type("image/jpeg"));--pos:38% center}
-  .g-bloom{--bg:image-set(url("assets/plate-bloom.webp") type("image/webp"),url("assets/plate-bloom.jpg") type("image/jpeg"))}
-  .g-crossing{--bg:image-set(url("assets/plate-crossing.webp") type("image/webp"),url("assets/plate-crossing.jpg") type("image/jpeg"))}
-  .g-arc{--bg:image-set(url("assets/plate-arc.webp") type("image/webp"),url("assets/plate-arc.jpg") type("image/jpeg"))}
-  .g-beam{--bg:image-set(url("assets/plate-beam.webp") type("image/webp"),url("assets/plate-beam.jpg") type("image/jpeg"))}
-  .g-halo{--bg:image-set(url("assets/plate-halo.webp") type("image/webp"),url("assets/plate-halo.jpg") type("image/jpeg"))}
-  .g-drift{--bg:image-set(url("assets/plate-drift.webp") type("image/webp"),url("assets/plate-drift.jpg") type("image/jpeg"))}
-  .g-fan{--bg:image-set(url("assets/plate-fan.webp") type("image/webp"),url("assets/plate-fan.jpg") type("image/jpeg"))}
-  .g-warm{--bg:image-set(url("assets/plate-warm-centre.webp") type("image/webp"),url("assets/plate-warm-centre.jpg") type("image/jpeg"))}
-  .g-low-arc{--bg:image-set(url("assets/plate-low-arc.webp") type("image/webp"),url("assets/plate-low-arc.jpg") type("image/jpeg"))}
-  .g-beams{--bg:image-set(url("assets/sky-beams.webp") type("image/webp"),url("assets/sky-beams.jpg") type("image/jpeg"));--pos:62% 40%}
-  .g-caustic{--bg:image-set(url("assets/caustic.webp") type("image/webp"),url("assets/caustic.jpg") type("image/jpeg"));--pos:center 40%}
-  .g-rays{--bg:image-set(url("assets/rays.webp") type("image/webp"),url("assets/rays.jpg") type("image/jpeg"));--pos:left top}
+  .g-bloom{--bg:image-set(url("assets/plate-bloom.avif") type("image/avif"),url("assets/plate-bloom.webp") type("image/webp"),url("assets/plate-bloom.jpg") type("image/jpeg"))}
+  .g-crossing{--bg:image-set(url("assets/plate-crossing.avif") type("image/avif"),url("assets/plate-crossing.webp") type("image/webp"),url("assets/plate-crossing.jpg") type("image/jpeg"))}
+  .g-arc{--bg:image-set(url("assets/plate-arc.avif") type("image/avif"),url("assets/plate-arc.webp") type("image/webp"),url("assets/plate-arc.jpg") type("image/jpeg"))}
+  .g-beam{--bg:image-set(url("assets/plate-beam.avif") type("image/avif"),url("assets/plate-beam.webp") type("image/webp"),url("assets/plate-beam.jpg") type("image/jpeg"))}
+  .g-halo{--bg:image-set(url("assets/plate-halo.avif") type("image/avif"),url("assets/plate-halo.webp") type("image/webp"),url("assets/plate-halo.jpg") type("image/jpeg"))}
+  .g-drift{--bg:image-set(url("assets/plate-drift.avif") type("image/avif"),url("assets/plate-drift.webp") type("image/webp"),url("assets/plate-drift.jpg") type("image/jpeg"))}
+  .g-fan{--bg:image-set(url("assets/plate-fan.avif") type("image/avif"),url("assets/plate-fan.webp") type("image/webp"),url("assets/plate-fan.jpg") type("image/jpeg"))}
+  .g-warm{--bg:image-set(url("assets/plate-warm-centre.avif") type("image/avif"),url("assets/plate-warm-centre.webp") type("image/webp"),url("assets/plate-warm-centre.jpg") type("image/jpeg"))}
+  .g-low-arc{--bg:image-set(url("assets/plate-low-arc.avif") type("image/avif"),url("assets/plate-low-arc.webp") type("image/webp"),url("assets/plate-low-arc.jpg") type("image/jpeg"))}
+  .g-beams{--bg:image-set(url("assets/sky-beams.avif") type("image/avif"),url("assets/sky-beams.webp") type("image/webp"),url("assets/sky-beams.jpg") type("image/jpeg"));--pos:62% 40%}
+  .g-caustic{--bg:image-set(url("assets/caustic.avif") type("image/avif"),url("assets/caustic.webp") type("image/webp"),url("assets/caustic.jpg") type("image/jpeg"));--pos:center 40%}
+  .g-rays{--bg:image-set(url("assets/rays.avif") type("image/avif"),url("assets/rays.webp") type("image/webp"),url("assets/rays.jpg") type("image/jpeg"));--pos:left top}
 }
 
 .on-dark{color:var(--paper)}
@@ -381,29 +381,33 @@ html.navlock,body.navlock{overflow:hidden}
    One grid: number | name | copy.                                */
 .depth{border-top:1px solid rgba(11,11,15,.18);--dgap:clamp(16px,2.4vw,40px);--dnum:56px}
 .depth-row{all:unset;box-sizing:border-box;cursor:pointer;display:grid;width:100%;position:relative;
-  grid-template-columns:var(--dnum) minmax(0,360px) minmax(0,1fr);gap:0 var(--dgap);align-items:center;
+  grid-template-columns:var(--dnum) minmax(0,460px) minmax(0,1fr);gap:0 var(--dgap);align-items:center;
   padding-block:clamp(22px,3vh,34px);border-bottom:1px solid rgba(11,11,15,.18);
   transition:opacity 720ms var(--ease)}
 .depth-row>*{grid-row:1;min-width:0}
+/* every band the height of the tallest, so the names step down evenly
+   whatever length of copy is waiting behind each one */
+@media(min-width:901px){.depth{display:grid;grid-auto-rows:1fr}}
 .depth-row .dn{grid-column:1;font-size:10px;letter-spacing:.24em;font-weight:500;color:var(--glacier-deep)}
 .depth-row .dt{grid-column:2}
 .depth-row .dcopy{grid-column:3}
-.depth-row h3{font-family:var(--serif);font-weight:300;font-size:clamp(1.8rem,3.4vw,3.1rem);line-height:1;
+.depth-row h3{font-family:var(--serif);font-weight:300;font-size:clamp(2.1rem,4.3vw,3.9rem);line-height:1;
   letter-spacing:.04em;text-transform:uppercase;margin:0;color:var(--ink);white-space:nowrap}
-/* the wipe: the line is uncovered from its left edge, never faded in as a block */
+/* the copy is pushed in from the left: the whole line travels into place
+   (Justin, Sept 2026: softer than appearing, plainer than the old wipe) */
 .depth-row .dcopy p{margin:0;color:var(--ink);font-size:15.5px;line-height:1.55;max-width:52ch;
-  opacity:0;-webkit-clip-path:inset(0 100% 0 0);clip-path:inset(0 100% 0 0);
-  transition:opacity 300ms var(--ease),-webkit-clip-path 820ms var(--ease),clip-path 820ms var(--ease)}
+  opacity:0;transform:translateX(-32px);
+  transition:opacity 460ms var(--ease),transform 700ms var(--ease)}
 
-.depth-row.open .dcopy p,.depth-row:focus-visible .dcopy p{opacity:1;-webkit-clip-path:inset(0 0 0 0);clip-path:inset(0 0 0 0)}
+.depth-row.open .dcopy p,.depth-row:focus-visible .dcopy p{opacity:1;transform:none}
 /* a set with long names needs a wider lane and smaller type — the three
    engagements are one word each, the seven principles are not */
 .depth.long{--dnum:52px}
-.depth.long .depth-row{grid-template-columns:var(--dnum) minmax(0,460px) minmax(0,1fr)}
-.depth.long .depth-row h3{font-size:clamp(1.25rem,2.3vw,2.1rem);line-height:1.08;white-space:normal}
+.depth.long .depth-row{grid-template-columns:var(--dnum) minmax(0,520px) minmax(0,1fr)}
+.depth.long .depth-row h3{font-size:clamp(1.45rem,2.7vw,2.5rem);line-height:1.08;white-space:normal}
 
 @media(hover:hover){
-  .depth-row:hover .dcopy p{opacity:1;-webkit-clip-path:inset(0 0 0 0);clip-path:inset(0 0 0 0)}
+  .depth-row:hover .dcopy p{opacity:1;transform:none}
   /* attention follows the pointer: the band you are on is the one that is lit */
   .depth:hover .depth-row{opacity:.42}
   .depth:hover .depth-row:hover{opacity:1}
@@ -414,8 +418,8 @@ html.navlock,body.navlock{overflow:hidden}
   .depth-row .dn{grid-column:1;grid-row:1}
   .depth-row .dt{grid-column:2;grid-row:1}
   .depth-row .dcopy{grid-column:2;grid-row:2;padding-top:14px}
-  .depth-row h3{font-size:clamp(1.55rem,7vw,2.1rem);white-space:normal}
-  .depth-row .dcopy p{opacity:1;-webkit-clip-path:none;clip-path:none}
+  .depth-row h3{font-size:clamp(1.8rem,8vw,2.5rem);white-space:normal}
+  .depth-row .dcopy p{opacity:1;transform:none}
 }
 
 /* ---- FOUR PILLARS — four doors --------------------------------
@@ -478,7 +482,7 @@ html.navlock,body.navlock{overflow:hidden}
   /* the light travels the whole reading, not just its opening */
   /* no bleed past the foot: the founders start on paper */
   content:"";position:absolute;inset:-90px 0 0;z-index:0;pointer-events:none;
-  background-image:image-set(url("assets/rays.webp") type("image/webp"),url("assets/rays.jpg") type("image/jpeg"));background-size:cover;background-position:left top;background-repeat:no-repeat;
+  background-image:image-set(url("assets/rays.avif") type("image/avif"),url("assets/rays.webp") type("image/webp"),url("assets/rays.jpg") type("image/jpeg"));background-size:cover;background-position:left top;background-repeat:no-repeat;
   -webkit-mask-image:linear-gradient(180deg,transparent 0%,#000 12%,#000 52%,transparent 86%);
           mask-image:linear-gradient(180deg,transparent 0%,#000 12%,#000 52%,transparent 86%)}
 
@@ -490,6 +494,14 @@ html.navlock,body.navlock{overflow:hidden}
 .seq{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(32px,6vw,96px);align-items:start}
 .seq-side{position:sticky;top:calc(var(--head) + 32px)}
 .seq-count{font-family:var(--serif);font-weight:300;font-size:clamp(4rem,9vw,8.5rem);line-height:.9;letter-spacing:-.03em;color:var(--ink);margin:clamp(24px,4vh,48px) 0 0;font-variant-numeric:tabular-nums}
+/* the counter doubles as a way through: every number is a jump */
+.seq-nav{display:flex;flex-wrap:wrap;gap:4px 16px;margin:20px 0 0}
+.seq-nav button{all:unset;cursor:pointer;padding:6px 0 5px;font-size:10.5px;letter-spacing:.24em;font-weight:500;
+  color:var(--graphite);border-bottom:1px solid transparent;font-variant-numeric:tabular-nums;
+  transition:color 300ms var(--ease),border-color 300ms var(--ease)}
+.seq-nav button:hover,.seq-nav button.on{color:var(--ink);border-bottom-color:var(--glacier-deep)}
+.seq-nav button:focus-visible{outline:1px solid var(--glacier-deep);outline-offset:3px}
+@media(hover:hover){.seq-item{cursor:pointer}}
 .seq-count small{font-family:var(--sans);font-weight:400;font-size:12px;letter-spacing:.2em;color:var(--graphite);margin-left:14px;vertical-align:baseline}
 .seq-list{border-top:1px solid var(--hair)}
 .seq-item{padding-block:clamp(30px,4.5vh,52px);border-bottom:1px solid var(--hair);
@@ -503,27 +515,43 @@ html.navlock,body.navlock{overflow:hidden}
 @media(max-width:900px){
   .seq{grid-template-columns:1fr;gap:28px}
   .seq-side{position:static}
-  .seq-count{display:none}
+  .seq-count,.seq-nav{display:none}
   .seq-item{padding-block:26px}
   .seq-item h3{font-size:clamp(1.7rem,7vw,2.3rem)}
   .seq-item p{max-width:none}
 }
 
 
-/* ---- IN PRACTICE — what the name means in the work ------------
-   Read like the seven: the premise holds the left column, the lines
-   that follow from it run down the right. Stacks below 900px. */
-.practice{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(32px,6vw,96px);align-items:start}
-.practice-body{display:flex;flex-direction:column;gap:clamp(28px,3.2vw,44px);padding-top:clamp(0px,2.6vw,40px)}
-.practice-body>*{margin:0}
-/* one line per span, each balanced on its own, so a phone never strands a word */
-.practice .lines>span{display:block;text-wrap:balance}
-.practice-close{margin-top:clamp(8px,1.6vw,20px)!important}
+/* ---- IN PRACTICE — a manifesto ---------------------------------
+   One column, centred on the bloom. Each statement stands alone with
+   room around it and rises once as it arrives; the lines that belong
+   together stay together. No rules, like the rest of the site. */
+.manifesto{display:flex;flex-direction:column;align-items:center;text-align:center}
+.manifesto>.kicker{justify-content:center}
+.manifesto .m-st{margin:clamp(64px,8vw,128px) 0 0}
+.manifesto>.kicker+.m-st{margin-top:clamp(30px,3.4vw,52px)}
+.manifesto .d-xxl{max-width:13ch;margin-inline:auto}
+.manifesto .m-sub{margin:clamp(20px,2.4vw,34px) auto 0;max-width:none}
+.manifesto .lines>span{display:block;text-wrap:balance}
+.manifesto .m-prose{max-width:44ch;font-size:clamp(16px,1.35vw,19px);line-height:1.6}
+.manifesto .m-close{max-width:none;margin-top:clamp(84px,10vw,160px)}
+.manifesto .rise{transition-delay:0s!important}
 @media(max-width:900px){
-  .practice{grid-template-columns:1fr;gap:40px}
-  .practice-body{padding-top:0}
+  .manifesto .m-st{margin-top:clamp(52px,12vw,80px)}
 }
 
+
+/* ---- one step up the scale (Jankel, Sept 2026) ------------------
+   Services, the team and the approach were reading too small. */
+#svcList .acc-head{padding-block:clamp(26px,3.4vh,40px)}
+#svcList .acc-head h3{font-size:clamp(1.75rem,3.2vw,2.75rem);line-height:1.1}
+#svcList .acc-head .sn{font-size:11px}
+#svcList .acc-inner>.body{font-size:clamp(15.5px,1.2vw,17px);max-width:60ch}
+#svcList .areas h3{font-size:clamp(1.2rem,1.5vw,1.4rem)}
+#svcList .areas p{font-size:15px}
+.judgement{padding-bottom:clamp(90px,12vw,170px)}
+.judgement .d-xxl{max-width:14ch}
+.judgement-copy{margin-top:clamp(28px,3vw,44px)!important;max-width:58ch!important;font-size:clamp(16px,1.35vw,19px);line-height:1.6}
 
 /* ---------- lists ---------- */
 .plist{border-top:1px solid var(--gridline)}
@@ -556,9 +584,9 @@ html.navlock,body.navlock{overflow:hidden}
 .wall-p img{display:block;width:100%;aspect-ratio:1/1;
   object-fit:cover;object-position:50% 4%;filter:grayscale(1)}
 .wall-p figcaption{padding:16px 0 0}
-.wall-p h3{font-family:var(--serif);font-weight:300;font-size:clamp(1.3rem,2vw,1.6rem);margin:0 0 8px;line-height:1.15}
-.wall-p .role{font-size:10px;text-transform:uppercase;letter-spacing:.16em;color:var(--glacier-deep);margin:0 0 18px}
-.wall-p p{margin:0 0 12px;color:var(--graphite);font-size:14px;max-width:38ch}
+.wall-p h3{font-family:var(--serif);font-weight:300;font-size:clamp(1.5rem,2.4vw,2rem);margin:0 0 10px;line-height:1.12}
+.wall-p .role{max-width:none!important;font-size:11px;text-transform:uppercase;letter-spacing:.16em;color:var(--glacier-deep);margin:0 0 18px}
+.wall-p p{margin:0 0 12px;color:var(--graphite);font-size:15.5px;line-height:1.6;max-width:40ch}
 .wall-p a.mail{font-size:12px;color:var(--glacier-deep);border-bottom:1px solid var(--hair);padding-bottom:2px}
 @media(max-width:900px){
   /* on a phone the wall is swiped, not stacked: a natural strip of three.
@@ -578,11 +606,11 @@ html.navlock,body.navlock{overflow:hidden}
 .acc .kicker{margin-top:40px}
 /* a longer set gets a smaller head, so twelve of them still scan */
 .acc.sm .acc-head{grid-template-columns:56px minmax(0,1fr) 20px;padding-block:clamp(15px,1.9vh,23px)}
-.acc.sm .acc-head h3{font-family:var(--serif);font-weight:300;font-size:clamp(1.15rem,1.7vw,1.45rem);line-height:1.2;letter-spacing:-.012em;margin:0;color:var(--ink)}
+.acc.sm .acc-head h3{font-family:var(--serif);font-weight:300;font-size:clamp(1.3rem,2.1vw,1.8rem);line-height:1.2;letter-spacing:-.012em;margin:0;color:var(--ink)}
 .acc.sm .acc-mark{width:20px;height:20px}
 .acc.sm .acc-inner{padding-bottom:30px}
-.acc.sm .acc-inner .line{font-size:14.5px;color:var(--ink);margin:0 0 12px;max-width:52ch}
-.acc.sm .acc-inner p{margin:0;color:var(--graphite);font-size:14px;line-height:1.55;max-width:62ch}
+.acc.sm .acc-inner .line{font-size:16px;color:var(--ink);margin:0 0 12px;max-width:52ch}
+.acc.sm .acc-inner p{margin:0;color:var(--graphite);font-size:15px;line-height:1.55;max-width:62ch}
 .areas{grid-template-columns:repeat(3,1fr);margin-top:20px}
 .areas>div{padding:24px 0 28px}
 .areas .an{display:block;font-size:10px;letter-spacing:.24em;font-weight:500;color:var(--glacier-deep);margin:0 0 14px}
@@ -739,7 +767,7 @@ body::after{content:"";position:fixed;inset:0;z-index:95;pointer-events:none;
 /* Reduced motion: everything simply there. The sheets still stack — that is scrolling, not animation. */
 @media(prefers-reduced-motion:reduce){
   .rise{opacity:1;transform:none;transition:none}
-  .depth-row .dcopy p{opacity:1;-webkit-clip-path:none;clip-path:none}
+  .depth-row .dcopy p{opacity:1;transform:none}
   .depth-row{opacity:1}
   .seq-item{opacity:1}
   .seq-item p{color:var(--ink)}
@@ -827,7 +855,10 @@ body::after{content:"";position:fixed;inset:0;z-index:95;pointer-events:none;
    read is a single thing travelling downward rather than three things
    blinking — a drop falling, a breath going out. Nothing is fully on at the
    loop point, so the cycle has no seam. */
-.scroll-cue{display:flex;flex-direction:column;align-items:flex-start;gap:5px}
+.scroll-cue{all:unset;box-sizing:border-box;cursor:pointer;display:flex;align-items:center;gap:18px;padding:6px 0}
+.cue-stack{display:flex;flex-direction:column;align-items:flex-start;gap:5px}
+/* the word is visible now: without it, people did not know the site was down there */
+.cue-label{font-family:var(--sans);font-weight:500;font-size:12px;line-height:1;letter-spacing:.26em;text-transform:uppercase;color:var(--glacier-deep)}
 .cue-v{display:block;width:19px;height:7px;overflow:visible;
   stroke:var(--glacier-deep);stroke-width:1;fill:none;stroke-linecap:butt;
   animation:flow 3.4s var(--ease) infinite}
@@ -839,8 +870,9 @@ body::after{content:"";position:fixed;inset:0;z-index:95;pointer-events:none;
   54% {opacity:.62; transform:translateY(4px)}
   78% {opacity:0;   transform:translateY(9px)}
   100%{opacity:0;   transform:translateY(-6px)}}
-/* the load screen is the whole screen: no bar, no menu, nothing to click.
-   One gesture is the only thing on offer. The bar arrives with the site. */
+/* the load screen is the whole screen: no bar, no menu. It opens on a
+   scroll, on a click anywhere, or by itself after four seconds of stillness.
+   The bar arrives with the site. */
 header.bare{opacity:0;pointer-events:none}
 @media(prefers-reduced-motion:reduce){
   .cue-v{animation:none;opacity:1;transform:none}
@@ -898,7 +930,7 @@ header.bare{opacity:0;pointer-events:none}
       </span>
     </div>
     <div class="wide curtain-foot">
-      <p class="scroll-cue"><span class="sr">Scroll down</span><svg class="cue-v" viewBox="0 0 19 7" aria-hidden="true"><path d="M1 1 9.5 6 18 1" vector-effect="non-scaling-stroke"/></svg><svg class="cue-v" viewBox="0 0 19 7" aria-hidden="true"><path d="M1 1 9.5 6 18 1" vector-effect="non-scaling-stroke"/></svg><svg class="cue-v" viewBox="0 0 19 7" aria-hidden="true"><path d="M1 1 9.5 6 18 1" vector-effect="non-scaling-stroke"/></svg></p>
+      <button type="button" class="scroll-cue" aria-label="Enter the site"><span class="cue-stack" aria-hidden="true"><svg class="cue-v" viewBox="0 0 19 7" aria-hidden="true"><path d="M1 1 9.5 6 18 1" vector-effect="non-scaling-stroke"/></svg><svg class="cue-v" viewBox="0 0 19 7" aria-hidden="true"><path d="M1 1 9.5 6 18 1" vector-effect="non-scaling-stroke"/></svg><svg class="cue-v" viewBox="0 0 19 7" aria-hidden="true"><path d="M1 1 9.5 6 18 1" vector-effect="non-scaling-stroke"/></svg></span><span class="cue-label">Scroll</span></button>
     </div>
   </div>
   <div class="curtain-runway" aria-hidden="true"></div>
@@ -953,8 +985,8 @@ header.bare{opacity:0;pointer-events:none}
   <div class="sec">
     <div class="wide">
       <p class="kicker">The founders</p>
-      <h2 class="d-l" style="margin-top:20px;max-width:24ch">The people you would actually work with.</h2>
-      <p class="body" style="margin-top:20px">Studios founded, departments built, budgets carried.</p>
+      <h2 class="d-l" style="margin-top:20px;max-width:22ch">Studios founded, departments built, budgets carried.</h2>
+      <p class="body" style="margin-top:20px">Independent Production Architects, because the strategy is never theoretical.</p>
       <div class="wall" style="margin-top:clamp(28px,3.4vw,52px)">
         <figure class="wall-p"><span class="fn">01</span><picture><source type="image/webp" srcset="assets/people/cornelius.webp"><img src="assets/people/cornelius.jpg" alt="Cornelius Roenz" loading="lazy" decoding="async"></picture><figcaption><h3>Cornelius Roenz</h3><p>Twenty years at Markenfilm, seven of them as Managing Director.</p></figcaption></figure>
         <figure class="wall-p"><span class="fn">02</span><picture><source type="image/webp" srcset="assets/people/justin.webp"><img src="assets/people/justin.jpg" alt="Justin Stiebel" loading="lazy" decoding="async"></picture><figcaption><h3>Justin Stiebel</h3><p>Fifteen years leading VFX and production companies across The Mill, Stink and Psyop.</p></figcaption></figure>
@@ -1025,10 +1057,10 @@ header.bare{opacity:0;pointer-events:none}
 
   <!-- paper, and the site's standard section padding: this band was running
        clamp(100px,13vw,170px), which pushed the gap under the hero to 410px -->
-  <div class="sec">
+  <div class="sec judgement">
     <div class="wide">
-      <h2 class="d-l" style="max-width:20ch">Independent judgement. On your side.</h2>
-      <p class="body ink" style="margin-top:26px;max-width:60ch">Production advice often comes from someone with a financial stake in the outcome. We sit beside the decision, never above the process and never inside the margin. Every recommendation is grounded in production systems we have designed and built ourselves.</p>
+      <h2 class="d-xxl">Independent judgement.<br>On your side.</h2>
+      <p class="body ink judgement-copy">Production advice often comes from someone with a financial stake in the outcome. We sit beside the decision, never above the process and never inside the margin. Every recommendation is grounded in production systems we have designed and built ourselves.</p>
     </div>
   </div>
 
@@ -1036,7 +1068,7 @@ header.bare{opacity:0;pointer-events:none}
   <div class="pan-mist" data-anchor="how-we-work">
     <div class="sec wide">
       <p class="kicker">How we work</p>
-      <h2 class="d-m" style="margin-top:18px">How we show up in every engagement.</h2>
+      <h2 class="d-l" style="margin-top:20px">How we show up in every engagement.</h2>
       <div class="depth long" data-depth="posture" style="margin-top:clamp(30px,4vw,46px)"></div>
     </div>
   </div>
@@ -1046,21 +1078,20 @@ header.bare{opacity:0;pointer-events:none}
     <div class="wide seq" data-rv="kai"></div>
   </div>
 
-  <!-- in practice: the premise on the left, what follows from it on the right -->
-  <div class="sec ph g-bloom" data-anchor="in-practice" style="padding-block:clamp(100px,13vw,170px)">
-    <div class="wide practice">
-      <div>
-        <p class="kicker">KATA. In Practice.</p>
-        <h2 class="d-l" style="margin-top:20px;max-width:14ch">Production is always moving.</h2>
-        <p class="lede" style="margin-top:24px">New briefs. New formats.<br>New technologies. New markets.</p>
-        <p class="d-m" style="margin-top:34px">What holds is structure.</p>
+  <!-- in practice, read as a manifesto: one statement after another, each
+       with room around it, centred on the bloom -->
+  <div class="sec ph g-bloom" data-anchor="in-practice" style="padding-block:clamp(110px,14vw,200px)">
+    <div class="wide manifesto">
+      <p class="kicker">KATA. In Practice.</p>
+      <div class="m-st rise">
+        <h2 class="d-xxl">Production is always moving.</h2>
+        <p class="lede m-sub">New briefs. New formats. New technologies. New markets.</p>
       </div>
-      <div class="practice-body">
-        <p class="d-m lines"><span>Experience into decisions.</span><span>Data into a number you can check.</span><span>Complexity into something people can work with.</span></p>
-        <p class="body ink" style="text-wrap:pretty">As Production Architects, we build the systems, processes and teams that make production clearer, more efficient and easier to manage.</p>
-        <p class="d-m lines"><span>Independent enough to challenge.</span><span>Experienced enough to know what matters.</span><span>Practical enough to turn decisions into action.</span></p>
-        <p class="d-l practice-close">Knowledge Applied to Action.</p>
-      </div>
+      <p class="d-l m-st rise">What holds is structure.</p>
+      <p class="d-m m-st lines rise"><span>Experience into decisions.</span><span>Data into a number you can check.</span><span>Complexity into something people can work with.</span></p>
+      <p class="body ink m-st m-prose rise">As Production Architects, we build the systems, processes and teams that make production clearer, more efficient and easier to manage.</p>
+      <p class="d-m m-st lines rise"><span>Independent enough to challenge.</span><span>Experienced enough to know what matters.</span><span>Practical enough to turn decisions into action.</span></p>
+      <p class="d-xl m-st m-close rise">Knowledge Applied to Action.</p>
     </div>
   </div>
 
@@ -1362,6 +1393,8 @@ header.bare{opacity:0;pointer-events:none}
     host.forEach(function(el){ el.innerHTML=h; arrive(el.querySelectorAll(".rise")); });
   })();
 
+  arrive(document.querySelectorAll(".manifesto .rise"));
+
   /* ---- SEVEN PRINCIPLES — a reading -------------------------- */
   var readings=[];
   document.querySelectorAll("[data-rv]").forEach(function(host){
@@ -1374,10 +1407,20 @@ header.bare{opacity:0;pointer-events:none}
       '<div class="seq-side"><p class="kicker">'+d.kicker+'</p>'
       +'<p class="d-m" style="margin-top:14px;max-width:22ch;color:var(--graphite)">'+d.thesis+'</p>'
       +'<p class="seq-count"><span data-count>01</span><small>/ '+two(n-1)+'</small></p>'
+      +'<p class="seq-nav">'+d.items.map(function(it,i){ return '<button type="button" data-go="'+i+'" aria-label="'+two(i)+' '+it.t+'">'+two(i)+'</button>'; }).join('')+'</p>'
       +(d.link?'<p style="margin-top:28px"><a class="arrow" href="'+d.link.href+'">'+d.link.label+'</a></p>':'')
       +'</div>'
       +'<div class="seq-list">'+list+'</div>';
-    readings.push({root:host, items:host.querySelectorAll(".seq-item"), count:host.querySelector("[data-count]"), cur:-1});
+    var r={root:host, items:host.querySelectorAll(".seq-item"), nav:host.querySelectorAll("[data-go]"), count:host.querySelector("[data-count]"), cur:-1};
+    readings.push(r);
+    /* a click takes the page to that item's place on the reading line,
+       the same place a scroll would have lit it */
+    function readTo(i){
+      var y=window.scrollY + r.items[i].getBoundingClientRect().top - window.innerHeight*0.5 + 2;
+      window.scrollTo({top:Math.max(0,y), behavior:reduce?"auto":"smooth"});
+    }
+    r.items.forEach(function(it,i){ it.addEventListener("click",function(){ readTo(i); }); });
+    r.nav.forEach(function(b){ b.addEventListener("click",function(){ readTo(+b.getAttribute("data-go")); }); });
   });
   function readScan(){
     if(!readings.length) return;
@@ -1396,6 +1439,7 @@ header.bare{opacity:0;pointer-events:none}
         r.items[k].classList.toggle("past", reduce?false:k<lit);
       }
       if(r.count&&lit>=0) r.count.textContent=two(lit);
+      for(var q=0;q<r.nav.length;q++) r.nav[q].classList.toggle("on", q===lit);
     });
   }
 
@@ -1639,6 +1683,47 @@ header.bare{opacity:0;pointer-events:none}
       cIn.style.opacity=String(Math.max(0,1-p*0.85));
     }
     if(cFoot) cFoot.style.opacity=String(Math.max(0,1-p*2.6));
+  }
+
+  /* The door also opens without a scroll: a click anywhere on it, or by
+     itself after four seconds if nobody has moved. The lift is the same
+     scroll the visitor would have made, eased, so the panel rises exactly as
+     it does by hand; any wheel, touch or key takes the page back at once. */
+  var AUTO_LIFT=4000, liftRaf=0, autoT=0;
+  function onHome(){ var a=document.querySelector(".page.active"); return !!a && a.getAttribute("data-page")==="home"; }
+  function liftCurtain(){
+    if(!curtain||spent||liftRaf||!onHome()) return;
+    clearTimeout(autoT);
+    var from=window.scrollY, to=window.innerHeight, t0=0, dur=reduce?1:1500;
+    function stop(){
+      if(liftRaf) cancelAnimationFrame(liftRaf); liftRaf=0;
+      window.removeEventListener("wheel",stop); window.removeEventListener("touchstart",stop); window.removeEventListener("keydown",stop);
+    }
+    function step(ts){
+      /* the panel retires itself the moment it clears; stop there, or the
+         last eased frame would scroll the page it just handed over */
+      if(spent){ stop(); return; }
+      if(!t0) t0=ts;
+      var k=Math.min(1,(ts-t0)/dur), e=k<.5?4*k*k*k:1-Math.pow(-2*k+2,3)/2;
+      window.scrollTo(0, from+(to-from)*e);
+      if(k<1&&!spent) liftRaf=requestAnimationFrame(step); else stop();
+    }
+    window.addEventListener("wheel",stop,{passive:true}); window.addEventListener("touchstart",stop,{passive:true}); window.addEventListener("keydown",stop);
+    liftRaf=requestAnimationFrame(step);
+  }
+  function armAutoLift(){
+    clearTimeout(autoT);
+    autoT=setTimeout(function(){
+      if(document.hidden){ document.addEventListener("visibilitychange",armAutoLift,{once:true}); return; }
+      if(window.scrollY<=2) liftCurtain();
+    },AUTO_LIFT);
+  }
+  if(curtain){
+    curtain.addEventListener("click",liftCurtain);
+    armAutoLift();
+    ["wheel","touchstart","keydown"].forEach(function(ev){
+      window.addEventListener(ev,function(){ if(!liftRaf) clearTimeout(autoT); },{passive:true});
+    });
   }
 
   var ticking=false;
