@@ -85,8 +85,17 @@ function shell(inner) {
 </body>
 </html>`;
 }
+// First name only, however it was typed: "Dr. Anna Weber", "Weber, Anna", "anna weber".
+// The same rule as the thank-you on the site (enqFirst in kata.html).
+function firstName(n) {
+  n = String(n).replace(/\s+/g, " ").trim();
+  if (n.indexOf(",") > 0 && n.split(",")[1].trim()) n = n.split(",")[1].trim();
+  const w = n.split(" ").filter((t) => !/^(dr|prof|professor|herr|frau|mr|mrs|ms|mx|miss|sir|dipl|ing)\.?(-ing\.?)?$/i.test(t));
+  const f = (w[0] || n).replace(/[.,;:]+$/, "");
+  return f === f.toLowerCase() ? f.charAt(0).toUpperCase() + f.slice(1) : f;
+}
 function autoReplyHtml(name) {
-  const first = esc(name.split(" ")[0] || name);
+  const first = esc(firstName(name));
   return shell(`
       <p style="${P}margin-top:34px;">Hi ${first},</p>
       <p style="${P}">danke f&uuml;r deine Nachricht &ndash; ist angekommen.</p>

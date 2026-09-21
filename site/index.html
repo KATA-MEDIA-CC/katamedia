@@ -732,10 +732,23 @@ html.navlock,body.navlock{overflow:hidden}
 @media(max-width:700px){.form{grid-template-columns:1fr}}
 
 /* ---------- modal ---------- */
-.modal{position:fixed;inset:-160px 0 0;z-index:80;display:flex;align-items:center;justify-content:center;padding:calc(var(--gut) + 160px) var(--gut) var(--gut);background:rgba(238,242,246,.31);-webkit-backdrop-filter:blur(18px);backdrop-filter:blur(18px);opacity:0;pointer-events:none;transition:opacity 480ms var(--ease)}
-.modal.open{opacity:1;pointer-events:auto}
-.modal .card{background:rgba(255,255,255,.8);border:1px solid var(--hair);width:100%;max-width:840px;max-height:88vh;overflow-y:auto;padding:clamp(28px,4vw,52px)}
-.modal .close{float:right;background:none;border:0;cursor:pointer;font-family:var(--sans);font-size:10px;text-transform:uppercase;letter-spacing:.18em;color:var(--graphite);padding:0}
+/* The page stays present around the card, softened rather than hidden: a thin
+   veil with a light blur. The frost lives on the card itself, so the card can be
+   far more transparent and its type still sits on a calm ground. The veil is a
+   pseudo-element beside the card, not its parent, and the modal itself never
+   fades: a fading or filtered parent would stop the card's own blur from seeing
+   the page behind it. */
+.modal{position:fixed;inset:-160px 0 0;z-index:80;display:flex;align-items:center;justify-content:center;padding:calc(var(--gut) + 160px) var(--gut) var(--gut);visibility:hidden;pointer-events:none;transition:visibility 0s linear 780ms}
+.modal::before{content:"";position:absolute;inset:0;z-index:0;background:rgba(238,242,246,.16);
+  -webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);opacity:0;transition:opacity 620ms var(--ease)}
+.modal.open{visibility:visible;pointer-events:auto;transition-delay:0s}
+.modal.open::before{opacity:1}
+.modal .card{position:relative;z-index:1;background:rgba(255,255,255,.58);
+  -webkit-backdrop-filter:blur(30px) saturate(1.4);backdrop-filter:blur(30px) saturate(1.4);
+  border:1px solid var(--hair);width:100%;max-width:840px;max-height:88vh;overflow-y:auto;padding:clamp(28px,4vw,52px);
+  opacity:0;transform:translateY(18px);transition:opacity 620ms var(--ease),transform 780ms var(--ease)}
+.modal.open .card{opacity:1;transform:none}
+.modal .close{float:right;background:none;border:0;cursor:pointer;font-family:var(--sans);font-size:10px;text-transform:uppercase;letter-spacing:.18em;color:var(--graphite);padding:0;margin:0 0 12px 20px}
 
 /* ---------- footer ---------- */
 footer{border-top:1px solid var(--hair);padding-block:clamp(48px,6vw,80px)}
@@ -900,11 +913,11 @@ body::after{content:"";position:fixed;inset:0;z-index:95;pointer-events:none;
 .hero .btn.big{border-color:rgba(226,231,236,.55)!important}
 /* The enquiry card is glass (Justin, Sept 2026), and over a dark page it reads
    light grey, where Hair and Graphite fade out. Inside it the field lines are
-   ink at low alpha and Graphite steps one shade darker, which keeps the labels
-   above 4.5:1 on the darkest ground the card can sit on. */
-.modal .card{--graphite:#575B62}
-.modal .field label .opt{color:rgba(11,11,15,.36)}
-.modal .field input,.modal .field select,.modal .field textarea{border-bottom-color:rgba(11,11,15,.16)!important}
+   ink at low alpha and Graphite steps darker, which keeps the labels above
+   4.5:1 on the darkest ground the card can sit on (measured on the home hero). */
+.modal .card{--graphite:#3E4249}
+.modal .field label .opt{color:rgba(11,11,15,.46)}
+.modal .field input,.modal .field select,.modal .field textarea{border-bottom-color:rgba(11,11,15,.22)!important}
 .modal .field input:focus,.modal .field select:focus,.modal .field textarea:focus{border-bottom-color:var(--glacier-deep)!important}
 /* a field that still needs something stays red, focused or not */
 .field.bad input,.field.bad textarea,.field.bad input:focus,.field.bad textarea:focus,
@@ -1701,6 +1714,13 @@ header.bare{opacity:0;pointer-events:none}
     if(!enqVal(p,"msg")) bad.msg="Tell us what you are trying to figure out.";
     return bad;
   }
+  function enqFirst(n){
+    n=String(n).replace(/\s+/g," ").trim();
+    if(n.indexOf(",")>0&&n.split(",")[1].trim()) n=n.split(",")[1].trim();
+    var w=n.split(" ").filter(function(t){ return !/^(dr|prof|professor|herr|frau|mr|mrs|ms|mx|miss|sir|dipl|ing)\.?(-ing\.?)?$/i.test(t); });
+    var f=(w[0]||n).replace(/[.,;:]+$/,"");
+    return f===f.toLowerCase() ? f.charAt(0).toUpperCase()+f.slice(1) : f;
+  }
   function enqList(xs){ return xs.length<3 ? xs.join(" and ") : xs.slice(0,-1).join(", ")+", and "+xs[xs.length-1]; }
   function enqAlert(p,html,scroll){
     var box=document.getElementById(p+"-alert");
@@ -1731,12 +1751,12 @@ header.bare{opacity:0;pointer-events:none}
   }
   function enqSent(f,d){
     var box=f.closest(".enq"); if(!box) return;
-    var first=d.name.split(/\s+/)[0]||d.name, inModal=!!f.closest(".modal");
+    var first=enqFirst(d.name), inModal=!!f.closest(".modal");
     var s=document.createElement("div");
     s.className="enq-sent"; s.setAttribute("tabindex","-1"); s.setAttribute("role","status");
     s.innerHTML='<p class="kicker">Message sent</p>'
       +'<h2 class="d-l">Thank you, '+enqEsc(first)+'.</h2>'
-      +'<p class="lede">It has arrived. One of us will come back to you within 24 hours, with an honest read on whether we are the right people to help.</p>'
+      +'<p class="lede">One of us will come back to you within 24 hours.</p>'
       +'<p class="body">We will reply to <span class="to">'+enqEsc(d.email)+'</span>.</p>'
       +'<p class="sig">Justin, Cornelius &amp; Jankel</p>'
       +(inModal?'<button type="button" class="btn" data-enq-close>Back to the site</button>'
