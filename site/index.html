@@ -1,0 +1,1725 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="We help brands and agencies turn production knowledge into action: commissioning smarter, shaping the right production setup, and knowing what it should cost.">
+<link rel="canonical" href="https://bureau-kata.com/">
+<meta name="theme-color" content="#FFFFFF">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/favicon.png" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Kata">
+<meta property="og:title" content="Kata — Independent Production Architects">
+<meta property="og:description" content="We help brands and agencies turn production knowledge into action: commissioning smarter, shaping the right production setup, and knowing what it should cost.">
+<meta property="og:url" content="https://bureau-kata.com/">
+<meta property="og:image" content="https://bureau-kata.com/og.jpg">
+<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "ProfessionalService", "name": "Kata", "description": "We help brands and agencies turn production knowledge into action: commissioning smarter, shaping the right production setup, and knowing what it should cost.", "url": "https://bureau-kata.com/", "logo": "https://bureau-kata.com/apple-touch-icon.png", "email": "hello@bureau-kata.com", "areaServed": "DE", "sameAs": ["https://www.linkedin.com/company/bureau-kata/about/"], "founder": [{"@type": "Person", "name": "Cornelius Roenz"}, {"@type": "Person", "name": "Justin Stiebel"}, {"@type": "Person", "name": "Jankel Huppertz"}]}</script>
+<title>Kata — Independent Production Architects</title>
+<link rel="preload" as="image" href="/assets/deep-arc.webp" type="image/webp" fetchpriority="high">
+<link rel="preload" href="/fonts/cY9AfjOCX1hbuyalUrK4397yjA.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/ieVn2YZDLWuGJpnzaiwFXS9tYtpd59A.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/fonts/fonts.css">
+
+<style>
+/* ============================================================
+   KATA — Corporate Identity V3.0
+   Newsreader 300 display · Hanken Grotesk 200/400/500 interface
+   One reveal mechanic, used four times. Nothing cuts.
+   ============================================================ */
+
+:root{
+  --ink:#0B0B0F;
+  --graphite:#6B6F76;
+  --glacier-deep:#2E5A7D;
+  --glacier:#D9E7F5;
+  --mist:#EEF2F6;
+  --stone:#D6D1C8;
+  --paper:#FFFFFF;
+  --hair:#E2E7EC;
+  --gridline:rgba(11,11,15,.18);   /* every structural rule on the site */
+
+  --serif:"Newsreader",Georgia,"Times New Roman",serif;
+  --sans:"Hanken Grotesk","Helvetica Neue",Arial,sans-serif;
+
+  --measure:54ch;
+  --wide:1380px;
+  --gut:clamp(20px,5vw,64px);
+  --head:clamp(92px,9.5vh,104px);   /* must clear the header: 18 + lockup + 18 */
+
+  --ease:cubic-bezier(.22,.61,.36,1);
+  --t:720ms;
+}
+
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;background:var(--paper);color:var(--ink);
+  font-family:var(--sans);font-weight:400;font-size:15px;line-height:1.65;
+  -webkit-font-smoothing:antialiased;overflow-x:hidden;
+}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+:focus-visible{outline:1px solid var(--glacier-deep);outline-offset:3px}
+
+/* ---------- type ---------- */
+.kicker{font-family:var(--sans);font-weight:500;font-size:clamp(13px,1.05vw,15px);text-transform:uppercase;letter-spacing:.24em;color:var(--ink);margin:0}
+/* a section kicker carries a short rule — a marker, not a label */
+.wide>.kicker:first-child,.seq-side>.kicker:first-child,.cta>.kicker{display:flex;align-items:center;gap:14px}
+.wide>.kicker:first-child::before,.seq-side>.kicker:first-child::before,.cta>.kicker::before{content:"";width:26px;height:1px;background:var(--glacier-deep);flex:0 0 auto}
+.micro{font-family:var(--sans);font-weight:400;font-size:10px;text-transform:uppercase;letter-spacing:.18em;color:var(--graphite);margin:0}
+.d-xxl,.d-xl,.d-l,.d-m{font-family:var(--serif);font-weight:300;margin:0;text-wrap:balance;letter-spacing:-.018em}
+.d-xxl{font-size:clamp(3rem,6.6vw,5.6rem);line-height:1.0}
+.d-xl{font-size:clamp(2.7rem,6.4vw,5rem);line-height:1.0}
+.d-l{font-size:clamp(2rem,4.2vw,3.3rem);line-height:1.08}
+.d-m{font-size:clamp(1.5rem,2.4vw,2rem);line-height:1.18}
+.body{margin:0;max-width:var(--measure);color:var(--graphite)}
+.body.ink{color:var(--ink)}
+.lede{font-family:var(--sans);font-weight:200;font-size:clamp(1.1rem,1.7vw,1.4rem);line-height:1.5;max-width:48ch;color:var(--ink);margin:0}
+em{font-style:italic}
+
+/* ---------- shell ---------- */
+.wide{width:100%;max-width:var(--wide);margin-inline:auto;padding-inline:var(--gut)}
+.sec{padding-block:clamp(56px,7vw,104px)}
+.sec.tight{padding-block:clamp(44px,6vw,82px)}
+.pan-mist{background:linear-gradient(180deg,var(--paper) 0,var(--mist) 14%,var(--mist) 86%,var(--paper) 100%)}
+.pan-ink{background:var(--ink);color:var(--paper)}
+.pan-ink .body,.pan-ink .kicker,.pan-ink .micro{color:rgba(255,255,255,.62)}
+
+/* ---------- grounds: always fading ---------- */
+.ph{position:relative;isolation:isolate}
+.ph>*{position:relative;z-index:1}
+.ph::before{
+  /* the plate bleeds past its section so neighbouring grounds run into one another */
+  content:"";position:absolute;inset:-110px 0;z-index:0;pointer-events:none;
+  background-image:var(--bg);background-size:cover;background-position:var(--pos,center);background-repeat:no-repeat;
+  transform:var(--flip,none);
+  -webkit-mask-image:linear-gradient(180deg,transparent 0%,#000 28%,#000 72%,transparent 100%);
+  mask-image:linear-gradient(180deg,transparent 0%,#000 28%,#000 72%,transparent 100%);
+}
+.ph.edge-top::before{
+  top:0;
+  -webkit-mask-image:linear-gradient(180deg,#000 0%,#000 56%,transparent 100%);
+  mask-image:linear-gradient(180deg,#000 0%,#000 56%,transparent 100%);
+}
+
+.g-sky-arc{--bg:url("/assets/sky-arc.jpg");--pos:58% 42%}
+.g-deep-arc{--bg:url("/assets/deep-arc.jpg");--pos:44% 38%;--flip:scaleX(-1)}
+.g-deep-beam{--bg:url("/assets/deep-beam.jpg");--pos:54% 40%}
+.g-warm-beam{--bg:url("/assets/warm-beam.jpg");--pos:50% 6%}
+.g-water{--bg:url("/assets/water.jpg")}
+.g-stone{--bg:url("/assets/stone.jpg");--pos:38% center}
+.g-bloom{--bg:url("/assets/plate-bloom.jpg")}
+.g-crossing{--bg:url("/assets/plate-crossing.jpg")}
+.g-arc{--bg:url("/assets/plate-arc.jpg")}
+.g-beam{--bg:url("/assets/plate-beam.jpg")}
+.g-halo{--bg:url("/assets/plate-halo.jpg")}
+.g-drift{--bg:url("/assets/plate-drift.jpg")}
+.g-fan{--bg:url("/assets/plate-fan.jpg")}
+.g-warm{--bg:url("/assets/plate-warm-centre.jpg")}
+.g-low-arc{--bg:url("/assets/plate-low-arc.jpg")}
+.g-beams{--bg:url("/assets/sky-beams.jpg");--pos:62% 40%}
+.g-caustic{--bg:url("/assets/caustic.jpg");--pos:center 40%}
+.g-rays{--bg:url("/assets/rays.jpg");--pos:left top}
+
+/* The plates are served as WebP where the browser can decode it — about a
+   quarter of the JPEG weight for the same picture. The @supports guard means
+   a browser without image-set() never sees these rules and keeps the JPEGs,
+   so the grounds can never come back empty. */
+@supports (background-image: image-set(url("a.webp") type("image/webp"))){
+  .g-sky-arc{--bg:image-set(url("/assets/sky-arc.webp") type("image/webp"),url("/assets/sky-arc.jpg") type("image/jpeg"));--pos:58% 42%}
+  .g-deep-arc{--bg:image-set(url("/assets/deep-arc.webp") type("image/webp"),url("/assets/deep-arc.jpg") type("image/jpeg"));--pos:44% 38%;--flip:scaleX(-1)}
+  .g-deep-beam{--bg:image-set(url("/assets/deep-beam.webp") type("image/webp"),url("/assets/deep-beam.jpg") type("image/jpeg"));--pos:54% 40%}
+  .g-warm-beam{--bg:image-set(url("/assets/warm-beam.webp") type("image/webp"),url("/assets/warm-beam.jpg") type("image/jpeg"));--pos:50% 6%}
+  .g-water{--bg:image-set(url("/assets/water.webp") type("image/webp"),url("/assets/water.jpg") type("image/jpeg"))}
+  .g-stone{--bg:image-set(url("/assets/stone.webp") type("image/webp"),url("/assets/stone.jpg") type("image/jpeg"));--pos:38% center}
+  .g-bloom{--bg:image-set(url("/assets/plate-bloom.webp") type("image/webp"),url("/assets/plate-bloom.jpg") type("image/jpeg"))}
+  .g-crossing{--bg:image-set(url("/assets/plate-crossing.webp") type("image/webp"),url("/assets/plate-crossing.jpg") type("image/jpeg"))}
+  .g-arc{--bg:image-set(url("/assets/plate-arc.webp") type("image/webp"),url("/assets/plate-arc.jpg") type("image/jpeg"))}
+  .g-beam{--bg:image-set(url("/assets/plate-beam.webp") type("image/webp"),url("/assets/plate-beam.jpg") type("image/jpeg"))}
+  .g-halo{--bg:image-set(url("/assets/plate-halo.webp") type("image/webp"),url("/assets/plate-halo.jpg") type("image/jpeg"))}
+  .g-drift{--bg:image-set(url("/assets/plate-drift.webp") type("image/webp"),url("/assets/plate-drift.jpg") type("image/jpeg"))}
+  .g-fan{--bg:image-set(url("/assets/plate-fan.webp") type("image/webp"),url("/assets/plate-fan.jpg") type("image/jpeg"))}
+  .g-warm{--bg:image-set(url("/assets/plate-warm-centre.webp") type("image/webp"),url("/assets/plate-warm-centre.jpg") type("image/jpeg"))}
+  .g-low-arc{--bg:image-set(url("/assets/plate-low-arc.webp") type("image/webp"),url("/assets/plate-low-arc.jpg") type("image/jpeg"))}
+  .g-beams{--bg:image-set(url("/assets/sky-beams.webp") type("image/webp"),url("/assets/sky-beams.jpg") type("image/jpeg"));--pos:62% 40%}
+  .g-caustic{--bg:image-set(url("/assets/caustic.webp") type("image/webp"),url("/assets/caustic.jpg") type("image/jpeg"));--pos:center 40%}
+  .g-rays{--bg:image-set(url("/assets/rays.webp") type("image/webp"),url("/assets/rays.jpg") type("image/jpeg"));--pos:left top}
+}
+
+.on-dark{color:var(--paper)}
+.on-dark .kicker,.on-dark .micro{color:rgba(255,255,255,.7)}
+.on-dark .body{color:rgba(255,255,255,.86)}
+.on-dark .btn{color:#fff;border-color:rgba(255,255,255,.6)}
+.on-dark .btn:hover{color:var(--glacier);border-color:var(--glacier)}
+
+/* ---------- mark ---------- */
+/* Vector now, so the mark takes its colour from the page instead of coming
+   in two files. Reversing it is a colour change, not an image swap. */
+.lockup{display:block;width:112px;color:var(--ink)}
+.lockup .mk{display:block}
+.lockup .mk svg{display:block;width:100%;height:auto;fill:currentColor}
+.lockup .tag-art{margin-top:7px}
+a.lockup{transform-origin:left center;animation:breathe 7s var(--ease) infinite}
+@keyframes breathe{0%,100%{transform:scaleX(1)}50%{transform:scaleX(1.006)}}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);
+  clip-path:inset(50%);white-space:nowrap}
+
+/* ---------- header ---------- */
+header{
+  position:fixed;top:0;left:0;right:0;z-index:60;
+  background:transparent;border-bottom:1px solid transparent;
+  transition:background-color var(--t) var(--ease),backdrop-filter var(--t) var(--ease),border-color var(--t) var(--ease),opacity 620ms var(--ease);
+}
+header.stuck{
+  background-color:rgba(255,255,255,.42);
+  -webkit-backdrop-filter:blur(22px) saturate(1.6);
+  backdrop-filter:blur(22px) saturate(1.6);
+  border-bottom-color:rgba(226,231,236,.55);
+}
+.bar{max-width:var(--wide);margin-inline:auto;padding:18px var(--gut);display:flex;align-items:center;justify-content:space-between;gap:24px}
+nav.links{display:flex;align-items:center;gap:clamp(16px,2.2vw,30px)}
+nav.links a{font-size:11px;text-transform:uppercase;letter-spacing:.16em;color:var(--graphite);transition:color 320ms var(--ease)}
+nav.links a:hover,nav.links a.on{color:var(--ink)}
+nav.links a.build{color:var(--ink);font-weight:500;margin-left:clamp(6px,1.6vw,18px)}
+.menu-btn{display:none;background:none;border:0;padding:0;cursor:pointer;font-family:var(--sans);font-size:11px;text-transform:uppercase;letter-spacing:.16em;color:var(--ink)}
+/* Reversed type sits on whatever the plate happens to put under it, and a
+   plate can put a bright beam straight through the nav. A faint fall under
+   the bar gives the reversed mark and links a ground on any picture, without
+   reading as a bar of its own. */
+header.invert::before{content:"";position:absolute;inset:0 0 -72px;z-index:-1;pointer-events:none;
+  background:linear-gradient(180deg, rgba(5,9,16,.66) 0%, rgba(5,9,16,.40) 46%, rgba(5,9,16,0) 100%)}
+header.invert .lockup{color:#fff}
+header.invert nav.links a{color:rgba(255,255,255,.74)}
+header.invert nav.links a:hover,header.invert nav.links a.on,header.invert nav.links a.build{color:#fff}
+header.invert .menu-btn{color:#fff}
+
+.sheet{display:none}
+/* the sheet is see-through now, so the page behind it has to hold still —
+   otherwise a stray swipe scrolls the site under the open menu */
+html.navlock,body.navlock{overflow:hidden}
+@media(max-width:820px){
+  nav.links{display:none}
+  .menu-btn{display:block}
+  /* The menu answers the button that opened it: same right edge, same gutter,
+     so the eye never crosses the screen to find what it just tapped. And it is
+     glass, not paper — the same dock treatment the header takes on scroll — so
+     the page you are leaving stays faintly present behind the names. */
+  .sheet{display:block;position:fixed;inset:0;z-index:59;
+    background-color:rgba(255,255,255,.6);
+    -webkit-backdrop-filter:blur(26px) saturate(1.6);
+            backdrop-filter:blur(26px) saturate(1.6);
+    padding:calc(var(--head) + 28px) var(--gut) 40px;text-align:right;
+    opacity:0;pointer-events:none;transition:opacity 420ms var(--ease)}
+  .sheet.open{opacity:1;pointer-events:auto}
+  .sheet a{display:block;font-family:var(--serif);font-weight:300;font-size:clamp(2rem,9vw,2.8rem);line-height:1.3;color:var(--ink)}
+  .sheet a.build{color:var(--glacier-deep)}
+}
+
+/* ---------- hero ---------- */
+.hero{min-height:min(94vh,880px);display:flex;flex-direction:column;justify-content:flex-end;padding:calc(var(--head) + 40px) var(--gut) clamp(64px,11vh,120px)}
+/* a single soft luminance fall to the type corner — not a box scrim */
+.hero::after{
+  content:"";position:absolute;inset:0;z-index:0;pointer-events:none;
+  background:radial-gradient(112% 92% at 7% 82%, rgba(5,9,16,.56) 0%, rgba(5,9,16,.28) 42%, rgba(5,9,16,0) 74%);
+  /* must die out well before the hero's bottom edge, or it prints a line there */
+  -webkit-mask-image:linear-gradient(180deg,#000 0,#000 62%,transparent 97%);
+          mask-image:linear-gradient(180deg,#000 0,#000 62%,transparent 97%);
+}
+.hero>*{position:relative;z-index:2}
+.hero .inner{max-width:var(--wide);margin-inline:auto;width:100%}
+.hero-sub{max-width:44ch;margin:28px 0 0;font-size:clamp(15px,1.2vw,18px);line-height:1.6;color:#fff;font-weight:400}
+.hero-foot{max-width:var(--wide);margin:44px auto 0;width:100%}
+
+.phero{padding-block:calc(var(--head) + clamp(40px,6vw,88px)) clamp(44px,6vw,76px)}
+.phero .d-xl{margin-top:14px}
+.phero .lede{margin-top:26px}
+/* a page title set on a ground carries the same soft fall as the home hero, so
+   white type never sits on bare picture */
+/* A page opens the way the home page does: a tall picture, one soft fall of
+   luminance at the type, and a long fade to paper underneath. The plate keeps
+   the standard 56% → 100% fade — half the band's height to arrive at white —
+   so the transition is never a visible edge. The type therefore sits in the
+   upper half, inside the plate's full strength, rather than being chased down
+   into the fade by a heavier scrim. */
+/* the band is sized by its own type plus a fixed run of picture underneath,
+   not by a fixed height — otherwise a one-line lede leaves a hole and a
+   four-line one crowds the fade. min-height is only a floor. */
+.phero.on-dark{position:relative;isolation:isolate;min-height:min(58vh,540px);
+  display:flex;align-items:flex-start;
+  padding-block:calc(var(--head) + clamp(48px,8vh,88px)) clamp(170px,24vh,260px)}
+/* the fade starts just under the type rather than a third of a band later, so
+   there is no dead picture between the two — and because the plate bleeds
+   110px past the band, the fade itself is no shorter for it */
+.phero.on-dark.edge-top::before{
+  -webkit-mask-image:linear-gradient(180deg,#000 0%,#000 60%,transparent 100%);
+          mask-image:linear-gradient(180deg,#000 0%,#000 60%,transparent 100%)}
+.phero.on-dark>*{position:relative;z-index:2;width:100%}
+.phero.on-dark::after{
+  /* the same weight as the home hero — not heavier. It must die out well
+     before the bottom edge or it prints a line there. */
+  content:"";position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:radial-gradient(112% 92% at 7% 44%, rgba(5,9,16,.56) 0%, rgba(5,9,16,.28) 42%, rgba(5,9,16,0) 74%);
+  -webkit-mask-image:linear-gradient(180deg,#000 0,#000 58%,transparent 94%);
+          mask-image:linear-gradient(180deg,#000 0,#000 58%,transparent 94%)}
+.phero.on-dark .lede{color:#fff}
+@media(min-width:1000px){
+  .phero.on-dark::after{
+    background:radial-gradient(94% 90% at 4% 44%, rgba(5,9,16,.60) 0%, rgba(5,9,16,.30) 44%, rgba(5,9,16,0) 76%)}
+}
+@media(max-width:640px){
+  /* on a phone the type block spans the picture, so the fall widens with it
+     rather than deepening — the same move the home hero makes */
+  .phero.on-dark{min-height:min(56vh,460px);padding-block:calc(var(--head) + 32px) clamp(120px,18vh,190px)}
+  .phero.on-dark::after{
+    background:radial-gradient(168% 78% at 32% 42%, rgba(5,9,16,.60) 0%, rgba(5,9,16,.34) 50%, rgba(5,9,16,0) 84%)}
+}
+/* ---- THE ACCORDION — a set shut until you open one -------------
+   Every item is visible at once as a title; the detail is behind
+   it. Opening one is a click, never a hover: this is a decision to
+   read something, not a glance. Used by the services and by the
+   specialist network.                                            */
+.acc-head{all:unset;box-sizing:border-box;cursor:pointer;display:grid;width:100%;
+  grid-template-columns:64px minmax(0,1fr) 22px;gap:0 24px;align-items:center;
+  padding-block:clamp(20px,2.6vh,30px)}
+.acc-head .sn{font-size:10px;letter-spacing:.24em;font-weight:500;color:var(--glacier-deep)}
+.acc-head h3{margin:0}
+/* the mark is a hairline cross that lies down as the door opens */
+.acc-mark{position:relative;width:22px;height:22px;justify-self:end}
+.acc-mark::before,.acc-mark::after{content:"";position:absolute;background:var(--glacier-deep);
+  transition:transform 620ms var(--ease),opacity 620ms var(--ease)}
+.acc-mark::before{left:0;right:0;top:50%;height:1px}
+.acc-mark::after{top:0;bottom:0;left:50%;width:1px}
+.acc.open .acc-mark::after{transform:scaleY(0);opacity:0}
+.acc-body{display:grid;grid-template-rows:0fr;transition:grid-template-rows 720ms var(--ease)}
+/* while a link is jumping to an accordion, heights settle instantly */
+.nofx .acc-body,.nofx .acc-inner,.nofx .acc-mark::before,.nofx .acc-mark::after{transition:none!important}
+.acc.open .acc-body{grid-template-rows:1fr}
+.acc-inner{overflow:hidden;min-height:0;visibility:hidden;transition:visibility 0s linear 720ms}
+.acc.open .acc-inner{visibility:visible;transition-delay:0s}
+.acc-inner>.body{margin:0;max-width:58ch;padding-top:4px}
+
+/* ---------- roster ---------- */
+.roster{overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+.roster-track{display:flex;width:max-content;animation:slide 64s linear infinite}
+.roster:hover .roster-track{animation-play-state:paused}
+.roster-track span{font-size:11.5px;text-transform:uppercase;letter-spacing:.24em;color:var(--graphite);padding-inline:28px;white-space:nowrap}
+@keyframes slide{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* ============================================================
+   THE MOTION SET — five mechanics, one per kind of content.
+   Air, water, light, structure, form. Each earns its place; none
+   is used twice. All 600–900ms, ease-out, no overshoot (§13).
+   ============================================================ */
+
+/* ---- 01 DRIFT (air) — the roster ---------------------------
+   A roster has no beginning and no end, so it never stops and
+   never starts. Continuous, low-contrast, pausable.            */
+.drift{overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+.drift-track{display:flex;width:max-content;animation:slide 64s linear infinite}
+.drift:hover .drift-track{animation-play-state:paused}
+.drift-track span{font-size:11.5px;text-transform:uppercase;letter-spacing:.24em;color:var(--graphite);padding-inline:clamp(18px,2vw,28px);white-space:nowrap}
+@keyframes slide{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* ============================================================
+   NATURAL INTERFACE — one physical model per element.
+   The pointer triggers nothing. Scrolling reveals, it never controls.
+   Nothing closes by itself. Only what looks like a target is tappable.
+   ============================================================ */
+
+/* arrival: things rise into place once, as they enter the view */
+.rise{opacity:0;transform:translateY(16px);transition:opacity 760ms var(--ease),transform 760ms var(--ease)}
+.rise.in{opacity:1;transform:none}
+.rise:nth-child(2){transition-delay:110ms}.rise:nth-child(3){transition-delay:220ms}.rise:nth-child(4){transition-delay:330ms}
+
+/* ============================================================
+   THE FRAME — one grid, used at two, three and four columns.
+   A rule above and below, a hairline centred in every gutter, and
+   both outer edges flush with the page, so a framed set lines up
+   with the headline above it and with every other set on the site.
+   Cells are equal: the gutter carries the spacing, never padding
+   on the cell, which would make the outer columns wider.
+   Used by: the prism, the four pillars, the founders, the service
+   focus areas and the network.
+   ============================================================ */
+.prism,.frame,.wall,.areas{--gg:clamp(20px,2.6vw,40px);
+  display:grid;column-gap:var(--gg);border-block:1px solid var(--gridline)}
+.prism>*,.frame>*,.wall>*,.areas>*{position:relative;min-width:0}
+.prism>*::before,.frame>*::before,.wall>*::before,.areas>*::before{
+  content:"";position:absolute;top:0;bottom:0;left:calc(var(--gg) / -2);
+  width:1px;background:var(--gridline)}
+/* the first cell of every row opens the frame, so it carries no division */
+.prism>*:nth-child(3n+1)::before,.areas>*:nth-child(3n+1)::before,.wall>*:first-child::before,
+.frame>*:nth-child(4n+1)::before{content:none}
+/* a set that runs to a second row rules that row off with a line that crosses
+   the gutters too, so it reads like the rules above and below the frame */
+.areas>*:nth-child(n+4)::after{
+  content:"";position:absolute;top:0;height:1px;background:var(--gridline);
+  left:calc(var(--gg) / -2);right:calc(var(--gg) / -2)}
+.areas>*:nth-child(3n+1)::after{left:0}
+.areas>*:nth-child(3n)::after{right:0}
+
+/* ---- VALUE PROPOSITION — three cards, turned face up ---------
+   Nothing to choose: you read three things. They arrive one after
+   another and stay.                                              */
+.prism{grid-template-columns:repeat(3,1fr)}
+.prism-band{display:flex;flex-direction:column;padding:30px 0 40px}
+.prism-band .pn{font-size:10px;letter-spacing:.24em;font-weight:500;color:var(--glacier-deep);margin:0 0 22px}
+/* a two-line shelf for every title: the copy below starts on one line across all three */
+.prism-band h3{font-family:var(--serif);font-weight:300;font-size:clamp(1.35rem,2.5vw,2.2rem);line-height:1.08;letter-spacing:-.018em;margin:0;color:var(--ink);min-height:2.16em}
+/* The body steps back to Graphite — it was the only body copy on the site set
+   in Ink, sitting directly under its own title in the same colour, which left
+   the eye nowhere to land. Now the three titles carry and the copy waits. */
+.prism-band p{margin:18px 0 0;color:var(--graphite);font-size:15px;line-height:1.55;max-width:34ch}
+/* and attention follows the pointer, the same way it does on the depth gauge */
+@media(hover:hover){
+  .prism:hover .prism-band{opacity:.38;transition:opacity 620ms var(--ease)}
+  .prism:hover .prism-band:hover{opacity:1}
+}
+@media(max-width:900px){
+  /* the value-proposition headline takes the full column on a phone */
+  .g-bloom h2[style]{max-width:none!important}
+  .prism{grid-template-columns:1fr;column-gap:0}
+  .prism-band{border-top:1px solid var(--gridline);padding:24px 0 28px;min-height:0}
+  .prism-band:first-child{border-top:0}
+  .prism>*:nth-child(n)::before{content:none}
+  .prism-band .pn{margin-bottom:14px}
+  .prism-band p{max-width:none;margin-top:14px}
+  .prism-band h3{font-size:1.55rem;min-height:0}
+}
+
+/* ---- THREE WAYS IN — a depth gauge ---------------------------
+   The three names hold one left edge and never move. Point at a
+   band and its copy is drawn back from left to right, the way a
+   line is read. The copy always holds its space, so nothing moves
+   vertically and the bands never shift under the cursor.
+   One grid: number | name | copy.                                */
+.depth{border-top:1px solid rgba(11,11,15,.18);--dgap:clamp(16px,2.4vw,40px);--dnum:56px}
+.depth-row{all:unset;box-sizing:border-box;cursor:pointer;display:grid;width:100%;position:relative;
+  grid-template-columns:var(--dnum) minmax(0,360px) minmax(0,1fr);gap:0 var(--dgap);align-items:center;
+  padding-block:clamp(22px,3vh,34px);border-bottom:1px solid rgba(11,11,15,.18);
+  transition:opacity 720ms var(--ease)}
+.depth-row>*{grid-row:1;min-width:0}
+.depth-row .dn{grid-column:1;font-size:10px;letter-spacing:.24em;font-weight:500;color:var(--glacier-deep)}
+.depth-row .dt{grid-column:2}
+.depth-row .dcopy{grid-column:3}
+.depth-row h3{font-family:var(--serif);font-weight:300;font-size:clamp(1.8rem,3.4vw,3.1rem);line-height:1;
+  letter-spacing:.04em;text-transform:uppercase;margin:0;color:var(--ink);white-space:nowrap}
+/* the wipe: the line is uncovered from its left edge, never faded in as a block */
+.depth-row .dcopy p{margin:0;color:var(--ink);font-size:15.5px;line-height:1.55;max-width:52ch;
+  opacity:0;-webkit-clip-path:inset(0 100% 0 0);clip-path:inset(0 100% 0 0);
+  transition:opacity 300ms var(--ease),-webkit-clip-path 820ms var(--ease),clip-path 820ms var(--ease)}
+
+.depth-row.open .dcopy p,.depth-row:focus-visible .dcopy p{opacity:1;-webkit-clip-path:inset(0 0 0 0);clip-path:inset(0 0 0 0)}
+/* a set with long names needs a wider lane and smaller type — the three
+   engagements are one word each, the seven principles are not */
+.depth.long{--dnum:52px}
+.depth.long .depth-row{grid-template-columns:var(--dnum) minmax(0,460px) minmax(0,1fr)}
+.depth.long .depth-row h3{font-size:clamp(1.25rem,2.3vw,2.1rem);line-height:1.08;white-space:normal}
+
+@media(hover:hover){
+  .depth-row:hover .dcopy p{opacity:1;-webkit-clip-path:inset(0 0 0 0);clip-path:inset(0 0 0 0)}
+  /* attention follows the pointer: the band you are on is the one that is lit */
+  .depth:hover .depth-row{opacity:.42}
+  .depth:hover .depth-row:hover{opacity:1}
+}
+@media(max-width:900px){
+  /* no pointer to follow, so every band stands open */
+  .depth-row{grid-template-columns:40px minmax(0,1fr);gap:0 14px;cursor:default}
+  .depth-row .dn{grid-column:1;grid-row:1}
+  .depth-row .dt{grid-column:2;grid-row:1}
+  .depth-row .dcopy{grid-column:2;grid-row:2;padding-top:14px}
+  .depth-row h3{font-size:clamp(1.55rem,7vw,2.1rem);white-space:normal}
+  .depth-row .dcopy p{opacity:1;-webkit-clip-path:none;clip-path:none}
+}
+
+/* ---- FOUR PILLARS — four doors --------------------------------
+   Always fully readable. Each one leads to its service.          */
+.frame{grid-template-columns:repeat(4,1fr)}
+.frame-col{position:relative;display:flex;flex-direction:column;color:inherit;
+  padding:30px 0 34px;min-height:clamp(250px,32vh,340px)}
+.frame-col .fn{font-size:10px;letter-spacing:.24em;font-weight:500;color:var(--glacier-deep);margin:0 0 20px}
+/* name and copy travel as one body, so the copy always hangs off its own name */
+.frame-col .fc-body{display:flex;flex-direction:column;flex:1 1 auto;min-height:0}
+.frame-col h3{font-family:var(--serif);font-weight:300;font-size:clamp(1.15rem,1.75vw,1.5rem);line-height:1.14;letter-spacing:-.015em;margin:0;color:var(--ink)}
+.frame-col .fc-copy{display:flex;flex-direction:column;flex:1 1 auto;min-height:0}
+/* same rule as the value tiles: the body steps back so the four titles carry */
+.frame-col p{margin:16px 0 0;color:var(--graphite);font-size:14.5px;line-height:1.55;max-width:30ch}
+.frame-col .go{margin-top:auto;padding-top:26px;font-size:10px;letter-spacing:.18em;text-transform:uppercase;font-weight:500;color:var(--glacier-deep)}
+/* Where a pointer exists the column is reduced to one thing: the name of the
+   discipline, large, left-aligned, held in the middle of its own column. The
+   rest of it is present but withheld. On approach the name rises to the top
+   of the column and the copy arrives underneath — so the answer to "what do
+   they do" is four words, and the detail is what you ask for. Everything is
+   absolutely placed, which is what lets `top` and `transform` interpolate
+   together; the copy's top is shared by all four, so the bodies still land on
+   one line across the grid the way the shelf used to make them. */
+@media(hover:hover) and (min-width:901px){
+  .frame{--fts:clamp(1.45rem,2.05vw,2.05rem);--ftop:62px}
+  .frame-col{min-height:clamp(360px,25.5vw,384px);padding-bottom:30px}
+  /* the body is only ever as tall as the name — the copy is lifted out of its
+     flow and hung below — so centring the body centres the name, whether that
+     name runs to one line or three, and the copy trails whatever it is given */
+  .frame-col .fc-body{position:absolute;left:0;right:0;top:50%;display:block;
+    transform:translateY(-50%);
+    transition:top 780ms var(--ease),transform 780ms var(--ease)}
+  .frame-col h3{font-size:var(--fts);line-height:1.08;letter-spacing:-.02em}
+  .frame-col .fc-copy{position:absolute;left:0;right:0;top:100%;margin-top:26px;display:block;
+    opacity:0;transform:translateY(12px);
+    transition:opacity 480ms var(--ease),transform 780ms var(--ease)}
+  .frame-col p{margin:0}
+  .frame-col .go{display:block;margin-top:0;padding-top:22px}
+  .frame-col:hover .fc-body,.frame-col:focus-visible .fc-body{top:var(--ftop);transform:translateY(0)}
+  .frame-col:hover .fc-copy,.frame-col:focus-visible .fc-copy{
+    opacity:1;transform:none;transition-delay:180ms,180ms}
+  /* and attention follows the pointer — doubly worth it here, where each column
+     is a link: the one you are about to follow is the one that is lit */
+  .frame:hover .frame-col{opacity:.34;transition:opacity 620ms var(--ease)}
+  .frame:hover .frame-col:hover{opacity:1}
+}
+@media(max-width:900px){
+  .frame{grid-template-columns:1fr;column-gap:0}
+  .frame-col{border-top:1px solid var(--gridline);min-height:0;padding:22px 0 26px}
+  .frame-col:first-child{border-top:0}
+  .frame>*:nth-child(n)::before{content:none}
+  .frame-col h3{font-size:1.35rem}
+  .frame-col p{margin:12px 0 0;max-width:none}
+  .frame-col .go{margin-top:0;padding-top:14px}
+}
+
+.seq-light{position:relative;isolation:isolate}
+.seq-light>*{position:relative;z-index:1}
+.seq-light::before{
+  /* the light travels the whole reading, not just its opening */
+  /* no bleed past the foot: the founders start on paper */
+  content:"";position:absolute;inset:-90px 0 0;z-index:0;pointer-events:none;
+  background-image:image-set(url("/assets/rays.webp") type("image/webp"),url("/assets/rays.jpg") type("image/jpeg"));background-size:cover;background-position:left top;background-repeat:no-repeat;
+  -webkit-mask-image:linear-gradient(180deg,transparent 0%,#000 12%,#000 52%,transparent 86%);
+          mask-image:linear-gradient(180deg,transparent 0%,#000 12%,#000 52%,transparent 86%)}
+
+/* ---- SEVEN PRINCIPLES — a reading -----------------------------
+   The seven stand in a column, all readable. The one under the
+   reading line is lit; the ones you have passed stay quiet, the
+   ones ahead wait. Beside them the counter keeps the place. No
+   pinning, no sheets — the page scrolls like a page.              */
+.seq{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(32px,6vw,96px);align-items:start}
+.seq-side{position:sticky;top:calc(var(--head) + 32px)}
+.seq-count{font-family:var(--serif);font-weight:300;font-size:clamp(4rem,9vw,8.5rem);line-height:.9;letter-spacing:-.03em;color:var(--ink);margin:clamp(24px,4vh,48px) 0 0;font-variant-numeric:tabular-nums}
+.seq-count small{font-family:var(--sans);font-weight:400;font-size:12px;letter-spacing:.2em;color:var(--graphite);margin-left:14px;vertical-align:baseline}
+.seq-list{border-top:1px solid var(--hair)}
+.seq-item{padding-block:clamp(30px,4.5vh,52px);border-bottom:1px solid var(--hair);
+  opacity:.34;transition:opacity 700ms var(--ease)}
+.seq-item.lit,.seq-item.past{opacity:1}
+.seq-item.past{opacity:.62}
+.seq-item .sn{font-size:10px;letter-spacing:.24em;font-weight:500;color:var(--glacier-deep);margin:0 0 14px}
+.seq-item h3{font-family:var(--serif);font-weight:300;font-size:clamp(1.9rem,4.2vw,3.6rem);line-height:1.02;letter-spacing:-.022em;margin:0;color:var(--ink)}
+.seq-item p{margin:16px 0 0;font-size:clamp(15px,1.2vw,17px);line-height:1.55;max-width:44ch;color:var(--graphite)}
+.seq-item.lit p{color:var(--ink)}
+@media(max-width:900px){
+  .seq{grid-template-columns:1fr;gap:28px}
+  .seq-side{position:static}
+  .seq-count{display:none}
+  .seq-item{padding-block:26px}
+  .seq-item h3{font-size:clamp(1.7rem,7vw,2.3rem)}
+  .seq-item p{max-width:none}
+}
+
+
+/* ---------- lists ---------- */
+.plist{border-top:1px solid var(--gridline)}
+.pan-ink .plist{border-top-color:rgba(255,255,255,.18)}
+.pan-ink .plist .item{border-bottom-color:rgba(255,255,255,.14)}
+.pan-ink .plist h3{color:#fff}
+.pan-ink .plist p{color:rgba(255,255,255,.66)}
+.pan-ink .plist .n{color:var(--glacier)}
+.plist .item{display:grid;grid-template-columns:52px minmax(0,300px) minmax(0,1fr);gap:24px;padding-block:24px;border-bottom:1px solid var(--gridline)}
+.plist .n{font-size:10px;letter-spacing:.24em;color:var(--glacier-deep);font-weight:500;padding-top:5px}
+.plist h3{font-family:var(--serif);font-weight:300;font-size:clamp(1.15rem,1.8vw,1.4rem);margin:0;line-height:1.2}
+.plist p{margin:0;color:var(--graphite);font-size:14px;max-width:52ch}
+@media(max-width:820px){.plist .item{grid-template-columns:1fr;gap:10px}.plist .n{padding-top:0}}
+
+/* ---------- the wall: the three founders, in the page grid ----------
+   The same frame as the four pillars — a rule above and below, a
+   hairline down each division, a number at the head of every column —
+   so the founders are scored by the page grid rather than floating
+   free of it. The portraits still fade top and bottom like a plate:
+   never a framed picture, never a vignette. */
+.wall{grid-template-columns:repeat(3,1fr)}
+.wall-p{margin:0;padding-block:20px 28px}
+.wall-p .fn{display:block;font-size:10px;letter-spacing:.24em;font-weight:500;color:var(--glacier-deep);margin:0 0 14px}
+/* the one photograph on the site with hard edges: these are documents of three
+   people, held by the grid, not atmosphere. Square, not 4:5 — the block then
+   lands in one screen, pictures, names and copy together. Two of the frames are
+   4:5 and crop to square from the top; Cornelius ships pre-squared, framed
+   wider because his original had 17px above the hair. All three carry the same
+   eyeline, near enough 51% of the frame. */
+.wall-p img{display:block;width:100%;aspect-ratio:1/1;
+  object-fit:cover;object-position:50% 4%;filter:grayscale(1)}
+.wall-p figcaption{padding:16px 0 0}
+.wall-p h3{font-family:var(--serif);font-weight:300;font-size:clamp(1.3rem,2vw,1.6rem);margin:0 0 8px;line-height:1.15}
+.wall-p .role{font-size:10px;text-transform:uppercase;letter-spacing:.16em;color:var(--glacier-deep);margin:0 0 18px}
+.wall-p p{margin:0 0 12px;color:var(--graphite);font-size:14px;max-width:38ch}
+.wall-p a.mail{font-size:12px;color:var(--glacier-deep);border-bottom:1px solid var(--hair);padding-bottom:2px}
+@media(max-width:900px){
+  /* on a phone the wall is swiped, not stacked: a natural strip of three.
+     It runs to both screen edges so no portrait is cut by the gutter. */
+  .wall{--gg:16px;width:100vw;margin-left:calc(50% - 50vw);
+        display:flex;gap:var(--gg);overflow-x:auto;overscroll-behavior-x:contain;scroll-snap-type:x mandatory;
+        scroll-padding-inline:0;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+  .wall::-webkit-scrollbar{display:none}
+  .wall-p{flex:0 0 min(80vw,380px);scroll-snap-align:start;padding:22px 0 28px}
+  .wall-p .fn{padding-inline:var(--gut)}
+  .wall-p figcaption{padding:16px var(--gut) 0}
+}
+
+/* ---- SERVICES — the discipline, then its focus areas in the frame */
+.acc{border-top:1px solid var(--gridline)}
+.acc:last-child{border-bottom:1px solid var(--gridline)}
+.acc .kicker{margin-top:40px}
+/* a longer set gets a smaller head, so twelve of them still scan */
+.acc.sm .acc-head{grid-template-columns:56px minmax(0,1fr) 20px;padding-block:clamp(15px,1.9vh,23px)}
+.acc.sm .acc-head h3{font-family:var(--serif);font-weight:300;font-size:clamp(1.15rem,1.7vw,1.45rem);line-height:1.2;letter-spacing:-.012em;margin:0;color:var(--ink)}
+.acc.sm .acc-mark{width:20px;height:20px}
+.acc.sm .acc-inner{padding-bottom:30px}
+.acc.sm .acc-inner .line{font-size:14.5px;color:var(--ink);margin:0 0 12px;max-width:52ch}
+.acc.sm .acc-inner p{margin:0;color:var(--graphite);font-size:14px;line-height:1.55;max-width:62ch}
+.areas{grid-template-columns:repeat(3,1fr);margin-top:20px}
+.areas>div{padding:24px 0 28px}
+.areas .an{display:block;font-size:10px;letter-spacing:.24em;font-weight:500;color:var(--glacier-deep);margin:0 0 14px}
+.areas h3{font-family:var(--serif);font-weight:300;font-size:1.15rem;line-height:1.2;margin:0;color:var(--ink)}
+.areas p{margin:10px 0 0;color:var(--graphite);font-size:14px;line-height:1.5}
+@media(max-width:900px){
+  .acc-head{grid-template-columns:40px minmax(0,1fr) 18px;gap:0 14px}
+  .acc-mark{width:18px;height:18px}
+  .areas{grid-template-columns:1fr;column-gap:0;margin-top:14px}
+  .areas>div{padding:20px 0 22px;border-top:1px solid var(--gridline)}
+  .areas>div:first-child{border-top:0}
+  .areas>*:nth-child(n)::before,.areas>*:nth-child(n)::after{content:none}
+}
+
+
+/* ---------- CTA ---------- */
+.cta{display:flex;flex-direction:column;align-items:center;text-align:center}
+.cta>.kicker{justify-content:center}
+.cta .d-l{margin-top:20px;max-width:16ch}
+.cta .body{margin:22px auto 0;max-width:44ch}
+.sec.close{display:flex;align-items:center;padding-block:clamp(84px,10vw,132px)}
+.sec.close.ph::before{
+  /* starts inside its own section, so what sits above it stays on paper */
+  inset:0 0 -110px;
+  -webkit-mask-image:linear-gradient(180deg,transparent 0%,#000 34%,#000 74%,transparent 100%);
+          mask-image:linear-gradient(180deg,transparent 0%,#000 34%,#000 74%,transparent 100%)}
+.btn.big{background:var(--ink);color:var(--paper);border:0;padding:20px 44px;font-size:13px;letter-spacing:.22em;margin-top:32px}
+.btn.big:hover{color:var(--paper)}
+/* on a dark ground the fill inverts, so the button still carries weight */
+.on-dark .btn.big{background:var(--paper);color:var(--ink);border:0}
+.on-dark .btn.big:hover{background:var(--glacier);color:var(--ink)}
+/* the hero button is the one exception: the same glass as the dock on scroll */
+.hero .btn.big{margin-top:clamp(28px,4vh,42px);
+  background-color:rgba(255,255,255,.42);
+  -webkit-backdrop-filter:blur(22px) saturate(1.6);
+          backdrop-filter:blur(22px) saturate(1.6);
+  border:1px solid rgba(226,231,236,.55);color:var(--ink);
+  transition:background-color var(--t) var(--ease),color var(--t) var(--ease)}
+.hero .btn.big:hover{background-color:rgba(255,255,255,.62);color:var(--ink)}
+.btn{display:inline-block;background:none;border:0;border-bottom:1px solid var(--ink);padding:0 0 6px;font-family:var(--sans);font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:.18em;color:var(--ink);cursor:pointer;transition:color var(--t) var(--ease),border-color var(--t) var(--ease)}
+.btn:hover{color:var(--glacier-deep);border-color:var(--glacier-deep)}
+.pan-ink .btn{color:var(--paper);border-color:rgba(255,255,255,.5)}
+.arrow{font-size:11px;text-transform:uppercase;letter-spacing:.16em;color:var(--glacier-deep);border-bottom:1px solid var(--hair);padding-bottom:3px}
+.on-ink .arrow,.pan-ink .arrow{color:var(--glacier);border-bottom-color:rgba(255,255,255,.28)}
+
+/* ---------- form ---------- */
+.form{display:grid;grid-template-columns:repeat(2,1fr);gap:26px 30px;max-width:720px}
+.f-full{grid-column:1/-1}
+.field label{display:block;font-size:10px;text-transform:uppercase;letter-spacing:.18em;color:var(--graphite);margin-bottom:8px}
+.field label .opt{color:#C4CCD4}
+.field input,.field select,.field textarea{width:100%;background:transparent;border:0;border-bottom:1px solid var(--hair);padding:8px 0;font-family:var(--sans);font-size:15px;color:var(--ink);border-radius:0;transition:border-color var(--t) var(--ease)}
+.field textarea{min-height:96px;resize:vertical;line-height:1.6}
+.field input:focus,.field select:focus,.field textarea:focus{outline:none;border-bottom-color:var(--glacier-deep)}
+.field select{appearance:none;cursor:pointer}
+.privacy{font-size:12px;color:var(--graphite);max-width:46ch;margin:0}
+.privacy a{color:var(--glacier-deep);border-bottom:1px solid var(--hair)}
+.formnote{margin:0;font-size:13px;color:var(--glacier-deep);min-height:1.4em}
+@media(max-width:700px){.form{grid-template-columns:1fr}}
+
+/* ---------- modal ---------- */
+.modal{position:fixed;inset:0;z-index:80;display:flex;align-items:center;justify-content:center;padding:var(--gut);background:rgba(238,242,246,.78);-webkit-backdrop-filter:blur(18px);backdrop-filter:blur(18px);opacity:0;pointer-events:none;transition:opacity 480ms var(--ease)}
+.modal.open{opacity:1;pointer-events:auto}
+.modal .card{background:var(--paper);border:1px solid var(--hair);width:100%;max-width:840px;max-height:88vh;overflow-y:auto;padding:clamp(28px,4vw,52px)}
+.modal .close{float:right;background:none;border:0;cursor:pointer;font-family:var(--sans);font-size:10px;text-transform:uppercase;letter-spacing:.18em;color:var(--graphite);padding:0}
+
+/* ---------- footer ---------- */
+footer{border-top:1px solid var(--hair);padding-block:clamp(48px,6vw,80px)}
+.foot{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr) minmax(0,1fr);gap:36px}
+.foot .lockup{width:196px;animation:none}
+.foot ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:9px}
+.foot a{font-size:12.5px;color:var(--graphite)}
+.foot a:hover{color:var(--ink)}
+.foot .meta{margin-top:44px;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+@media(max-width:820px){.foot{grid-template-columns:1fr;gap:28px}}
+
+
+/* ---------- grain ----------
+   Every ground on this site is a very shallow gradient — the long fade to
+   paper crosses 600 device pixels with only a handful of 8-bit levels to
+   spend, so it posterises into visible bands. A whisper of grain over the
+   whole page gives those levels something to hide behind. It is far below
+   the threshold of reading as texture; it only breaks the plateaus. */
+body::after{content:"";position:fixed;inset:0;z-index:95;pointer-events:none;
+  background-image:url("/assets/grain.png");background-size:96px 96px;
+  opacity:.05;mix-blend-mode:overlay}
+.page{display:none}
+.page.active{display:block}
+
+.flag{position:fixed;left:0;right:0;bottom:0;z-index:70;background:var(--ink);color:rgba(255,255,255,.72);font-size:10.5px;letter-spacing:.06em;padding:9px var(--gut);display:flex;justify-content:space-between;gap:16px;align-items:center}
+.flag button{all:unset;cursor:pointer;color:rgba(255,255,255,.5);font-size:10px;letter-spacing:.18em;text-transform:uppercase}
+.flag.hide{display:none}
+
+
+/* ---------- wide: keep the hero composed, type off the flare ---------- */
+@media(min-width:1000px){
+  .hero.g-deep-arc{--pos:24% 76%}
+  .hero .inner h1{max-width:13ch}
+  .hero-sub{max-width:40ch;font-size:17px}
+  .hero::after{
+    background:radial-gradient(92% 88% at 3% 84%, rgba(5,9,16,.62) 0%, rgba(5,9,16,.30) 42%, rgba(5,9,16,0) 76%);
+  }
+}
+
+/* ---------- phone and small tablet ---------- */
+@media(max-width:640px){
+  :root{--gut:20px}
+  .d-xxl,.d-xl,.d-l,.d-m,.rv-title,.lede{overflow-wrap:break-word}
+
+  /* display type that cannot outrun the screen */
+  .d-xl{font-size:clamp(1.85rem,7.6vw,2.5rem);line-height:1.06}
+  .d-xxl{font-size:clamp(2.05rem,8.6vw,2.9rem);line-height:1.04}
+  .d-l{font-size:clamp(1.65rem,6.6vw,2.2rem);line-height:1.1}
+  .d-m{font-size:clamp(1.25rem,5vw,1.6rem)}
+  .rv-title{font-size:clamp(1.75rem,7.2vw,2.4rem);max-width:none}
+  .lede{font-size:1.02rem;line-height:1.48}
+
+  .hero{min-height:82svh;padding-bottom:clamp(30px,5vh,44px)}
+  .hero .inner h1{max-width:none}
+  .hero-sub{max-width:100%;font-size:15px;margin-top:22px}
+  /* on a phone the text block spans the picture — the fall widens with it */
+  .hero::after{background:radial-gradient(150% 84% at 24% 84%, rgba(5,9,16,.58) 0%, rgba(5,9,16,.28) 46%, rgba(5,9,16,0) 78%)}
+  .hero-foot{margin-top:28px}
+
+  .phero{padding-block:calc(var(--head) + 30px) 34px}
+  .sec{padding-block:clamp(52px,11vw,84px)}
+  .sec.tight{padding-block:clamp(40px,8vw,64px)}
+
+  .rv-copy{font-size:15.5px}
+  .roster-track span{padding-inline:18px;font-size:10.5px}
+  .foot .meta{gap:8px}
+  .modal .card{padding:24px 20px}
+  .flag{font-size:9.5px;padding:8px 16px;gap:10px;line-height:1.35}
+  .flag button{flex:0 0 auto}
+}
+
+/* ---------- stacked layout: grounds and contrast ---------- */
+@media(max-width:900px){
+  /* short stacked sections need the picture to actually read */
+  .ph::before{
+    -webkit-mask-image:linear-gradient(180deg,transparent 0%,#000 24%,#000 76%,transparent 100%);
+    mask-image:linear-gradient(180deg,transparent 0%,#000 24%,#000 76%,transparent 100%);
+  }
+  .ph.edge-top::before{
+    -webkit-mask-image:linear-gradient(180deg,#000 0%,#000 60%,transparent 100%);
+    mask-image:linear-gradient(180deg,#000 0%,#000 60%,transparent 100%);
+  }
+
+  /* inline grid templates from the page markup would overflow — collapse them */
+  #contactGrid[style]{grid-template-columns:1fr!important;gap:40px!important}
+  .plist .item[style]{grid-template-columns:1fr!important;gap:8px!important}
+  .plist .item[style] .n{padding-top:0}
+}
+
+/* Reduced motion: everything simply there. The sheets still stack — that is scrolling, not animation. */
+@media(prefers-reduced-motion:reduce){
+  .rise{opacity:1;transform:none;transition:none}
+  .depth-row .dcopy p{opacity:1;-webkit-clip-path:none;clip-path:none}
+  .depth-row{opacity:1}
+  .seq-item{opacity:1}
+  .seq-item p{color:var(--ink)}
+  *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important}
+  .roster-track{animation:none;transform:none}
+}
+
+/* ============================================================
+   NO LINES
+   Every rule, hairline, divider and underline on the site is off.
+   Adopted from the Sept 2026 experiment.
+
+   Borders are made transparent rather than removed, so they keep
+   the 1px they occupied and nothing on the page reflows. The
+   hairlines drawn as pseudo-elements are dropped outright — they
+   are absolutely positioned, so they cost no layout either.
+
+   Two things are deliberately left alone: the accordion's open/close
+   mark, which is the only thing saying a row opens, and the focus
+   ring, which is an outline rather than a border.
+   ============================================================ */
+*,*::before,*::after{border-color:transparent!important}
+
+/* the hairline down every gutter, and the row rule under a second row */
+.prism>*::before,.frame>*::before,.wall>*::before,.areas>*::before,
+.areas>*::after{content:none!important}
+
+/* the 26px marker beside a section kicker — dropped, not hidden, so
+   the kickers close up and align with the headline under them */
+.wide>.kicker:first-child::before,
+.seq-side>.kicker:first-child::before,
+.cta>.kicker::before{display:none!important}
+
+/* ---- but the controls keep their lines ----------------------
+   Structure loses its rules; anything you operate keeps one. A
+   field with no underline gives you nowhere to type, and a button
+   with no underline reads as a caption. This is the line the
+   experiment stops at. */
+.field input,.field select,.field textarea{border-bottom-color:var(--hair)!important}
+.field input:focus,.field select:focus,.field textarea:focus{
+  border-bottom-color:var(--glacier-deep)!important}
+.btn{border-bottom-color:var(--ink)!important}
+.btn:hover{border-bottom-color:var(--glacier-deep)!important}
+.on-dark .btn{border-color:rgba(255,255,255,.6)!important}
+.on-dark .btn:hover{border-color:var(--glacier)!important}
+/* the booking sheet the CTA opens, and the glass button in the hero */
+.modal .card{border-color:var(--hair)!important}
+.hero .btn.big{border-color:rgba(226,231,236,.55)!important}
+
+/* ============================================================
+   THE CURTAIN — the front door
+   A screen that holds only the mark and the line. It is a real
+   section in the document flow, not an overlay: everything below
+   it is in the page from the first byte, nothing is hidden from a
+   crawler, and one gesture is past it. The line is live type, not
+   artwork — so it can be this large and stay sharp, and so the
+   sentence the brand is built on finally exists as text.
+   ============================================================ */
+/* The panel is fixed and lifts off the page. The runway below it is the
+   scroll it consumes; everything under the curtain is counter-shifted by the
+   same amount, so the page holds perfectly still while the panel rises — the
+   curtain moves, not the site. Both come off transform, so it is one
+   composited layer and no layout is recalculated on the way. */
+.curtain{position:fixed;inset:0;z-index:55;background:var(--paper);
+  display:flex;flex-direction:column;will-change:transform;
+  padding-block:calc(var(--head) + clamp(24px,5vh,56px)) 0}
+.curtain-runway{height:100vh;height:100svh}
+.curtain-under{will-change:transform}
+.curtain-in,.curtain-foot{will-change:transform,opacity}
+.curtain-in{flex:1 1 auto;display:flex;flex-direction:column;justify-content:center}
+/* the mark sits at the largest size its artwork holds — 540px of source,
+   so 260px on screen is the ceiling before a retina display softens it */
+/* the mark is vector, so this is now a composition decision rather than a
+   resolution ceiling — and the line sits justified to the mark's width, which
+   is the lockup as the identity actually specifies it */
+.curtain-lockup{display:block;width:clamp(230px,40vw,660px);color:var(--ink)}
+.curtain-lockup .mk{display:block}
+.curtain-lockup .mk svg{display:block;width:100%;height:auto;fill:currentColor}
+.curtain-lockup .tag-art{margin-top:clamp(12px,1.6vw,26px)}
+.curtain-foot{padding-bottom:clamp(24px,5vh,44px)}
+/* the hint: a dot that falls, rather than a line that points — the rest
+   of the site has no rules left to match */
+/* Three chevrons, one movement passing through them. Each is a separate
+   animation on the same curve, offset by a quarter of a beat, so what you
+   read is a single thing travelling downward rather than three things
+   blinking — a drop falling, a breath going out. Nothing is fully on at the
+   loop point, so the cycle has no seam. */
+.scroll-cue{display:flex;flex-direction:column;align-items:flex-start;gap:5px}
+.cue-v{display:block;width:19px;height:7px;overflow:visible;
+  stroke:var(--glacier-deep);stroke-width:1;fill:none;stroke-linecap:butt;
+  animation:flow 3.4s var(--ease) infinite}
+.cue-v:nth-child(2){animation-delay:.26s}
+.cue-v:nth-child(3){animation-delay:.52s}
+@keyframes flow{
+  0%  {opacity:0;   transform:translateY(-6px)}
+  24% {opacity:1;   transform:translateY(0)}
+  54% {opacity:.62; transform:translateY(4px)}
+  78% {opacity:0;   transform:translateY(9px)}
+  100%{opacity:0;   transform:translateY(-6px)}}
+/* the load screen is the whole screen: no bar, no menu, nothing to click.
+   One gesture is the only thing on offer. The bar arrives with the site. */
+header.bare{opacity:0;pointer-events:none}
+@media(prefers-reduced-motion:reduce){
+  .cue-v{animation:none;opacity:1;transform:none}
+  .cue-v:nth-child(2){opacity:.62}
+  .cue-v:nth-child(3){opacity:.3}
+}
+@media(max-width:640px){
+  .curtain-lockup{width:min(78vw,340px)}
+}
+.hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+</style>
+</head>
+<body>
+<div id="marks" hidden aria-hidden="true">
+<svg data-art="word" version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="130.9 39.8 1840.3 619.5"><path d="M0 0 C0.7 0 1.5 0 2.3 0 C3 0 3.8 0 4.6 0 C7.2 0 9.8 0 12.4 0 C14.2 0 16 0 17.8 0 C22.5 0 27.2 0 32 0.1 C37.6 0.1 43.3 0.1 49 0.1 C57.6 0.1 66.2 0.1 74.8 0.1 C75.7 45.8 75.9 91.5 75.7 137.3 C75.7 146.5 75.6 155.8 75.6 165 C75.6 181.5 75.5 198 75.4 214.4 C75.4 230.4 75.3 246.3 75.3 262.3 C75.3 263.3 75.3 264.3 75.3 265.3 C75.3 270.3 75.2 275.3 75.2 280.2 C75.1 321.2 74.9 362.2 74.8 403.1 C77.7 401.4 80.3 399.8 82.7 397.5 C83.3 397 83.8 396.6 84.3 396.1 C84.6 395.8 84.6 395.8 85.9 394.5 C89.9 390.7 94 387.1 98.3 383.6 C103.1 379.8 107.5 375.7 112 371.6 C115.4 368.4 118.8 365.4 122.5 362.5 C126.6 359.2 130.2 355.8 133.8 352 C137.8 347.9 142.3 344.5 146.8 341 C150.5 338.2 153.9 335.2 157.1 331.8 C159.9 329 163 326.7 166.1 324.3 C170.4 320.8 174.5 317 178.6 313.3 C180.3 311.7 182 310.2 183.8 308.6 C186.5 306.3 189.1 303.9 191.7 301.5 C195.9 297.7 200.1 294 204.5 290.4 C208.2 287.5 211.6 284.3 214.9 280.9 C217.6 278.3 220.6 276 223.5 273.6 C227.6 270.3 231.6 266.8 235.5 263.2 C238.2 260.8 241 258.3 243.8 255.9 C246 254 248.1 252 250.3 250.1 C255.5 245.5 260.7 240.9 266 236.4 C271.7 231.5 277.4 226.6 283 221.4 C287.6 217.2 292.3 213.2 297.2 209.2 C301.2 206 305 202.6 308.8 199.1 C314.4 194.2 320 189.4 325.6 184.5 C329.4 181.3 333.1 178.1 336.9 174.8 C337.5 174.3 338.1 173.7 338.8 173.1 C339.3 172.6 339.7 172.2 340.2 171.7 C344.3 167.6 347.2 166.4 353 166.4 C353.9 166.4 354.8 166.4 355.8 166.4 C356.7 166.4 357.7 166.4 358.7 166.4 C361.9 166.4 365.1 166.5 368.4 166.5 C370.6 166.6 372.8 166.6 375.1 166.6 C380.3 166.6 385.6 166.6 390.8 166.7 C396.8 166.8 402.8 166.8 408.8 166.8 C421.2 166.9 433.5 167 445.8 167.1 C442.3 170.6 438.8 174 435.2 177.4 C434.7 177.9 434.1 178.3 433.6 178.8 C429.8 182.3 425.8 185.6 421.8 188.8 C418.7 191.3 415.7 193.9 412.8 196.6 C409 200.1 405.1 203.3 401.2 206.5 C393.6 212.7 386.3 219.1 379 225.5 C377.7 226.6 376.4 227.7 375.1 228.8 C374.8 229.1 374.8 229.1 373.2 230.5 C369.5 233.7 365.8 236.8 362 239.9 C356.8 244.1 351.8 248.6 346.8 253.1 C342.6 256.9 338.4 260.5 334 263.9 C329.8 267.2 325.9 270.7 322 274.3 C318.8 277.2 315.6 280 312.3 282.6 C308.5 285.7 304.9 288.8 301.3 292.1 C297.4 295.8 293.3 299.2 289.1 302.6 C285.3 305.7 281.5 308.9 277.8 312.1 C273.7 315.7 269.5 319.2 265.3 322.6 C259.3 327.5 253.5 332.5 247.6 337.6 C245.8 339.1 243.9 340.7 242.1 342.3 C235.6 347.8 229.2 353.4 222.8 359.1 C226.8 363.9 231 368.6 235.3 373.1 C236.5 374.4 237.8 375.8 239 377.1 C239.7 377.8 240.3 378.4 240.9 379.1 C243.3 381.6 245.6 384.2 248 386.7 C253.7 392.8 259.5 399 265.2 405.1 C265.6 405.5 265.6 405.5 267.2 407.2 C270.3 410.5 273.4 413.7 276.6 416.9 C278.9 419.2 281 421.5 283.1 423.9 C285.9 427.1 288.8 430.2 291.8 433.1 C294.7 436 297.6 438.9 300.2 442.1 C303.5 445.9 307.1 449.5 310.7 453.1 C314 456.3 317.1 459.7 320.1 463.2 C322.8 466.2 325.7 469 328.6 471.9 C331.2 474.6 333.7 477.4 336.1 480.2 C338.3 482.7 340.7 485 343.1 487.3 C344.9 489.2 346.6 491.1 348.2 493.1 C350.7 495.9 353.2 498.5 355.8 501.1 C358.3 503.6 360.7 506.2 363 508.9 C366.1 512.5 369.4 515.8 372.8 519.1 C376.1 522.3 379.3 525.6 382.2 529.1 C385.4 532.8 388.8 536.2 392.3 539.6 C396.4 543.6 400.2 547.7 403.9 552 C406.9 555.4 410.1 558.5 413.3 561.6 C416 564.3 418.6 567.1 421.2 570 C424.9 574.3 428.8 578.2 432.8 582.1 C438 587.3 443 592.5 447.8 598.1 C448.3 598.7 448.8 599.3 449.3 599.9 C452.8 603.9 452.8 603.9 452.8 606.1 C439.8 606.2 426.9 606.2 413.9 606.3 C407.9 606.3 401.9 606.3 395.9 606.4 C390.1 606.4 384.3 606.4 378.5 606.4 C376.3 606.4 374.1 606.4 371.8 606.4 C368.7 606.5 365.6 606.5 362.5 606.5 C362.1 606.5 362.1 606.5 359.8 606.5 C353.4 606.5 349.5 605.1 344.9 600.5 C344.4 600 344 599.5 343.4 599 C342.9 598.5 342.4 598 341.9 597.4 C341.4 596.9 340.9 596.4 340.3 595.8 C336.9 592.4 333.7 588.8 330.6 585.1 C327.9 582.1 324.9 579.3 322 576.4 C320.9 575.4 319.8 574.3 318.8 573.1 C318.8 572.5 318.8 571.8 318.8 571.1 C318.2 570.9 317.7 570.7 317.1 570.5 C314 568.6 311.9 566.2 309.5 563.4 C301.8 554.9 293.7 546.8 285.4 538.8 C283.1 536.5 280.9 534 278.7 531.6 C273.3 525.5 267.5 519.7 261.7 514 C249.8 502.3 249.8 502.3 244.4 495.9 C241.7 492.8 238.7 490 235.8 487.1 C231.5 482.9 227.3 478.6 223.4 473.9 C221 471.3 218.5 468.8 216 466.4 C214.1 464.4 212.3 462.5 210.6 460.4 C206.7 455.9 202.5 451.8 198.3 447.6 C193.5 442.9 188.9 438.1 184.5 433 C181.7 429.9 178.8 427 175.8 424.1 C170.9 419.3 166.2 414.4 161.8 409.1 C156.2 413.1 151 417.4 145.8 421.9 C142.4 424.8 138.9 427.7 135.4 430.5 C130.4 434.6 125.4 438.9 120.5 443.2 C115.9 447.2 111.3 451.1 106.6 455 C103.8 457.4 101 459.8 98.3 462.2 C97.7 462.7 97.1 463.2 96.5 463.7 C95.3 464.7 94.1 465.8 92.9 466.8 C90.2 469.1 87.4 471.4 84.5 473.5 C84 473.9 83.5 474.3 83 474.7 C81.6 475.7 80.2 476.6 78.8 477.6 C74 483.6 75.6 494.5 75.6 501.9 C75.6 503 75.6 504.2 75.6 505.3 C75.5 508.4 75.5 511.5 75.5 514.6 C75.5 517.8 75.4 521 75.4 524.2 C75.4 530.3 75.3 536.4 75.3 542.5 C75.2 549.5 75.2 556.4 75.1 563.3 C75 577.6 74.9 591.9 74.8 606.1 C64.4 606.1 54 606.2 43.6 606.2 C38.7 606.2 33.9 606.2 29.1 606.2 C24.4 606.2 19.7 606.2 15.1 606.2 C13.3 606.2 11.5 606.2 9.7 606.2 C7.2 606.2 4.7 606.2 2.3 606.2 C1.5 606.2 0.8 606.2 0 606.2 C-5.1 606.2 -5.1 606.2 -6.2 605.1 C-6.3 603.8 -6.3 602.5 -6.3 601.1 C-6.3 600.3 -6.3 599.4 -6.3 598.5 C-6.3 598 -6.3 598 -6.3 595.6 C-6.3 594.6 -6.3 593.5 -6.3 592.5 C-6.3 589.6 -6.3 586.8 -6.3 583.9 C-6.3 580.8 -6.3 577.7 -6.3 574.6 C-6.3 569.2 -6.3 563.7 -6.3 558.3 C-6.3 550.2 -6.3 542.1 -6.3 534 C-6.3 519.6 -6.3 505.1 -6.3 490.7 C-6.3 478 -6.3 465.4 -6.3 452.8 C-6.3 452.3 -6.3 452.3 -6.3 450.2 C-6.3 446.8 -6.3 443.4 -6.3 440 C-6.3 408.1 -6.3 376.2 -6.3 344.3 C-6.3 315.9 -6.3 287.6 -6.3 259.2 C-6.3 227.4 -6.3 195.5 -6.3 163.7 C-6.3 160.3 -6.3 156.9 -6.3 153.5 C-6.3 152.7 -6.3 151.8 -6.3 151 C-6.3 138.3 -6.3 125.7 -6.3 113.1 C-6.3 98.7 -6.3 84.3 -6.3 70 C-6.3 61.9 -6.3 53.9 -6.3 45.8 C-6.3 40.5 -6.3 35.1 -6.3 29.7 C-6.3 26.7 -6.3 23.6 -6.3 20.5 C-6.3 17.3 -6.3 14 -6.3 10.7 C-6.3 9.7 -6.3 8.7 -6.3 7.8 C-6.3 6.9 -6.3 6 -6.3 5.1 C-6.3 4.4 -6.3 3.6 -6.3 2.8 C-6 -1 -3.2 0 0 0 Z " fill="currentColor" transform="translate(138.2,40.9)"/><path d="M0 0 C26.7 0 53.5 0 81 0 C81 40.6 81 81.2 81 123 C94.8 123 108.6 123 122.7 123 C131.4 123 140.1 123 148.8 123 C162.7 122.9 176.5 122.9 190.3 122.9 C200.4 122.9 210.5 122.9 220.5 122.9 C225.9 122.9 231.2 122.9 236.5 122.9 C241.5 122.9 246.6 122.9 251.6 122.9 C253.4 122.9 255.3 122.9 257.1 122.9 C259.6 122.9 262.1 122.9 264.6 122.9 C265 122.9 265 122.9 266.9 122.9 C271.9 122.9 271.9 122.9 273 124 C273.1 125.6 273.1 127.2 273.1 128.9 C273.1 129.9 273.1 130.9 273.1 132 C273.1 132.6 273.1 132.6 273.1 135.4 C273.1 136 273.1 136 273.1 138.9 C273.1 141.4 273.1 143.8 273.1 146.2 C273.1 149.4 273.1 152.5 273.1 155.6 C273.1 158.6 273.1 161.6 273.1 164.6 C273.1 165.7 273.1 166.8 273.1 168 C273.1 169 273.1 170.1 273.1 171.1 C273.1 171.6 273.1 171.6 273.1 173.9 C273 176 273 176 272 177 C269.5 177.1 267.1 177.1 264.6 177.1 C263.8 177.1 263.1 177.1 262.3 177.1 C259.6 177.1 257 177.1 254.4 177.1 C252.5 177.1 250.6 177.1 248.7 177.1 C243.6 177.1 238.5 177.1 233.3 177.1 C228 177.1 222.6 177.1 217.3 177.1 C207.1 177.1 197 177.1 186.9 177.1 C175.3 177.1 163.8 177.1 152.2 177.1 C128.5 177 104.7 177 81 177 C81 209 81.1 241 81.2 273.1 C81.2 276.8 81.2 280.6 81.2 284.4 C81.2 285.2 81.2 285.9 81.2 286.7 C81.2 298.9 81.3 311.1 81.3 323.2 C81.3 335.8 81.3 348.3 81.4 360.8 C81.4 368.5 81.4 376.2 81.4 383.9 C81.4 389.2 81.4 394.5 81.4 399.8 C81.4 402.9 81.5 405.9 81.4 409 C81.4 437.4 85.7 466.3 106.3 487.4 C107.2 488.2 108.1 489.1 109 490 C109.3 490.3 109.3 490.3 111 492 C136.1 515.5 174.4 520.1 207.2 519.1 C224.4 518.4 241.2 516.6 258 513 C259 512.8 260.1 512.6 261.2 512.3 C273.4 509.7 285.5 506.9 297.3 502.7 C297.7 502.6 297.7 502.6 299.5 502 C300.1 501.8 300.7 501.6 301.3 501.3 C303 501 303 501 306 502 C307 504.4 307.8 506.8 308.6 509.3 C308.8 510 309.1 510.8 309.3 511.6 C309.8 513.1 310.3 514.7 310.8 516.3 C311.5 518.7 312.2 521.1 313 523.5 C315.7 532.2 318.1 541 320 550 C290.3 560.4 261.3 568.1 230 572 C229.1 572.1 228.1 572.2 227.1 572.4 C168.3 579.4 97.9 573 49.9 535.4 C21.2 512.2 5.4 483.3 0.7 446.7 C-0.2 437.8 -0.1 429 -0.1 420 C-0.1 418.2 -0.1 416.4 -0.1 414.6 C-0.1 409.6 -0.1 404.7 -0.1 399.7 C-0.1 394.3 -0.1 389 -0.1 383.6 C-0.1 374.3 -0.1 365 -0.1 355.7 C-0.1 346 -0.1 336.2 -0.1 326.5 C-0.1 325.9 -0.1 325.3 -0.1 324.7 C-0.1 321.6 -0.1 318.5 -0.1 315.4 C-0.1 293.6 -0.1 271.8 -0.1 250 C-0.1 228.9 -0.1 207.7 -0.1 186.5 C-0.1 186.2 -0.1 186.2 -0.1 184.6 C-0.1 178 -0.1 171.4 -0.1 164.9 C-0 151.5 -0 138.2 -0 124.8 C-0 124.2 -0 123.6 -0 122.9 C-0 82 -0 41 0 0 Z " fill="currentColor" transform="translate(1146,83)"/><path d="M0 0 C1.1 0 2.3 0 3.5 0 C22.1 0 40.5 0.7 58.9 3.3 C59.2 3.4 59.2 3.4 60.7 3.6 C87.5 7.3 114.3 13.1 138.9 24.3 C139.7 24.7 140.5 25 141.4 25.4 C160.9 34.1 179.1 44.6 193.9 60.2 C195.5 61.9 197.1 63.2 198.9 64.7 C202.2 67.4 204.5 70.5 206.9 74 C207.7 75.3 208.6 76.5 209.5 77.8 C209.9 78.4 210.3 79 210.8 79.6 C211.7 81 212.8 82.4 213.8 83.7 C239.4 117.3 241.3 162.3 241.2 202.7 C241.2 206.1 241.2 209.5 241.2 212.9 C241.2 218.7 241.2 224.6 241.1 230.4 C241.1 238.9 241.1 247.3 241.1 255.8 C241.1 269.5 241.1 283.2 241.1 297 C241.1 310.3 241.1 323.6 241 336.9 C241 337.7 241 338.6 241 339.4 C241 343.5 241 347.7 241 351.8 C241 386 241 420.1 240.9 454.3 C214.2 454 187.5 453.7 159.9 453.3 C158.9 450.2 158.8 447.9 158.7 444.6 C158.7 444 158.7 443.4 158.7 442.8 C158.7 440.9 158.6 439 158.6 437.1 C158.6 435.8 158.6 434.5 158.6 433.2 C158.5 429.7 158.5 426.2 158.4 422.8 C158.4 419.2 158.3 415.7 158.2 412.1 C158.1 405.2 158 398.3 157.9 391.3 C157.5 391.7 157.1 392.2 156.7 392.6 C154.8 394.5 152.9 396.4 151.1 398.3 C150.4 399 149.8 399.6 149.1 400.3 C148.8 400.7 148.8 400.7 147.2 402.2 C146.6 402.8 146 403.4 145.4 404 C143.9 405.3 143.9 405.3 141.9 405.3 C141.6 406.3 141.3 407.3 140.9 408.3 C139.4 409.8 139.4 409.8 137.3 411.3 C136.6 411.8 135.8 412.4 135 413 C134.6 413.3 134.6 413.3 132.5 414.8 C131.6 415.4 130.8 416.1 129.9 416.7 C121.5 422.7 112.9 428.2 103.9 433.3 C103.2 433.7 102.5 434.1 101.8 434.5 C83.5 444.9 64.3 451.1 43.9 456.3 C43.1 456.5 42.3 456.7 41.5 456.9 C-23.1 473.2 -104 467.1 -162.1 433.3 C-171.8 427.2 -180.8 420.3 -189.1 412.3 C-189.5 411.9 -190 411.4 -190.5 411 C-191.7 409.8 -192.9 408.6 -194.1 407.3 C-194.7 406.6 -195.4 405.9 -196.1 405.2 C-206.3 394.4 -212.7 382.5 -217.1 368.3 C-217.3 367.6 -217.5 367 -217.7 366.3 C-226.4 337.5 -222.6 303.1 -208.8 276.7 C-204 268.6 -198.8 260.4 -191.8 254 C-190.1 252.4 -188.7 250.8 -187.3 249 C-184.1 245.2 -180.6 242.3 -176.6 239.4 C-176.3 239.2 -176.3 239.2 -174.5 237.9 C-113.1 193.3 -29.5 187.9 43.8 191.1 C44.7 191.1 45.7 191.1 46.7 191.2 C77.8 192.5 108.9 194.8 139.7 198.7 C145.8 199.5 151.9 199.9 157.9 200.3 C158.9 162.2 154.5 126.9 127.4 97.8 C96.2 65.9 48.8 56.7 5.9 56.1 C-50.3 55.5 -102.3 69 -153.1 92.3 C-155.1 93.3 -157.2 94.2 -159.3 95.1 C-160.9 95.9 -162.5 96.6 -164.1 97.3 C-167 91 -169.4 84.7 -171.6 78.2 C-171.9 77.2 -172.2 76.3 -172.5 75.3 C-173.1 73.4 -173.8 71.4 -174.4 69.5 C-175.4 66.5 -176.4 63.5 -177.4 60.5 C-178 58.6 -178.6 56.7 -179.2 54.8 C-179.4 54.3 -179.4 54.3 -180.1 52.1 C-180.4 51.3 -180.7 50.4 -181 49.6 C-181.1 49.2 -181.1 49.2 -181.7 47.4 C-182.1 45 -182 43.6 -181.1 41.3 C-178.8 39.7 -176.7 38.5 -174.2 37.2 C-173.5 36.9 -172.8 36.5 -172 36.1 C-139.2 19.7 -102.9 10.3 -66.8 4.5 C-66.4 4.5 -66.4 4.5 -64.9 4.2 C-43.4 0.7 -21.7 -0.1 0 0 Z M-121.4 285.3 C-134.2 299.6 -139.2 318.5 -138.2 337.4 C-137.4 347.3 -134.9 356.5 -130.1 365.3 C-129.7 366.1 -129.2 366.8 -128.8 367.6 C-114.8 390.6 -88.8 400.7 -63.8 407 C-8.7 420 51.5 409.9 99.9 381.3 C110.3 374.7 119.8 367.1 128.6 358.6 C130.7 356.6 132.9 354.7 135.1 352.8 C144.8 344.1 153.1 333 158.9 321.3 C159 319 159.1 316.8 159.1 314.5 C159.1 314.1 159.1 314.1 159.1 312.3 C159.1 310 159 307.7 159 305.4 C159 303.8 159 302.1 159 300.5 C159 296.3 159 292 159 287.8 C159 283.5 159 279.1 159 274.8 C159 266.3 159 257.8 158.9 249.3 C142.3 248 125.7 246.8 109.1 245.7 C105.6 245.4 102.1 245.2 98.6 244.9 C75.3 243.3 51.9 243.1 28.5 243 C26.1 243 23.7 243 21.2 243 C-28 242.7 -85.7 247.2 -121.4 285.3 Z " fill="currentColor" transform="translate(824.1,192.7)"/><path d="M0 0 C3.8 0 7.6 0 11.4 -0 C35.7 -0.1 59.7 0.8 83.7 5 C84.1 5.1 84.1 5.1 86 5.4 C131.7 13.3 175.5 27.6 209.6 60.3 C210.4 61 211.2 61.7 212.1 62.5 C243.4 92.3 255.1 135.3 256.6 177.3 C256.8 185.5 256.8 193.8 256.8 202 C256.8 205.4 256.8 208.7 256.8 212 C256.8 218.5 256.8 224.9 256.8 231.4 C256.8 236.7 256.8 241.9 256.8 247.2 C256.8 247.9 256.8 248.7 256.8 249.5 C256.8 251 256.8 252.5 256.8 254 C256.8 268.3 256.8 282.6 256.8 296.8 C256.8 309.1 256.8 321.3 256.8 333.6 C256.8 347.8 256.8 362 256.8 376.3 C256.8 377.8 256.8 379.3 256.8 380.8 C256.8 381.6 256.8 382.3 256.8 383.1 C256.8 388.3 256.8 393.6 256.8 398.8 C256.8 405.2 256.8 411.6 256.8 418 C256.8 421.3 256.8 424.6 256.8 427.8 C256.8 431.4 256.8 434.9 256.8 438.4 C256.8 439.5 256.8 440.5 256.8 441.6 C256.8 442.5 256.8 443.5 256.8 444.4 C256.8 445.3 256.8 446.1 256.8 446.9 C256.6 449.3 256.6 449.3 255.6 454.3 C229.2 454.3 202.8 454.3 175.6 454.3 C174.7 451.4 174.5 449.6 174.5 446.6 C174.5 446.1 174.5 446.1 174.5 443.7 C174.6 442.7 174.6 441.7 174.6 440.6 C174.6 440.1 174.6 440.1 174.6 437.4 C174.6 432.9 174.6 428.3 174.7 423.8 C174.7 420.5 174.7 417.2 174.7 413.9 C174.7 412.8 174.7 411.8 174.7 410.8 C174.7 404.5 174.4 398.5 173.6 392.3 C173.2 392.6 172.8 393 172.4 393.4 C128.6 434.8 75.3 456.8 15.6 463.3 C15.2 463.3 15.2 463.3 13 463.6 C2.5 464.6 -8.1 464.5 -18.7 464.5 C-19.2 464.5 -19.2 464.5 -21.8 464.5 C-39.5 464.5 -56.8 463.7 -74.4 461.3 C-74.9 461.2 -74.9 461.2 -77.6 460.8 C-120.3 454.8 -163.6 441.7 -195.4 411.3 C-195.7 410.9 -195.7 410.9 -197.5 409.3 C-202.9 404.2 -207.2 398.4 -211.4 392.3 C-211.9 391.5 -212.4 390.8 -213 390 C-228 367.4 -230.6 335.5 -225.8 309.4 C-223 296 -218.5 283.9 -211.4 272.3 C-211 271.7 -210.7 271.2 -210.4 270.6 C-201.6 256.3 -189.1 244.8 -175.4 235.3 C-175.1 235.1 -175.1 235.1 -173.9 234.2 C-109.5 190.1 -18.9 188.2 56.1 191.1 C57.3 191.1 58.4 191.2 59.6 191.2 C89 192.3 118.2 194.8 147.5 197.9 C156.5 198.9 165.6 199.7 174.6 200.3 C174.2 164.1 171.4 128.3 145.3 100.8 C144.9 100.4 144.5 100 144 99.6 C142.9 98.6 141.9 97.4 140.9 96.3 C114.1 67.8 69.2 57.4 31.5 56.2 C28.1 56.1 24.6 56.1 21.2 56.1 C20.6 56.1 19.9 56.1 19.3 56 C16 56 12.6 56 9.3 56 C6.6 56 3.9 56 1.2 56 C-22.8 55.8 -46.4 57.1 -70 62 C-70.3 62.1 -70.3 62.1 -71.9 62.4 C-105.7 69.2 -138.8 79.7 -170.1 94.3 C-172.8 95.5 -175.5 96.4 -178.4 97.3 C-182.5 87.8 -185.4 77.8 -188.5 67.9 C-189.3 65.4 -190.1 62.8 -190.9 60.2 C-191.4 58.6 -191.9 57 -192.4 55.4 C-193.4 52.3 -194.3 49.4 -195.5 46.4 C-196.4 44.3 -196.4 44.3 -196.4 41.3 C-158 22.8 -117.3 11.4 -75.2 5 C-74.4 4.9 -73.6 4.8 -72.8 4.6 C-48.5 0.9 -24.5 -0.1 0 0 Z M-101.4 267.3 C-101.9 267.6 -102.4 267.8 -102.9 268.1 C-110.2 272.3 -116.4 277.4 -122.4 283.3 C-123.2 284 -123.9 284.8 -124.7 285.6 C-138.1 299.3 -142.9 317.2 -142.6 336.1 C-142.1 349.4 -138 362.1 -129.4 372.3 C-128.7 373.1 -128.1 373.9 -127.4 374.8 C-108.1 398.7 -72.3 406.9 -43.4 410.3 C-35.5 411 -27.7 411.4 -19.8 411.5 C-19.3 411.5 -19.3 411.5 -16.6 411.5 C-14.4 411.5 -12.2 411.5 -9.9 411.5 C-6.6 411.5 -3.3 411.5 0.1 411.6 C18.8 411.7 37.2 410.1 55.3 405.5 C55.8 405.4 55.8 405.4 58.4 404.7 C73.7 400.8 88 395.6 101.8 388.2 C103.6 387.3 105.3 386.4 107 385.6 C119.7 379.1 130.9 370.5 141.6 361.3 C141.9 361.1 141.9 361.1 143 360.1 C150.1 354 156 347.6 161.6 340.3 C162.3 339.5 162.9 338.7 163.5 337.9 C165.3 335.7 167 333.5 168.6 331.3 C169.2 330.6 169.7 329.9 170.2 329.2 C175.8 321.3 175.4 314 175.2 304.8 C175.2 303.2 175.2 301.6 175.2 300 C175.2 295.9 175.1 291.8 175 287.7 C175 283.4 175 279.2 174.9 275 C174.9 266.8 174.8 258.5 174.6 250.3 C172.2 249.1 170.5 249 167.8 248.8 C166.8 248.7 165.8 248.7 164.8 248.6 C163.7 248.5 162.6 248.4 161.4 248.4 C160.3 248.3 159.1 248.2 157.9 248.1 C154.1 247.8 150.4 247.6 146.6 247.3 C145.9 247.3 145.3 247.2 144.6 247.2 C136.7 246.7 128.8 246.1 120.9 245.6 C117.3 245.4 113.8 245.1 110.2 244.9 C85.5 243.1 60.8 243 36.1 243 C33.4 242.9 30.8 242.9 28.1 242.9 C-15.7 242.7 -62.5 244.8 -101.4 267.3 Z " fill="currentColor" transform="translate(1713.4,192.7)"/></svg>
+<svg data-art="line" version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="60.9 326.2 2050.1 65.9"><path d="M0 0 C8.8 5.1 13.8 11.6 16.7 21.1 C18.5 30.2 17.4 39.7 12.7 47.7 C7.5 55 1.4 58.7 -7.3 60.6 C-17.2 62 -24.5 60.4 -32.8 55 C-38.7 50.5 -41.5 44.2 -43.9 37.2 C-44.7 26.4 -44.1 16.5 -37.4 7.4 C-27.8 -2.5 -12.7 -5.1 0 0 Z M-30.9 14.7 C-34.8 20.9 -35.5 27.7 -34.5 35 C-32.8 41.5 -29.8 46.4 -24.3 50.3 C-18.6 53.3 -11.7 53.2 -5.6 51.6 C0.9 48.9 4.1 43.3 7.1 37.2 C7.9 28.6 8.4 20.6 3.1 13.2 C-1.5 8.6 -6.9 6 -13.4 5.7 C-20.6 6.1 -26.6 9 -30.9 14.7 Z " fill="currentColor" transform="translate(270.9,329.8)"/><path d="M0 0 C4.6 4 7.7 8.1 9 14 C6.4 14.7 3.7 15.3 1 16 C0.7 15.5 0.3 14.9 -0 14.4 C-3.6 9 -6.6 6.2 -13 5 C-20.1 4 -25.6 6.2 -31.8 9.5 C-36.1 14.4 -38.2 21 -38.5 27.6 C-38.2 33.3 -36.4 39.2 -32.6 43.7 C-26.9 48.7 -21.3 49.4 -13.9 49.2 C-8.9 48.8 -6.3 47.4 -2.8 43.8 C-1 41 -1 41 1 34 C-4.9 33.7 -10.9 33.3 -17 33 C-17 30.7 -17 28.4 -17 26 C3.7 24.2 3.7 24.2 10 26 C9.9 28.7 9.9 31.4 9.8 34.1 C9.7 34.8 9.7 35.6 9.7 36.3 C9.4 42.8 7.6 47.1 3.3 51.9 C-4.8 58.1 -14.1 59.9 -24.1 58.6 C-32.7 56.8 -39.2 52.4 -44 45 C-49.1 35.4 -49.7 24.5 -46.6 14.2 C-43.4 6.7 -37.7 1 -30.4 -2.6 C-20.8 -5.8 -8.6 -5.6 0 0 Z " fill="currentColor" transform="translate(715,332)"/><path d="M0 0 C5.6 4.3 9.8 10.7 11 17.7 C11.8 29 11.1 39 3.8 48.2 C-2.5 54.7 -10.7 57.5 -19.7 57.8 C-28.3 57.4 -35.4 54.3 -41.9 48.5 C-48.9 40.7 -49.8 31.9 -49.4 21.8 C-48.8 13.4 -45.4 6.2 -39 0.7 C-26.9 -7.4 -12.4 -8 0 0 Z M-34.4 8.9 C-39.6 15.9 -41.1 23.1 -40 31.7 C-37.9 38.9 -34.5 43.2 -28.4 47.5 C-23.6 49.7 -18.1 49.4 -13 48.7 C-7.6 46.6 -2.9 42.7 0 37.7 C3.1 30 2.7 21.9 0.2 14.1 C-2.2 9.3 -6.1 6.1 -10.9 3.8 C-19 1.2 -28.4 2.4 -34.4 8.9 Z " fill="currentColor" transform="translate(1585,333.3)"/><path d="M0 0 C3.9 3.1 6.2 6 7.9 10.6 C7.9 11.6 7.9 12.6 7.9 13.6 C4.9 14.5 2.1 15 -1.1 14.6 C-2.9 12.8 -4.1 10.8 -5.5 8.6 C-8.4 4.8 -12.3 4 -16.8 3.3 C-22.1 3 -27.4 4.5 -31.6 7.8 C-36.2 12.8 -38.2 19.4 -38.4 26.1 C-38.2 32 -37.2 37.2 -33.2 41.7 C-27.3 47 -23 48 -15.1 48 C-10.5 47.4 -7.4 45.8 -4.1 42.6 C-2.7 40.6 -1.9 38.9 -1.1 36.6 C1.6 36.9 4.2 37.3 6.9 37.6 C7.7 39.2 7.7 39.2 7.9 41.6 C4.6 48.1 -1.1 53.5 -8.1 56.1 C-17.3 58.6 -25.3 57.6 -34.1 53.6 C-41.1 49 -46 42.8 -48.1 34.6 C-49.7 25.8 -49.5 16.3 -44.9 8.3 C-34.2 -6.8 -15.5 -10.5 0 0 Z " fill="currentColor" transform="translate(1803.1,333.4)"/><path d="M0 0 C5.8 4.4 9.6 11.6 10.9 18.8 C11.7 29.9 11 38.9 3.8 48.1 C-2.6 54.8 -10 57.4 -19.2 57.8 C-27.9 57.6 -34.6 54.9 -41 49 C-47.4 42.2 -50.1 34 -50.1 24.8 C-49.2 15.8 -47.1 8.3 -40.4 2 C-28.4 -7.7 -13.1 -8 0 0 Z M-35.8 10.9 C-40.1 17.3 -40.8 24.8 -39.7 32.3 C-38 38.1 -34.7 42.8 -30.1 46.8 C-24.3 49.6 -17.9 49.8 -11.8 48.1 C-5.7 45.5 -1.9 40.8 0.8 34.8 C2.9 27.9 2.2 20 -0.8 13.4 C-3.5 8.5 -7.1 5.2 -12.5 3.4 C-22 1.3 -29.7 3.2 -35.8 10.9 Z " fill="currentColor" transform="translate(2014.1,333.2)"/><path d="M0 0 C3 0 5.9 0 9 0 C9 9.2 9 18.5 9 28 C10.7 26.4 12.3 24.7 14 23 C15 22 16.1 21 17.1 19.9 C22.5 14.6 27.8 9.3 32.7 3.5 C34 2 34 2 36 0 C38.8 -0.2 38.8 -0.2 42.1 -0.1 C43.2 -0.1 44.3 -0.1 45.4 -0.1 C45.9 -0.1 45.9 -0.1 48 0 C44.7 4 41.3 7.8 37.6 11.4 C26.9 22 26.9 22 24 28 C31.9 38.4 39.9 48.7 48 59 C45.6 61.4 44.9 61.5 41.6 61.6 C37.5 61.2 35.5 59.8 32.9 56.7 C30.3 53.2 27.8 49.6 25.3 46 C23.6 43.4 21.7 41 19.8 38.5 C19.2 37.8 18.7 37.1 18.1 36.4 C17.7 35.9 17.4 35.5 17 35 C14.1 36.3 12 37.5 10 40 C9.6 42.2 9.6 42.2 9.5 44.7 C9.5 45.6 9.4 46.5 9.4 47.4 C9.4 47.8 9.4 47.8 9.3 50.2 C9.3 51.1 9.2 52.1 9.2 53 C9.1 55.4 9.1 57.7 9 60 C5.7 60 2.4 60 -1 60 C-1 52.3 -1 44.6 -1.1 37 C-1.1 33.4 -1.1 29.8 -1.1 26.3 C-1.1 22.8 -1.1 19.4 -1.1 16 C-1.1 14.7 -1.1 13.3 -1.1 12 C-1.1 10.2 -1.1 8.4 -1.1 6.5 C-1.1 5.5 -1.1 4.4 -1.1 3.4 C-1 1 -1 1 0 0 Z " fill="currentColor" transform="translate(63,329)"/><path d="M0 0 C3 -0.3 6 -0.4 9 0 C11.3 1.9 11.3 1.9 12.9 4.6 C13.6 5.6 14.3 6.7 14.9 7.7 C15.2 8.2 15.6 8.8 15.9 9.3 C17.8 12.2 19.8 15 21.9 17.8 C22.7 19 23.6 20.2 24.4 21.4 C24.8 21.9 25.2 22.5 25.7 23.2 C26.1 23.8 26.6 24.4 27 25 C28.8 27.5 30.6 30.1 32.4 32.6 C32.9 33.2 33.3 33.8 33.7 34.4 C34.1 34.9 34.5 35.5 34.9 36 C35.2 36.5 35.5 37 35.9 37.5 C37.2 39.3 38.6 41.2 40 43 C40.3 28.8 40.7 14.6 41 0 C44 0 46.9 0 50 0 C50 19.8 50 39.6 50 60 C40 60 40 60 37.3 57.5 C36.5 56.4 35.8 55.2 35.1 54.1 C34.3 52.8 33.5 51.5 32.6 50.2 C32.2 49.5 31.8 48.8 31.4 48.1 C29 44.4 26.4 40.9 23.9 37.3 C22.9 36 22 34.6 21.1 33.3 C17.4 28.2 13.7 23.1 10 18 C9.7 31.9 9.3 45.7 9 60 C5.7 60 2.4 60 -1 60 C-1.1 40 -1.1 20 0 0 Z " fill="currentColor" transform="translate(144,329)"/><path d="M0 0 C3.3 0 6.6 0 10 0 C11.6 5.6 13.1 11.2 14.7 16.9 C15.2 18.8 15.8 20.7 16.3 22.6 C17.1 25.4 17.8 28.1 18.6 30.9 C18.7 31.3 18.7 31.3 19.3 33.4 C19.5 34.2 19.8 35 20 35.9 C20.2 36.6 20.4 37.3 20.6 38 C21 40.1 21.1 41.9 21 44 C21.7 44 22.3 44 23 44 C23.1 43 23.2 42.1 23.3 41 C24 36.6 25.2 32.5 26.5 28.2 C26.6 27.8 26.6 27.8 27.2 25.8 C28 23.2 28.8 20.6 29.6 18.1 C30.1 16.3 30.6 14.6 31.1 12.8 C32.4 8.5 33.7 4.3 35 0 C38 0 40.9 0 44 0 C46.1 5.4 47.9 10.8 49.5 16.4 C49.6 16.8 49.6 16.8 50.1 18.8 C50.8 21.2 51.5 23.6 52.2 26 C52.7 27.6 53.1 29.3 53.6 30.9 C54.7 35 55.9 39 57 43 C59.1 37.8 60.8 32.5 62.2 27.1 C62.4 26.4 62.6 25.6 62.8 24.9 C63.4 22.6 64 20.4 64.6 18.1 C65.2 15.8 65.8 13.6 66.5 11.3 C66.8 9.9 67.2 8.5 67.6 7.1 C68.9 2.2 68.9 2.2 70 0 C73.3 0 76.6 0 80 0 C78 7.5 75.9 15 73.7 22.5 C73.4 23.6 73.1 24.6 72.8 25.7 C72.1 27.9 71.5 30.1 70.8 32.3 C70 35.1 69.2 37.9 68.4 40.7 C67.6 43.4 66.8 46.1 66.1 48.8 C65.8 49.8 65.5 50.8 65.2 51.9 C65 52.3 65 52.3 64.4 54.7 C64.1 55.5 63.9 56.3 63.6 57.1 C63 59 63 59 62 60 C60.5 60.1 59 60.1 57.4 60.1 C56.6 60.1 55.8 60 54.9 60 C54.3 60 53.7 60 53 60 C48.4 45.7 43.9 31.5 40 17 C37.9 22.3 36.1 27.7 34.6 33.1 C34.2 34.7 33.7 36.2 33.3 37.7 C32.6 40 31.9 42.4 31.3 44.8 C30.6 47.1 29.9 49.4 29.3 51.6 C29.1 52.4 28.9 53.1 28.7 53.8 C27.2 58.8 27.2 58.8 25 61 C23.1 61.2 23.1 61.2 20.9 61.1 C20.5 61.1 20.5 61.1 18.7 61.1 C18.1 61 17.6 61 17 61 C12.4 46.4 8 31.8 4 17 C3.8 16.3 3.6 15.5 3.4 14.8 C2.8 12.7 2.3 10.6 1.7 8.5 C1.5 7.9 1.3 7.2 1.2 6.6 C0 2.2 0 2.2 0 0 Z " fill="currentColor" transform="translate(314,329)"/><path d="M0 0 C3 0 5.9 0 9 0 C9.3 17.2 9.7 34.3 10 52 C24.9 51.9 24.9 51.9 29.7 51.9 C30.9 51.9 32.1 51.9 33.3 51.9 C34 51.9 34.6 51.9 35.3 51.9 C36.9 51.9 38.4 51.9 40 52 C41 53 41 53 41 60 C27.5 60 13.9 60 0 60 C0 40.2 0 20.4 0 0 Z " fill="currentColor" transform="translate(428,329)"/><path d="M0 0 C14.2 0 28.4 0 43 0 C43 2.6 43 5.3 43 8 C32.1 8 21.2 8 10 8 C10 13.6 10 19.2 10 25 C11 25 11 25 16.1 25 C18 25 20 25 21.9 24.9 C23.3 24.9 24.6 24.9 26 24.9 C27.9 24.9 29.8 24.9 31.8 24.9 C32.4 24.9 33 24.9 33.6 24.9 C35.1 24.9 36.5 24.9 38 25 C39 26 39 26 39 33 C29.8 33.3 20.5 33.7 11 34 C10.7 39.9 10.3 45.9 10 52 C11.1 52 11.1 52 17 52 C19.2 52 21.4 52 23.6 51.9 C25.2 51.9 26.7 51.9 28.3 51.9 C30.5 51.9 32.7 51.9 34.9 51.9 C35.6 51.9 36.3 51.9 37 51.9 C38.7 51.9 40.3 51.9 42 52 C43 53 43 53 43.1 54.6 C43.1 56.4 43 58.2 43 60 C33.7 61.2 24.6 60.9 15.3 60.6 C10.3 60.4 5.2 60.2 0 60 C0 40.2 0 20.4 0 0 Z " fill="currentColor" transform="translate(503,329)"/><path d="M0 0 C36.3 0 36.3 0 44 7 C50.3 13.6 52.9 21.4 53.4 30.4 C53 40 49.5 47.4 42.8 54.1 C28.9 63.7 18.1 60 0 60 C0 40.2 0 20.4 0 0 Z M9 8 C9 14.1 9 20.2 8.9 26.3 C8.9 28.4 8.9 30.5 8.9 32.6 C8.9 35.5 8.9 38.5 8.9 41.5 C8.9 42.4 8.9 43.4 8.9 44.3 C8.9 45.2 8.9 46.1 8.9 46.9 C8.9 47.7 8.9 48.5 8.9 49.2 C9 51 9 51 10 52 C12.8 52.3 15.7 52.3 18.6 52.3 C19.3 52.3 20.1 52.4 20.9 52.4 C27.4 52.5 32.8 51 37.6 46.5 C43 40.7 43.5 33.9 43.3 26.2 C42.7 20.2 40.5 16.1 36.1 12.1 C30.5 7.7 25 7.7 18.2 7.9 C17.7 7.9 17.7 7.9 15.5 7.9 C13.3 7.9 11.2 8 9 8 Z " fill="currentColor" transform="translate(582,329)"/><path d="M0 0 C13.9 0 27.7 0 42 0 C42.2 1.2 42.2 1.2 43 7 C42 8 42 8 38.9 8.1 C37.5 8.1 36.1 8.1 34.7 8.1 C34 8.1 33.2 8.1 32.5 8.1 C30.1 8.1 27.8 8.1 25.4 8.1 C23.9 8.1 22.3 8.1 20.7 8 C16.8 8 12.9 8 9 8 C9 13.6 9 19.2 9 25 C9.8 25 9.8 25 14 25 C16.2 25 18.4 24.9 20.6 24.9 C21.7 24.9 22.8 24.9 23.9 24.9 C24.5 24.9 24.5 24.9 27.2 24.9 C27.7 24.9 27.7 24.9 30.1 24.9 C33.1 25 36 25.4 39 26 C39 28.3 39 30.6 39 33 C29.1 33.3 19.2 33.7 9 34 C9 39.9 9 45.9 9 52 C19.9 52 30.8 52 42 52 C42 54.6 42 57.3 42 60 C28.1 60 14.3 60 0 60 C0 40.2 0 20.4 0 0 Z " fill="currentColor" transform="translate(761,329)"/><path d="M0 0 C3.3 0 6.6 0 10 0 C11.9 4.8 13.8 9.7 15.7 14.5 C16.3 16.1 16.9 17.8 17.6 19.4 C21.1 28.5 24.7 37.7 28.1 46.8 C28.2 47.1 28.2 47.1 28.8 48.7 C29 49.2 29.2 49.8 29.4 50.4 C29.9 51.9 30.6 53.3 31.2 54.8 C32 57 32 57 32 60 C29 60 26.1 60 23 60 C22.2 58 21.3 56.1 20.5 54.1 C20.3 53.6 20 53 19.8 52.4 C18 48.2 18 48.2 18 46 C9.4 46 0.8 46 -8 46 C-10.4 52.4 -10.4 52.4 -11.2 54.5 C-12.9 58.9 -12.9 58.9 -14 60 C-17 60.1 -20 60 -23 60 C-21.1 53.3 -18.9 46.7 -16.3 40.1 C-16 39.2 -15.7 38.3 -15.3 37.4 C-14.6 35.5 -13.9 33.6 -13.2 31.7 C-12.1 28.9 -11 26 -9.9 23.1 C-9.2 21.3 -8.5 19.5 -7.8 17.6 C-7.5 16.8 -7.1 15.9 -6.8 15.1 C-4.8 9.9 -2.6 4.9 0 0 Z M4 11 C2.7 14.4 1.4 17.8 0.2 21.1 C-0.3 22.3 -0.7 23.4 -1.2 24.6 C-1.8 26.2 -2.4 27.9 -3 29.6 C-3.4 30.6 -3.8 31.5 -4.2 32.6 C-5 35 -5 35 -5 37 C1.3 37 7.5 37 14 37 C11.8 28 8.6 19.6 5 11 C4.7 11 4.3 11 4 11 Z " fill="currentColor" transform="translate(907,329)"/><path d="M0 0 C4.4 -0.1 8.8 -0.2 13.2 -0.2 C14.7 -0.2 16.2 -0.3 17.7 -0.3 C34.2 -0.7 34.2 -0.7 40 4 C45.1 9.1 46.3 12.7 46.3 20 C46.2 24.9 45.3 28.3 42 32 C37.5 36.3 33.1 38.2 26.9 38.4 C26.5 38.4 26.5 38.4 24.1 38.5 C23.6 38.5 23.6 38.5 21.2 38.6 C20.7 38.6 20.7 38.6 18.2 38.7 C15.8 38.8 13.4 38.9 11 39 C11 39.6 10.9 40.3 10.9 40.9 C10.8 43.8 10.7 46.6 10.6 49.4 C10.5 50.4 10.5 51.4 10.4 52.4 C10.4 53.4 10.4 54.3 10.3 55.3 C10.3 55.7 10.3 55.7 10.2 58 C10 60 10 60 9 61 C7.2 61.1 7.2 61.1 5 61.1 C4.3 61.1 3.6 61.1 2.8 61.1 C1 61 1 61 0 60 C-0.1 58.1 -0.1 56.3 -0.1 54.4 C-0.1 53.8 -0.1 53.2 -0.1 52.6 C-0.1 50.7 -0.1 48.7 -0.1 46.8 C-0.1 45.4 -0.1 44.1 -0.1 42.7 C-0.1 39.2 -0.1 35.7 -0.1 32.1 C-0.1 28.5 -0.1 24.9 -0 21.3 C-0 14.2 -0 7.1 0 0 Z M10 8 C10 15.3 10 22.5 10 30 C13 30.1 16.1 30.1 19.2 30.2 C20.1 30.2 21.1 30.2 22.1 30.3 C28 30.3 31.4 29.5 35.8 25.3 C37.6 21.9 37.6 18.8 37 15 C35.3 11.1 33.9 9.5 30 8 C27.7 7.8 27.7 7.8 25.2 7.8 C24.4 7.8 23.6 7.8 22.8 7.8 C21.8 7.8 20.8 7.9 19.8 7.9 C16.5 7.9 13.3 8 10 8 Z " fill="currentColor" transform="translate(974,329)"/><path d="M0 0 C2.6 -0 2.6 -0 15.5 -0.2 C17.1 -0.3 18.7 -0.3 20.3 -0.4 C34.3 -0.5 34.3 -0.5 40 4 C41.8 5.8 41.8 5.8 42.9 7.6 C43.3 8.1 43.7 8.7 44.1 9.3 C46.7 14.1 46.8 19.7 45.5 25 C43.3 30.7 39.5 34.7 34 37.4 C29.7 38.7 25.1 38.3 20.6 38.2 C20.1 38.2 20.1 38.2 17.5 38.1 C15 38.1 12.5 38.1 10 38 C10 38.5 10 39 10 39.5 C10 41.7 10.1 43.9 10.1 46.1 C10.1 46.9 10.1 47.6 10.1 48.4 C10.1 52.8 9.9 56.8 9 61 C6 61 3.1 61 0 61 C0 40.9 0 20.7 0 0 Z M9 9 C8.9 10.4 8.9 11.8 8.9 13.2 C8.9 14 8.9 14.9 8.9 15.7 C8.9 16.6 8.9 17.5 8.9 18.4 C8.9 19.3 8.9 20.2 8.9 21.1 C8.9 22 8.9 22.8 8.9 23.7 C8.9 24.5 8.9 25.2 8.9 26 C9 28 9 28 10 30 C13.1 30.1 16.1 30.1 19.2 30.2 C20.1 30.2 20.9 30.2 21.8 30.3 C26.7 30.3 30.1 30.3 34 27 C36.9 22.8 37.4 19.7 36.6 14.8 C35.7 12.1 34.3 10.7 32 9 C29.2 8.1 27.5 7.9 24.6 7.9 C23.7 7.9 22.9 7.9 22 7.9 C21.6 7.9 21.6 7.9 19.4 7.9 C18.9 7.9 18.9 7.9 16.7 7.9 C15.9 7.9 15 7.9 14.1 7.9 C13.8 7.9 13.8 7.9 11.8 7.9 C10 8 10 8 9 9 Z " fill="currentColor" transform="translate(1054,329)"/><path d="M0 0 C3 0 5.9 0 9 0 C9 17.2 9 34.3 9 52 C23.4 51.9 23.4 51.9 28 51.9 C29.2 51.9 30.4 51.9 31.6 51.9 C31.9 51.9 31.9 51.9 33.4 51.9 C35 51.9 36.5 51.9 38 52 C39 53 39 53 39 60 C26.1 60 13.3 60 0 60 C0 40.2 0 20.4 0 0 Z " fill="currentColor" transform="translate(1134,329)"/><path d="M0 0 C3 0 5.9 0 9 0 C9 19.8 9 39.6 9 60 C6 60 3.1 60 0 60 C0 40.2 0 20.4 0 0 Z " fill="currentColor" transform="translate(1207,329)"/><path d="M0 0 C13.5 0 27.1 0 41 0 C41.2 1.2 41.2 1.2 42 7 C41 8 41 8 37.9 8.1 C36.6 8.1 35.3 8.1 33.9 8.1 C33.5 8.1 33.5 8.1 31.8 8.1 C29.5 8.1 27.2 8.1 24.9 8.1 C23.4 8.1 21.9 8.1 20.3 8 C16.6 8 12.8 8 9 8 C9 13.6 9 19.2 9 25 C18.6 25 28.1 25 38 25 C38 27.6 38 30.3 38 33 C28.4 33.3 18.9 33.7 9 34 C9 39.9 9 45.9 9 52 C19.6 52 30.1 52 41 52 C41.2 53.3 41.2 53.3 42 60 C28.1 60 14.3 60 0 60 C0 40.2 0 20.4 0 0 Z " fill="currentColor" transform="translate(1254,329)"/><path d="M0 0 C35.5 0 35.5 0 44.6 8.5 C50.4 14.7 52.1 21 52.4 29.4 C52.1 39.8 49.7 46 42.8 53.8 C34.5 61.1 24.3 60.5 13.9 60.2 C9 60.2 4.1 60.1 -1 60 C-0.7 40.2 -0.3 20.4 0 0 Z M9 8 C9 22.5 9 37 9 52 C30 52 30 52 37 46.4 C42.2 40.3 43.3 34.4 42.9 26.4 C42.3 21.1 40.7 17 37 13 C28.1 6.3 21.3 8 9 8 Z " fill="currentColor" transform="translate(1332,329)"/><path d="M0 0 C15.5 0 31 0 47 0 C47 2.6 47 5.3 47 8 C40.7 8 34.5 8 28 8 C28 25.2 28 42.3 28 60 C25 60 22.1 60 19 60 C19 42.8 19 25.7 19 8 C12.7 8 6.5 8 0 8 C0 5.4 0 2.7 0 0 Z " fill="currentColor" transform="translate(1460,329)"/><path d="M0 0 C0.5 0 0.5 0 2.8 0 C3.7 0 4.6 0.1 5.6 0.1 C6.3 0.1 7 0.1 7.7 0.1 C12.6 11.9 17.1 23.8 21.5 35.7 C21.8 36.4 22 37 22.2 37.7 C25 45.1 27.5 52.5 29.7 60.1 C26.7 60.1 23.8 60.1 20.7 60.1 C20.1 58.7 19.5 57.3 18.8 55.9 C18.5 55.1 18.1 54.4 17.8 53.6 C16.7 51.1 15.7 48.6 14.7 46.1 C6.1 46.1 -2.4 46.1 -11.3 46.1 C-12.3 49.4 -13.3 52.7 -14.3 56.1 C-14.9 57.4 -15.6 58.7 -16.3 60.1 C-19.6 60.1 -22.9 60.1 -26.3 60.1 C-24.3 54.1 -22.2 48.2 -19.8 42.4 C-19.1 40.7 -18.5 39 -17.8 37.2 C-17.4 36.3 -17 35.3 -16.6 34.3 C-15.1 30.6 -13.6 26.9 -12.1 23.2 C-11.3 21.1 -10.5 19 -9.7 17 C-9.1 15.6 -8.6 14.2 -8 12.9 C-7.3 10.9 -6.5 9 -5.7 7.1 C-5.5 6.5 -5.3 5.9 -5 5.3 C-3 0.1 -3 0.1 0 0 Z M1.7 12.1 C0.3 15.6 -1.2 19 -2.6 22.5 C-3.2 24 -3.9 25.5 -4.5 27 C-4.7 27.4 -4.7 27.4 -5.6 29.6 C-5.9 30.4 -6.2 31.1 -6.6 31.9 C-7.3 34.1 -7.4 35.8 -7.3 38.1 C-0.8 38.2 5.3 38.1 11.7 37.1 C10 31.2 8.2 25.3 6.2 19.5 C5.9 18.9 5.7 18.3 5.5 17.7 C3.9 13.2 3.9 13.2 1.7 12.1 Z " fill="currentColor" transform="translate(1697.3,328.9)"/><path d="M0 0 C15.5 0 31 0 47 0 C47 2.6 47 5.3 47 8 C40.7 8 34.5 8 28 8 C28 25.2 28 42.3 28 60 C25.4 60.3 22.7 60.7 20 61 C19 60 19 60 18.9 57.9 C18.9 57.4 18.9 57.4 18.9 55.1 C18.9 54.1 18.9 53 18.9 52 C18.9 50.8 18.9 49.7 18.9 48.5 C18.9 47.4 18.9 46.2 18.9 45 C18.9 42 18.9 38.9 18.9 35.8 C18.9 32.7 18.9 29.6 19 26.4 C19 20.3 19 14.1 19 8 C12.7 8 6.5 8 0 8 C0 5.4 0 2.7 0 0 Z " fill="currentColor" transform="translate(1839,329)"/><path d="M0 0 C3.3 0 6.6 0 10 0 C10 7.8 10 15.6 10.1 23.4 C10.1 27 10.1 30.7 10.1 34.3 C10.1 37.8 10.1 41.3 10.1 44.8 C10.1 46.1 10.1 47.4 10.1 48.8 C10.1 50.6 10.1 52.5 10.1 54.4 C10.1 55.4 10.1 56.5 10.1 57.6 C10 60 10 60 9 61 C7.2 61.1 7.2 61.1 5 61.1 C4.3 61.1 3.6 61.1 2.8 61.1 C1 61 1 61 0 60 C-0.1 58.1 -0.1 56.3 -0.1 54.4 C-0.1 53.8 -0.1 53.2 -0.1 52.6 C-0.1 50.7 -0.1 48.7 -0.1 46.8 C-0.1 45.4 -0.1 44.1 -0.1 42.7 C-0.1 39.2 -0.1 35.7 -0.1 32.1 C-0.1 28.5 -0.1 24.9 -0 21.3 C-0 14.2 -0 7.1 0 0 Z " fill="currentColor" transform="translate(1920,329)"/><path d="M0 0 C3.3 0 6.6 0 10 0 C12.7 2.9 14.4 5 16.3 8.4 C17.4 10.1 18.5 11.9 19.6 13.6 C20.2 14.5 20.7 15.4 21.3 16.3 C24 20.6 27 24.7 30.1 28.8 C33.5 33.5 36.8 38.2 40 43 C40.9 40.3 41.1 38.8 41.1 36 C41.1 35.2 41.1 34.4 41.1 33.6 C41.1 32.7 41.1 31.8 41.1 31 C41.1 30.5 41.1 30.5 41.1 28.3 C41.1 25.5 41.1 22.6 41.1 19.8 C41.1 17.9 41.1 16 41 14.1 C41 9.4 41 4.7 41 0 C44.3 0 47.6 0 51 0 C51 19.8 51 39.6 51 60 C41 60 41 60 38.2 57.7 C37.5 56.7 36.8 55.6 36.1 54.5 C35.7 53.9 35.3 53.3 34.8 52.7 C34 51.5 33.1 50.2 32.3 49 C31 47 29.6 45 28.3 43.1 C26.5 40.5 24.8 38 23 35.4 C18.8 29.2 14.4 23.1 10 17 C9.7 31.2 9.3 45.4 9 60 C6 60 3.1 60 0 60 C0 40.2 0 20.4 0 0 Z " fill="currentColor" transform="translate(2059,329)"/></svg>
+</div>
+
+<header id="hdr">
+  <div class="bar">
+    <a href="#/" class="lockup" aria-label="Kata — Knowledge applied to action">
+      <span class="mk" data-mk="word"></span>
+      <span class="mk tag-art" data-mk="line"></span>
+    </a>
+    <nav class="links">
+      <a href="#/" data-nav="home">Home</a>
+      <a href="#/services" data-nav="services">Services</a>
+      <a href="#/approach" data-nav="approach">Approach</a>
+      <a href="#/team" data-nav="team">Team</a>
+      <a href="#/contact" data-nav="contact">Contact</a>
+      <a href="#" class="build" data-book>Start Building</a>
+    </nav>
+    <button class="menu-btn" id="menuBtn" aria-expanded="false">Menu</button>
+  </div>
+</header>
+
+<div class="sheet" id="sheet">
+  <a href="#/services">Services</a>
+  <a href="#/approach">Approach</a>
+  <a href="#/team">Team</a>
+  <a href="#/contact">Contact</a>
+  <a href="#" class="build" data-book>Start Building</a>
+</div>
+
+<main>
+
+<!-- ==================== HOME ==================== -->
+<section class="page" data-page="home">
+
+  <div class="curtain">
+    <div class="wide curtain-in">
+      <span class="curtain-lockup">
+        <span class="mk" data-mk="word"></span>
+        <span class="mk tag-art" data-mk="line"></span>
+        <h2 class="sr">Kata — Knowledge applied to action</h2>
+      </span>
+    </div>
+    <div class="wide curtain-foot">
+      <p class="scroll-cue"><span class="sr">Scroll down</span><svg class="cue-v" viewBox="0 0 19 7" aria-hidden="true"><path d="M1 1 9.5 6 18 1" vector-effect="non-scaling-stroke"/></svg><svg class="cue-v" viewBox="0 0 19 7" aria-hidden="true"><path d="M1 1 9.5 6 18 1" vector-effect="non-scaling-stroke"/></svg><svg class="cue-v" viewBox="0 0 19 7" aria-hidden="true"><path d="M1 1 9.5 6 18 1" vector-effect="non-scaling-stroke"/></svg></p>
+    </div>
+  </div>
+  <div class="curtain-runway" aria-hidden="true"></div>
+
+  <div class="curtain-under">
+  <div class="hero ph edge-top g-deep-arc on-dark">
+    <div class="inner">
+      <h1 class="d-xl">Independent Production Architects.</h1>
+      <p class="hero-sub">We help brands and agencies turn production knowledge into action: commissioning smarter, shaping the right production setup, and knowing what it should cost.</p>
+      <p><button class="btn big" data-book>Start Building</button></p>
+    </div>
+  </div>
+
+  <div class="sec tight">
+    <div class="wide"><h2 class="d-xxl" style="max-width:24ch">45+ years of<br>production leadership</h2></div>
+    <div class="roster" style="margin-top:clamp(32px,4vw,52px)" aria-hidden="true"><div class="roster-track" id="rosterTrack"></div></div>
+    <p style="position:absolute;left:-9999px">Experience built at The Mill, Stink, Psyop, Markenfilm, Jung von Matt, Kolle Rebbe and DDB.</p>
+  </div>
+
+  <!-- 02 PRISM · three outcomes dividing one budget -->
+  <div class="sec ph g-bloom">
+    <div class="wide">
+      <p class="kicker">How we create value</p>
+      <h2 class="d-l" style="margin-top:20px;max-width:44ch">More value comes from how production is set up, not from cutting cost.</h2>
+      <div class="prism" data-prism style="margin-top:clamp(36px,5vw,60px)"></div>
+    </div>
+  </div>
+
+  <!-- 03 DEPTH · three ways in, each further below the surface -->
+  <div class="sec ph g-beams" data-anchor="how-we-engage">
+    <div class="wide">
+      <p class="kicker">How we engage</p>
+      <h2 class="d-l" style="margin-top:20px;max-width:22ch">Three ways in.<br>The difference is how far.</h2>
+      <div class="depth" data-depth style="margin-top:clamp(36px,5vw,56px)"></div>
+      <p style="margin-top:30px"><a class="arrow" href="#/services/how-we-engage">How engagements work →</a></p>
+    </div>
+  </div>
+
+  <!-- 04 FRAME · four pillars, one partner; the frame never breaks -->
+  <div class="sec">
+    <div class="wide">
+      <p class="kicker">What we do</p>
+      <h2 class="d-l" style="margin-top:20px;max-width:46ch">Four disciplines. One production architecture: strategy, organisation, AI and cost.</h2>
+      <div class="frame" data-frame style="margin-top:clamp(36px,5vw,60px)"></div>
+      <p style="margin-top:30px"><a class="arrow" href="#/services/our-services">All services →</a></p>
+    </div>
+  </div>
+
+  <!-- 05 SEQUENCE · the one pinned scroll on the site -->
+  <div class="sec seq-light"><div class="wide seq" data-rv="posture"></div></div>
+
+  <div class="sec">
+    <div class="wide">
+      <p class="kicker">The founders</p>
+      <h2 class="d-l" style="margin-top:20px;max-width:24ch">The people you would actually work with.</h2>
+      <p class="body" style="margin-top:20px">Studios founded, departments built, budgets carried.</p>
+      <div class="wall" style="margin-top:clamp(28px,3.4vw,52px)">
+        <figure class="wall-p"><span class="fn">01</span><picture><source type="image/webp" srcset="/assets/people/cornelius.webp"><img src="/assets/people/cornelius.jpg" alt="Cornelius Roenz" loading="lazy" decoding="async"></picture><figcaption><h3>Cornelius Roenz</h3><p>Twenty years at Markenfilm, seven of them as Managing Director.</p></figcaption></figure>
+        <figure class="wall-p"><span class="fn">02</span><picture><source type="image/webp" srcset="/assets/people/justin.webp"><img src="/assets/people/justin.jpg" alt="Justin Stiebel" loading="lazy" decoding="async"></picture><figcaption><h3>Justin Stiebel</h3><p>Fifteen years leading VFX and production companies across The Mill, Stink and Psyop.</p></figcaption></figure>
+        <figure class="wall-p"><span class="fn">03</span><picture><source type="image/webp" srcset="/assets/people/jankel.webp"><img src="/assets/people/jankel.jpg" alt="Jankel Huppertz" loading="lazy" decoding="async"></picture><figcaption><h3>Jankel Huppertz</h3><p>Twelve years running production at Jung von Matt, across formats and scales.</p></figcaption></figure>
+      </div>
+      <p style="margin-top:34px"><a class="arrow" href="#/team/the-founders">Meet the team →</a></p>
+    </div>
+  </div>
+
+  <div class="sec close ph g-caustic">
+    <div class="wide cta">
+      <p class="kicker">Start with a conversation</p>
+      <h2 class="d-l">Tell us what you are trying to figure out.</h2>
+      <p class="body ink">A 45-minute call. We will come back within 24 hours with an honest read on whether we are the right people to help.</p>
+      <button class="btn big" data-book>Start Building</button>
+    </div>
+  </div>
+  </div><!-- /curtain-under -->
+</section>
+
+<!-- ==================== SERVICES ==================== -->
+<section class="page" data-page="services">
+  <div class="phero ph edge-top g-warm-beam on-dark">
+    <div class="wide">
+      <p class="kicker">What we do</p>
+      <h1 class="d-xl">Services</h1>
+      <p class="lede">One partner across strategy, organisation, AI and cost.</p>
+    </div>
+  </div>
+
+  <!-- paper, like the band under Team's hero: the plate above needs somewhere
+       to finish. A ground here bleeds up into its fade and the hero never lands. -->
+  <div class="sec" data-anchor="how-we-engage">
+    <div class="wide">
+      <p class="kicker">How we engage</p>
+      <h2 class="d-l" style="margin-top:20px;max-width:22ch">Three ways in.<br>The difference is how far.</h2>
+      <p class="body ink" style="margin-top:22px;max-width:58ch">Each one: fixed scope, a fee agreed before we start, and a recommendation you keep whatever you decide next.</p>
+      <div class="depth" data-depth style="margin-top:clamp(36px,5vw,56px)"></div>
+    </div>
+  </div>
+
+  <div class="sec" data-anchor="our-services">
+    <div class="wide">
+      <p class="kicker">Our services</p>
+      <div id="svcList" style="margin-top:40px"></div>
+    </div>
+  </div>
+
+  <div class="sec close ph g-caustic">
+    <div class="wide cta">
+      <p class="kicker">Next step</p>
+      <h2 class="d-l">Not sure where you would start?</h2>
+      <p class="body ink">That is what the call is for.</p>
+      <button class="btn big" data-book>Start Building</button>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== APPROACH ==================== -->
+<section class="page" data-page="approach">
+  <div class="phero ph edge-top g-deep-beam on-dark">
+    <div class="wide">
+      <p class="kicker">How we work</p>
+      <h1 class="d-xl">Approach</h1>
+      <p class="lede">Most production problems are operational, not creative. So, as Independent Production Architects, we built one roadmap for everyone who touches production: CMOs, procurement, agency leads, executive producers and business leaders.</p>
+    </div>
+  </div>
+
+  <!-- paper, and the site's standard section padding: this band was running
+       clamp(100px,13vw,170px), which pushed the gap under the hero to 410px -->
+  <div class="sec">
+    <div class="wide">
+      <h2 class="d-l" style="max-width:20ch">Independent judgement. On your side.</h2>
+      <p class="body ink" style="margin-top:26px;max-width:60ch">Production advice often comes from someone with a financial stake in the outcome. We sit beside the decision, never above the process and never inside the margin. Every recommendation is grounded in production systems we have designed and built ourselves.</p>
+    </div>
+  </div>
+
+  <!-- the seven run the depth gauge, the same way the three engagements do -->
+  <div class="pan-mist" data-anchor="how-we-work">
+    <div class="sec wide">
+      <p class="kicker">How we work</p>
+      <h2 class="d-m" style="margin-top:18px">How we show up in every engagement.</h2>
+      <div class="depth long" data-depth="posture" style="margin-top:clamp(30px,4vw,46px)"></div>
+    </div>
+  </div>
+
+  <!-- the Index is read, the same way the seven are read on the home page -->
+  <div class="sec" data-anchor="the-index" style="padding-block:clamp(100px,13vw,170px)">
+    <div class="wide seq" data-rv="kai"></div>
+  </div>
+
+  <div class="sec ph g-bloom" style="padding-block:clamp(100px,13vw,170px)">
+    <div class="wide">
+      <p class="kicker">The name</p>
+      <h2 class="d-l" style="margin-top:20px;max-width:26ch"><em>Kata</em>: Japanese for form.</h2>
+      <p class="body ink" style="margin-top:22px">A sequence of movements, internalised through repetition, until it holds in any situation. For us: Knowledge Applied to Action.</p>
+    </div>
+  </div>
+
+  <div class="sec close ph g-caustic">
+    <div class="wide cta">
+      <p class="kicker">Start with a conversation</p>
+      <h2 class="d-l">Tell us what you are trying to figure out.</h2>
+      <p class="body ink">A 45-minute call. We will come back within 24 hours with an honest read on whether we are the right people to help.</p>
+      <button class="btn big" data-book>Start Building</button>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== TEAM ==================== -->
+<section class="page" data-page="team">
+  <div class="phero ph edge-top g-sky-arc on-dark">
+    <div class="wide">
+      <p class="kicker">Who we are</p>
+      <h1 class="d-xl">Team</h1>
+      <p class="lede">Three founding partners who built and ran productions. A network of specialists behind them.</p>
+    </div>
+  </div>
+
+  <div class="sec" data-anchor="the-founders">
+    <div class="wide">
+      <p class="kicker">The founders</p>
+      <h2 class="d-l" style="margin-top:20px;max-width:26ch">Built by people who ran the companies that make this work.</h2>
+      <p class="body ink" style="margin-top:20px;max-width:54ch">Studios founded, departments built, budgets carried. Independent Production Architects, because the strategy is never theoretical.</p>
+      <div class="wall" id="founderList" style="margin-top:clamp(28px,3.4vw,52px)"></div>
+    </div>
+  </div>
+
+  <div class="pan-mist">
+    <div class="sec wide">
+      <p class="kicker" data-anchor="the-network">The network</p>
+      <h2 class="d-l" style="margin-top:20px;max-width:24ch">A specialist network behind every engagement.</h2>
+      <div id="netList" style="margin-top:40px"></div>
+    </div>
+  </div>
+
+  <div class="sec close ph g-caustic">
+    <div class="wide cta">
+      <p class="kicker">Start with a conversation</p>
+      <h2 class="d-l">Tell us what you are trying to figure out.</h2>
+      <p class="body ink">A 45-minute call. We will come back within 24 hours with an honest read on whether we are the right people to help.</p>
+      <button class="btn big" data-book>Start Building</button>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== CONTACT ==================== -->
+<section class="page" data-page="contact">
+  <div class="phero ph g-halo">
+    <div class="wide">
+      <p class="kicker">Contact</p>
+      <h1 class="d-xl">Let's talk.</h1>
+      <p class="lede">Tell us what you are trying to figure out.</p>
+    </div>
+  </div>
+
+  <div class="sec tight" data-anchor="start-a-conversation">
+    <div class="wide" style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,320px);gap:56px" id="contactGrid">
+      <div>
+        <h2 class="d-m">Start a conversation</h2>
+        <p class="body" style="margin-top:16px">Tell us what you are trying to figure out. You will get a person, not a form response.</p>
+        <div id="contactForm" style="margin-top:44px"></div>
+      </div>
+      <div>
+        <p class="kicker">What happens next</p>
+        <div class="plist" style="margin-top:22px">
+          <div class="item" style="grid-template-columns:34px 1fr"><span class="n">01</span><p style="color:var(--ink)">A 45-minute call, at a time that suits you.</p></div>
+          <div class="item" style="grid-template-columns:34px 1fr"><span class="n">02</span><p style="color:var(--ink)">An honest read within 24 hours on whether we are the right people to help.</p></div>
+          <div class="item" style="grid-template-columns:34px 1fr"><span class="n">03</span><p style="color:var(--ink)">What a first engagement looks like, and where we would start.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="pan-mist">
+    <div class="sec tight wide">
+      <p class="kicker">Individual contacts</p>
+      <h2 class="d-m" style="margin-top:18px">Or skip the form and write to one of us directly.</h2>
+      <div class="plist" style="margin-top:36px">
+        <div class="item" style="grid-template-columns:minmax(0,220px) minmax(0,1fr) minmax(0,260px)">
+          <h3>Cornelius Roenz</h3><p>Strategy, production cost control and executive production</p>
+          <p><a href="mailto:cornelius@bureau-kata.com" style="color:var(--glacier-deep)">cornelius@bureau-kata.com</a></p>
+        </div>
+        <div class="item" style="grid-template-columns:minmax(0,220px) minmax(0,1fr) minmax(0,260px)">
+          <h3>Justin Stiebel</h3><p>Strategy, organisational design and advisory</p>
+          <p><a href="mailto:justin@bureau-kata.com" style="color:var(--glacier-deep)">justin@bureau-kata.com</a></p>
+        </div>
+        <div class="item" style="grid-template-columns:minmax(0,220px) minmax(0,1fr) minmax(0,260px)">
+          <h3>Jankel Huppertz</h3><p>Production leadership, operations and advisory</p>
+          <p><a href="mailto:jankel@bureau-kata.com" style="color:var(--glacier-deep)">jankel@bureau-kata.com</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wide foot">
+    <div>
+      <span class="lockup">
+        <span class="mk" data-mk="word"></span>
+        <span class="mk tag-art" data-mk="line"></span>
+        <span class="sr">Kata — Knowledge applied to action</span>
+      </span>
+    </div>
+    <div>
+      <p class="kicker" style="margin-bottom:16px">Menu</p>
+      <ul>
+        <li><a href="#/">Home</a></li><li><a href="#/services">Services</a></li>
+        <li><a href="#/approach">Approach</a></li><li><a href="#/team">Team</a></li>
+        <li><a href="#/contact">Contact</a></li>
+      </ul>
+    </div>
+    <div>
+      <p class="kicker" style="margin-bottom:16px">Contact</p>
+      <ul>
+        <li><a href="mailto:hello@bureau-kata.com">hello@bureau-kata.com</a></li>
+        <li><a href="https://www.linkedin.com/company/bureau-kata/about/" rel="noopener" target="_blank">LinkedIn</a></li><li><a href="/imprint">Impressum</a></li>
+        <li><a href="/privacy">Datenschutz</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wide meta">
+    <p class="micro">© 2026 Kata · bureau-kata.com</p>
+    <p class="micro">Independent Production Architects</p>
+  </div>
+</footer>
+
+<div class="modal" id="modal">
+  <div class="card">
+    <button class="close" id="modalClose">Close</button>
+    <p class="kicker">Start with a conversation</p>
+    <h2 class="d-m" style="margin-top:16px;max-width:18ch">Tell us what you are trying to figure out.</h2>
+    <p class="body" style="margin-top:16px">A 45-minute call. We will come back within 24 hours with an honest read on whether we are the right people to help.</p>
+    <div id="modalForm" style="margin-top:40px"></div>
+  </div>
+</div>
+
+
+<script>
+(function(){
+  "use strict";
+  (function(){var p=location.pathname.replace(/\/index\.html$/,'').replace(/\/+$/,'');if(p&&!location.hash){history.replaceState(null,'','/#'+p);}})();
+
+  var reduce=window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  function wide(){ return window.innerWidth>900; }
+
+  /* every accordion on the site opens the same way: a click, one item at a
+     time independent of its neighbours, so two can be held open side by side */
+  function wireAccordions(root){
+    if(!root) return;
+    [].forEach.call(root.querySelectorAll(".acc"),function(box){
+      var head=box.querySelector(".acc-head"); if(!head) return;
+      head.addEventListener("click",function(){
+        var open=box.classList.toggle("open");
+        head.setAttribute("aria-expanded", open ? "true" : "false");
+      });
+    });
+  }
+
+  /* ---------- roster ---------- */
+  var roster=["The Mill","Stink","Psyop","Markenfilm","Jung von Matt","Kolle Rebbe","DDB"],rh="";
+  for(var r=0;r<2;r++){ for(var i=0;i<roster.length;i++){ rh+="<span>"+roster[i]+"</span>"; } }
+  document.getElementById("rosterTrack").innerHTML=rh;
+
+  /* ============================================================
+     REVEAL CONTENT
+     ============================================================ */
+  var REVEALS={
+    value:{
+      kicker:"How we create value",
+      thesis:"More value comes from how production is set up, not from cutting cost.",
+      items:[
+        {t:"Smarter commissioning",c:"We sharpen how content is briefed, scoped and commissioned, improving decisions before production starts, without slowing your team down."},
+        {t:"The right production structure",c:"We design or recalibrate your production setup around what the work actually needs, without disrupting what already works."},
+        {t:"Full process transparency",c:"We make the full production process visible, from decision flow to cost, so issues can be solved without blame or compromising the work."}
+      ]
+    },
+    engage:{
+      kicker:"How we engage",
+      thesis:"Every engagement starts one of three ways. Fixed scope, a fee agreed before we start, and a recommendation you keep whatever you decide next.",
+      items:[
+        {t:"Audit",c:"We map and score your production setup against the KATA Production Architecture Index and real-world rates we have negotiated in the market. Where cost is being lost, you see it line by line and know what to change."},
+        {t:"Workshop",c:"One topic: AI readiness, production strategy or process, worked through with your team from question to decision, ending in a clear, actionable deliverable."},
+        {t:"Pilot",c:"A pressing project, run end to end with us embedded in your team, from brief through handover, applying the approach in live production."}
+      ],
+      link:{href:"#/services",label:"How engagements work →"}
+    },
+    pillars:{
+      kicker:"What we do",
+      thesis:"Four disciplines. One production architecture: strategy, organisation, AI and cost.",
+      items:[
+        {t:"Strategic Advisory",c:"How content gets commissioned, planned and made at scale. Designed, not inherited."},
+        {t:"Organisational Setup & Production Capability",c:"Production capability designed around what the organisation needs, created from scratch or reconfigured from within."},
+        {t:"AI Integration & Transformation",c:"AI integrated into the workflow with clear governance. Proven in practice before it scales."},
+        {t:"Production Cost Control",c:"Cost is where strategy shows up. What a production should cost, known before the first quote arrives."}
+      ],
+      link:{href:"#/services",label:"All services →"}
+    },
+    posture:{
+      kicker:"How we work",
+      thesis:"Most production problems are operational.",
+      dark:true,
+      items:[
+        {t:"Integrated",c:"One team, one view across brand, agency and production."},
+        {t:"Collaborative",c:"Built with your team in the room, shaped together from day one."},
+        {t:"Independent & transparent",c:"Independent of the companies, directors and agencies we recommend."},
+        {t:"Data-driven",c:"Every recommendation traces back to a number you can check, benchmarked against real market rates."},
+        {t:"Impact-driven",c:"Every engagement ends with something you can act on."},
+        {t:"Experienced",c:"45+ years of production leadership, earned across The Mill, Stink, Psyop, Markenfilm and Jung von Matt."},
+        {t:"Innovative",c:"Production pipelines built for what's next: social-first, micro-drama and AI-generated content."}
+      ],
+      link:{href:"#/approach",label:"The full approach →"}
+    },
+    kai:{
+      kicker:"The Kata Production Architecture Index",
+      thesis:"Every engagement is scored against the Index. A workshop or pilot goes deep on the one or two dimensions that matter most.",
+      items:[
+        {t:"Workflow & Process",c:"Most waste is invisible until someone maps it. We show you exactly where your time and budget leak between brief and delivery."},
+        {t:"Technology & Systems",c:"Is your tech stack earning its budget, or just adding complexity? We assess stack, integration and adoption to give you a straight answer."},
+        {t:"Budget & Resource",c:"Budget and reality rarely match by the end of a production. We examine structure, cost variance and governance to show you exactly where they diverge."},
+        {t:"Team & Capability",c:"Who decides what, and what happens when someone leaves? We map roles, decision rights and capability coverage to reduce key-person dependency."},
+        {t:"Pipeline & Quality",c:"Quality is made in specific places, and it erodes in specific places too. We trace content from brief to archive to find exactly where rework creeps in."},
+        {t:"Vendor & Partner",c:"Vendor rosters carry real variation in risk and value. We segment yours and assess contract structure to show which partners actually earn their place."}
+      ]
+    }
+  };
+
+  function two(i){ return (i+1)<10 ? "0"+(i+1) : ""+(i+1); }
+  /* one slug function, used by both ends of a deep link, so a pillar on the home
+     page and its service on the services page can never drift apart */
+  function slug(t){ return String(t).toLowerCase().replace(/&amp;/g,"and").replace(/&/g,"and")
+    .replace(/[^a-z0-9]+/g,"-").replace(/^-+|-+$/g,""); }
+
+  function two(i){ return (i+1)<10 ? "0"+(i+1) : ""+(i+1); }
+
+  /* ---------------------------------------------------------
+     ARRIVAL — anything with .rise comes up once as it enters.
+     --------------------------------------------------------- */
+  var arrive=(function(){
+    if(reduce||!("IntersectionObserver" in window)){
+      return function(nodes){ nodes.forEach(function(n){ n.classList.add("in"); }); };
+    }
+    var io=new IntersectionObserver(function(es){
+      es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add("in"); io.unobserve(e.target); } });
+    },{threshold:.18,rootMargin:"0px 0px -8% 0px"});
+    return function(nodes){ nodes.forEach(function(n){ io.observe(n); }); };
+  })();
+
+  /* ---- VALUE PROPOSITION — three cards, nothing to operate --- */
+  (function(){
+    var host=document.querySelectorAll("[data-prism]"); if(!host.length) return;
+    var items=REVEALS.value.items, h="";
+    items.forEach(function(it,i){
+      h+='<div class="prism-band rise"><span class="pn">'+two(i)+'</span><h3>'+it.t+'</h3><p>'+it.c+'</p></div>';
+    });
+    host.forEach(function(el){ el.innerHTML=h; arrive(el.querySelectorAll(".rise")); });
+  })();
+
+  /* ---- THREE WAYS IN — the depth gauge ----------------------- */
+  (function(){
+    var host=document.querySelectorAll("[data-depth]"); if(!host.length) return;
+    host.forEach(function(el){
+      /* the gauge is a mechanic, not one section: the markup names its set */
+      var set=REVEALS[el.getAttribute("data-depth")] || REVEALS.engage;
+      var items=set.items, h='';
+      items.forEach(function(it,i){
+        h+='<button type="button" class="depth-row" aria-expanded="false">'
+         +   '<span class="dn">'+two(i)+'</span>'
+         +   '<span class="dt"><h3>'+it.t+'</h3></span>'
+         +   '<span class="dcopy"><p>'+it.c+'</p></span></button>';
+      });
+      el.innerHTML=h;
+      var rows=el.querySelectorAll(".depth-row");
+      /* pointing opens a band (CSS). Without a pointer, a tap does the same,
+         and only one band is ever open — tapping the open one closes it. */
+      rows.forEach(function(r){
+        r.addEventListener("click",function(){
+          var was=r.classList.contains("open");
+          rows.forEach(function(o){ o.classList.remove("open"); o.setAttribute("aria-expanded","false"); });
+          if(!was){ r.classList.add("open"); r.setAttribute("aria-expanded","true"); }
+        });
+      });
+    });
+  })();
+
+  /* ---- FOUR PILLARS — four doors ----------------------------- */
+  (function(){
+    var host=document.querySelectorAll("[data-frame]"); if(!host.length) return;
+    var items=REVEALS.pillars.items, h="";
+    items.forEach(function(it,i){
+      h+='<a class="frame-col rise" href="#/services/'+slug(it.t)+'"><span class="fn">'+two(i)+'</span><span class="fc-body"><h3>'+it.t+'</h3><span class="fc-copy"><p>'+it.c+'</p><span class="go">Read more →</span></span></span></a>';
+    });
+    host.forEach(function(el){ el.innerHTML=h; arrive(el.querySelectorAll(".rise")); });
+  })();
+
+  /* ---- SEVEN PRINCIPLES — a reading -------------------------- */
+  var readings=[];
+  document.querySelectorAll("[data-rv]").forEach(function(host){
+    var d=REVEALS[host.dataset.rv]; if(!d) return;
+    var n=d.items.length, list="";
+    d.items.forEach(function(it,i){
+      list+='<div class="seq-item"><p class="sn">'+two(i)+' / '+two(n-1)+'</p><h3>'+it.t+'</h3><p>'+it.c+'</p></div>';
+    });
+    host.innerHTML=
+      '<div class="seq-side"><p class="kicker">'+d.kicker+'</p>'
+      +'<p class="d-m" style="margin-top:14px;max-width:22ch;color:var(--graphite)">'+d.thesis+'</p>'
+      +'<p class="seq-count"><span data-count>01</span><small>/ '+two(n-1)+'</small></p>'
+      +(d.link?'<p style="margin-top:28px"><a class="arrow" href="'+d.link.href+'">'+d.link.label+'</a></p>':'')
+      +'</div>'
+      +'<div class="seq-list">'+list+'</div>';
+    readings.push({root:host, items:host.querySelectorAll(".seq-item"), count:host.querySelector("[data-count]"), cur:-1});
+  });
+  function readScan(){
+    if(!readings.length) return;
+    var line=window.innerHeight*0.5;
+    readings.forEach(function(r){
+      if(r.root.offsetParent===null) return;
+      var box=r.root.getBoundingClientRect();
+      if(box.bottom<0||box.top>window.innerHeight) return;
+      var lit=0;
+      for(var i=0;i<r.items.length;i++){ if(r.items[i].getBoundingClientRect().top <= line) lit=i; }
+      if(reduce) lit=-1;
+      if(lit===r.cur) return;
+      r.cur=lit;
+      for(var k=0;k<r.items.length;k++){
+        r.items[k].classList.toggle("lit", k===lit);
+        r.items[k].classList.toggle("past", reduce?false:k<lit);
+      }
+      if(r.count&&lit>=0) r.count.textContent=two(lit);
+    });
+  }
+
+
+
+  /* ---------- services detail ---------- */
+  var services=[
+    {n:"01",t:"Strategic Advisory",cta:"Talk strategy",
+     body:"What gets made, in what structure, and with whom. Production reality brought into the creative process while the idea is still open. Rosters, formats and sustainability weighed against creative judgement and market evidence.",
+     areas:[["Production Strategy","Commissioning principles, partner frameworks and budget benchmarks."],
+            ["Production Reality Check","Bringing production intelligence into the creative process early, without compromising creativity."],
+            ["Content Planning at Scale","Structuring volume, bundling and capacity across the year."],
+            ["Roster &amp; Director Advisory","Independent recommendations on creative fit, format and budget."],
+            ["Emerging Format Strategy","Production pipelines for social-first, micro-drama and AI-generated content."],
+            ["Sustainable Production","Carbon budgeting, supplier selection and production data."]]},
+    {n:"02",t:"Organisational Setup &amp; Production Capability",cta:"Scope a build",
+     body:"What belongs in-house and what stays external, clarified before anyone is hired. In-house departments and agency production units designed to work in practice. Roles, approvals and workflows defined. The setup is led until permanent leadership is in place.",
+     areas:[["Capability Assessment","What belongs in-house, what stays external, and why."],
+            ["In-House Production Setup","Brand-side production units created from scratch or developed from existing teams."],
+            ["Agency Production Setup","Production capability inside agencies, from structure to staffing."],
+            ["Operating Model &amp; Process Design","Roles, decision rights, approvals and workflows."],
+            ["Post &amp; VFX Capability","What to keep in-house, partner for or source externally."],
+            ["Handover &amp; Interim Leadership","Running the setup until permanent leadership is in place."]]},
+    {n:"03",t:"AI Integration &amp; Transformation",cta:"Start with AI",
+     body:"Where AI actually helps, and where it does not. Tools selected for what they do in production. Governance, rights and human sign-off defined, then tested on one live project before anything scales.",
+     areas:[["AI Workflow Mapping","Where AI genuinely speeds up or improves production, and where it doesn't."],
+            ["Tool &amp; Vendor Evaluation","Independent assessment of AI production tools."],
+            ["Governance &amp; Rights Framework","Sign-off structures, usage rights and disclosure requirements for AI-generated content."],
+            ["Human-in-the-Loop Design","Defining what stays human."],
+            ["Pilot &amp; Rollout Planning","Testing AI integration on one real production before scaling."],
+            ["Team Enablement","Training and documentation for the people doing the work."]]},
+    {n:"04",t:"Production Cost Control",cta:"Pressure-test a budget",
+     body:"What a production should cost, established before the first quote arrives. Quotes reviewed line by line, spend tracked throughout production, and final costs checked against scope. Rates and buyouts benchmarked against current market reality.",
+     areas:[["Cost Benchmarking","Production costs compared against real market rates."],
+            ["Should-Cost Analysis","A cost estimate before the first quote arrives."],
+            ["Bid Validation","Independent review of supplier quotes before they are signed."],
+            ["Live Cost Tracking","Cost reporting throughout the production."],
+            ["Buyout &amp; Usage Rights","Term, territory and renewals, priced against actual use."],
+            ["Invoice Reconciliation","Final costs checked against what was scoped and quoted."]]}
+  ];
+  var svc="";
+  services.forEach(function(s){
+    var areas="";
+    s.areas.forEach(function(a,i){
+      areas+='<div><span class="an">'+two(i)+'</span><h3>'+a[0]+'</h3><p>'+a[1]+'</p></div>';
+    });
+    svc+='<div class="acc" data-anchor="'+slug(s.t)+'">'
+       + '<button type="button" class="acc-head" aria-expanded="false">'
+       +   '<span class="sn">'+s.n+'</span><h3 class="d-m">'+s.t+'</h3>'
+       +   '<span class="acc-mark" aria-hidden="true"></span></button>'
+       + '<div class="acc-body"><div class="acc-inner">'
+       +   '<p class="body">'+s.body+'</p>'
+       +   '<p class="kicker">Key focus areas</p>'
+       +   '<div class="areas">'+areas+'</div>'
+       +   '<p style="margin-top:34px;padding-bottom:48px"><button class="btn" data-book>'+s.cta+'</button></p>'
+       + '</div></div></div>';
+  });
+  document.getElementById("svcList").innerHTML=svc;
+  /* every discipline is listed; opening one is a deliberate click, and each
+     opens on its own so two can be compared side by side */
+  wireAccordions(document.getElementById("svcList"));
+
+  /* ---------- founders ---------- */
+  var founders=[
+    {slug:"cornelius",name:"Cornelius Roenz",role:"Strategy, production cost control and executive production",mail:"cornelius@bureau-kata.com",
+     bullets:["Twenty years at Markenfilm, seven as Managing Director. Ran the company without leaving the work: pitches, directors, production negotiations and the number on set.",
+              "Production leader and cost control specialist with deep market knowledge across German and European TVC, content and campaign production.",
+              "Has built, assessed, and managed production budgets at every scale, from focused social campaigns to complex international shoots. Knows how ambitious creative work is costed, where the money shows up on screen, and when a number doesn't hold up.",
+              "Specialist in production economics and the German market: its rates, production companies, directors and the dynamics that shape it."]},
+    {slug:"justin",name:"Justin Stiebel",role:"Strategy, organisational design and advisory",mail:"justin@bureau-kata.com",
+     bullets:["Fifteen years leading VFX, production and animation companies including The Mill, Stink and Psyop. Three companies built from scratch. Ten years in the UK.",
+              "Production leader with extensive experience building and running production functions at agency and brand level across Europe.",
+              "Has operated at every level of high-end commercial production, from set to boardroom. Knows what it takes to deliver creatively demanding, commercially complex campaigns, and what it takes to lead the organisations that produce them through growth, transition and change.",
+              "Specialist in production strategy, organisational transformation and sustainable production structures for brands and agencies navigating a shifting market."]},
+    {slug:"jankel",name:"Jankel Huppertz",role:"Production leadership, operations and advisory",mail:"jankel@bureau-kata.com",
+     bullets:["Twelve years at Jung von Matt, running production across formats and scales.",
+              "Production leader with deep agency-side production experience. Understands how TVC, content and campaign production works, from idea to execution.",
+              "Has built and managed production across formats and scales, from agile content to large international campaigns. Knows how to run complex productions, align teams, and deliver against creative and commercial demands.",
+              "Specialist in production structures, processes, and budgets, and where value is created or lost."]}
+  ];
+  var fh="";
+  founders.forEach(function(f,i){
+    var b=""; f.bullets.forEach(function(x){ b+="<p>"+x+"</p>"; });
+    fh+='<figure class="wall-p"><span class="fn">'+two(i)+'</span>'
+       + '<picture><source type="image/webp" srcset="/assets/people/'+f.slug+'.webp">'
+       +   '<img src="/assets/people/'+f.slug+'.jpg" alt="'+f.name+'" loading="lazy" decoding="async"></picture><figcaption><h3>'+f.name+'</h3><p class="role">'+f.role+'</p>'+b+'<p style="margin-top:18px"><a class="mail" href="mailto:'+f.mail+'">'+f.mail+'</a></p></figcaption></figure>';
+  });
+  document.getElementById("founderList").innerHTML=fh;
+
+  /* ---------- network ---------- */
+  var net=[
+    ["Finance","The business case for a studio that does not exist yet, costed to year three.","Finance leads who have run the numbers inside production and studio businesses. They build the business case for a studio that does not exist yet: cost model, rate card, chargeback structure. The last two often decide whether marketing actually uses the studio it paid for."],
+    ["Strategy","Which capability is worth owning, and which is worth renting forever.","Strategists from both brand and agency side. They settle make-or-buy: what a company produces itself, what it keeps buying and what it stops making entirely. Every build depends on that decision, so it gets made first."],
+    ["Technology","The stack a new studio runs on, picked while there is still nothing to migrate.","Systems architects who have specified production pipelines from the first system decision onwards. They select the stack before there is anything to migrate: storage, asset management, review, archive. Each choice is weighed by what it costs to reverse."],
+    ["AI","AI in the workflow: what goes in, where, and under whose rules.","Practitioners who have put AI into live pipelines, not demos. They select tools on evidence, rewire the workflow and write the governance and training for the moment something breaks and the team reaches for the old way."],
+    ["Creative","Creative direction inside the organisation, on work the brand makes itself.","Creative directors who have led in-house studios. They set the quality bar for work a brand makes itself, define the hiring profile against it and call the slide early, before the studio turns into a versioning department."],
+    ["Production","Producers who start a studio, and the department still running when they leave.","Senior executive producers who have started studios and production departments. They build the operating layer: staffing rota, escalation paths, the handbook, the second year planned during the first. The department is designed to run without its founders."],
+    ["HR","The org chart for a team nobody has hired yet.","Team builders who have hired inside production companies and agencies. They set the org chart, pay bands and titles for roles that marketing frameworks cannot price, and take that case to the remuneration committee."],
+    ["Venture","New studios, new divisions, sometimes a whole new company.","Founders and operators who have started, sold and closed companies. They write the operating plan for a new studio or division: payroll, runway, and a bad quarter already costed, because theirs had one."],
+    ["Media","What the channels will demand of the work, and how much of it there is.","Media planners who work backwards from the buy. They set the numbers a studio is sized against before capacity is fixed: assets per year, at what turnaround. Wrong numbers mean an idle studio by June, or outsourcing again."],
+    ["Talent Partnerships","Brands and talent, across entertainment, culture and sport, on terms that get reused.","Negotiators who have closed talent deals from both sides of the table. They put brand and talent on terms built for reuse: a fee benchmark, a rights window, a template. The next deal starts from a number, not a phone call."],
+    ["Legal","Rights, contracts and IP, from the moment a brand starts owning its own work.","Production lawyers, not general counsel on loan. They build the rights framework and the contract templates a studio signs a thousand times, starting with the first piece of work a brand owns outright."],
+    ["Sustainability","Carbon counted on the job itself, and a number that holds up.","Measurement specialists who have taken carbon out of real shoots: generators, travel, post. They set the baseline first, then wire the counting into the workflow, so the number arrives with the delivery and survives an audit."]
+  ];
+  var nh=""; net.forEach(function(x,i){
+    nh+='<div class="acc sm" data-anchor="'+slug(x[0])+'">'
+      + '<button type="button" class="acc-head" aria-expanded="false">'
+      +   '<span class="sn">'+two(i)+'</span><h3>'+x[0]+'</h3>'
+      +   '<span class="acc-mark" aria-hidden="true"></span></button>'
+      + '<div class="acc-body"><div class="acc-inner">'
+      +   '<p class="line">'+x[1]+'</p><p>'+x[2]+'</p>'
+      + '</div></div></div>';
+  });
+  var netHost=document.getElementById("netList");
+  netHost.innerHTML=nh; wireAccordions(netHost);
+
+  /* ---------- form ---------- */
+  function formHTML(p){
+    return '<form class="form" id="'+p+'-form" novalidate>'
+    +'<div class="field"><label for="'+p+'-name">Your name</label><input id="'+p+'-name" type="text" autocomplete="name"></div>'
+    +'<div class="field"><label for="'+p+'-email">Email</label><input id="'+p+'-email" type="email" autocomplete="email"></div>'
+    +'<div class="field"><label for="'+p+'-company">Company</label><input id="'+p+'-company" type="text" autocomplete="organization"></div>'
+    +'<div class="field"><label for="'+p+'-role">Your role <span class="opt">· optional</span></label><input id="'+p+'-role" type="text"></div>'
+    +'<div class="field"><label for="'+p+'-type">You are a</label><select id="'+p+'-type"><option>Brand</option><option>Agency</option><option>Other</option></select></div>'
+    +'<div class="field"><label for="'+p+'-need">What you need <span class="opt">· optional</span></label><select id="'+p+'-need"><option>Not sure yet</option><option>Strategic advisory</option><option>Organisational setup &amp; production capability</option><option>AI integration</option><option>Production cost control</option></select></div>'
+    +'<div class="field f-full"><label for="'+p+'-timing">Timing <span class="opt">· optional</span></label><select id="'+p+'-timing"><option>Not sure yet</option><option>Now, it\'s live</option><option>Next 3 months</option><option>Later this year</option><option>Just exploring</option></select></div>'
+    +'<div class="field f-full"><label for="'+p+'-msg">What are you trying to figure out?</label><textarea id="'+p+'-msg" placeholder="The more specific, the more useful the call."></textarea></div>'
+    +'<div class="hp" aria-hidden="true"><label for="'+p+'-website">Website</label><input id="'+p+'-website" type="text" tabindex="-1" autocomplete="off"></div>'
+    +'<div class="f-full" style="display:flex;justify-content:space-between;align-items:flex-end;gap:30px;flex-wrap:wrap">'
+    +'<p class="privacy">We use your details only to answer this enquiry. <a href="/privacy">How we handle data.</a></p>'
+    +'<button class="btn" type="submit">Send</button></div>'
+    +'<p class="formnote f-full" id="'+p+'-note" role="status"></p></form>';
+  }
+  document.getElementById("contactForm").innerHTML=formHTML("c");
+  document.getElementById("modalForm").innerHTML=formHTML("m");
+  document.addEventListener("submit",function(e){
+    if(e.target.tagName!=="FORM") return;
+    e.preventDefault();
+    var note=document.getElementById(e.target.id.split("-")[0]+"-note");
+    if(!note) return;
+    var f=e.target, p=f.id.split("-")[0], btn=f.querySelector('button[type="submit"]');
+    var v=function(k){ var el=document.getElementById(p+"-"+k); return el?el.value.trim():""; };
+    var d={name:v("name"),email:v("email"),company:v("company"),role:v("role"),side:v("type"),
+           need:v("need"),timing:v("timing"),message:v("msg"),website:v("website")};
+    var direct=" Email us directly at hello@bureau-kata.com.";
+    if(!d.name||d.email.indexOf("@")<1||!d.message){
+      note.textContent="Add your name, an email we can reply to, and what you are trying to figure out."; return; }
+    if(f.dataset.busy) return;
+    f.dataset.busy="1"; btn.disabled=true; btn.textContent="Sending"; note.textContent="";
+    fetch("/api/enquiry",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(d)})
+      .then(function(r){
+        if(r.ok){ f.reset(); note.textContent="Thanks — it’s arrived. You’ll hear from us within 24 hours."; }
+        else if(r.status===503){ note.textContent="The form isn’t connected right now."+direct; }
+        else { note.textContent="That didn’t go through."+direct; }
+      })
+      .catch(function(){ note.textContent="That didn’t go through."+direct; })
+      .then(function(){ delete f.dataset.busy; btn.disabled=false; btn.textContent="Send"; });
+  });
+
+  /* ---------- modal ---------- */
+  var modal=document.getElementById("modal");
+  function closeModal(){ modal.classList.remove("open"); document.body.style.overflow=""; }
+  document.addEventListener("click",function(e){
+    var t=e.target.closest("[data-book]");
+    if(t){ e.preventDefault(); closeSheet(); modal.classList.add("open"); document.body.style.overflow="hidden"; return; }
+    if(e.target===modal) closeModal();
+  });
+  document.getElementById("modalClose").addEventListener("click",closeModal);
+  document.addEventListener("keydown",function(e){ if(e.key==="Escape"){ closeModal(); closeSheet(); } });
+
+  /* ---------- the mark ----------
+     One copy of each piece of artwork in the document, cloned into every
+     place that shows it. <use> is not an option: it clones into a shadow
+     tree that author CSS cannot reach, so fill:currentColor never lands. */
+  [].forEach.call(document.querySelectorAll("[data-mk]"),function(slot){
+    var src=document.querySelector('#marks [data-art="'+slot.dataset.mk+'"]');
+    if(src) slot.appendChild(src.cloneNode(true));
+  });
+
+  /* ---------- mobile sheet ---------- */
+  var sheet=document.getElementById("sheet"), menuBtn=document.getElementById("menuBtn");
+  function lock(on){
+    document.documentElement.classList.toggle("navlock",on);
+    document.body.classList.toggle("navlock",on);
+  }
+  function closeSheet(){ sheet.classList.remove("open"); menuBtn.textContent="Menu"; menuBtn.setAttribute("aria-expanded","false"); lock(false); paint(); }
+  menuBtn.addEventListener("click",function(){
+    var open=sheet.classList.toggle("open");
+    menuBtn.textContent=open?"Close":"Menu";
+    menuBtn.setAttribute("aria-expanded",open?"true":"false");
+    lock(open);
+    paint();
+  });
+  sheet.addEventListener("click",function(e){ if(e.target.tagName==="A"&&!e.target.hasAttribute("data-book")) closeSheet(); });
+
+  /* ---------- header ---------- */
+  var hdr=document.getElementById("hdr"), darkTop=true;
+  function paint(){
+    var top=window.scrollY<=8;
+    hdr.classList.toggle("stuck",!top);
+    hdr.classList.toggle("invert",top&&darkTop&&!sheet.classList.contains("open"));
+    hdr.classList.toggle("bare", curtainP<0.72 && !sheet.classList.contains("open"));
+  }
+
+  /* ---------- the curtain lift ---------- */
+  var curtain=document.querySelector(".curtain"),
+      cUnder=document.querySelector(".curtain-under"),
+      cIn=curtain&&curtain.querySelector(".curtain-in"),
+      cFoot=curtain&&curtain.querySelector(".curtain-foot");
+  var cRunway=document.querySelector(".curtain-runway");
+  var curtainP=1,      /* how far the panel has lifted: 0 down, 1 clear */
+      hasLifted=false, /* it has been taken all the way up at least once */
+      spent=false;     /* and put away — the front door is only opened once */
+
+  /* Once the panel has been lifted, it is retired for the rest of the visit:
+     the runway comes out of the flow so Home starts on the hero, and coming
+     back to Home is arriving in the site rather than at its door again. A
+     reload is a new arrival, which keeps the thing demonstrable. */
+  function retireCurtain(){
+    if(!curtain||spent) return;
+    spent=true; curtainP=1;
+    curtain.style.display="none";
+    if(cRunway) cRunway.style.display="none";
+    cUnder.style.transform="";
+  }
+
+  function curtainTick(){
+    if(!curtain||!cUnder) return;
+    if(spent){ curtainP=1; return; }
+    var act=document.querySelector(".page.active");
+    if(!act||act.getAttribute("data-page")!=="home"){
+      curtain.style.display="none"; cUnder.style.transform=""; curtainP=1; return;
+    }
+    curtain.style.display="";
+    var vh=window.innerHeight||1,
+        y=Math.min(Math.max(window.scrollY,0),vh),
+        p=y/vh;
+    curtainP=p;
+    curtain.style.transform="translate3d(0,"+(-y)+"px,0)";
+    if(p>=1){
+      /* Through it. Retire it here rather than on the next navigation, so
+         scrolling back up returns you to the top of the site and not to the
+         door. The swap is invisible: the hero is already sitting at the top
+         of the viewport, so dropping the runway and taking the same distance
+         off the scroll position leaves every pixel where it was. */
+      hasLifted=true;
+      var keep=Math.max(0, window.scrollY - vh);
+      retireCurtain();
+      window.scrollTo(0, keep);
+      return;
+    }else{
+      curtain.style.visibility="visible";
+      cUnder.style.transform="translate3d(0,"+(y-vh)+"px,0)";
+    }
+    if(cIn&&!reduce){
+      /* the panel's contents leave a little ahead of the panel, so it reads
+         as something lifting rather than a screen sliding */
+      cIn.style.transform="translate3d(0,"+(-p*58)+"px,0)";
+      cIn.style.opacity=String(Math.max(0,1-p*0.85));
+    }
+    if(cFoot) cFoot.style.opacity=String(Math.max(0,1-p*2.6));
+  }
+
+  var ticking=false;
+  function onScroll(){
+    if(ticking) return; ticking=true;
+    window.requestAnimationFrame(function(){ curtainTick(); paint(); readScan(); ticking=false; });
+  }
+  window.addEventListener("scroll",onScroll,{passive:true});
+  window.addEventListener("resize",onScroll);
+  window.addEventListener("orientationchange",function(){ setTimeout(onScroll,250); });
+
+  /* ---------- routing ---------- */
+  var pages=document.querySelectorAll(".page"), navs=document.querySelectorAll("[data-nav]");
+  function route(){
+    /* a route is page/target: #/services/strategic-advisory lands on that
+       service and opens it, #/services lands at the top of the page */
+    var raw=(location.hash||"#/").replace("#/",""), parts=raw.split("/");
+    var h=parts[0]||"home", target=parts.slice(1).join("/"), found=false;
+    for(var i=0;i<pages.length;i++){
+      var on=pages[i].getAttribute("data-page")===h;
+      pages[i].classList.toggle("active",on);
+      if(on) found=true;
+    }
+    if(!found){ pages[0].classList.add("active"); h="home"; }
+    /* the mark and the menu reverse out wherever a page opens on a dark ground */
+    var act=document.querySelector('.page.active');
+    darkTop=!!(act && act.firstElementChild && act.firstElementChild.classList.contains("on-dark"));
+    for(var j=0;j<navs.length;j++) navs[j].classList.toggle("on",navs[j].getAttribute("data-nav")===h);
+    if(hasLifted) retireCurtain();
+    goTo(target);
+    curtainTick(); paint(); readScan();
+  }
+
+  /* land on the named part of the page, opening it if it is an accordion.
+     Two frames: the first lets the page lay out, the second lets an opening
+     accordion finish changing height before we measure where to stop. */
+  function setAcc(box,on){
+    box.classList.toggle("open",on);
+    var h=box.querySelector(".acc-head"); if(h) h.setAttribute("aria-expanded", on?"true":"false");
+  }
+  function goTo(name){
+    window.scrollTo(0,0);
+    if(!name) return;
+    var page=document.querySelector(".page.active");
+    var el=page && page.querySelector('[data-anchor="'+name.replace(/"/g,"")+'"]');
+    if(!el) return;
+    var box=el.closest(".acc");
+    if(box){
+      /* arriving by link lands you on one thing, not on whatever a previous
+         visit left open. The transition is suspended for the jump, so the
+         heights above the target are final before we measure where to stop. */
+      document.body.classList.add("nofx");
+      [].forEach.call(page.querySelectorAll(".acc.open"), function(o){ if(o!==box) setAcc(o,false); });
+      setAcc(box,true);
+      void page.offsetHeight;
+    }
+    var head=document.getElementById("hdr").getBoundingClientRect().height;
+    window.scrollTo(0, Math.max(0, window.scrollY + el.getBoundingClientRect().top - head - 26));
+    if(box) window.requestAnimationFrame(function(){ document.body.classList.remove("nofx"); });
+  }
+  window.addEventListener("hashchange",route);
+  /* the door is only a door if you came in through it: someone who lands
+     deep in the site is already inside, so the panel never appears for them */
+  if(((location.hash||"#/").replace("#/","").split("/")[0]||"home")!=="home") retireCurtain();
+  route();
+
+})();
+</script>
+</body>
+</html>
