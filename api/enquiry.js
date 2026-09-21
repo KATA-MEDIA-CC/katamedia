@@ -16,7 +16,8 @@
 //
 // Env (server-side only; already set in the Vercel project):
 //   ATTIO_API_KEY, RESEND_API_KEY
-// Change from the original: mail templates moved from CI V2.0 clay to V3.0.
+// Change from the original: mail templates moved from CI V2.0 clay to V3.0,
+// then to the lockup artwork, the site fonts and a plate (Sept 2026).
 // ─────────────────────────────────────────────────────────────────────────
 
 const ATTIO = "https://api.attio.com/v2";
@@ -59,67 +60,155 @@ async function resend(payload) {
   }
 }
 
-// ── mail templates: plain inline HTML, no images, dark-mode safe, one bar ──
-const INK = "#0B0B0F", ACCENT = "#2E5A7D", GREY = "#6B6F76";
-const esc = (s) => String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
-const P = `font-family:Georgia,'Times New Roman',serif;font-size:15px;line-height:1.6;color:${INK};margin:0 0 14px;`;
-const MUTED = `font-family:Georgia,'Times New Roman',serif;font-size:13px;line-height:1.6;color:${GREY};margin:0 0 6px;`;
-const RULE = `border:none;border-top:1px solid rgba(11,11,15,.15);margin:26px 0;`;
-function shell(inner) {
+// ── mail templates: Kata CI V3.0, as far as email allows ─────────────────
+// The lockup is artwork, never type: a black PNG, with a white one that dark
+// clients swap in. Newsreader and Hanken Grotesk load from our own origin
+// (/fonts carries CORS for this); Georgia and Helvetica stand in where a client
+// will not load fonts. Ink, Graphite, and Glacier Deep as the one accent. No
+// rules, like the site. The confirmation carries one plate of light in an oval
+// that feathers out to nothing: plate-crossing on paper, deep-beam in dark mode.
+// Tables and inline styles throughout: the <style> block only adds the fonts
+// and dark mode, and everything still reads without it.
+// Artwork: src/static/mail-*.png, made by src/mail_assets.py.
+const C = { ink: "#0B0B0F", graphite: "#6B6F76", accent: "#2E5A7D", glacier: "#D9E7F5", paper: "#FFFFFF" };
+const SERIF = "'Newsreader',Georgia,'Times New Roman',serif";
+const SANS = "'Hanken Grotesk','Helvetica Neue',Helvetica,Arial,sans-serif";
+const ORIGIN = `https://${SITE.domain}`;
+const esc = (s) => String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+
+const KICKER = `margin:0;font-family:${SANS};font-size:11px;font-weight:500;letter-spacing:.24em;text-transform:uppercase;color:${C.ink};`;
+const LABEL = `font-family:${SANS};font-size:10px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:${C.graphite};`;
+const BODY = `font-family:${SANS};font-size:15px;line-height:1.6;color:${C.ink};`;
+
+function shell({ lang, preheader, light, inner }) {
+  const pad = "&#8199;&#65279;&#847;".repeat(60); // keeps the client's preview to the preheader
   return `<!DOCTYPE html>
-<html lang="de">
-<body style="margin:0;padding:0;background:#ffffff;">
-  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:560px;margin:0 auto;">
-    <tr><td style="padding:32px 24px;">
-      <table role="presentation" cellpadding="0" cellspacing="0" width="100%"><tr>
-        <td style="border-left:3px solid ${ACCENT};padding-left:16px;">
-          <span style="font-family:Arial,Helvetica,sans-serif;font-size:18px;letter-spacing:.5px;color:${INK};">kata</span><br>
-          <span style="font-family:Arial,Helvetica,sans-serif;font-size:9px;letter-spacing:1.5px;color:${INK};text-transform:uppercase;">Knowledge applied to action</span>
-        </td></tr></table>
-      ${inner}
-      <p style="font-family:Arial,Helvetica,sans-serif;font-size:10px;letter-spacing:1px;color:${GREY};margin:36px 0 0;text-transform:uppercase;">
-        Kata · <a href="https://${SITE.domain}" style="color:${ACCENT};text-decoration:none;">${SITE.domain}</a> · <a href="mailto:${SITE.email}" style="color:${GREY};text-decoration:none;">${SITE.email}</a>
-      </p>
-    </td></tr>
-  </table>
+<html lang="${lang}" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="x-apple-disable-message-reformatting">
+<meta name="color-scheme" content="light dark">
+<meta name="supported-color-schemes" content="light dark">
+<title>Kata</title>
+<style>
+@font-face{font-family:'Newsreader';font-style:normal;font-weight:200 400;src:url(${ORIGIN}/fonts/cY9AfjOCX1hbuyalUrK4397yjA.woff2) format('woff2')}
+@font-face{font-family:'Hanken Grotesk';font-style:normal;font-weight:200 500;src:url(${ORIGIN}/fonts/ieVn2YZDLWuGJpnzaiwFXS9tYtpd59A.woff2) format('woff2')}
+body{margin:0;padding:0;-webkit-text-size-adjust:100%}
+a{text-decoration:none}
+.k-dark{display:none;max-height:0;overflow:hidden}
+@media (prefers-color-scheme:dark){
+  body,.k-bg{background:${C.ink}!important}
+  .k-light{display:none!important}
+  .k-dark{display:block!important;max-height:none!important;overflow:visible!important}
+  .k-ink{color:${C.paper}!important}
+  .k-gr{color:#A3A8AF!important}
+  .k-ac{color:${C.glacier}!important}
+}
+[data-ogsc] .k-light{display:none!important}
+[data-ogsc] .k-dark{display:block!important;max-height:none!important}
+[data-ogsc] .k-ink{color:${C.paper}!important}
+[data-ogsc] .k-gr{color:#A3A8AF!important}
+[data-ogsc] .k-ac{color:${C.glacier}!important}
+</style>
+</head>
+<body class="k-bg" style="margin:0;padding:0;background:${C.paper};">
+<div style="display:none;max-height:0;overflow:hidden;mso-hide:all;font-size:1px;line-height:1px;opacity:0;color:${C.paper};">${esc(preheader)}${pad}</div>
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" class="k-bg" style="background:${C.paper};">
+<tr><td align="center" style="padding:0 20px;">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="max-width:560px;">
+<tr><td style="padding:48px 0 0;">
+<img class="k-light" src="${ORIGIN}/mail-lockup.png" width="112" alt="Kata" style="display:block;width:112px;height:auto;border:0;outline:none;">
+<!--[if !mso]><!--><img class="k-dark" src="${ORIGIN}/mail-lockup-white.png" width="112" alt="Kata" style="display:none;width:112px;height:auto;border:0;outline:none;max-height:0;overflow:hidden;"><!--<![endif]-->
+</td></tr>
+${light ? `<tr><td style="padding:22px 0 0;">
+<img class="k-light" src="${ORIGIN}/mail-light.png" width="560" alt="" style="display:block;width:100%;max-width:560px;height:auto;border:0;outline:none;">
+<!--[if !mso]><!--><img class="k-dark" src="${ORIGIN}/mail-light-dark.png" width="560" alt="" style="display:none;width:100%;max-width:560px;height:auto;border:0;outline:none;max-height:0;overflow:hidden;"><!--<![endif]-->
+</td></tr>` : ""}
+${inner}
+<tr><td style="padding:64px 0 48px;">
+<p class="k-gr" style="margin:0;${LABEL}">Kata &middot; Independent Production Architects</p>
+<p class="k-gr" style="margin:10px 0 0;font-family:${SANS};font-size:12px;line-height:1.7;color:${C.graphite};"><a class="k-ac" href="${ORIGIN}" style="color:${C.accent};text-decoration:none;">${SITE.domain}</a>&nbsp;&nbsp;&middot;&nbsp;&nbsp;<a class="k-gr" href="mailto:${SITE.email}" style="color:${C.graphite};text-decoration:none;">${SITE.email}</a><br><a class="k-gr" href="${ORIGIN}/imprint" style="color:${C.graphite};text-decoration:none;">Impressum</a>&nbsp;&nbsp;&middot;&nbsp;&nbsp;<a class="k-gr" href="${ORIGIN}/privacy" style="color:${C.graphite};text-decoration:none;">Datenschutz</a></p>
+</td></tr>
+</table>
+</td></tr>
+</table>
 </body>
 </html>`;
 }
-// First name only, however it was typed: "Dr. Anna Weber", "Weber, Anna", "anna weber".
-// The same rule as the thank-you on the site (enqFirst in kata.html).
+
+// First name only, however it was typed: "Dr. Anna Weber", "Weber, Anna",
+// "anna weber", "ANNA WEBER". The same rule as the thank-you on the site
+// (enqFirst in kata.html). Anything that does not look like a name, such as a
+// link or a string of digits, gets no name at all: the form can be typed into
+// by anyone, and this mail goes to whatever address they give.
 function firstName(n) {
   n = String(n).replace(/\s+/g, " ").trim();
   if (n.indexOf(",") > 0 && n.split(",")[1].trim()) n = n.split(",")[1].trim();
   const w = n.split(" ").filter((t) => !/^(dr|prof|professor|herr|frau|mr|mrs|ms|mx|miss|sir|dipl|ing)\.?(-ing\.?)?$/i.test(t));
-  const f = (w[0] || n).replace(/[.,;:]+$/, "");
-  return f === f.toLowerCase() ? f.charAt(0).toUpperCase() + f.slice(1) : f;
+  let f = (w[0] || n).replace(/[.,;:]+$/, "");
+  if (f.length > 2 && f === f.toUpperCase()) f = f.toLowerCase();
+  if (f === f.toLowerCase()) f = f.charAt(0).toUpperCase() + f.slice(1);
+  return /^[\p{L}][\p{L}'’\-]{0,39}$/u.test(f) ? f : "";
 }
+
 function autoReplyHtml(name) {
-  const first = esc(firstName(name));
-  return shell(`
-      <p style="${P}margin-top:34px;">Hi ${first},</p>
-      <p style="${P}">danke f&uuml;r deine Nachricht &ndash; ist angekommen.</p>
-      <p style="${P}">Du h&ouml;rst innerhalb von 24 Stunden von uns.</p>
-      <p style="${P}">Bis bald,<br>Justin, Cornelius &amp; Jankel</p>
-      <hr style="${RULE}">
-      <p style="${MUTED}"><em>English:</em> Thanks for your message &ndash; it&rsquo;s arrived. You&rsquo;ll hear from us within 24 hours.</p>`);
+  const first = firstName(name);
+  const de = first ? `Danke, ${esc(first)}.` : "Danke.";
+  const en = first ? `Thank you, ${esc(first)}.` : "Thank you.";
+  const inner = `
+<tr><td lang="de" style="padding:14px 0 0;">
+<p class="k-ink" style="${KICKER}">Angekommen</p>
+<h1 class="k-ink" style="margin:18px 0 0;font-family:${SERIF};font-size:40px;font-weight:300;line-height:1.05;letter-spacing:-0.02em;color:${C.ink};">${de}</h1>
+<p class="k-ink" style="margin:18px 0 0;font-family:${SANS};font-size:18px;font-weight:300;line-height:1.5;color:${C.ink};">Einer von uns meldet sich innerhalb von 24&nbsp;Stunden bei dir.</p>
+</td></tr>
+<tr><td lang="en" style="padding:44px 0 0;">
+<p class="k-gr" style="${KICKER}color:${C.graphite};">Received</p>
+<p class="k-ink" style="margin:14px 0 0;font-family:${SERIF};font-size:26px;font-weight:300;line-height:1.15;letter-spacing:-0.015em;color:${C.ink};">${en}</p>
+<p class="k-gr" style="margin:12px 0 0;font-family:${SANS};font-size:15px;line-height:1.6;color:${C.graphite};">One of us will come back to you within 24&nbsp;hours.</p>
+</td></tr>
+<tr><td style="padding:44px 0 0;">
+<p class="k-ac" style="margin:0;font-family:${SANS};font-size:11px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:${C.accent};">Justin, Cornelius &amp; Jankel</p>
+</td></tr>`;
+  return shell({ lang: "de", light: true, inner,
+    preheader: "Einer von uns meldet sich innerhalb von 24 Stunden bei dir. One of us will come back to you within 24 hours." });
 }
+function autoReplyText(name) {
+  const first = firstName(name);
+  return [first ? `Danke, ${first}.` : "Danke.", "Einer von uns meldet sich innerhalb von 24 Stunden bei dir.", "",
+    first ? `Thank you, ${first}.` : "Thank you.", "One of us will come back to you within 24 hours.", "",
+    "Justin, Cornelius & Jankel", "", `Kata · ${SITE.domain} · ${SITE.email}`].join("\n");
+}
+
 function notificationHtml(e, recordId) {
   const row = (label, value) =>
-    `<tr><td style="font-family:Arial,Helvetica,sans-serif;font-size:10px;font-weight:bold;letter-spacing:1px;text-transform:uppercase;color:${GREY};padding:6px 16px 6px 0;white-space:nowrap;vertical-align:top;">${label}</td><td style="${P.replace("margin:0 0 14px;", "margin:0;")}padding:4px 0;">${esc(value || "—")}</td></tr>`;
-  const link = recordId
-    ? `<p style="${MUTED}margin-top:18px;"><a href="https://app.attio.com/kata-media-consultancy-gmb-h/person/${recordId}" style="color:${ACCENT};text-decoration:none;font-weight:bold;">&rarr; Open in Attio</a> &nbsp;(note + 24h task attached)</p>`
-    : "";
-  return shell(`
-      <p style="${P}margin-top:34px;font-weight:bold;">New website enquiry</p>
-      <table role="presentation" cellpadding="0" cellspacing="0">
-        ${row("Name", e.name)}${row("Email", e.email)}${row("Company", e.company)}${row("Role", e.role)}
-        ${row("They are a", e.side)}${row("They need", e.need)}${row("Timing", e.timing)}
-      </table>
-      <hr style="${RULE}">
-      <p style="${MUTED}">Trying to figure out:</p>
-      <p style="${P}">${esc(e.message).replace(/\n/g, "<br>")}</p>
-      ${link}`);
+    `<tr><td class="k-gr" style="${LABEL}padding:9px 20px 9px 0;white-space:nowrap;vertical-align:top;">${label}</td><td class="k-ink" style="${BODY}padding:6px 0;vertical-align:top;">${esc(value || "-")}</td></tr>`;
+  const who = esc(e.name) + (e.company ? `, ${esc(e.company)}` : "");
+  const inner = `
+<tr><td style="padding:40px 0 0;">
+<p class="k-ink" style="${KICKER}">New enquiry</p>
+<h1 class="k-ink" style="margin:16px 0 0;font-family:${SERIF};font-size:32px;font-weight:300;line-height:1.1;letter-spacing:-0.02em;color:${C.ink};">${who}</h1>
+</td></tr>
+<tr><td style="padding:26px 0 0;">
+<table role="presentation" cellpadding="0" cellspacing="0" border="0">
+${row("Email", e.email)}${row("Role", e.role)}${row("They are a", e.side)}${row("They need", e.need)}${row("Timing", e.timing)}
+</table>
+</td></tr>
+<tr><td style="padding:30px 0 0;">
+<p class="k-gr" style="margin:0;${LABEL}">Trying to figure out</p>
+<p class="k-ink" style="margin:10px 0 0;font-family:${SERIF};font-size:20px;font-weight:300;line-height:1.45;color:${C.ink};">${esc(e.message).replace(/\n/g, "<br>")}</p>
+</td></tr>
+${recordId ? `<tr><td style="padding:30px 0 0;">
+<a class="k-ac" href="https://app.attio.com/kata-media-consultancy-gmb-h/person/${recordId}" style="font-family:${SANS};font-size:11px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:${C.accent};text-decoration:none;">Open in Attio &rarr;</a>
+<p class="k-gr" style="margin:8px 0 0;font-family:${SANS};font-size:12px;color:${C.graphite};">Note and a 24-hour task are attached. Reply to this mail to answer them directly.</p>
+</td></tr>` : ""}`;
+  return shell({ lang: "en", light: false, inner, preheader: `${e.name}${e.company ? `, ${e.company}` : ""}: ${String(e.message).slice(0, 90)}` });
+}
+function notificationText(e, recordId) {
+  return [`New enquiry: ${e.name}${e.company ? `, ${e.company}` : ""}`, "",
+    `Email: ${e.email}`, `Role: ${e.role || "-"}`, `They are a: ${e.side || "-"}`, `They need: ${e.need || "-"}`, `Timing: ${e.timing || "-"}`, "",
+    "Trying to figure out:", e.message, "",
+    recordId ? `Open in Attio: https://app.attio.com/kata-media-consultancy-gmb-h/person/${recordId}` : ""].join("\n");
 }
 
 module.exports = async function handler(req, res) {
@@ -190,11 +279,11 @@ module.exports = async function handler(req, res) {
   // ── 2 + 3. Mail — best-effort; the record already exists ───────────────
   const FROM = `Kata <${SITE.mailFrom}>`;
   try {
-    await resend({ from: FROM, to: [email], reply_to: SITE.email, subject: "Angekommen · Received — Kata", html: autoReplyHtml(name) });
+    await resend({ from: FROM, to: [email], reply_to: SITE.email, subject: "Angekommen · Received", html: autoReplyHtml(name), text: autoReplyText(name) });
   } catch (err) { console.error("enquiry: auto-reply failed:", err); }
   try {
     await resend({ from: FROM, to: [SITE.email], reply_to: email,
-      subject: `Enquiry: ${name}${company ? `, ${company}` : ""}`, html: notificationHtml(enquiry, recordId) });
+      subject: `Enquiry: ${name}${company ? `, ${company}` : ""}`, html: notificationHtml(enquiry, recordId), text: notificationText(enquiry, recordId) });
   } catch (err) { console.error("enquiry: notification failed:", err); }
 
   return res.status(200).json({ ok: true });

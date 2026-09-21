@@ -1696,7 +1696,10 @@ header.bare{opacity:0;pointer-events:none}
     if(n.indexOf(",")>0&&n.split(",")[1].trim()) n=n.split(",")[1].trim();
     var w=n.split(" ").filter(function(t){ return !/^(dr|prof|professor|herr|frau|mr|mrs|ms|mx|miss|sir|dipl|ing)\.?(-ing\.?)?$/i.test(t); });
     var f=(w[0]||n).replace(/[.,;:]+$/,"");
-    return f===f.toLowerCase() ? f.charAt(0).toUpperCase()+f.slice(1) : f;
+    if(f.length>2&&f===f.toUpperCase()) f=f.toLowerCase();
+    if(f===f.toLowerCase()) f=f.charAt(0).toUpperCase()+f.slice(1);
+    /* anything that does not look like a name gets no name: "Thank you." */
+    try{ return new RegExp("^[\\p{L}][\\p{L}'\\u2019\\-]{0,39}$","u").test(f) ? f : ""; }catch(e){ return f; }
   }
   function enqList(xs){ return xs.length<3 ? xs.join(" and ") : xs.slice(0,-1).join(", ")+", and "+xs[xs.length-1]; }
   function enqAlert(p,html,scroll){
@@ -1732,7 +1735,7 @@ header.bare{opacity:0;pointer-events:none}
     var s=document.createElement("div");
     s.className="enq-sent"; s.setAttribute("tabindex","-1"); s.setAttribute("role","status");
     s.innerHTML='<p class="kicker">Message sent</p>'
-      +'<h2 class="d-l">Thank you, '+enqEsc(first)+'.</h2>'
+      +'<h2 class="d-l">'+(first?'Thank you, '+enqEsc(first)+'.':'Thank you.')+'</h2>'
       +'<p class="lede">One of us will come back to you within 24 hours.</p>'
       +'<p class="body">We will reply to <span class="to">'+enqEsc(d.email)+'</span>.</p>'
       +'<p class="sig">Justin, Cornelius &amp; Jankel</p>'
