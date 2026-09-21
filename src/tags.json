@@ -1,5 +1,5 @@
 {
   "_note": "Retargeting tags. An empty ID means that tag never loads. With both empty the site shows no consent banner and the privacy page states that no tracking is used. Fill in an ID, run python3 src/build.py, commit src and site together.",
-  "linkedin_partner_id": "",
+  "linkedin_partner_id": "10926513",
   "meta_pixel_id": ""
 }

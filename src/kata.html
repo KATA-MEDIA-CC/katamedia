@@ -156,11 +156,18 @@ header{
   background:transparent;border-bottom:1px solid transparent;
   transition:background-color var(--t) var(--ease),backdrop-filter var(--t) var(--ease),border-color var(--t) var(--ease),opacity 620ms var(--ease);
 }
-header.stuck{
+/* Phones draw the page up behind the status bar, but a fixed bar starts
+   below it, so the page showed through above the header. The glass lives on
+   a layer that reaches 160px above the bar: on a phone it fills the status
+   bar, everywhere else that part is simply off screen. One layer, one blur,
+   so there is no seam between the bar and the strip above it. */
+header::after{content:"";position:absolute;left:0;right:0;top:-160px;bottom:0;z-index:-1;pointer-events:none;
+  background-color:rgba(255,255,255,0);transition:background-color var(--t) var(--ease)}
+header.stuck{border-bottom-color:rgba(226,231,236,.55)}
+header.stuck::after{
   background-color:rgba(255,255,255,.42);
   -webkit-backdrop-filter:blur(22px) saturate(1.6);
   backdrop-filter:blur(22px) saturate(1.6);
-  border-bottom-color:rgba(226,231,236,.55);
 }
 .bar{max-width:var(--wide);margin-inline:auto;padding:18px var(--gut);display:flex;align-items:center;justify-content:space-between;gap:24px}
 nav.links{display:flex;align-items:center;gap:clamp(16px,2.2vw,30px)}
@@ -190,11 +197,11 @@ html.navlock,body.navlock{overflow:hidden}
      so the eye never crosses the screen to find what it just tapped. And it is
      glass, not paper — the same dock treatment the header takes on scroll — so
      the page you are leaving stays faintly present behind the names. */
-  .sheet{display:block;position:fixed;inset:0;z-index:59;
+  .sheet{display:block;position:fixed;inset:-160px 0 0;z-index:59;
     background-color:rgba(255,255,255,.6);
     -webkit-backdrop-filter:blur(26px) saturate(1.6);
             backdrop-filter:blur(26px) saturate(1.6);
-    padding:calc(var(--head) + 28px) var(--gut) 40px;text-align:right;
+    padding:calc(var(--head) + 28px + 160px) var(--gut) 40px;text-align:right;
     opacity:0;pointer-events:none;transition:opacity 420ms var(--ease)}
   .sheet.open{opacity:1;pointer-events:auto}
   .sheet a{display:block;font-family:var(--serif);font-weight:300;font-size:clamp(2rem,9vw,2.8rem);line-height:1.3;color:var(--ink)}
@@ -671,7 +678,7 @@ html.navlock,body.navlock{overflow:hidden}
 @media(max-width:700px){.form{grid-template-columns:1fr}}
 
 /* ---------- modal ---------- */
-.modal{position:fixed;inset:0;z-index:80;display:flex;align-items:center;justify-content:center;padding:var(--gut);background:rgba(238,242,246,.78);-webkit-backdrop-filter:blur(18px);backdrop-filter:blur(18px);opacity:0;pointer-events:none;transition:opacity 480ms var(--ease)}
+.modal{position:fixed;inset:-160px 0 0;z-index:80;display:flex;align-items:center;justify-content:center;padding:calc(var(--gut) + 160px) var(--gut) var(--gut);background:rgba(238,242,246,.78);-webkit-backdrop-filter:blur(18px);backdrop-filter:blur(18px);opacity:0;pointer-events:none;transition:opacity 480ms var(--ease)}
 .modal.open{opacity:1;pointer-events:auto}
 .modal .card{background:var(--paper);border:1px solid var(--hair);width:100%;max-width:840px;max-height:88vh;overflow-y:auto;padding:clamp(28px,4vw,52px)}
 .modal .close{float:right;background:none;border:0;cursor:pointer;font-family:var(--sans);font-size:10px;text-transform:uppercase;letter-spacing:.18em;color:var(--graphite);padding:0}

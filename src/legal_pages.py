@@ -101,17 +101,38 @@ page('imprint','Impressum','Rechtliches',imp)
 
 # section 2 follows src/tags.json: no IDs, no tracking; with IDs, the consent text
 TG=json.load(open(f'{HERE}/tags.json',encoding='utf-8'))
-_tools,_us,_nets,_pol=[],[],[],[]
+_P=[]
 if TG['linkedin_partner_id']:
-    _tools.append('das LinkedIn Insight Tag der LinkedIn Ireland Unlimited Company (Dublin, Irland)')
-    _us.append('LinkedIn Corporation'); _nets.append('LinkedIn')
-    _pol.append('<a href="https://www.linkedin.com/legal/privacy-policy" rel="noopener">LinkedIn</a>')
+    _P.append(dict(name='LinkedIn', us='LinkedIn Corporation', nets=['LinkedIn'],
+        tool='das LinkedIn Insight Tag der LinkedIn Ireland Unlimited Company (Dublin, Irland)',
+        cookies='https://www.linkedin.com/legal/l/cookie-table',
+        policy='https://www.linkedin.com/legal/privacy-policy'))
 if TG['meta_pixel_id']:
-    _tools.append('das Meta-Pixel der Meta Platforms Ireland Limited (Dublin, Irland)')
-    _us.append('Meta Platforms, Inc.'); _nets.extend(['Instagram','Facebook'])
-    _pol.append('<a href="https://www.facebook.com/privacy/policy/" rel="noopener">Meta</a>')
-_two=len(_tools)==2
+    _P.append(dict(name='Meta', us='Meta Platforms, Inc.', nets=['Instagram','Facebook'],
+        tool='das Meta-Pixel der Meta Platforms Ireland Limited (Dublin, Irland)',
+        cookies='https://www.facebook.com/privacy/policies/cookies/',
+        policy='https://www.facebook.com/privacy/policy/'))
+_tools=[p['tool'] for p in _P]; _us=[p['us'] for p in _P]; _nets=[n for p in _P for n in p['nets']]
+_two=len(_P)==2
 def _und(xs): return xs[0] if len(xs)==1 else ', '.join(xs[:-1])+' und '+xs[-1]
+def _a(url,text): return f'<a href="{url}" rel="noopener">{text}</a>'
+if _two:
+    _joint=('mit dem jeweiligen Anbieter gemeinsam verantwortlich (Art. 26 DSGVO); Ihre Rechte können Sie '
+            'sowohl uns als auch dem jeweiligen Anbieter gegenüber geltend machen. Die weitere Verarbeitung '
+            'verantwortet der jeweilige Anbieter allein; er kann die Daten dabei mit einem bestehenden '
+            'Nutzerkonto verknüpfen und für eigene Zwecke verwenden.')
+    _keep=('Welche Cookies die Anbieter setzen und wie lange sie gespeichert bleiben, zeigen ihre '
+           'Cookie-Übersichten ('+', '.join(_a(p['cookies'],p['name']) for p in _P)+'); wie lange sie die '
+           'übrigen Daten speichern, beschreiben ihre Datenschutzrichtlinien ('
+           +', '.join(_a(p['policy'],p['name']) for p in _P)+').')
+elif _P:
+    _n=_P[0]['name']
+    _joint=(f'mit {_n} gemeinsam verantwortlich (Art. 26 DSGVO); Ihre Rechte können Sie sowohl uns als auch '
+            f'{_n} gegenüber geltend machen. {_n} verantwortet die weitere Verarbeitung allein und kann die '
+            f'Daten dabei mit einem bestehenden Nutzerkonto verknüpfen und für eigene Zwecke verwenden.')
+    _keep=(f'Welche Cookies {_n} setzt und wie lange sie gespeichert bleiben, zeigt die '
+           +_a(_P[0]['cookies'],f'Cookie-Übersicht von {_n}')+f'; wie lange {_n} die übrigen Daten '
+           'speichert, beschreibt die '+_a(_P[0]['policy'],f'Datenschutzrichtlinie von {_n}')+'.')
 if _tools:
     consent=f"""<h2>2. Cookies und Einwilligung</h2>
 <p>Ohne Ihre Einwilligung setzt diese Website keine Cookies und bindet keine Analyse- oder Tracking-Dienste
@@ -123,14 +144,12 @@ erforderlich (§ 25 Abs. 2 Nr. 2 TDDDG). Nach zwölf Monaten fragen wir erneut.<
 Cookies und {'verarbeiten' if _two else 'verarbeitet'} dabei insbesondere Ihre IP-Adresse, Angaben zu Browser und Gerät sowie die
 aufgerufenen Seiten. So können wir Menschen, die unsere Website besucht haben, auf {_und(_nets)} unsere
 Beiträge und Anzeigen zeigen und deren Reichweite messen. Für die Erhebung und Übermittlung dieser Daten sind
-wir mit dem jeweiligen Anbieter gemeinsam verantwortlich (Art. 26 DSGVO). Die weitere Verarbeitung verantwortet
-der jeweilige Anbieter selbst; er kann die Daten mit einem bestehenden Nutzerkonto verknüpfen und für eigene
-Zwecke verwenden. Dabei können Daten an {' und '.join(_us)} in den USA übermittelt werden.
+wir {_joint} Dabei können Daten an {' und '.join(_us)} in den USA übermittelt werden.
 {'Beide Unternehmen sind' if _two else 'Das Unternehmen ist'} nach dem EU-US Data Privacy Framework zertifiziert, für das ein
 Angemessenheitsbeschluss der Europäischen Kommission besteht.</p>
 <p>Rechtsgrundlage ist Ihre Einwilligung (§ 25 Abs. 1 TDDDG, Art. 6 Abs. 1 lit. a DSGVO). Sie können sie
 jederzeit mit Wirkung für die Zukunft widerrufen, über den Link „Cookie-Einstellungen“ im Fußbereich der
-Website. Wie lange die Anbieter die Daten speichern, beschreiben ihre Datenschutzhinweise: {', '.join(_pol)}.</p>
+Website. {_keep}</p>
 """
 else:
     consent="""<h2>2. Grundsatz</h2>

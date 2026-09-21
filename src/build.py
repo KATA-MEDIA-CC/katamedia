@@ -90,6 +90,11 @@ assert body.count('var TAGS={linkedin:"",meta:""};')==1, "tag slot not found in 
 body=body.replace('var TAGS={linkedin:"",meta:""};',
   f'var TAGS={{linkedin:"{TAGS["linkedin_partner_id"]}",meta:"{TAGS["meta_pixel_id"]}"}};')
 assert 'var CONSENT_PREVIEW=false;' in body, "consent preview flag must be off in the build"
+# the card's static text names only the tags that are set (the script does the same at runtime)
+_names=' and '.join(n for n,k in (('LinkedIn','linkedin_partner_id'),('Meta','meta_pixel_id')) if TAGS[k])
+if _names:
+    assert body.count('<span data-providers>LinkedIn and Meta</span>')==1, "consent card provider slot not found"
+    body=body.replace('<span data-providers>LinkedIn and Meta</span>',f'<span data-providers>{_names}</span>')
 
 # ---------- 5. old real URLs land on the right page ------------------------
 # /services, /team, /services/strategic-advisory ... are served this same file
