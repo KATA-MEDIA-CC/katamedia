@@ -114,7 +114,7 @@ new_submit="""    if(!note) return;
     f.dataset.busy="1"; btn.disabled=true; btn.textContent="Sending"; note.textContent="";
     fetch("/api/enquiry",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(d)})
       .then(function(r){
-        if(r.ok){ f.reset(); note.textContent="Thanks \u2014 it\u2019s arrived. You\u2019ll hear from us within 24 hours."; }
+        if(r.ok){ f.reset(); note.textContent="Thanks, it\u2019s arrived. You\u2019ll hear from us within 24 hours."; }
         else if(r.status===503){ note.textContent="The form isn\u2019t connected right now."+direct; }
         else { note.textContent="That didn\u2019t go through."+direct; }
       })
