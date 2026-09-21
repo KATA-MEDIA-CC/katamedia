@@ -99,17 +99,51 @@ imp+=f'''<h2>Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV</h2>
 '''
 page('imprint','Impressum','Rechtliches',imp)
 
+# section 2 follows src/tags.json: no IDs, no tracking; with IDs, the consent text
+TG=json.load(open(f'{HERE}/tags.json',encoding='utf-8'))
+_tools,_us,_nets,_pol=[],[],[],[]
+if TG['linkedin_partner_id']:
+    _tools.append('das LinkedIn Insight Tag der LinkedIn Ireland Unlimited Company (Dublin, Irland)')
+    _us.append('LinkedIn Corporation'); _nets.append('LinkedIn')
+    _pol.append('<a href="https://www.linkedin.com/legal/privacy-policy" rel="noopener">LinkedIn</a>')
+if TG['meta_pixel_id']:
+    _tools.append('das Meta-Pixel der Meta Platforms Ireland Limited (Dublin, Irland)')
+    _us.append('Meta Platforms, Inc.'); _nets.append('Instagram und Facebook')
+    _pol.append('<a href="https://www.facebook.com/privacy/policy/" rel="noopener">Meta</a>')
+_two=len(_tools)==2
+if _tools:
+    consent=f"""<h2>2. Cookies und Einwilligung</h2>
+<p>Ohne Ihre Einwilligung setzt diese Website keine Cookies und bindet keine Analyse- oder Tracking-Dienste
+ein. Die Schriften werden von unserem eigenen Server ausgeliefert.</p>
+<p>Beim ersten Besuch fragen wir, ob wir Marketing-Cookies verwenden dürfen. Ihre Entscheidung speichern wir
+im lokalen Speicher Ihres Browsers, damit wir nicht bei jedem Aufruf erneut fragen; das ist technisch
+erforderlich (§ 25 Abs. 2 Nr. 2 TDDDG). Nach zwölf Monaten fragen wir erneut.</p>
+<p>Nur wenn Sie zustimmen, binden wir {' und '.join(_tools)} ein. {'Beide Dienste setzen' if _two else 'Der Dienst setzt'}
+Cookies und {'verarbeiten' if _two else 'verarbeitet'} dabei insbesondere Ihre IP-Adresse, Angaben zu Browser und Gerät sowie die
+aufgerufenen Seiten. So können wir Menschen, die unsere Website besucht haben, auf {' und '.join(_nets)} unsere
+Beiträge und Anzeigen zeigen und deren Reichweite messen. Für die Erhebung und Übermittlung dieser Daten sind
+wir mit dem jeweiligen Anbieter gemeinsam verantwortlich (Art. 26 DSGVO); die weitere Verarbeitung verantwortet
+der Anbieter selbst. Dabei können Daten an {' und '.join(_us)} in den USA übermittelt werden.
+{'Beide Unternehmen sind' if _two else 'Das Unternehmen ist'} nach dem EU-US Data Privacy Framework zertifiziert, für das ein
+Angemessenheitsbeschluss der Europäischen Kommission besteht.</p>
+<p>Rechtsgrundlage ist Ihre Einwilligung (§ 25 Abs. 1 TDDDG, Art. 6 Abs. 1 lit. a DSGVO). Sie können sie
+jederzeit mit Wirkung für die Zukunft widerrufen, über den Link „Cookie-Einstellungen“ im Fußbereich der
+Website. Wie lange die Anbieter die Daten speichern, beschreiben ihre Datenschutzhinweise: {', '.join(_pol)}.</p>
+"""
+else:
+    consent="""<h2>2. Grundsatz</h2>
+<p>Diese Website setzt keine Cookies, verwendet keine Analyse- oder Tracking-Dienste und bindet keine
+Inhalte von Drittanbietern ein, die beim Aufruf Daten an Dritte übertragen. Die Schriften werden von
+unserem eigenen Server ausgeliefert.</p>
+"""
+
 priv=f'''
 <h2>1. Verantwortlicher</h2>
 <p><b>{v(L["entity"])}</b><br>{addr}<br>
 Vertreten durch die Gesellschafter {v(partners)}<br>
 E-Mail: <a href="mailto:{L["email"]}">{L["email"]}</a></p>
 
-<h2>2. Grundsatz</h2>
-<p>Diese Website setzt keine Cookies, verwendet keine Analyse- oder Tracking-Dienste und bindet keine
-Inhalte von Drittanbietern ein, die beim Aufruf Daten an Dritte übertragen. Die Schriften werden von
-unserem eigenen Server ausgeliefert.</p>
-
+{consent}
 <h2>3. Hosting und Server-Logfiles</h2>
 <p>Diese Website wird bei Vercel Inc. (USA) gehostet. Beim Aufruf der Website verarbeitet der Hoster
 technisch notwendige Daten, insbesondere die IP-Adresse, Datum und Uhrzeit des Zugriffs, die aufgerufene

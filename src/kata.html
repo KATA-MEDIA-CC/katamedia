@@ -696,6 +696,27 @@ footer{border-top:1px solid var(--hair);padding-block:clamp(48px,6vw,80px)}
 body::after{content:"";position:fixed;inset:0;z-index:95;pointer-events:none;
   background-image:url("assets/grain.png");background-size:96px 96px;
   opacity:.05;mix-blend-mode:overlay}
+/* ---------- consent ----------
+   A card, bottom right, above the bar and below the enquiry modal. Accept
+   and Decline carry the same weight, as German law expects. */
+.consent{position:fixed;right:clamp(12px,2vw,28px);bottom:clamp(12px,2vw,28px);z-index:75;
+  width:min(420px,calc(100vw - 24px));background:var(--paper);color:var(--ink);
+  box-shadow:0 22px 70px rgba(11,11,15,.16),0 2px 10px rgba(11,11,15,.06);
+  padding:24px 26px 22px;opacity:0;transform:translateY(14px);visibility:hidden;
+  transition:opacity 420ms var(--ease),transform 560ms var(--ease),visibility 0s linear 560ms}
+.consent.on{opacity:1;transform:none;visibility:visible;transition-delay:0s}
+.consent .kicker{font-size:11px}
+.consent .body{margin:12px 0 0;font-size:13.5px;line-height:1.6;color:var(--graphite);max-width:none}
+.consent .body a{color:var(--ink);text-decoration:underline;text-underline-offset:3px;text-decoration-color:rgba(11,11,15,.3)}
+.consent-now{margin:12px 0 0;font-size:12px;color:var(--glacier-deep)}
+.consent-now:empty{display:none}
+.consent-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:20px}
+.consent-row button{all:unset;box-sizing:border-box;cursor:pointer;text-align:center;padding:14px 12px;
+  background:var(--ink);color:var(--paper);font-family:var(--sans);font-size:11px;font-weight:500;
+  letter-spacing:.2em;text-transform:uppercase;transition:background-color 240ms var(--ease)}
+.consent-row button:hover{background:var(--glacier-deep)}
+.consent-row button:focus-visible{outline:1px solid var(--glacier-deep);outline-offset:3px}
+@media(max-width:640px){.consent{left:12px;right:12px;bottom:12px;width:auto;padding:20px 20px 18px}}
 .page{display:none}
 .page.active{display:block}
 
@@ -1218,6 +1239,7 @@ header.bare{opacity:0;pointer-events:none}
         <li><a href="mailto:hello@bureau-kata.com">hello@bureau-kata.com</a></li>
         <li><a href="#/contact">LinkedIn</a></li><li><a href="#/contact">Impressum</a></li>
         <li><a href="#/contact">Datenschutz</a></li>
+        <li><a href="#" data-consent-open>Cookie-Einstellungen</a></li>
       </ul>
     </div>
   </div>
@@ -1226,6 +1248,13 @@ header.bare{opacity:0;pointer-events:none}
     <p class="micro">Independent Production Architects</p>
   </div>
 </footer>
+
+<div class="consent" id="consent" role="region" aria-label="Cookie choice">
+  <p class="kicker">Cookies</p>
+  <p class="body">With your consent, we use marketing cookies from <span data-providers>LinkedIn and Meta</span> to show our posts to people who have visited this site. Nothing is set until you choose, and you can change your choice at any time from the footer. <a href="/privacy">Datenschutz</a></p>
+  <p class="consent-now" data-consent-now></p>
+  <div class="consent-row"><button type="button" data-consent="yes">Accept</button><button type="button" data-consent="no">Decline</button></div>
+</div>
 
 <div class="modal" id="modal">
   <div class="card">
@@ -1726,10 +1755,96 @@ header.bare{opacity:0;pointer-events:none}
     });
   }
 
+  /* ---------- consent ----------
+     The retargeting tags (LinkedIn Insight Tag, Meta Pixel) load only after an
+     explicit yes. Their IDs come from src/tags.json at build time; while both
+     are empty there is no banner, no footer link, and nothing loads. The choice
+     is kept for twelve months; the footer link reopens the card at any time.
+     On the home page the card waits until the intro has lifted. */
+  var TAGS={linkedin:"",meta:""};
+  var CONSENT_PREVIEW=false;
+  var consentBox=document.getElementById("consent"), consentKey="kata-consent",
+      consentPending=false, marketingOn=false, routeCount=0, tagNames=[];
+  if(TAGS.linkedin) tagNames.push("LinkedIn");
+  if(TAGS.meta) tagNames.push("Meta");
+  function readConsent(){
+    try{
+      var c=JSON.parse(localStorage.getItem(consentKey)||"null");
+      if(c&&c.v===1&&(Date.now()-c.at)<365*864e5) return c;
+    }catch(e){}
+    return null;
+  }
+  function saveConsent(yes){
+    try{ localStorage.setItem(consentKey,JSON.stringify({v:1,marketing:!!yes,at:Date.now()})); }catch(e){}
+  }
+  function loadMarketing(){
+    if(marketingOn||!tagNames.length) return;
+    marketingOn=true;
+    if(TAGS.linkedin){
+      window._linkedin_partner_id=TAGS.linkedin;
+      window._linkedin_data_partner_ids=window._linkedin_data_partner_ids||[];
+      window._linkedin_data_partner_ids.push(TAGS.linkedin);
+      if(!window.lintrk){ window.lintrk=function(a,b){ window.lintrk.q.push([a,b]); }; window.lintrk.q=[]; }
+      var li=document.createElement("script"); li.async=true;
+      li.src="https://snap.licdn.com/li.lms-analytics/insight.min.js";
+      document.head.appendChild(li);
+    }
+    if(TAGS.meta){
+      !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version="2.0";n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,"script","https://connect.facebook.net/en_US/fbevents.js");
+      window.fbq("init",TAGS.meta);
+      window.fbq("track","PageView");
+    }
+  }
+  /* the site changes page without reloading, so each later route is a page view */
+  function trackRoute(){
+    if(routeCount++===0) return;
+    if(marketingOn&&TAGS.meta&&window.fbq) window.fbq("track","PageView");
+  }
+  function clearMarketing(){
+    var host=location.hostname.replace(/^www\./,"");
+    ["_fbp","_fbc","li_fat_id","li_giant","oribi_cookie_test","oribili_user_guid"].forEach(function(n){
+      document.cookie=n+"=; Max-Age=0; path=/";
+      document.cookie=n+"=; Max-Age=0; path=/; domain=."+host;
+    });
+  }
+  function openConsent(){
+    if(!consentBox) return;
+    var c=readConsent(), now=consentBox.querySelector("[data-consent-now]");
+    if(now) now.textContent=c?(c.marketing?"Your current choice: accepted.":"Your current choice: declined."):"";
+    consentBox.classList.add("on");
+  }
+  function closeConsent(){ if(consentBox) consentBox.classList.remove("on"); }
+  function maybeConsent(){
+    if(!consentPending) return;
+    var a=document.querySelector(".page.active");
+    if(a&&a.getAttribute("data-page")==="home"&&curtain&&!spent) return;
+    consentPending=false;
+    openConsent();
+  }
+  if(consentBox&&(tagNames.length||CONSENT_PREVIEW)){
+    var names=tagNames.length?tagNames.join(" and "):"LinkedIn and Meta";
+    consentBox.querySelectorAll("[data-providers]").forEach(function(sp){ sp.textContent=names; });
+    var prior=readConsent();
+    if(prior&&prior.marketing) loadMarketing();
+    else if(!prior) consentPending=true;
+    consentBox.addEventListener("click",function(e){
+      var b=e.target.closest("[data-consent]"); if(!b) return;
+      var yes=b.getAttribute("data-consent")==="yes", was=marketingOn;
+      saveConsent(yes); closeConsent();
+      if(yes) loadMarketing();
+      else{ clearMarketing(); if(was) location.reload(); }
+    });
+    document.querySelectorAll("[data-consent-open]").forEach(function(l){
+      l.addEventListener("click",function(e){ e.preventDefault(); openConsent(); });
+    });
+  }else{
+    document.querySelectorAll("[data-consent-open]").forEach(function(l){ (l.closest("li")||l).style.display="none"; });
+  }
+
   var ticking=false;
   function onScroll(){
     if(ticking) return; ticking=true;
-    window.requestAnimationFrame(function(){ curtainTick(); paint(); readScan(); ticking=false; });
+    window.requestAnimationFrame(function(){ curtainTick(); paint(); readScan(); maybeConsent(); ticking=false; });
   }
   window.addEventListener("scroll",onScroll,{passive:true});
   window.addEventListener("resize",onScroll);
@@ -1750,11 +1865,16 @@ header.bare{opacity:0;pointer-events:none}
     if(!found){ pages[0].classList.add("active"); h="home"; }
     /* the mark and the menu reverse out wherever a page opens on a dark ground */
     var act=document.querySelector('.page.active');
-    darkTop=!!(act && act.firstElementChild && act.firstElementChild.classList.contains("on-dark"));
+    /* on Home the first thing under the bar is the hero inside .curtain-under,
+       not the curtain itself; reading the curtain left a dark bar on the dark
+       hero whenever Home was shown from its very top (after the lift, or when
+       coming back to Home from another page) */
+    var lead=act && (act.querySelector(":scope > .curtain-under > :first-child") || act.firstElementChild);
+    darkTop=!!(lead && lead.classList.contains("on-dark"));
     for(var j=0;j<navs.length;j++) navs[j].classList.toggle("on",navs[j].getAttribute("data-nav")===h);
     if(hasLifted) retireCurtain();
     goTo(target);
-    curtainTick(); paint(); readScan();
+    curtainTick(); paint(); readScan(); maybeConsent(); trackRoute();
   }
 
   /* land on the named part of the page, opening it if it is an accordion.

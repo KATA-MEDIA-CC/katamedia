@@ -81,6 +81,16 @@ body=body.replace("How we handle data.</a>","How we handle data.</a>").replace(
   '<a href="#/contact">How we handle data.</a>','<a href="/privacy">How we handle data.</a>')
 assert 'href="/privacy">How we handle data' in body, "form privacy link not rewritten"
 
+# ---------- 4b. retargeting tags: their IDs live in src/tags.json -----------
+# Empty IDs mean no banner and no tags (see the consent block in kata.html).
+TAGS=json.load(open(f'{HERE}/tags.json',encoding='utf-8'))
+for k in ('linkedin_partner_id','meta_pixel_id'):
+    assert re.fullmatch(r'\d*',TAGS[k]), f"src/tags.json: {k} must be digits only"
+assert body.count('var TAGS={linkedin:"",meta:""};')==1, "tag slot not found in kata.html"
+body=body.replace('var TAGS={linkedin:"",meta:""};',
+  f'var TAGS={{linkedin:"{TAGS["linkedin_partner_id"]}",meta:"{TAGS["meta_pixel_id"]}"}};')
+assert 'var CONSENT_PREVIEW=false;' in body, "consent preview flag must be off in the build"
+
 # ---------- 5. old real URLs land on the right page ------------------------
 # /services, /team, /services/strategic-advisory ... are served this same file
 # (see vercel.json rewrites). Turn the path into the hash the router reads, before
