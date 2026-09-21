@@ -674,13 +674,48 @@ html.navlock,body.navlock{overflow:hidden}
 .field select{appearance:none;cursor:pointer}
 .privacy{font-size:12px;color:var(--graphite);max-width:46ch;margin:0}
 .privacy a{color:var(--glacier-deep);border-bottom:1px solid var(--hair)}
-.formnote{margin:0;font-size:13px;color:var(--glacier-deep);min-height:1.4em}
+/* The form reports what is missing at its top, in reading size, and marks each
+   field where it sits (Justin, Sept 2026: the note under Send was too small and
+   too far from the problem). Red is the one colour outside the palette: it is
+   for form errors and nothing else. */
+:root{--alert:#9E2B27}
+.form-alert{grid-column:1/-1;margin:0 0 4px;scroll-margin-top:calc(var(--head) + 24px)}
+.modal .form-alert{scroll-margin-top:28px}
+.form-alert:focus{outline:none}
+.form-alert .fa-k{margin:0;font-size:11px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--alert)}
+.form-alert .fa-t{margin:8px 0 0;font-size:clamp(16px,1.3vw,18px);line-height:1.5;color:var(--ink);max-width:52ch}
+.form-alert a{color:var(--ink);text-decoration:underline;text-decoration-color:var(--alert);
+  text-decoration-thickness:1px;text-underline-offset:4px}
+.field.bad label{color:var(--alert)}
+.field.bad input,.field.bad textarea{border-bottom-width:2px;padding-bottom:7px}
+.field input::placeholder,.field textarea::placeholder{color:var(--graphite);opacity:1}
+.ferr{margin:9px 0 0;font-size:13.5px;line-height:1.45;color:var(--alert)}
+.ferr:empty{display:none}
+/* the browser's autofill tint would sit on the glass as a solid block */
+.field input:-webkit-autofill,.field input:-webkit-autofill:hover,.field input:-webkit-autofill:focus{
+  -webkit-text-fill-color:var(--ink);caret-color:var(--ink);transition:background-color 600000s 0s,color 600000s 0s}
+/* once it has gone, the form gives way to the thank-you: nothing left to fill in */
+.enq.sent>*:not(.enq-sent){display:none}
+.enq-sent{padding-top:clamp(4px,1.4vw,18px);scroll-margin-top:calc(var(--head) + 24px)}
+.enq-sent:focus{outline:none}
+.enq-sent .d-l{margin-top:18px;max-width:14ch}
+.enq-sent .lede{margin-top:24px}
+.enq-sent .body{margin-top:18px}
+.enq-sent .to{color:var(--ink)}
+.enq-sent .sig{margin:32px 0 0;font-size:11px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--glacier-deep)}
+.enq-sent .btn{margin-top:36px}
+.enq-sent>*{animation:enqIn 760ms var(--ease) both}
+.enq-sent>*:nth-child(2){animation-delay:110ms}
+.enq-sent>*:nth-child(3){animation-delay:220ms}
+.enq-sent>*:nth-child(n+4){animation-delay:330ms}
+@keyframes enqIn{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+@media(prefers-reduced-motion:reduce){.enq-sent>*{animation:none}}
 @media(max-width:700px){.form{grid-template-columns:1fr}}
 
 /* ---------- modal ---------- */
-.modal{position:fixed;inset:-160px 0 0;z-index:80;display:flex;align-items:center;justify-content:center;padding:calc(var(--gut) + 160px) var(--gut) var(--gut);background:rgba(238,242,246,.78);-webkit-backdrop-filter:blur(18px);backdrop-filter:blur(18px);opacity:0;pointer-events:none;transition:opacity 480ms var(--ease)}
+.modal{position:fixed;inset:-160px 0 0;z-index:80;display:flex;align-items:center;justify-content:center;padding:calc(var(--gut) + 160px) var(--gut) var(--gut);background:rgba(238,242,246,.31);-webkit-backdrop-filter:blur(18px);backdrop-filter:blur(18px);opacity:0;pointer-events:none;transition:opacity 480ms var(--ease)}
 .modal.open{opacity:1;pointer-events:auto}
-.modal .card{background:var(--paper);border:1px solid var(--hair);width:100%;max-width:840px;max-height:88vh;overflow-y:auto;padding:clamp(28px,4vw,52px)}
+.modal .card{background:rgba(255,255,255,.8);border:1px solid var(--hair);width:100%;max-width:840px;max-height:88vh;overflow-y:auto;padding:clamp(28px,4vw,52px)}
 .modal .close{float:right;background:none;border:0;cursor:pointer;font-family:var(--sans);font-size:10px;text-transform:uppercase;letter-spacing:.18em;color:var(--graphite);padding:0}
 
 /* ---------- footer ---------- */
@@ -844,6 +879,18 @@ body::after{content:"";position:fixed;inset:0;z-index:95;pointer-events:none;
 /* the booking sheet the CTA opens, and the glass button in the hero */
 .modal .card{border-color:var(--hair)!important}
 .hero .btn.big{border-color:rgba(226,231,236,.55)!important}
+/* The enquiry card is glass (Justin, Sept 2026), and over a dark page it reads
+   light grey, where Hair and Graphite fade out. Inside it the field lines are
+   ink at low alpha and Graphite steps one shade darker, which keeps the labels
+   above 4.5:1 on the darkest ground the card can sit on. */
+.modal .card{--graphite:#575B62}
+.modal .field label .opt{color:rgba(11,11,15,.36)}
+.modal .field input,.modal .field select,.modal .field textarea{border-bottom-color:rgba(11,11,15,.16)!important}
+.modal .field input:focus,.modal .field select:focus,.modal .field textarea:focus{border-bottom-color:var(--glacier-deep)!important}
+/* a field that still needs something stays red, focused or not */
+.field.bad input,.field.bad textarea,.field.bad input:focus,.field.bad textarea:focus,
+.modal .field.bad input,.modal .field.bad textarea,.modal .field.bad input:focus,.modal .field.bad textarea:focus{
+  border-bottom-color:var(--alert)!important}
 
 /* ============================================================
    THE CURTAIN — the front door
@@ -1183,7 +1230,7 @@ header.bare{opacity:0;pointer-events:none}
 
   <div class="sec tight" data-anchor="start-a-conversation">
     <div class="wide" style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,320px);gap:56px" id="contactGrid">
-      <div>
+      <div class="enq">
         <h2 class="d-m">Start a conversation</h2>
         <p class="body" style="margin-top:16px">Tell us what you are trying to figure out. You will get a person, not a form response.</p>
         <div id="contactForm" style="margin-top:44px"></div>
@@ -1266,10 +1313,12 @@ header.bare{opacity:0;pointer-events:none}
 <div class="modal" id="modal">
   <div class="card">
     <button class="close" id="modalClose">Close</button>
-    <p class="kicker">Start with a conversation</p>
-    <h2 class="d-m" style="margin-top:16px;max-width:18ch">Tell us what you are trying to figure out.</h2>
-    <p class="body" style="margin-top:16px">A 45-minute call. We will come back within 24 hours with an honest read on whether we are the right people to help.</p>
-    <div id="modalForm" style="margin-top:40px"></div>
+    <div class="enq">
+      <p class="kicker">Start with a conversation</p>
+      <h2 class="d-m" style="margin-top:16px;max-width:18ch">Tell us what you are trying to figure out.</h2>
+      <p class="body" style="margin-top:16px">A 45-minute call. We will come back within 24 hours with an honest read on whether we are the right people to help.</p>
+      <div id="modalForm" style="margin-top:40px"></div>
+    </div>
   </div>
 </div>
 
@@ -1592,38 +1641,145 @@ header.bare{opacity:0;pointer-events:none}
   var netHost=document.getElementById("netList");
   netHost.innerHTML=nh; wireAccordions(netHost);
 
-  /* ---------- form ---------- */
+  /* ---------- form ----------
+     What is missing is said at the top of the form, and each field that needs
+     something is marked where it sits. A sent form gives way to a thank-you.
+     The build points ENQ_ENDPOINT at /api/enquiry; left empty (the preview),
+     the form rehearses a send and nothing leaves the page. */
+  var ENQ_ENDPOINT="";
+  var ENQ_ASK={name:"your name",email:"an email we can reply to",msg:"what you are trying to figure out"};
+  function enqEsc(x){ return String(x).replace(/[&<>"]/g,function(c){ return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]; }); }
   function formHTML(p){
+    var err=function(k){ return '<p class="ferr" id="'+p+'-'+k+'-err"></p>'; };
     return '<form class="form" id="'+p+'-form" novalidate>'
-    +'<div class="field"><label for="'+p+'-name">Your name</label><input id="'+p+'-name" type="text" autocomplete="name"></div>'
-    +'<div class="field"><label for="'+p+'-email">Email</label><input id="'+p+'-email" type="email" autocomplete="email"></div>'
+    +'<div class="form-alert f-full" id="'+p+'-alert" role="alert" tabindex="-1" hidden></div>'
+    +'<div class="field" data-req="name"><label for="'+p+'-name">Your name</label><input id="'+p+'-name" type="text" autocomplete="name" aria-describedby="'+p+'-name-err">'+err("name")+'</div>'
+    +'<div class="field" data-req="email"><label for="'+p+'-email">Email</label><input id="'+p+'-email" type="email" autocomplete="email" aria-describedby="'+p+'-email-err">'+err("email")+'</div>'
     +'<div class="field"><label for="'+p+'-company">Company</label><input id="'+p+'-company" type="text" autocomplete="organization"></div>'
     +'<div class="field"><label for="'+p+'-role">Your role <span class="opt">· optional</span></label><input id="'+p+'-role" type="text"></div>'
     +'<div class="field"><label for="'+p+'-type">You are a</label><select id="'+p+'-type"><option>Brand</option><option>Agency</option><option>Other</option></select></div>'
     +'<div class="field"><label for="'+p+'-need">What you need <span class="opt">· optional</span></label><select id="'+p+'-need"><option>Not sure yet</option><option>Strategic advisory</option><option>Organisational setup &amp; production capability</option><option>AI integration</option><option>Production cost control</option></select></div>'
     +'<div class="field f-full"><label for="'+p+'-timing">Timing <span class="opt">· optional</span></label><select id="'+p+'-timing"><option>Not sure yet</option><option>Now, it\'s live</option><option>Next 3 months</option><option>Later this year</option><option>Just exploring</option></select></div>'
-    +'<div class="field f-full"><label for="'+p+'-msg">What are you trying to figure out?</label><textarea id="'+p+'-msg" placeholder="The more specific, the more useful the call."></textarea></div>'
+    +'<div class="field f-full" data-req="msg"><label for="'+p+'-msg">What are you trying to figure out?</label><textarea id="'+p+'-msg" placeholder="The more specific, the more useful the call." aria-describedby="'+p+'-msg-err"></textarea>'+err("msg")+'</div>'
     +'<div class="f-full" style="display:flex;justify-content:space-between;align-items:flex-end;gap:30px;flex-wrap:wrap">'
     +'<p class="privacy">We use your details only to answer this enquiry. <a href="#/contact">How we handle data.</a></p>'
     +'<button class="btn" type="submit">Send</button></div>'
-    +'<p class="formnote f-full" id="'+p+'-note" role="status"></p></form>';
+    +'</form>';
   }
   document.getElementById("contactForm").innerHTML=formHTML("c");
   document.getElementById("modalForm").innerHTML=formHTML("m");
+
+  function enqVal(p,k){ var el=document.getElementById(p+"-"+k); return el?el.value.trim():""; }
+  function enqCheck(p){
+    var bad={}, em=enqVal(p,"email");
+    if(!enqVal(p,"name")) bad.name="Add your name.";
+    if(!em) bad.email="Add an email we can reply to.";
+    else if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(em)) bad.email="This email address looks incomplete.";
+    if(!enqVal(p,"msg")) bad.msg="Tell us what you are trying to figure out.";
+    return bad;
+  }
+  function enqList(xs){ return xs.length<3 ? xs.join(" and ") : xs.slice(0,-1).join(", ")+", and "+xs[xs.length-1]; }
+  function enqAlert(p,html,scroll){
+    var box=document.getElementById(p+"-alert");
+    if(!html){ box.hidden=true; box.innerHTML=""; return; }
+    box.innerHTML=html; box.hidden=false;
+    if(scroll){ box.scrollIntoView({block:"start",behavior:reduce?"auto":"smooth"}); box.focus({preventScroll:true}); }
+  }
+  function enqShow(f,p,bad,scroll){
+    var add=[], check=[];
+    ["name","email","msg"].forEach(function(k){
+      var el=document.getElementById(p+"-"+k), on=!!bad[k];
+      f.querySelector('[data-req="'+k+'"]').classList.toggle("bad",on);
+      if(on) el.setAttribute("aria-invalid","true"); else el.removeAttribute("aria-invalid");
+      document.getElementById(p+"-"+k+"-err").textContent=on?bad[k]:"";
+      if(!on) return;
+      var typed=k==="email"&&!!el.value.trim();
+      (typed?check:add).push('<a href="#'+p+'-'+k+'" data-jump="'+p+'-'+k+'">'+(typed?"your email address":ENQ_ASK[k])+'</a>');
+    });
+    if(!add.length&&!check.length){ enqAlert(p,"",false); return; }
+    var say=[];
+    if(add.length) say.push("add "+enqList(add));
+    if(check.length) say.push("check "+check[0]);
+    enqAlert(p,'<p class="fa-k">Not sent yet</p><p class="fa-t">Please '+say.join(add.length>1?", and ":" and ")+'.</p>',scroll);
+  }
+  function enqFail(p,why){
+    enqAlert(p,'<p class="fa-k">Not sent</p><p class="fa-t">'+why+' Please try again, or write to us at '
+      +'<a href="mailto:hello@bureau-kata.com">hello@bureau-kata.com</a>.</p>',true);
+  }
+  function enqSent(f,d){
+    var box=f.closest(".enq"); if(!box) return;
+    var first=d.name.split(/\s+/)[0]||d.name, inModal=!!f.closest(".modal");
+    var s=document.createElement("div");
+    s.className="enq-sent"; s.setAttribute("tabindex","-1"); s.setAttribute("role","status");
+    s.innerHTML='<p class="kicker">Message sent</p>'
+      +'<h2 class="d-l">Thank you, '+enqEsc(first)+'.</h2>'
+      +'<p class="lede">It has arrived. One of us will come back to you within 24 hours, with an honest read on whether we are the right people to help.</p>'
+      +'<p class="body">We will reply to <span class="to">'+enqEsc(d.email)+'</span>.</p>'
+      +'<p class="sig">Justin, Cornelius &amp; Jankel</p>'
+      +(inModal?'<button type="button" class="btn" data-enq-close>Back to the site</button>'
+               :'<p style="margin-top:36px"><a class="arrow" href="#/">Back to the start</a></p>');
+    box.appendChild(s); box.classList.add("sent");
+    f.reset(); delete f.dataset.tried; enqShow(f,f.id.split("-")[0],{},false);
+    var card=f.closest(".card");
+    if(card) card.scrollTop=0; else s.scrollIntoView({block:"start",behavior:reduce?"auto":"smooth"});
+    s.focus({preventScroll:true});
+  }
+  function enqSend(d){
+    if(!ENQ_ENDPOINT) return new Promise(function(done){ setTimeout(function(){ done({ok:true,status:200}); },700); });
+    return fetch(ENQ_ENDPOINT,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(d)});
+  }
   document.addEventListener("submit",function(e){
-    if(e.target.tagName!=="FORM") return;
+    var f=e.target;
+    if(f.tagName!=="FORM"||!/-form$/.test(f.id)) return;
     e.preventDefault();
-    var note=document.getElementById(e.target.id.split("-")[0]+"-note");
-    if(note) note.textContent="The form isn't connected yet. Please email us directly at hello@bureau-kata.com.";
+    var p=f.id.split("-")[0], btn=f.querySelector('button[type="submit"]'), bad=enqCheck(p);
+    f.dataset.tried="1";
+    if(Object.keys(bad).length){ enqShow(f,p,bad,true); return; }
+    if(f.dataset.busy) return;
+    enqAlert(p,"",false);
+    var d={name:enqVal(p,"name"),email:enqVal(p,"email"),company:enqVal(p,"company"),role:enqVal(p,"role"),
+           side:enqVal(p,"type"),need:enqVal(p,"need"),timing:enqVal(p,"timing"),message:enqVal(p,"msg"),
+           website:enqVal(p,"website")};
+    f.dataset.busy="1"; btn.disabled=true; btn.textContent="Sending";
+    enqSend(d).then(function(r){
+        if(r.ok) enqSent(f,d);
+        else enqFail(p,r.status===503?"The form isn’t connected right now.":"That didn’t go through.");
+      })
+      .catch(function(){ enqFail(p,"That didn’t go through."); })
+      .then(function(){ delete f.dataset.busy; btn.disabled=false; btn.textContent="Send"; });
+  });
+  /* after a failed try, the marks clear as each field is put right */
+  document.addEventListener("input",function(e){
+    var f=e.target.form;
+    if(!f||!f.dataset.tried||!/-form$/.test(f.id)) return;
+    var p=f.id.split("-")[0]; enqShow(f,p,enqCheck(p),false);
+  });
+  document.addEventListener("click",function(e){
+    var j=e.target.closest("[data-jump]");
+    if(!j) return;
+    e.preventDefault();
+    var el=document.getElementById(j.getAttribute("data-jump"));
+    if(el){ el.focus({preventScroll:true}); el.scrollIntoView({block:"center",behavior:reduce?"auto":"smooth"}); }
   });
 
   /* ---------- modal ---------- */
-  var modal=document.getElementById("modal");
-  function closeModal(){ modal.classList.remove("open"); document.body.style.overflow=""; }
+  var modal=document.getElementById("modal"), modalReset=0;
+  function closeModal(){
+    if(!modal.classList.contains("open")) return;
+    modal.classList.remove("open"); document.body.style.overflow="";
+    /* a sent form comes back fresh next time, once the fade has finished */
+    var box=modal.querySelector(".enq.sent");
+    if(box){ clearTimeout(modalReset); modalReset=setTimeout(function(){
+      var s=box.querySelector(".enq-sent"); if(s) s.remove(); box.classList.remove("sent");
+      var card=modal.querySelector(".card"); if(card) card.scrollTop=0; },520); }
+  }
   document.addEventListener("click",function(e){
     var t=e.target.closest("[data-book]");
-    if(t){ e.preventDefault(); closeSheet(); modal.classList.add("open"); document.body.style.overflow="hidden"; return; }
-    if(e.target===modal) closeModal();
+    if(t){ e.preventDefault(); closeSheet(); clearTimeout(modalReset);
+      var box=modal.querySelector(".enq.sent");
+      if(box){ var s=box.querySelector(".enq-sent"); if(s) s.remove(); box.classList.remove("sent"); }
+      modal.classList.add("open"); document.body.style.overflow="hidden"; return; }
+    if(e.target===modal||e.target.closest("[data-enq-close]")) closeModal();
   });
   document.getElementById("modalClose").addEventListener("click",closeModal);
   document.addEventListener("keydown",function(e){ if(e.key==="Escape"){ closeModal(); closeSheet(); } });

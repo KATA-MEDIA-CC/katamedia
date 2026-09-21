@@ -115,29 +115,9 @@ hp=("'<div class=\"hp\" aria-hidden=\"true\"><label for=\"'+p+'-website\">Websit
 anchor="+'<div class=\"f-full\" style=\"display:flex;justify-content:space-between"
 assert body.count(anchor)==1, "form footer anchor not found"
 body=body.replace(anchor, hp+anchor[1:] if False else anchor.replace("+'<div class","+"+hp[:-1].rstrip()+"\n    +'<div class",1),1)
-old_submit="""    if(note) note.textContent="The form isn't connected yet. Please email us directly at hello@bureau-kata.com.";
-  });"""
-new_submit="""    if(!note) return;
-    var f=e.target, p=f.id.split("-")[0], btn=f.querySelector('button[type="submit"]');
-    var v=function(k){ var el=document.getElementById(p+"-"+k); return el?el.value.trim():""; };
-    var d={name:v("name"),email:v("email"),company:v("company"),role:v("role"),side:v("type"),
-           need:v("need"),timing:v("timing"),message:v("msg"),website:v("website")};
-    var direct=" Email us directly at hello@bureau-kata.com.";
-    if(!d.name||d.email.indexOf("@")<1||!d.message){
-      note.textContent="Add your name, an email we can reply to, and what you are trying to figure out."; return; }
-    if(f.dataset.busy) return;
-    f.dataset.busy="1"; btn.disabled=true; btn.textContent="Sending"; note.textContent="";
-    fetch("/api/enquiry",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(d)})
-      .then(function(r){
-        if(r.ok){ f.reset(); note.textContent="Thanks, it\u2019s arrived. You\u2019ll hear from us within 24 hours."; }
-        else if(r.status===503){ note.textContent="The form isn\u2019t connected right now."+direct; }
-        else { note.textContent="That didn\u2019t go through."+direct; }
-      })
-      .catch(function(){ note.textContent="That didn\u2019t go through."+direct; })
-      .then(function(){ delete f.dataset.busy; btn.disabled=false; btn.textContent="Send"; });
-  });"""
-assert body.count(old_submit)==1, "submit handler not found"
-body=body.replace(old_submit,new_submit)
+# the form's states live in kata.html; the build only points it at the endpoint
+assert body.count('var ENQ_ENDPOINT="";')==1, "enquiry endpoint slot not found"
+body=body.replace('var ENQ_ENDPOINT="";','var ENQ_ENDPOINT="/api/enquiry";')
 head=head.replace('</style>','.hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}\n</style>',1)
 
 doc=('<!doctype html>\n<html lang="en">\n<head>\n'+head.strip()+'\n</head>\n<body>\n'
