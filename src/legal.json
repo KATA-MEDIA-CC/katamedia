@@ -1,0 +1,14 @@
+{
+  "_note": "Placeholder by decision (21 Sep 2026): the legal entity and address are still being settled, so the Impressum is lorem ipsum until then. Replace the lorem values; the build warns while any remain.",
+  "placeholder_ok": true,
+  "entity": "Lorem Ipsum Dolor",
+  "street": "Consectetur Straße 00",
+  "city": "00000 Adipiscing",
+  "partners": ["Lorem Ipsum", "Dolor Sitamet", "Consectetur Elit"],
+  "email": "hello@bureau-kata.com",
+  "phone": "+49 00 000 000 00",
+  "register": "Amtsgericht Lorem, Sed do 00000",
+  "vat": "DE000000000",
+  "responsible": "Lorem Ipsum",
+  "stand": "September 2026"
+}
