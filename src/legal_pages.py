@@ -111,11 +111,15 @@ if TG['meta_pixel_id']:
     _P.append(dict(name='Meta', us='Meta Platforms, Inc.', nets=['Instagram','Facebook'],
         tool='das Meta-Pixel der Meta Platforms Ireland Limited (Dublin, Irland)',
         cookies='https://www.facebook.com/privacy/policies/cookies/',
-        policy='https://www.facebook.com/privacy/policy/'))
+        policy='https://www.facebook.com/privacy/policy/',
+        jca='https://www.facebook.com/legal/controller_addendum'))
 _tools=[p['tool'] for p in _P]; _us=[p['us'] for p in _P]; _nets=[n for p in _P for n in p['nets']]
 _two=len(_P)==2
 def _und(xs): return xs[0] if len(xs)==1 else ', '.join(xs[:-1])+' und '+xs[-1]
 def _a(url,text): return f'<a href="{url}" rel="noopener">{text}</a>'
+# Art. 26(2): where a provider publishes the joint-controller terms, link them
+_jca=''.join(f' Die Vereinbarung über die gemeinsame Verantwortlichkeit mit {p["name"]} ist im '
+             +_a(p['jca'],'Controller Addendum')+f' von {p["name"]} veröffentlicht.' for p in _P if p.get('jca'))
 if _two:
     _joint=('mit dem jeweiligen Anbieter gemeinsam verantwortlich (Art. 26 DSGVO); Ihre Rechte können Sie '
             'sowohl uns als auch dem jeweiligen Anbieter gegenüber geltend machen. Die weitere Verarbeitung '
@@ -146,7 +150,7 @@ aufgerufenen Seiten. So können wir Menschen, die unsere Website besucht haben, 
 Beiträge und Anzeigen zeigen und deren Reichweite messen. Für die Erhebung und Übermittlung dieser Daten sind
 wir {_joint} Dabei können Daten an {' und '.join(_us)} in den USA übermittelt werden.
 {'Beide Unternehmen sind' if _two else 'Das Unternehmen ist'} nach dem EU-US Data Privacy Framework zertifiziert, für das ein
-Angemessenheitsbeschluss der Europäischen Kommission besteht.</p>
+Angemessenheitsbeschluss der Europäischen Kommission besteht.{_jca}</p>
 <p>Rechtsgrundlage ist Ihre Einwilligung (§ 25 Abs. 1 TDDDG, Art. 6 Abs. 1 lit. a DSGVO). Sie können sie
 jederzeit mit Wirkung für die Zukunft widerrufen, über den Link „Cookie-Einstellungen“ im Fußbereich der
 Website. {_keep}</p>
