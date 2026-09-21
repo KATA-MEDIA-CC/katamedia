@@ -9,31 +9,31 @@
   "rewrites": [
     {
       "source": "/services",
-      "destination": "/index.html"
+      "destination": "/"
     },
     {
       "source": "/services/:path*",
-      "destination": "/index.html"
+      "destination": "/"
     },
     {
       "source": "/approach",
-      "destination": "/index.html"
+      "destination": "/"
     },
     {
       "source": "/approach/:path*",
-      "destination": "/index.html"
+      "destination": "/"
     },
     {
       "source": "/team",
-      "destination": "/index.html"
+      "destination": "/"
     },
     {
       "source": "/team/:path*",
-      "destination": "/index.html"
+      "destination": "/"
     },
     {
       "source": "/contact",
-      "destination": "/index.html"
+      "destination": "/"
     }
   ],
   "headers": [
