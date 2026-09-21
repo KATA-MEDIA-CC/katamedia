@@ -19,7 +19,7 @@ body{margin:0;background:#fff;color:var(--ink);font-family:var(--sans);font-size
 .bar{max-width:1380px;margin-inline:auto;padding:22px var(--gut);display:flex;
   align-items:center;justify-content:space-between;gap:24px}
 .lk{display:block;width:112px;color:var(--ink)} .lk svg{display:block;width:100%;height:auto;fill:currentColor}
-.lk .t{margin-top:7px}
+.lk .t{display:block;margin-top:7px}  /* a span, so it needs block to take the gap: 0.036 x 112 + 3 */
 .back{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--graphite);text-decoration:none}
 .back:hover{color:var(--ink)}
 main{max-width:760px;margin-inline:auto;padding:clamp(48px,8vw,96px) var(--gut) clamp(64px,9vw,120px)}
@@ -45,7 +45,7 @@ def page(slug,title,kicker,content):
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>{title} — Kata</title>
+<title>{title} · Kata</title>
 <meta name="description" content="{title} der {html.escape(L["entity"])}.">
 <link rel="canonical" href="{SITE}/{slug}">
 <link rel="preload" href="/fonts/{SANS_LATIN}" as="font" type="font/woff2" crossorigin>
@@ -57,7 +57,7 @@ def page(slug,title,kicker,content):
 </head>
 <body>
 <header><div class="bar">
-  <a class="lk" href="/" aria-label="Kata — zur Startseite">{MARK}<span class="t">{TAG}</span></a>
+  <a class="lk" href="/" aria-label="Kata, zur Startseite">{MARK}<span class="t">{TAG}</span></a>
   <a class="back" href="/">← Zur Startseite</a>
 </div></header>
 <main>
@@ -108,9 +108,10 @@ if TG['linkedin_partner_id']:
     _pol.append('<a href="https://www.linkedin.com/legal/privacy-policy" rel="noopener">LinkedIn</a>')
 if TG['meta_pixel_id']:
     _tools.append('das Meta-Pixel der Meta Platforms Ireland Limited (Dublin, Irland)')
-    _us.append('Meta Platforms, Inc.'); _nets.append('Instagram und Facebook')
+    _us.append('Meta Platforms, Inc.'); _nets.extend(['Instagram','Facebook'])
     _pol.append('<a href="https://www.facebook.com/privacy/policy/" rel="noopener">Meta</a>')
 _two=len(_tools)==2
+def _und(xs): return xs[0] if len(xs)==1 else ', '.join(xs[:-1])+' und '+xs[-1]
 if _tools:
     consent=f"""<h2>2. Cookies und Einwilligung</h2>
 <p>Ohne Ihre Einwilligung setzt diese Website keine Cookies und bindet keine Analyse- oder Tracking-Dienste
@@ -120,10 +121,11 @@ im lokalen Speicher Ihres Browsers, damit wir nicht bei jedem Aufruf erneut frag
 erforderlich (§ 25 Abs. 2 Nr. 2 TDDDG). Nach zwölf Monaten fragen wir erneut.</p>
 <p>Nur wenn Sie zustimmen, binden wir {' und '.join(_tools)} ein. {'Beide Dienste setzen' if _two else 'Der Dienst setzt'}
 Cookies und {'verarbeiten' if _two else 'verarbeitet'} dabei insbesondere Ihre IP-Adresse, Angaben zu Browser und Gerät sowie die
-aufgerufenen Seiten. So können wir Menschen, die unsere Website besucht haben, auf {' und '.join(_nets)} unsere
+aufgerufenen Seiten. So können wir Menschen, die unsere Website besucht haben, auf {_und(_nets)} unsere
 Beiträge und Anzeigen zeigen und deren Reichweite messen. Für die Erhebung und Übermittlung dieser Daten sind
-wir mit dem jeweiligen Anbieter gemeinsam verantwortlich (Art. 26 DSGVO); die weitere Verarbeitung verantwortet
-der Anbieter selbst. Dabei können Daten an {' und '.join(_us)} in den USA übermittelt werden.
+wir mit dem jeweiligen Anbieter gemeinsam verantwortlich (Art. 26 DSGVO). Die weitere Verarbeitung verantwortet
+der jeweilige Anbieter selbst; er kann die Daten mit einem bestehenden Nutzerkonto verknüpfen und für eigene
+Zwecke verwenden. Dabei können Daten an {' und '.join(_us)} in den USA übermittelt werden.
 {'Beide Unternehmen sind' if _two else 'Das Unternehmen ist'} nach dem EU-US Data Privacy Framework zertifiziert, für das ein
 Angemessenheitsbeschluss der Europäischen Kommission besteht.</p>
 <p>Rechtsgrundlage ist Ihre Einwilligung (§ 25 Abs. 1 TDDDG, Art. 6 Abs. 1 lit. a DSGVO). Sie können sie
@@ -142,38 +144,72 @@ priv=f'''
 <p><b>{v(L["entity"])}</b><br>{addr}<br>
 Vertreten durch die Gesellschafter {v(partners)}<br>
 E-Mail: <a href="mailto:{L["email"]}">{L["email"]}</a></p>
+<p>Einen Datenschutzbeauftragten haben wir nicht benannt, weil wir dazu gesetzlich nicht verpflichtet sind.</p>
 
 {consent}
 <h2>3. Hosting und Server-Logfiles</h2>
-<p>Diese Website wird bei Vercel Inc. (USA) gehostet. Beim Aufruf der Website verarbeitet der Hoster
-technisch notwendige Daten, insbesondere die IP-Adresse, Datum und Uhrzeit des Zugriffs, die aufgerufene
-Seite sowie Browsertyp und Betriebssystem (Server-Logfiles). Rechtsgrundlage ist Art. 6 Abs. 1 lit. f
-DSGVO; unser berechtigtes Interesse liegt in der sicheren und stabilen Bereitstellung der Website. Mit
-Vercel besteht ein Vertrag zur Auftragsverarbeitung; die Übermittlung in die USA stützt sich auf die
-Standardvertragsklauseln der Europäischen Kommission.</p>
+<p>Diese Website wird bei Vercel Inc. (USA) gehostet. Beim Aufruf der Website verarbeitet Vercel technisch
+notwendige Daten, insbesondere Ihre IP-Adresse, Datum und Uhrzeit des Zugriffs, die aufgerufene Seite sowie
+Browsertyp und Betriebssystem (Server-Logfiles). Das ist nötig, um die Website auszuliefern und ihre Sicherheit
+und Stabilität zu gewährleisten. Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO; unser berechtigtes Interesse
+liegt in der sicheren und stabilen Bereitstellung der Website. Die Logfiles werden nur so lange gespeichert, wie
+es dafür erforderlich ist, und danach automatisch gelöscht.</p>
+<p>Mit Vercel besteht ein Vertrag zur Auftragsverarbeitung (Art. 28 DSGVO). Vercel ist nach dem EU-US Data
+Privacy Framework zertifiziert, für das ein Angemessenheitsbeschluss der Europäischen Kommission besteht
+(Art. 45 DSGVO); ergänzend gelten die Standardvertragsklauseln der Europäischen Kommission (Art. 46 DSGVO).
+Die Verbindung zu dieser Website ist per TLS verschlüsselt.</p>
 
 <h2>4. Kontaktformular</h2>
-<p>Wenn Sie uns über das Kontaktformular schreiben, verarbeiten wir die Angaben aus dem Formular (Name,
-E-Mail-Adresse, Unternehmen, Rolle, ob Sie für eine Marke oder eine Agentur anfragen, Ihr Anliegen, den
-Zeitrahmen und Ihre Nachricht), um Ihre Anfrage zu beantworten. Die Anfrage wird in unserem CRM-System
-Attio (Attio Ltd., Vereinigtes Königreich) gespeichert; die Eingangsbestätigung an Sie und die interne
-Benachrichtigung versenden wir über Resend (Resend Inc., USA). Mit beiden Anbietern bestehen Verträge
-zur Auftragsverarbeitung. Rechtsgrundlage ist Art. 6 Abs. 1 lit. b DSGVO, soweit Ihre Anfrage auf einen
-Vertrag zielt, im Übrigen Art. 6 Abs. 1 lit. f DSGVO. Wir löschen Ihre Anfrage, sobald sie abschließend
-bearbeitet ist, sofern keine gesetzlichen Aufbewahrungspflichten entgegenstehen.</p>
+<p>Wenn Sie uns über das Kontaktformular schreiben, verarbeiten wir Ihre Angaben aus dem Formular: Name,
+E-Mail-Adresse, Unternehmen, Rolle, ob Sie für eine Marke, eine Agentur oder in anderer Funktion anfragen,
+Ihr Anliegen, den Zeitrahmen und Ihre Nachricht. Name, E-Mail-Adresse und Nachricht brauchen wir, um Ihre
+Anfrage beantworten zu können; alle anderen Angaben sind freiwillig. Wir verwenden die Angaben, um Ihre
+Anfrage zu beantworten, und senden Ihnen eine automatische Eingangsbestätigung.</p>
+<p>Die Anfrage wird in unserem CRM-System Attio (Attio Ltd., Vereinigtes Königreich) gespeichert; für das
+Vereinigte Königreich besteht ein Angemessenheitsbeschluss der Europäischen Kommission. Die Eingangsbestätigung
+an Sie und die interne Benachrichtigung versenden wir über Resend (Plus Five Five, Inc., USA); Resend ist nach
+dem EU-US Data Privacy Framework zertifiziert. Mit beiden Anbietern bestehen Verträge zur Auftragsverarbeitung.</p>
+<p>Rechtsgrundlage ist Art. 6 Abs. 1 lit. b DSGVO, soweit Ihre Anfrage auf einen Vertrag oder auf vorvertragliche
+Maßnahmen zielt, im Übrigen Art. 6 Abs. 1 lit. f DSGVO; unser berechtigtes Interesse liegt darin, Anfragen zu
+beantworten. Wir löschen Ihre Angaben, sobald Ihre Anfrage abschließend bearbeitet ist, es sei denn, gesetzliche
+Aufbewahrungspflichten stehen dem entgegen, etwa wenn aus der Anfrage ein Auftrag entsteht.</p>
 
 <h2>5. Kontakt per E-Mail</h2>
-<p>Wenn Sie uns per E-Mail schreiben, verarbeiten wir die Angaben, die Sie uns mitteilen (in der Regel
-Name, E-Mail-Adresse, Unternehmen und Ihre Nachricht), um Ihre Anfrage zu beantworten. Rechtsgrundlage
-ist Art. 6 Abs. 1 lit. b DSGVO, soweit Ihre Anfrage auf einen Vertrag zielt, im Übrigen Art. 6 Abs. 1
-lit. f DSGVO. Wir löschen Ihre Anfrage, sobald sie abschließend bearbeitet ist, sofern keine gesetzlichen
-Aufbewahrungspflichten entgegenstehen.</p>
+<p>Wenn Sie uns per E-Mail schreiben, verarbeiten wir die Angaben, die Sie uns mitteilen (in der Regel Name,
+E-Mail-Adresse, Unternehmen und Ihre Nachricht), um Ihre Anfrage zu beantworten. Ihre E-Mail wird bei unserem
+E-Mail-Anbieter verarbeitet, mit dem ein Vertrag zur Auftragsverarbeitung besteht. Rechtsgrundlage ist Art. 6
+Abs. 1 lit. b DSGVO, soweit Ihre Anfrage auf einen Vertrag oder auf vorvertragliche Maßnahmen zielt, im Übrigen
+Art. 6 Abs. 1 lit. f DSGVO; unser berechtigtes Interesse liegt darin, Anfragen zu beantworten. Wir löschen Ihre
+Anfrage, sobald sie abschließend bearbeitet ist, es sei denn, gesetzliche Aufbewahrungspflichten stehen dem
+entgegen.</p>
 
-<h2>6. Ihre Rechte</h2>
-<p>Sie haben das Recht auf Auskunft (Art. 15 DSGVO), Berichtigung (Art. 16), Löschung (Art. 17),
-Einschränkung der Verarbeitung (Art. 18), Datenübertragbarkeit (Art. 20) und Widerspruch gegen die
-Verarbeitung (Art. 21 DSGVO). Schreiben Sie dazu an <a href="mailto:{L["email"]}">{L["email"]}</a>.
-Außerdem haben Sie das Recht, sich bei einer Datenschutz-Aufsichtsbehörde zu beschweren (Art. 77 DSGVO).</p>
+<h2>6. Unsere Seite bei LinkedIn</h2>
+<p>Wir unterhalten eine Unternehmensseite bei LinkedIn. Wenn Sie sie besuchen, verarbeitet die LinkedIn Ireland
+Unlimited Company (Dublin, Irland) Ihre Daten nach ihren eigenen Bedingungen. Für die Seitenstatistiken, die
+LinkedIn uns in zusammengefasster Form bereitstellt, sind wir mit LinkedIn gemeinsam verantwortlich
+(Art. 26 DSGVO). Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO; unser berechtigtes Interesse liegt darin, unsere
+Arbeit dort vorzustellen und zu verstehen, wie die Seite genutzt wird. Ihre Rechte können Sie auch direkt
+gegenüber LinkedIn geltend machen; Einzelheiten stehen in der
+<a href="https://www.linkedin.com/legal/privacy-policy" rel="noopener">Datenschutzrichtlinie von LinkedIn</a>.
+Der Link zu dieser Seite im Fußbereich unserer Website ist ein einfacher Link: Daten werden erst übertragen,
+wenn Sie ihn anklicken.</p>
+
+<h2>7. Ihre Rechte</h2>
+<p>Sie haben das Recht auf Auskunft (Art. 15 DSGVO), Berichtigung (Art. 16), Löschung (Art. 17), Einschränkung
+der Verarbeitung (Art. 18) und Datenübertragbarkeit (Art. 20 DSGVO). Eine Einwilligung können Sie jederzeit mit
+Wirkung für die Zukunft widerrufen (Art. 7 Abs. 3 DSGVO). Schreiben Sie dazu an
+<a href="mailto:{L["email"]}">{L["email"]}</a>. Außerdem haben Sie das Recht, sich bei einer
+Datenschutz-Aufsichtsbehörde zu beschweren (Art. 77 DSGVO).</p>
+<p>Eine automatisierte Entscheidungsfindung einschließlich Profiling im Sinne von Art. 22 DSGVO findet bei uns
+nicht statt.</p>
+
+<h2>8. Widerspruchsrecht</h2>
+<p><b>Soweit wir Ihre Daten auf Grundlage von Art. 6 Abs. 1 lit. f DSGVO verarbeiten, können Sie dieser
+Verarbeitung aus Gründen, die sich aus Ihrer besonderen Situation ergeben, jederzeit widersprechen
+(Art. 21 Abs. 1 DSGVO). Wir verarbeiten Ihre Daten dann nicht mehr, es sei denn, wir können zwingende
+schutzwürdige Gründe für die Verarbeitung nachweisen, die Ihre Interessen, Rechte und Freiheiten überwiegen,
+oder die Verarbeitung dient der Geltendmachung, Ausübung oder Verteidigung von Rechtsansprüchen. Der Widerspruch
+ist formfrei möglich, zum Beispiel per E-Mail an <a href="mailto:{L["email"]}">{L["email"]}</a>.</b></p>
 
 <p style="margin-top:36px">Stand: {v(L["stand"])}</p>
 '''
