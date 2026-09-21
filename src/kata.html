@@ -510,6 +510,21 @@ html.navlock,body.navlock{overflow:hidden}
 }
 
 
+/* ---- IN PRACTICE — what the name means in the work ------------
+   Read like the seven: the premise holds the left column, the lines
+   that follow from it run down the right. Stacks below 900px. */
+.practice{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(32px,6vw,96px);align-items:start}
+.practice-body{display:flex;flex-direction:column;gap:clamp(28px,3.2vw,44px);padding-top:clamp(0px,2.6vw,40px)}
+.practice-body>*{margin:0}
+/* one line per span, each balanced on its own, so a phone never strands a word */
+.practice .lines>span{display:block;text-wrap:balance}
+.practice-close{margin-top:clamp(8px,1.6vw,20px)!important}
+@media(max-width:900px){
+  .practice{grid-template-columns:1fr;gap:40px}
+  .practice-body{padding-top:0}
+}
+
+
 /* ---------- lists ---------- */
 .plist{border-top:1px solid var(--gridline)}
 .pan-ink .plist{border-top-color:rgba(255,255,255,.18)}
@@ -1031,11 +1046,21 @@ header.bare{opacity:0;pointer-events:none}
     <div class="wide seq" data-rv="kai"></div>
   </div>
 
-  <div class="sec ph g-bloom" style="padding-block:clamp(100px,13vw,170px)">
-    <div class="wide">
-      <p class="kicker">The name</p>
-      <h2 class="d-l" style="margin-top:20px;max-width:26ch"><em>Kata</em>: Japanese for form.</h2>
-      <p class="body ink" style="margin-top:22px">A sequence of movements, internalised through repetition, until it holds in any situation. For us: Knowledge Applied to Action.</p>
+  <!-- in practice: the premise on the left, what follows from it on the right -->
+  <div class="sec ph g-bloom" data-anchor="in-practice" style="padding-block:clamp(100px,13vw,170px)">
+    <div class="wide practice">
+      <div>
+        <p class="kicker">KATA. In Practice.</p>
+        <h2 class="d-l" style="margin-top:20px;max-width:14ch">Production is always moving.</h2>
+        <p class="lede" style="margin-top:24px">New briefs. New formats.<br>New technologies. New markets.</p>
+        <p class="d-m" style="margin-top:34px">What holds is structure.</p>
+      </div>
+      <div class="practice-body">
+        <p class="d-m lines"><span>Experience into decisions.</span><span>Data into a number you can check.</span><span>Complexity into something people can work with.</span></p>
+        <p class="body ink" style="text-wrap:pretty">As Production Architects, we build the systems, processes and teams that make production clearer, more efficient and easier to manage.</p>
+        <p class="d-m lines"><span>Independent enough to challenge.</span><span>Experienced enough to know what matters.</span><span>Practical enough to turn decisions into action.</span></p>
+        <p class="d-l practice-close">Knowledge Applied to Action.</p>
+      </div>
     </div>
   </div>
 
