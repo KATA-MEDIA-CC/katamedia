@@ -19,7 +19,7 @@ SERIF_LATIN='cY9AfjOCX1hbuyalUrK4397yjA.woff2'      # Newsreader normal, latin
 SANS_LATIN='ieVn2YZDLWuGJpnzaiwFXS9tYtpd59A.woff2'  # Hanken Grotesk, latin, every weight
 LEGAL=json.load(open(f'{HERE}/legal.json',encoding='utf-8'))
 SITE='https://bureau-kata.com'
-DESC=("We help brands and agencies turn production knowledge into action: commissioning "
+DESC=("We help brands, agencies and their partners turn production knowledge into action: commissioning "
       "smarter, shaping the right production setup, and knowing what it should cost.")
 LINKEDIN='https://www.linkedin.com/company/bureau-kata/about/'
 PREVIEW='--preview' in sys.argv
