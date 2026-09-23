@@ -94,7 +94,10 @@ if present(L['vat']):
     imp+=f'''<h2>Umsatzsteuer-ID</h2>
 <p>Umsatzsteuer-Identifikationsnummer gemäß § 27a Umsatzsteuergesetz:<br>{v(L["vat"])}</p>
 '''
-imp+=f'''<h2>Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV</h2>
+# § 18 Abs. 2 MStV binds journalistic-editorial offerings. The site is not one,
+# so the block appears only once a name is named in legal.json.
+if present(L['responsible']):
+    imp+=f'''<h2>Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV</h2>
 <p>{v(L["responsible"])}<br>Anschrift wie oben</p>
 '''
 page('imprint','Impressum','Rechtliches',imp)

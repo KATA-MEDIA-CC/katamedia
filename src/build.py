@@ -39,6 +39,15 @@ head=re.sub(r'<link rel="stylesheet" href="https://fonts\.googleapis\.com[^"]*">
   f'<link rel="preload" href="/fonts/{SANS_LATIN}" as="font" type="font/woff2" crossorigin>\n'
   '<link rel="stylesheet" href="/fonts/fonts.css">',head)
 assert 'googleapis' not in head and 'gstatic' not in head, "Google Fonts still referenced"
+
+# the registered details for the structured data, straight from legal.json, so the
+# markup and the Impressum can never disagree. Withheld while the Impressum is placeholder.
+_zip,_town=LEGAL['city'].split(' ',1)
+REG={} if LEGAL.get('placeholder_ok') else {
+  "legalName":LEGAL["entity"],"telephone":LEGAL["phone"],
+  "address":{"@type":"PostalAddress","streetAddress":LEGAL["street"],
+             "postalCode":_zip,"addressLocality":_town,"addressCountry":"DE"}}
+
 meta=f'''<meta name="description" content="{html.escape(DESC)}">
 <link rel="canonical" href="{SITE}/">
 <meta name="theme-color" content="#FFFFFF">
@@ -58,7 +67,8 @@ meta=f'''<meta name="description" content="{html.escape(DESC)}">
   "@context":"https://schema.org","@type":"ProfessionalService","name":"Kata",
   "description":DESC,"url":SITE+"/","logo":SITE+"/apple-touch-icon.png",
   "email":"hello@bureau-kata.com","areaServed":"DE","sameAs":[LINKEDIN],
-  "founder":[{"@type":"Person","name":n} for n in ("Cornelius Roenz","Justin Stiebel","Jankel Huppertz")]
+  "founder":[{"@type":"Person","name":n} for n in ("Cornelius Roenz","Justin Stiebel","Jankel Huppertz")],
+  **REG
 },ensure_ascii=False)}</script>'''
 head=head.replace('<title>',meta+'\n<title>',1)
 
