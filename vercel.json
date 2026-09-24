@@ -8,32 +8,16 @@
   "trailingSlash": false,
   "rewrites": [
     {
-      "source": "/services",
-      "destination": "/"
-    },
-    {
       "source": "/services/:path*",
-      "destination": "/"
-    },
-    {
-      "source": "/approach",
-      "destination": "/"
+      "destination": "/services"
     },
     {
       "source": "/approach/:path*",
-      "destination": "/"
-    },
-    {
-      "source": "/team",
-      "destination": "/"
+      "destination": "/approach"
     },
     {
       "source": "/team/:path*",
-      "destination": "/"
-    },
-    {
-      "source": "/contact",
-      "destination": "/"
+      "destination": "/team"
     }
   ],
   "headers": [

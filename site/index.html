@@ -1000,16 +1000,16 @@ header.bare{opacity:0;pointer-events:none}
 
 <header id="hdr">
   <div class="bar">
-    <a href="#/" class="lockup" aria-label="Kata — Knowledge applied to action">
+    <a href="/" class="lockup" aria-label="Kata — Knowledge applied to action">
       <span class="mk" data-mk="word"></span>
       <span class="mk tag-art" data-mk="line"></span>
     </a>
     <nav class="links">
-      <a href="#/" data-nav="home">Home</a>
-      <a href="#/services" data-nav="services">Services</a>
-      <a href="#/approach" data-nav="approach">Approach</a>
-      <a href="#/team" data-nav="team">Team</a>
-      <a href="#/contact" data-nav="contact">Contact</a>
+      <a href="/" data-nav="home">Home</a>
+      <a href="/services" data-nav="services">Services</a>
+      <a href="/approach" data-nav="approach">Approach</a>
+      <a href="/team" data-nav="team">Team</a>
+      <a href="/contact" data-nav="contact">Contact</a>
       <a href="#" class="build" data-book>Start Building</a>
     </nav>
     <button class="menu-btn" id="menuBtn" aria-expanded="false">Menu</button>
@@ -1017,17 +1017,17 @@ header.bare{opacity:0;pointer-events:none}
 </header>
 
 <div class="sheet" id="sheet">
-  <a href="#/services">Services</a>
-  <a href="#/approach">Approach</a>
-  <a href="#/team">Team</a>
-  <a href="#/contact">Contact</a>
+  <a href="/services">Services</a>
+  <a href="/approach">Approach</a>
+  <a href="/team">Team</a>
+  <a href="/contact">Contact</a>
   <a href="#" class="build" data-book>Start Building</a>
 </div>
 
 <main>
 
 <!-- ==================== HOME ==================== -->
-<section class="page" data-page="home">
+<section class="page active" data-page="home">
 
   <div class="curtain">
     <div class="wide curtain-in">
@@ -1073,7 +1073,7 @@ header.bare{opacity:0;pointer-events:none}
       <p class="kicker">How we engage</p>
       <h2 class="d-l" style="margin-top:20px;max-width:22ch">Three ways in.<br>The difference is how far.</h2>
       <div class="depth" data-depth style="margin-top:clamp(36px,5vw,56px)"></div>
-      <p style="margin-top:30px"><a class="arrow" href="#/services/how-we-engage">How engagements work →</a></p>
+      <p style="margin-top:30px"><a class="arrow" href="/services/how-we-engage">How engagements work →</a></p>
     </div>
   </div>
 
@@ -1083,7 +1083,7 @@ header.bare{opacity:0;pointer-events:none}
       <p class="kicker">What we do</p>
       <h2 class="d-l" style="margin-top:20px;max-width:46ch">Four disciplines. One production architecture: strategy, organisation, AI and cost.</h2>
       <div class="frame" data-frame style="margin-top:clamp(36px,5vw,60px)"></div>
-      <p style="margin-top:30px"><a class="arrow" href="#/services/our-services">All services →</a></p>
+      <p style="margin-top:30px"><a class="arrow" href="/services/our-services">All services →</a></p>
     </div>
   </div>
 
@@ -1100,7 +1100,7 @@ header.bare{opacity:0;pointer-events:none}
         <figure class="wall-p"><span class="fn">02</span><picture><source type="image/webp" srcset="/assets/people/justin.webp"><img src="/assets/people/justin.jpg" alt="Justin Stiebel" loading="lazy" decoding="async"></picture><figcaption><h3>Justin Stiebel</h3><p>Fifteen years leading VFX and production companies across The Mill, Stink and Psyop.</p></figcaption></figure>
         <figure class="wall-p"><span class="fn">03</span><picture><source type="image/webp" srcset="/assets/people/jankel.webp"><img src="/assets/people/jankel.jpg" alt="Jankel Huppertz" loading="lazy" decoding="async"></picture><figcaption><h3>Jankel Huppertz</h3><p>Twelve years running production at Jung von Matt, across formats and scales.</p></figcaption></figure>
       </div>
-      <p style="margin-top:34px"><a class="arrow" href="#/team/the-founders">Meet the team →</a></p>
+      <p style="margin-top:34px"><a class="arrow" href="/team/the-founders">Meet the team →</a></p>
     </div>
   </div>
 
@@ -1315,9 +1315,9 @@ header.bare{opacity:0;pointer-events:none}
     <div>
       <p class="kicker" style="margin-bottom:16px">Menu</p>
       <ul>
-        <li><a href="#/">Home</a></li><li><a href="#/services">Services</a></li>
-        <li><a href="#/approach">Approach</a></li><li><a href="#/team">Team</a></li>
-        <li><a href="#/contact">Contact</a></li>
+        <li><a href="/">Home</a></li><li><a href="/services">Services</a></li>
+        <li><a href="/approach">Approach</a></li><li><a href="/team">Team</a></li>
+        <li><a href="/contact">Contact</a></li>
       </ul>
     </div>
     <div>
@@ -1359,7 +1359,7 @@ header.bare{opacity:0;pointer-events:none}
 <script>
 (function(){
   "use strict";
-  (function(){var p=location.pathname.replace(/\/index\.html$/,'').replace(/\/+$/,'');if(p&&!location.hash){history.replaceState(null,'','/#'+p);}})();
+  (function(){var h=location.hash;if(/^#\//.test(h)){var p=h.slice(1).replace(/\/+$/,'')||'/';history.replaceState(null,'',p);}})();
 
   var reduce=window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   function wide(){ return window.innerWidth>900; }
@@ -1508,7 +1508,7 @@ header.bare{opacity:0;pointer-events:none}
     var host=document.querySelectorAll("[data-frame]"); if(!host.length) return;
     var items=REVEALS.pillars.items, h="";
     items.forEach(function(it,i){
-      h+='<a class="frame-col rise" href="#/services/'+slug(it.t)+'"><span class="fn">'+two(i)+'</span><span class="fc-body"><h3>'+it.t+'</h3><span class="fc-copy"><p>'+it.c+'</p><span class="go">Read more →</span></span></span></a>';
+      h+='<a class="frame-col rise" href="/services/'+slug(it.t)+'"><span class="fn">'+two(i)+'</span><span class="fc-body"><h3>'+it.t+'</h3><span class="fc-copy"><p>'+it.c+'</p><span class="go">Read more →</span></span></span></a>';
     });
     host.forEach(function(el){ el.innerHTML=h; arrive(el.querySelectorAll(".rise")); });
   })();
@@ -1763,7 +1763,7 @@ header.bare{opacity:0;pointer-events:none}
       +'<p class="body">We will reply to <span class="to">'+enqEsc(d.email)+'</span>.</p>'
       +'<p class="sig">Justin, Cornelius &amp; Jankel</p>'
       +(inModal?'<button type="button" class="btn" data-enq-close>Back to the site</button>'
-               :'<p style="margin-top:36px"><a class="arrow" href="#/">Back to the start</a></p>');
+               :'<p style="margin-top:36px"><a class="arrow" href="/">Back to the start</a></p>');
     box.appendChild(s); box.classList.add("sent");
     f.reset(); delete f.dataset.tried; enqShow(f,f.id.split("-")[0],{},false);
     var card=f.closest(".card");
@@ -2064,7 +2064,7 @@ header.bare{opacity:0;pointer-events:none}
   function route(){
     /* a route is page/target: #/services/strategic-advisory lands on that
        service and opens it, #/services lands at the top of the page */
-    var raw=(location.hash||"#/").replace("#/",""), parts=raw.split("/");
+    var raw=location.pathname.replace(/^\/+|\/+$/g,""), parts=raw?raw.split("/"):[];
     var h=parts[0]||"home", target=parts.slice(1).join("/"), found=false;
     for(var i=0;i<pages.length;i++){
       var on=pages[i].getAttribute("data-page")===h;
@@ -2113,10 +2113,26 @@ header.bare{opacity:0;pointer-events:none}
     window.scrollTo(0, Math.max(0, window.scrollY + el.getBoundingClientRect().top - head - 26));
     if(box) window.requestAnimationFrame(function(){ document.body.classList.remove("nofx"); });
   }
-  window.addEventListener("hashchange",route);
+  /* Internal links do the same client-side page-swap as before, but write a real
+     URL with the History API instead of a #/hash. Same intro, same transitions;
+     only the address bar changes (/contact, not /#/contact). External links,
+     the booking triggers (data-book), new-tab/download links, modified clicks,
+     and the standalone /imprint + /privacy pages are all left to the browser. */
+  document.addEventListener("click",function(e){
+    if(e.defaultPrevented||e.button!==0||e.metaKey||e.ctrlKey||e.shiftKey||e.altKey) return;
+    var a=e.target.closest("a"); if(!a) return;
+    if(a.hasAttribute("data-book")||a.hasAttribute("target")||a.hasAttribute("download")) return;
+    var href=a.getAttribute("href");
+    if(!href||href.charAt(0)!=="/"||href.charAt(1)==="/") return;   /* same-origin path only */
+    if(/^\/(imprint|privacy)(\/|$)/.test(href)) return;             /* real standalone pages */
+    e.preventDefault();
+    if(href!==location.pathname) history.pushState(null,"",href);
+    route();
+  });
+  window.addEventListener("popstate",route);
   /* the door is only a door if you came in through it: someone who lands
      deep in the site is already inside, so the panel never appears for them */
-  if(((location.hash||"#/").replace("#/","").split("/")[0]||"home")!=="home") retireCurtain();
+  if(location.pathname.replace(/^\/+|\/+$/g,"")!=="") retireCurtain();
   route();
 
 })();

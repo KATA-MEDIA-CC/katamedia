@@ -47,30 +47,47 @@ REG={} if LEGAL.get('placeholder_ok') else {
   "legalName":LEGAL["entity"],"telephone":LEGAL["phone"],
   "address":{"@type":"PostalAddress","streetAddress":LEGAL["street"],
              "postalCode":_zip,"addressLocality":_town,"addressCountry":"DE"}}
-
-meta=f'''<meta name="description" content="{html.escape(DESC)}">
-<link rel="canonical" href="{SITE}/">
-<meta name="theme-color" content="#FFFFFF">
-<link rel="icon" href="/favicon.svg" type="image/svg+xml">
-<link rel="icon" href="/favicon.png" type="image/png" sizes="32x32">
-<link rel="apple-touch-icon" href="/apple-touch-icon.png">
-<meta property="og:type" content="website">
-<meta property="og:site_name" content="Kata">
-<meta property="og:title" content="Kata — Independent Production Architects">
-<meta property="og:description" content="{html.escape(DESC)}">
-<meta property="og:url" content="{SITE}/">
-<meta property="og:image" content="{SITE}/og.jpg">
-<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
-<meta property="og:locale" content="en_GB">
-<meta name="twitter:card" content="summary_large_image">
-<script type="application/ld+json">{json.dumps({
+LD=json.dumps({
   "@context":"https://schema.org","@type":"ProfessionalService","name":"Kata",
   "description":DESC,"url":SITE+"/","logo":SITE+"/apple-touch-icon.png",
   "email":"hello@bureau-kata.com","areaServed":"DE","sameAs":[LINKEDIN],
   "founder":[{"@type":"Person","name":n} for n in ("Cornelius Roenz","Justin Stiebel","Jankel Huppertz")],
-  **REG
-},ensure_ascii=False)}</script>'''
-head=head.replace('<title>',meta+'\n<title>',1)
+  **REG},ensure_ascii=False)
+
+# Each page is pre-rendered as its own file with its own title, description,
+# canonical and OG tags, so every URL is a distinct, indexable page — not one SPA
+# served at "/". (path, active data-page, title, description, carry the org JSON-LD):
+PAGES=[
+  ("/","home","Kata — Independent Production Architects",DESC,True),
+  ("/services","services","Services · Kata",
+   "One partner across strategy, organisation, AI and cost. Three ways to engage, then the four service pillars.",False),
+  ("/approach","approach","Approach · Kata",
+   "Most production problems are operational, not creative. One roadmap for everyone who touches production, scored against the Kata Architecture Index.",False),
+  ("/team","team","Team · Kata",
+   "Three founding partners who built and ran productions, and a specialist network brought in only where the assignment calls for it.",False),
+  ("/contact","contact","Contact · Kata",
+   "Tell us what you are trying to figure out. A 45-minute call, and an honest read within 24 hours on whether we are the right people to help.",False),
+]
+def page_head(base,title,desc,path,with_ld):
+    canon=SITE+("/" if path=="/" else path)
+    m=(f'<meta name="description" content="{html.escape(desc)}">\n'
+       f'<link rel="canonical" href="{canon}">\n'
+       '<meta name="theme-color" content="#FFFFFF">\n'
+       '<link rel="icon" href="/favicon.svg" type="image/svg+xml">\n'
+       '<link rel="icon" href="/favicon.png" type="image/png" sizes="32x32">\n'
+       '<link rel="apple-touch-icon" href="/apple-touch-icon.png">\n'
+       '<meta property="og:type" content="website">\n'
+       '<meta property="og:site_name" content="Kata">\n'
+       f'<meta property="og:title" content="{html.escape(title)}">\n'
+       f'<meta property="og:description" content="{html.escape(desc)}">\n'
+       f'<meta property="og:url" content="{canon}">\n'
+       f'<meta property="og:image" content="{SITE}/og.jpg">\n'
+       '<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">\n'
+       '<meta property="og:locale" content="en_GB">\n'
+       '<meta name="twitter:card" content="summary_large_image">')
+    if with_ld: m+='\n<script type="application/ld+json">'+LD+'</script>'
+    h=re.sub(r'<title>.*?</title>',lambda _:'<title>'+html.escape(title)+'</title>',base,count=1)
+    return h.replace('<title>',m+'\n<title>',1)
 
 # ---------- 2. absolute asset paths: the page is also served at /services/... ---
 def absolutise(t):
@@ -84,11 +101,11 @@ head=head.replace('Every rule, hairline, divider and underline on the site, turn
                   'Every rule, hairline, divider and underline on the site is off.\n   Adopted from the Sept 2026 experiment.')
 
 # ---------- 4. footer and form point at real things ------------------------
-body=body.replace('<li><a href="#/contact">LinkedIn</a></li><li><a href="#/contact">Impressum</a></li>\n        <li><a href="#/contact">Datenschutz</a></li>',
+body=body.replace('<li><a href="/contact">LinkedIn</a></li><li><a href="/contact">Impressum</a></li>\n        <li><a href="/contact">Datenschutz</a></li>',
   f'<li><a href="{LINKEDIN}" rel="noopener" target="_blank">LinkedIn</a></li><li><a href="/imprint">Impressum</a></li>\n        <li><a href="/privacy">Datenschutz</a></li>')
 assert '/imprint' in body and '/privacy' in body and LINKEDIN in body, "footer links not rewritten"
 body=body.replace("How we handle data.</a>","How we handle data.</a>").replace(
-  '<a href="#/contact">How we handle data.</a>','<a href="/privacy">How we handle data.</a>')
+  '<a href="/contact">How we handle data.</a>','<a href="/privacy">How we handle data.</a>')
 assert 'href="/privacy">How we handle data' in body, "form privacy link not rewritten"
 
 # ---------- 4b. retargeting tags: their IDs live in src/tags.json -----------
@@ -106,14 +123,14 @@ if _names:
     assert body.count('<span data-providers>LinkedIn and Meta</span>')==1, "consent card provider slot not found"
     body=body.replace('<span data-providers>LinkedIn and Meta</span>',f'<span data-providers>{_names}</span>')
 
-# ---------- 5. old real URLs land on the right page ------------------------
-# /services, /team, /services/strategic-advisory ... are served this same file
-# (see vercel.json rewrites). Turn the path into the hash the router reads, before
-# anything reads it. No redirect: a cached 308 would fight the Next.js port later.
-shim=("(function(){var p=location.pathname.replace(/\\/index\\.html$/,'').replace(/\\/+$/,'');"
-      "if(p&&!location.hash){history.replaceState(null,'','/#'+p);}})();\n")
+# ---------- 5. legacy /#/… links become clean paths ------------------------
+# The site routes on real paths now. Anyone arriving on an old hash link
+# (/#/services, shared before this change) is normalised to the path before the
+# router reads it, so those links still land on the right page.
+shim=("(function(){var h=location.hash;if(/^#\\//.test(h)){"
+      "var p=h.slice(1).replace(/\\/+$/,'')||'/';history.replaceState(null,'',p);}})();\n")
 body=body.replace('(function(){\n  "use strict";','(function(){\n  "use strict";\n  '+shim,1)
-assert "history.replaceState(null,'','/#'+p)" in body, "path shim not injected"
+assert "history.replaceState(null,'',p)" in body, "legacy-hash shim not injected"
 
 # ---------- 5b. the form reaches Attio, as the old site's did -------------
 # honeypot: a field no human sees; the endpoint discards anything that fills it
@@ -130,12 +147,21 @@ assert body.count('var ENQ_ENDPOINT="";')==1, "enquiry endpoint slot not found"
 body=body.replace('var ENQ_ENDPOINT="";','var ENQ_ENDPOINT="/api/enquiry";')
 head=head.replace('</style>','.hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}\n</style>',1)
 
-doc=('<!doctype html>\n<html lang="en">\n<head>\n'+head.strip()+'\n</head>\n<body>\n'
-     +body.strip()+'\n</body>\n</html>\n')
-open(f'{DIST}/index.html','w',encoding='utf-8').write(doc)
+# mark the requested page active in each file so the right content shows before
+# JS runs (the router confirms it on load); every file carries every page's DOM,
+# so client-side navigation is the same instant swap it always was.
+def page_body(base,active):
+    return base.replace('class="page" data-page="'+active+'"',
+                        'class="page active" data-page="'+active+'"',1)
+for _path,_active,_title,_desc,_ld in PAGES:
+    _doc=('<!doctype html>\n<html lang="en">\n<head>\n'+page_head(head,_title,_desc,_path,_ld).strip()
+          +'\n</head>\n<body>\n'+page_body(body,_active).strip()+'\n</body>\n</html>\n')
+    _dir=DIST if _path=="/" else DIST+_path
+    os.makedirs(_dir,exist_ok=True)
+    open(f'{_dir}/index.html','w',encoding='utf-8').write(_doc)
 
 # ---------- 6. assets actually referenced, plus fonts -----------------------
-refs=set(re.findall(r'/assets/([A-Za-z0-9_\-./]+?\.(?:jpg|webp|avif|png|svg))',doc))
+refs=set(re.findall(r'/assets/([A-Za-z0-9_\-./]+?\.(?:jpg|webp|avif|png|svg))',head+body))
 refs|={f'people/{n}.{e}' for n in ('cornelius','justin','jankel') for e in ('jpg','webp')}
 for r in sorted(refs):
     src=f'{ASSETS}/{r}'; dst=f'{DIST}/assets/{r}'
@@ -159,11 +185,15 @@ exec(open(f'{HERE}/legal_pages.py',encoding='utf-8').read())
 open(f'{DIST}/robots.txt','w',encoding='utf-8').write(f"User-agent: *\nAllow: /\n\nSitemap: {SITE}/sitemap.xml\n")
 open(f'{DIST}/sitemap.xml','w',encoding='utf-8').write(
  '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
- +''.join(f'  <url><loc>{SITE}{p}</loc></url>\n' for p in ('/','/imprint','/privacy'))+'</urlset>\n')
-# cleanUrls strips ".html" from the deployed files, so "/index.html" does not
-# exist on Vercel and a rewrite to it 404s. The destination must be the clean "/".
-spa=[{"source":p,"destination":"/"} for p in
-     ("/services","/services/:path*","/approach","/approach/:path*","/team","/team/:path*","/contact")]
+ +''.join(f'  <url><loc>{SITE}{p}</loc></url>\n' for p in
+   ('/','/services','/approach','/team','/contact','/imprint','/privacy'))+'</urlset>\n')
+# Each page is now its own file (site/services/index.html …), so cleanUrls serves
+# /services, /approach, /team, /contact natively. Only the in-page deep links
+# (/services/our-services, /team/the-founders …) need a rewrite back to the page
+# file; the router then opens the right section from the rest of the path.
+spa=[{"source":"/services/:path*","destination":"/services"},
+     {"source":"/approach/:path*","destination":"/approach"},
+     {"source":"/team/:path*","destination":"/team"}]
 long=[{"key":"Cache-Control","value":"public, max-age=31536000, immutable"}]
 json.dump({"$schema":"https://openapi.vercel.sh/vercel.json",
   # the project is still configured as Next.js in the dashboard; this overrides it
